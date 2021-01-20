@@ -10,7 +10,7 @@
     <!--- Sidemenu -->
     <ul class="metismenu side-nav">
 
-        <li class="side-nav-title side-nav-item">Navigation</li>
+        {{-- <li class="side-nav-title side-nav-item">Navigation</li> --}}
 
         <li class="side-nav-item">
             <a href="{{ url('admin-login') }}" class="side-nav-link">
@@ -41,7 +41,7 @@
             </ul>
         </li> --}}
 
-        <li class="side-nav-title side-nav-item">Apps</li>
+        {{-- <li class="side-nav-title side-nav-item">Apps</li> --}}
 {{-- 
         <li class="side-nav-item">
             <a href="apps-calendar.html" class="side-nav-link">
@@ -50,13 +50,13 @@
             </a>
         </li> --}}
 
-        <li class="side-nav-item">
+        {{-- <li class="side-nav-item">
             <a href="apps-chat.html" class="side-nav-link">
                 <i class="uil-comments-alt"></i>
                 <span> Chat </span>
             </a>
-        </li>
-
+        </li> --}}
+{{-- 
         <li class="side-nav-item">
             <a href="javascript: void(0);" class="side-nav-link">
                 <i class="uil-store"></i>
@@ -89,9 +89,9 @@
                     <a href="apps-ecommerce-sellers.html">Sellers</a>
                 </li>
             </ul>
-        </li>
+        </li> --}}
 
-        <li class="side-nav-item">
+        {{-- <li class="side-nav-item">
             <a href="javascript: void(0);" class="side-nav-link">
                 <i class="uil-envelope"></i>
                 <span> Email </span>
@@ -105,37 +105,48 @@
                     <a href="apps-email-read.html">Read Email</a>
                 </li>
             </ul>
-        </li>
+        </li> --}}
 
         <li class="side-nav-item">
             <a href="javascript: void(0);" class="side-nav-link">
-                <i class="uil-briefcase"></i>
-                <span> Projects </span>
+                {{-- <i class="uil-briefcase"></i> --}}
+                <i class="mdi mdi-teach"></i>
+                <span> Teacher </span>
                 <span class="menu-arrow"></span>
             </a>
             <ul class="side-nav-second-level" aria-expanded="false">
                 <li>
-                    <a href="apps-projects-list.html">List</a>
-                </li>
-                <li>
-                    <a href="apps-projects-details.html">Details</a>
-                </li>
-                <li>
-                    <a href="apps-projects-gantt.html">Gantt <span class="badge badge-pill badge-dark-lighten font-10 float-right">New</span></a>
-                </li>
-                <li>
-                    <a href="apps-projects-add.html">Create Project <span class="badge badge-pill badge-success-lighten font-10 float-right">New</span></a>
+                    <a href="{{ url('/add-teacher') }}">Add Teacher</a>
                 </li>
             </ul>
         </li>
 
         <li class="side-nav-item">
+            <a href="javascript: void(0);" class="side-nav-link">
+                <i class="uil-briefcase"></i>
+                <span> Create Batch </span>
+                <span class="menu-arrow"></span>
+            </a>
+            <ul class="side-nav-second-level" aria-expanded="false">
+                <li>
+                    <a href="apps-projects-list.html">Add Batch</a>
+                </li>
+                <li>
+                    <a href="apps-projects-details.html">Manage Batch</a>
+                </li>
+                <li>
+                    <a href="apps-projects-gantt.html">Add Student <span class="badge badge-pill badge-dark-lighten font-10 float-right">New</span></a>
+                </li>
+            </ul>
+        </li>
+{{-- 
+        <li class="side-nav-item">
             <a href="apps-social-feed.html" class="side-nav-link">
                 <i class="uil-rss"></i>
                 <span> Social Feed </span>
             </a>
-        </li>
-
+        </li> --}}
+{{-- 
         <li class="side-nav-item">
             <a href="javascript: void(0);" class="side-nav-link">
                 <i class="uil-clipboard-alt"></i>
@@ -153,42 +164,44 @@
                     <a href="apps-kanban.html">Kanban Board</a>
                 </li>
             </ul>
-        </li>
-
+        </li> --}}
+{{-- 
         <li class="side-nav-item">
             <a href="apps-file-manager.html" class="side-nav-link">
                 <i class="uil-folder-plus"></i>
                 <span> File Manager </span>
             </a>
-        </li>
+        </li> --}}
 
-        <li class="side-nav-title side-nav-item">Custom</li>
+        {{-- <li class="side-nav-title side-nav-item">Product</li> --}}
 
         <li class="side-nav-item">
             <a href="javascript: void(0);" class="side-nav-link">
                 <i class="uil-copy-alt"></i>
-                <span> Pages </span>
+                <span> Product </span>
                 <span class="menu-arrow"></span>
             </a>
             <ul class="side-nav-second-level" aria-expanded="false">
                 <li>
-                    <a href="pages-profile.html">Profile</a>
+                    <a href="pages-profile.html">Add Product</a>
                 </li>
                 <li>
-                    <a href="pages-profile-2.html">Profile 2</a>
+                    <a href="pages-profile-2.html">Manage Product</a>
                 </li>
                 <li>
-                    <a href="pages-invoice.html">Invoice</a>
+                    <a href="pages-profile-2.html">Add Student</a>
                 </li>
-                <li>
-                    <a href="pages-faq.html">FAQ</a>
-                </li>
-                <li>
-                    <a href="pages-pricing.html">Pricing</a>
-                </li>
-                <li>
-                    <a href="pages-maintenance.html">Maintenance</a>
-                </li>
+            </ul>
+        </li>
+
+
+         <li class="side-nav-item">
+            <a href="{{ url('admin-login') }}" class="side-nav-link">
+                <i class="mdi mdi-logout-variant"></i>
+                <span> Logout</span>
+            </a>
+        </li>
+{{--             
                 <li class="side-nav-item">
                     <a href="javascript: void(0);" aria-expanded="false">Authentication
                         <span class="menu-arrow"></span>
@@ -231,7 +244,7 @@
                             <a href="pages-confirm-mail-2.html">Confirm Mail 2</a>
                         </li>
                     </ul>
-                </li>
+                </li> 
                 <li class="side-nav-item">
                     <a href="javascript: void(0);" aria-expanded="false">Error
                         <span class="menu-arrow"></span>
@@ -256,10 +269,10 @@
                 </li>
                 <li>
                     <a href="pages-timeline.html">Timeline</a>
-                </li>
+                </li> --}}
             </ul>
         </li>
-
+{{-- 
         <li class="side-nav-item">
             <a href="landing.html" target="_blank" class="side-nav-link">
                 <i class="uil-globe"></i>
@@ -414,8 +427,8 @@
                     <a href="icons-unicons.html">Unicons</a>
                 </li>
             </ul>
-        </li>
-
+        </li> --}}
+{{-- 
         <li class="side-nav-item">
             <a href="javascript: void(0);" class="side-nav-link">
                 <i class="uil-document-layout-center"></i>
@@ -586,7 +599,7 @@
                     </ul>
                 </li>
             </ul>
-        </li>
+        </li> --}}
 
     </ul>
 

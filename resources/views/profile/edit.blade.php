@@ -7,9 +7,9 @@
       <div class="page-title-box">
           <div class="page-title-right">
               <ol class="breadcrumb m-0">
-                  <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
-                  <li class="breadcrumb-item"><a href="javascript: void(0);">Profile</a></li>
-                  <li class="breadcrumb-item active">User</li>
+                  {{-- <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li> --}}
+                  {{-- <li class="breadcrumb-item"><a href="javascript: void(0);">Profile</a></li> --}}
+                  {{-- <li class="breadcrumb-item active">User</li> --}}
               </ol>
           </div>
           <h4 class="page-title">Edit Profile</h4>
@@ -67,7 +67,7 @@
                 </div>
               </div>
               <div class="card-footer ml-auto mr-auto">
-                <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
+                @include('_form.button',['title'=>'Save'])
               </div>
             </div>
           </form>

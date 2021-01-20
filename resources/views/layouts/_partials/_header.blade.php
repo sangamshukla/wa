@@ -2,7 +2,7 @@
     <div class="container-fluid">
 
         <!-- LOGO -->
-        <a href="index.html" class="topnav-logo">
+        <a href="index.html" class="topnav-logo" style="margin-left: 70px;">
             <span class="topnav-logo-lg">
                 <img src="{{ asset('logo.png') }}" alt="" height="64" class="ml-2">
             </span>
@@ -141,7 +141,7 @@
 
                 </div>
             </li>
-
+{{-- 
             <li class="dropdown notification-list d-none d-sm-inline-block">
                 <a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <i class="dripicons-view-apps noti-icon"></i>
@@ -194,13 +194,13 @@
                     </div>
 
                 </div>
-            </li>
-
+            </li> --}}
+{{-- 
             <li class="notification-list">
                 <a class="nav-link right-bar-toggle" href="javascript: void(0);">
                     <i class="dripicons-gear noti-icon"></i>
                 </a>
-            </li>
+            </li> --}}
 
             <li class="dropdown notification-list">
                 <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown" id="topbar-userdrop" href="#" role="button" aria-haspopup="true"
@@ -270,7 +270,7 @@
                     </div>
                 </div>
             </form> --}}
-            <div class="dropdown-menu dropdown-menu-animated dropdown-lg" id="search-dropdown">
+            {{-- <div class="dropdown-menu dropdown-menu-animated dropdown-lg" id="search-dropdown">
                 <!-- item-->
                 <div class="dropdown-header noti-title">
                     <h5 class="text-overflow mb-2">Found <span class="text-danger">17</span> results</h5>
@@ -322,7 +322,7 @@
                         </div>
                     </a>
                 </div>
-            </div> 
+            </div>  --}}
         </div>
     </div>
 </div>
