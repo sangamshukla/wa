@@ -124,7 +124,7 @@
         <li class="side-nav-item">
             <a href="javascript: void(0);" class="side-nav-link">
                 <i class="uil-briefcase"></i>
-                <span> Create Batch </span>
+                <span> Batch </span>
                 <span class="menu-arrow"></span>
             </a>
             <ul class="side-nav-second-level" aria-expanded="false">
@@ -134,63 +134,24 @@
                 <li>
                     <a href="apps-projects-details.html">Manage Batch</a>
                 </li>
-                <li>
-                    <a href="apps-projects-gantt.html">Add Student <span class="badge badge-pill badge-dark-lighten font-10 float-right">New</span></a>
-                </li>
+                
             </ul>
         </li>
-{{-- 
-        <li class="side-nav-item">
-            <a href="apps-social-feed.html" class="side-nav-link">
-                <i class="uil-rss"></i>
-                <span> Social Feed </span>
-            </a>
-        </li> --}}
-{{-- 
-        <li class="side-nav-item">
-            <a href="javascript: void(0);" class="side-nav-link">
-                <i class="uil-clipboard-alt"></i>
-                <span> Tasks </span>
-                <span class="menu-arrow"></span>
-            </a>
-            <ul class="side-nav-second-level" aria-expanded="false">
-                <li>
-                    <a href="apps-tasks.html">List</a>
-                </li>
-                <li>
-                    <a href="apps-tasks-details.html">Details</a>
-                </li>
-                <li>
-                    <a href="apps-kanban.html">Kanban Board</a>
-                </li>
-            </ul>
-        </li> --}}
-{{-- 
-        <li class="side-nav-item">
-            <a href="apps-file-manager.html" class="side-nav-link">
-                <i class="uil-folder-plus"></i>
-                <span> File Manager </span>
-            </a>
-        </li> --}}
-
-        {{-- <li class="side-nav-title side-nav-item">Product</li> --}}
 
         <li class="side-nav-item">
             <a href="javascript: void(0);" class="side-nav-link">
                 <i class="uil-copy-alt"></i>
-                <span> Product </span>
+                <span> Student </span>
                 <span class="menu-arrow"></span>
             </a>
             <ul class="side-nav-second-level" aria-expanded="false">
                 <li>
-                    <a href="pages-profile.html">Add Product</a>
+                    <a href="pages-profile.html">Add Student</a>
                 </li>
                 <li>
-                    <a href="pages-profile-2.html">Manage Product</a>
+                    <a href="pages-profile-2.html">Manage Student</a>
                 </li>
-                <li>
-                    <a href="pages-profile-2.html">Add Student</a>
-                </li>
+                
             </ul>
         </li>
 
