@@ -3,6 +3,8 @@
     <div class="leftbar-user">
         <a href="javascript: void(0);">
             <img src="assets/images/users/avatar-1.jpg" alt="user-image" height="42" class="rounded-circle shadow-sm">
+            {{-- <span><img src="{{ asset('logo.png') }}" alt="" height="80"></span> --}}
+
             <span class="leftbar-user-name">{{ auth()->user()->name }}</span>
         </a>
     </div>

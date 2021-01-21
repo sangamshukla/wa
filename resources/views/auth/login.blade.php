@@ -3,8 +3,7 @@
 @section('content')
 <div class="text-center w-75 m-auto">
     <h4 class="text-dark-50 text-center mt-0 font-weight-bold">Student Login</h4>
-    <p class="text-muted mb-1">admin@wallingtonacademy.co.uk</p>
-    <p class="text-muted mb-1">password: wallington</p>
+   
 </div>
 <div class="card-body">
     <form method="POST" action="{{ route('login') }}">

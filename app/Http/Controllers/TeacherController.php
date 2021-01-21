@@ -45,24 +45,14 @@ class TeacherController extends Controller
             'name'=>'required',
             'email'=>'required',
             'contact_number'=>'required',
-            'start_date'=>'required',
-            'end_date'=>'required',
-            'shift_start_time'=>'required',
-            'shift_end_time'=>'required',
-            'break_start_time'=>'required',
-            'break_end_time'=>'required',
+            'user_type'=>'required',
         ]);
 
         $teacher = Teacher::Create([
             'name'=>$request->name,
             'email'=>$request->email,
             'contact_number'=>$request->contact_number,
-            'start_date'=>$request->start_date,
-            'end_date'=>$request->end_date,
-            'shift_start_time'=>$request->shift_start_time,
-            'shift_end_time'=>$request->shift_end_time,
-            'break_start_time'=>$request->break_start_time,
-            'break_end_time'=>$request->break_end_time,
+            'user_type'=>$request->user_type,
         ]);
     }
 

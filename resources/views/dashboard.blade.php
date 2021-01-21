@@ -14,8 +14,7 @@
                     </ol>
                 </div>
                 {{-- <h4 class="page-title">Admin  {{ \Carbon\Carbon::now() }}</h4> --}}
-                <h4 class="page-title">Admin  {{ \Carbon\Carbon::now() }}</h4>
-
+                <h4 class="page-title">Welcome Admin Happy{{ \Carbon\Carbon::now()->format('l') }}</h4>
 
             </div>
         </div>
