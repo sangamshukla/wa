@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\TeacherSuccessfullyRegistered;
 use App\Models\ClassMaster;
 use App\Models\Subject;
 use App\Models\Teacher;
+use App\Models\User;
 use App\Models\WeeklyOff;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class TeacherController extends Controller
 {
@@ -17,7 +20,10 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        //
+        // $total = Teacher::count();
+        // $teachers = Teacher::all();
+        // $total = $teachers->count();
+        // return $total;
     }
 
     /**
@@ -48,12 +54,23 @@ class TeacherController extends Controller
             'user_type'=>'required',
         ]);
 
-        $teacher = Teacher::Create([
+        $user = User::Create([
             'name'=>$request->name,
             'email'=>$request->email,
             'contact_number'=>$request->contact_number,
+            'password' => bcrypt($request->email),
+            'role'=>$request->user_type,
+            
+        ]);
+        
+        Teacher::Create([
+            'user_id' => $user->id,
+            'class_master_id' => $request->class_master_id,
             'user_type'=>$request->user_type,
         ]);
+
+        Mail::to($user->email)->send(new TeacherSuccessfullyRegistered($user));
+        return redirect()->back()->with('status', 'Teacher Added Successfully');
     }
 
     /**

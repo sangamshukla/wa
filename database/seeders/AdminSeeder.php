@@ -25,5 +25,35 @@ class AdminSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
+
+        // DB::table('users')->insert([
+        //     'name' => 'Student',
+        //     'email' => 'student@wallingtonacademy.co.uk',
+        //     'email_verified_at' => now(),
+        //     'password' => Hash::make('wallington'),
+        //     'role' => User::STUDENT,
+        //     'created_at' => now(),
+        //     'updated_at' => now()
+        // ]);
+
+        DB::table('users')->insert([
+            'name' => 'Teacher',
+            'email' => 'teacher@wallingtonacademy.co.uk',
+            'email_verified_at' => now(),
+            'password' => Hash::make('wallington'),
+            'role' => User::TEACHER,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        DB::table('users')->insert([
+            'name' => 'operation',
+            'email' => 'operation@wallingtonacademy.co.uk',
+            'email_verified_at' => now(),
+            'password' => Hash::make('wallington'),
+            'role' => User::OPERATION,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
     }
 }

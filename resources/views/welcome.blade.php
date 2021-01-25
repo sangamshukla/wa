@@ -1,133 +1,338 @@
-
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="csrf-token" content="3l7me6VwBSXbQbqe8f6hXwy8HzVco9NZnGJI7FMl">
-    <title>Academy</title>
-    <link rel="apple-touch-icon" sizes="76x76" href="http://academy1.test/material/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="http://academy1.test/material/img/favicon.png">
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-    <!--     Fonts and icons     -->
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-    <!-- CSS Files -->
-    <link href="http://academy1.test/material/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
-    <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link href="http://academy1.test/material/demo/demo.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
-    </head>
-    <body class="off-canvas-sidebar">
-                            <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top text-white">
-  <div class="container">
-    <div class="navbar-wrapper">
-      <a class="navbar-brand" href="http://academy.test/admin-login">
-        <img src="http://academy.test/logo.png" width="200">
-      </a>
-    </div>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="navbar-toggler-icon icon-bar"></span>
-      <span class="navbar-toggler-icon icon-bar"></span>
-      <span class="navbar-toggler-icon icon-bar"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end">
-      <ul class="navbar-nav">
-        
-        <li class="nav-item">
-          <a href="http://academy.test/login" class="nav-link">
-            
-            <i class="fa fa-sign-in" aria-hidden="true"></i>Login
-          </a>
-        </li>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
 
-        <li class="nav-item">
-          <a href="http://academy.test/login" class="nav-link">
-            
-            <i class="fa fa-home" aria-hidden="true"></i> Live Classes
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a href="http://academy1.test/login" class="nav-link">
-            
-            <i class="fa fa-book" aria-hidden="true"></i> Study Material
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a href="http://academy1.test/login" class="nav-link">
-            <i class="fa fa-graduation-cap" aria-hidden="true"></i> 11+Exam
-          </a>
-        </li>
-
-      </ul>
-    </div>
-  </div>
-</nav>
-<!-- End Navbar --><div class="wrapper wrapper-full-page">
-  <div class="page-header login-page header-filter" filter-color="black" style="background-image: url('http://academy.test/login.png'); background-size: cover; background-position: top center;align-items: center;" data-color="purple">
-  <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
-    <div class="container" style="height: auto;">
-  <div class="row justify-content-center">
-      <div class="col-lg-7 col-md-8">
-          
-          <h1 class="text-white text-center">Welcome to Wallington Academy.</h1>
-      </div>
-  </div>
-</div>
-    <footer class="footer">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<meta name="Wallington Academy - After School Tutorials" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/assets/style.css">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+    }
     
-</footer>  </div>
-</div>
-                        <!--   Core JS Files   -->
-        <script src="http://academy1.test/material/js/core/jquery.min.js"></script>
-        <script src="http://academy1.test/material/js/core/popper.min.js"></script>
-        <script src="http://academy1.test/material/js/core/bootstrap-material-design.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+    body {
+      font-family: "Nunito", sans-serif;
+    }
+    
+    /* Navigation */
+    
+    .nav-container {
+      position: absolute;
+      width: 100%;
+      height: 90px;
+      left: 0px;
+      top: 0px;
+    
+      filter: drop-shadow(0px 16px 60px rgba(0, 0, 0, 0.08));
+    }
+    
+    .logo {
+      padding-left: 50px;
+      height: 109px;
+    }
+    .wrapper {
+      max-width: 100%;
+      margin: 0, auto;
+    }
+    
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 18px;
+    }
+    
+    nav ul {
+      display: flex;
+    }
+    
+    .nav-items li {
+      list-style: none;
+      margin-right: 20px;
+    }
+    
+    .nav-buttons {
+      padding-right: 50px;
+    }
+    
+    .nav-buttons li {
+      list-style: none;
+      margin-left: 20px;
+    }
+    .nav-items li a {
+      text-decoration: none;
+      color: #333333;
+      font-weight: 600;
+      line-height: 25px;
+    }
+    .nav-buttons li a {
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    .login {
+      text-decoration: none;
+      color: #333333;
+      font-weight: 600;
+      line-height: 25px;
+    }
+    .reg-button {
+      background: #1d6771;
+      padding: 13px 41px;
+      font-size: 16px;
+      color: white;
+      font-weight: 600;
+      width: 124px;
+      height: 48px;
+      left: 1241px;
+      top: 21px;
+      border-radius: 8px;
+    }
+    
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 0px;
+    
+      position: absolute;
+      width: 564px;
+      height: 337px;
+      left: 50px;
+      top: 226px;
+    }
+    .person-image {
+      position: absolute;
+      width: 810px;
+      height: 602px;
+      right: 50px;
+      top: 50px;
+    }
+    .person-study {
+      height: 602px;
+    }
+    .tagline {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 0px;
+    
+      position: static;
+      width: 564px;
+      height: 237px;
+      left: 0px;
+      top: 0px;
+    }
+    
+    .hero-text {
+      /* 11 Plus Exam */
+    
+      position: static;
+      width: 564px;
+      height: 78px;
+      right: 0px;
+      top: calc(50% - 78px / 2);
+    
+      font-family: Nunito;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 58px;
+      line-height: 120%;
+      /* identical to box height, or 78px */
+    
+      letter-spacing: 0.2px;
+    
+      color: #333333;
+    }
+    .sub-hero-text {
+      position: static;
+      height: 55px;
+      right: 217px;
+      top: calc(50% - 55px / 2 + 7px);
+    
+      font-family: Nunito;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 38px;
+      line-height: 120%;
+      /* or 55px */
+    
+      letter-spacing: 0.2px;
+    
+      color: #333333;
+    
+      /* Inside Auto Layout */
+    
+      flex: none;
+      order: 1;
+      flex-grow: 0;
+      /* margin: 0px 20px; */
+    }
+    .sub-sub-hero-text {
+      position: static;
+      width: 475px;
+      height: 64px;
+      right: 89px;
+      top: calc(50% - 64px / 2 + 86.5px);
+    
+      font-family: Nunito;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 20px;
+      line-height: 160%;
+      /* or 32px */
+    
+      color: #666666;
+    
+      /* Inside Auto Layout */
+    
+      flex: none;
+      order: 2;
+      flex-grow: 0;
+      /* margin: 0px 20px; */
+    }
+    
+    .phone-number {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 0px;
+    
+      position: static;
+      width: 461px;
+      height: 60px;
+      left: 0px;
+      top: 277px;
+    
+      filter: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.1));
+    
+      /* Inside Auto Layout */
+    
+      flex: none;
+      order: 1;
+      flex-grow: 0;
+    }
+    input::placeholder {
+      position: absolute;
+      width: 152px;
+      height: 18px;
+      left: 30px;
+      top: 21px;
+    
+      font-family: Nunito;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 18px;
+      /* identical to box height, or 112% */
+    
+      display: flex;
+      align-items: center;
+      text-transform: capitalize;
+    
+      color: #999999;
+    }
+    
+    input {
+      position: absolute;
+      width: 461px;
+      height: 60px;
+      left: 0px;
+      top: 0px;
+      background: #ffffff;
+      border: 1px solid #1d6771;
+      box-sizing: border-box;
+      border-radius: 8px;
+      /* margin: 10px; */
+      padding-left: 30px;
+    }
+    .join-button {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 13px 18px;
+    
+      position: absolute;
+      width: 106px;
+      height: 44px;
+      right: 8px;
+      top: calc(50% - 44px / 2);
+    
+      background: #1d6771;
+      border-radius: 8px;
+    
+      font-style: normal;
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 18px;
+    
+      display: flex;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+      letter-spacing: 0.3px;
+      text-decoration: none;
+      color: #ffffff;
+    }
+    </style>
+</head>
 
-        <script src="http://academy1.test/material/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-        <!-- Plugin for the momentJs  -->
-        <script src="http://academy1.test/material/js/plugins/moment.min.js"></script>
-        <!--  Plugin for Sweet Alert -->
-        <script src="http://academy1.test/material/js/plugins/sweetalert2.js"></script>
-        <!-- Forms Validations Plugin -->
-        <script src="http://academy1.test/material/js/plugins/jquery.validate.min.js"></script>
-        <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
-        <script src="http://academy1.test/material/js/plugins/jquery.bootstrap-wizard.js"></script>
-        <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
-        <script src="http://academy1.test/material/js/plugins/bootstrap-selectpicker.js"></script>
-        <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
-        <script src="http://academy1.test/material/js/plugins/bootstrap-datetimepicker.min.js"></script>
-        <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
-        <script src="http://academy1.test/material/js/plugins/jquery.dataTables.min.js"></script>
-        <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
-        <script src="http://academy1.test/material/js/plugins/bootstrap-tagsinput.js"></script>
-        <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
-        <script src="http://academy1.test/material/js/plugins/jasny-bootstrap.min.js"></script>
-        <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
-        <script src="http://academy1.test/material/js/plugins/fullcalendar.min.js"></script>
-        <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
-        <script src="http://academy1.test/material/js/plugins/jquery-jvectormap.js"></script>
-        <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-        <script src="http://academy1.test/material/js/plugins/nouislider.min.js"></script>
-        <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
-        <!-- Library for adding dinamically elements -->
-        <script src="http://academy1.test/material/js/plugins/arrive.min.js"></script>
-        <!--  Google Maps Plugin    -->
-        <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE'"></script>
-        <!-- Chartist JS -->
-        <script src="http://academy1.test/material/js/plugins/chartist.min.js"></script>
-        <!--  Notifications Plugin    -->
-        <script src="http://academy1.test/material/js/plugins/bootstrap-notify.js"></script>
-        <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-        <script src="http://academy1.test/material/js/material-dashboard.js?v=2.1.1" type="text/javascript"></script>
-        <!-- Material Dashboard DEMO methods, don't include it in your project! -->
-        <script src="http://academy1.test/material/demo/demo.js"></script>
-        <script src="http://academy1.test/material/js/settings.js"></script>
-            </body>
+<body>
+	<!--[if lt IE 7]>
+			<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+		<![endif]-->
+
+	<div class="nav-container">
+		<div class="wrapper">
+			<nav>
+				<div class="logo">
+					<img src="/assets/assets/logo.png" alt="wallington-logo">
+				</div>
+				<ul class="nav-items">
+					<li><a href="classes.html">Live Classes</a></li>
+          <li><a href="packages.html">Packages</a></li>
+					<li><a href="packages.html">11+Exam</a></li>
+					<li><a href="study-material.html">Study Material</a></li>
+				</ul>
+				<ul class="nav-buttons">
+          <li><a class="reg-button" href="http://academy.test/login">Login</a></li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+	<div class="header-container">
+		<div class="wrapper">
+			<div class="hero-content">
+				<div class="tagline">
+					<div class="hero-text">11 Plus Exam</div>
+					<div class="sub-hero-text">Prepare With Us</div>
+					<div class="sub-sub-hero-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat,
+						fuga
+						corrupti!</div>
+				</div>
+				<form class="phone-number">
+					<input type="text" id="phone-number" name="phone-number" placeholder="Enter Mobile Number"><br>
+					<a href="#join-now" class="join-button">Join Now!</a>
+				</form>
+
+			</div>
+			<div class="person-image">
+				<img src="/assets/assets/person-animated.gif" alt="studying-student-animation" class="person-study">
+			</div>
+		</div>
+	</div>
+	<!-- <script src="" async defer></script> -->
+</body>
+
 </html>

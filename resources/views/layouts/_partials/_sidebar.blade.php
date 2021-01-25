@@ -20,143 +20,21 @@
                 <span> Dashboard </span>
             </a>
         </li>
-
-        {{-- <li class="side-nav-item">
-            <a href="javascript: void(0);" class="side-nav-link">
-                <i class="uil-home-alt"></i>
-                <span class="badge badge-info badge-pill float-right">4</span>
-                <span> Dashboards </span>
-            </a>
-            <ul class="side-nav-second-level" aria-expanded="false">
-                <li>
-                    <a href="dashboard-analytics.html">Analytics</a>
-                </li>
-                <li>
-                    <a href="dashboard-crm.html">CRM</a>
-                </li>
-                <li>
-                    <a href="index.html">Ecommerce</a>
-                </li>
-                <li>
-                    <a href="dashboard-projects.html">Projects</a>
-                </li>
-            </ul>
-        </li> --}}
-
-        {{-- <li class="side-nav-title side-nav-item">Apps</li> --}}
-{{-- 
-        <li class="side-nav-item">
-            <a href="apps-calendar.html" class="side-nav-link">
-                <i class="uil-calender"></i>
-                <span> Calendar </span>
-            </a>
-        </li> --}}
-
-        {{-- <li class="side-nav-item">
-            <a href="apps-chat.html" class="side-nav-link">
-                <i class="uil-comments-alt"></i>
-                <span> Chat </span>
-            </a>
-        </li> --}}
-{{-- 
-        <li class="side-nav-item">
-            <a href="javascript: void(0);" class="side-nav-link">
-                <i class="uil-store"></i>
-                <span> Ecommerce </span>
-                <span class="menu-arrow"></span>
-            </a>
-            <ul class="side-nav-second-level" aria-expanded="false">
-                <li>
-                    <a href="apps-ecommerce-products.html">Products</a>
-                </li>
-                <li>
-                    <a href="apps-ecommerce-products-details.html">Products Details</a>
-                </li>
-                <li>
-                    <a href="apps-ecommerce-orders.html">Orders</a>
-                </li>
-                <li>
-                    <a href="apps-ecommerce-orders-details.html">Order Details</a>
-                </li>
-                <li>
-                    <a href="apps-ecommerce-customers.html">Customers</a>
-                </li>
-                <li>
-                    <a href="apps-ecommerce-shopping-cart.html">Shopping Cart</a>
-                </li>
-                <li>
-                    <a href="apps-ecommerce-checkout.html">Checkout</a>
-                </li>
-                <li>
-                    <a href="apps-ecommerce-sellers.html">Sellers</a>
-                </li>
-            </ul>
-        </li> --}}
-
-        {{-- <li class="side-nav-item">
-            <a href="javascript: void(0);" class="side-nav-link">
-                <i class="uil-envelope"></i>
-                <span> Email </span>
-                <span class="menu-arrow"></span>
-            </a>
-            <ul class="side-nav-second-level" aria-expanded="false">
-                <li>
-                    <a href="apps-email-inbox.html">Inbox</a>
-                </li>
-                <li>
-                    <a href="apps-email-read.html">Read Email</a>
-                </li>
-            </ul>
-        </li> --}}
-
-        <li class="side-nav-item">
-            <a href="javascript: void(0);" class="side-nav-link">
-                {{-- <i class="uil-briefcase"></i> --}}
-                <i class="mdi mdi-teach"></i>
-                <span> Teacher </span>
-                <span class="menu-arrow"></span>
-            </a>
-            <ul class="side-nav-second-level" aria-expanded="false">
-                <li>
-                    <a href="{{ url('/add-teacher') }}">Add Teacher</a>
-                </li>
-            </ul>
-        </li>
-
-        <li class="side-nav-item">
-            <a href="javascript: void(0);" class="side-nav-link">
-                <i class="uil-briefcase"></i>
-                <span> Batch </span>
-                <span class="menu-arrow"></span>
-            </a>
-            <ul class="side-nav-second-level" aria-expanded="false">
-                <li>
-                    <a href="apps-projects-list.html">Add Batch</a>
-                </li>
-                <li>
-                    <a href="apps-projects-details.html">Manage Batch</a>
-                </li>
-                
-            </ul>
-        </li>
-
-        <li class="side-nav-item">
-            <a href="javascript: void(0);" class="side-nav-link">
-                <i class="uil-copy-alt"></i>
-                <span> Student </span>
-                <span class="menu-arrow"></span>
-            </a>
-            <ul class="side-nav-second-level" aria-expanded="false">
-                <li>
-                    <a href="pages-profile.html">Add Student</a>
-                </li>
-                <li>
-                    <a href="pages-profile-2.html">Manage Student</a>
-                </li>
-                
-            </ul>
-        </li>
-
+        @include('layouts._partials.menu.'.auth()->user()->role)
+        {{-- check role --}}
+        {{-- @if(auth()->user()->role == 'admin')
+            @include('layouts._partials.menu.admin')
+        @endif
+        @if(auth()->user()->role == 'teacher')
+            @include('layouts._partials.menu.teacher')
+        @endif
+        @if(auth()->user()->role == 'operation')
+            @include('layouts._partials.menu.operation')
+        @endif
+        @if(auth()->user()->role == 'student')
+            @include('layouts._partials.menu.student')
+        @endif --}}
+        {{-- load menu --}}
 
          <li class="side-nav-item">
             <a href="{{ url('admin-login') }}" class="side-nav-link">
@@ -164,75 +42,6 @@
                 <span> Logout</span>
             </a>
         </li>
-{{--             
-                <li class="side-nav-item">
-                    <a href="javascript: void(0);" aria-expanded="false">Authentication
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <ul class="side-nav-third-level" aria-expanded="false">
-                        <li>
-                            <a href="pages-login.html">Login</a>
-                        </li>
-                        <li>
-                            <a href="pages-login-2.html">Login 2</a>
-                        </li>
-                        <li>
-                            <a href="pages-register.html">Register</a>
-                        </li>
-                        <li>
-                            <a href="pages-register-2.html">Register 2</a>
-                        </li>
-                        <li>
-                            <a href="pages-logout.html">Logout</a>
-                        </li>
-                        <li>
-                            <a href="pages-logout-2.html">Logout 2</a>
-                        </li>
-                        <li>
-                            <a href="pages-recoverpw.html">Recover Password</a>
-                        </li>
-                        <li>
-                            <a href="pages-recoverpw-2.html">Recover Password 2</a>
-                        </li>
-                        <li>
-                            <a href="pages-lock-screen.html">Lock Screen</a>
-                        </li>
-                        <li>
-                            <a href="pages-lock-screen-2.html">Lock Screen 2</a>
-                        </li>
-                        <li>
-                            <a href="pages-confirm-mail.html">Confirm Mail</a>
-                        </li>
-                        <li>
-                            <a href="pages-confirm-mail-2.html">Confirm Mail 2</a>
-                        </li>
-                    </ul>
-                </li> 
-                <li class="side-nav-item">
-                    <a href="javascript: void(0);" aria-expanded="false">Error
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <ul class="side-nav-third-level" aria-expanded="false">
-                        <li>
-                            <a href="pages-404.html">Error 404</a>
-                        </li>
-                        <li>
-                            <a href="pages-404-alt.html">Error 404-alt</a>
-                        </li>
-                        <li>
-                            <a href="pages-500.html">Error 500</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="pages-starter.html">Starter Page</a>
-                </li>
-                <li>
-                    <a href="pages-preloader.html">With Preloader</a>
-                </li>
-                <li>
-                    <a href="pages-timeline.html">Timeline</a>
-                </li> --}}
             </ul>
         </li>
 {{-- 

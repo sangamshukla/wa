@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="text-center w-75 m-auto">
-    <h4 class="text-dark-50 text-center mt-0 font-weight-bold">Student Login</h4>
+    <h4 class="text-dark-50 text-center mt-0 font-weight-bold">Login</h4>
    
 </div>
 <div class="card-body">

@@ -42,4 +42,12 @@ class LoginController extends Controller
     {
         return view('auth.admin_login');
     }
+    public function teacherLogin()
+    {
+        return view('auth.teacher_login');
+    }
+    public function operationLogin()
+    {
+        return view('auth.operation_login');
+    }
 }

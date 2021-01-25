@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <!-- start page title -->
 <div class="row">
@@ -44,73 +43,38 @@
 
                   <div class="row">
                     <div class="col">
-                      @include('_form.input', ['title' => 'Contact', 'name' => 'Contact', 'placeholder' => 'name'])
+                      @include('_form.input', ['title' => 'Contact', 'name' => 'contact_number', 'placeholder' => 'name'])
                     </div>
 
                     <div class="col">
-                     {{-- @include('_form.input', ['title' => 'User Type', 'name' => 'user_type']) --}}
                      <label for="inputState">Class</label>
-                     <select id="inputState" class="form-control">
+                     <select name="class_master_id" required id="inputState" class="form-control">
                        <option selected>Choose...</option>
-                       <option>Year 1</option>
-                       <option>Year 2</option>
-                       <option>Year 3</option>
-                       <option>Year 4</option>
-                       <option>Year 5th</option>
-                       <option>Year 6th</option>
-                       <option>Year 7th</option>
-                       <option>Year 8th</option>
-                       <option>Year 9th</option>
-                       <option>Year 10th</option>
-                       <option>Year 11th</option>
-                       <option>Year 12th</option>
+                       <option value="1">Year 1</option>
+                       <option value="2">Year 2</option>
+                       <option value="3">Year 3</option>
+                       <option value="4">Year 4</option>
                      </select>
                     </div>
                   </div>
 
-                  {{-- <div class="row">
-                    <div class="col">
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <div class="input-group-text">
-                          <input type="radio" aria-label="Radio button for following text input">
-                          </div>
-                        </div>
-                        <input type="text" class="form-control" aria-label="Text input with radio button">
-                      </div>                                        
-                    </div>
-                    
-                  </div> --}}
-
-                  <label for="inputState">User Type</label>
 
                   <div class="row">
-                    <div class="col">
-                     {{-- <label for="inputState">Teacher</label> --}}
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <div class="input-group-text">
-                          <input type="radio" aria-label="Radio button for following text input">
-                          </div>
-                        </div>
-                        <input type="text" class="form-control" aria-label="Text input with radio button" placeholder="Teacher">
+                    <div class="col-md-6">
+                      <label for="inputState">User Type &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="user_type" id="inlineRadio2" value="teacher">
+                        <label class="form-check-label" for="inlineRadio2">Teacher</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="user_type" id="inlineRadio3" value="operation">
+                        <label class="form-check-label" for="inlineRadio3">Operation</label>
                       </div>
                     </div>
-
-                    <div class="col">
-                     {{-- <label for="inputState">Opration</label> --}}
-
-                     <div class="input-group">
-                      <div class="input-group-prepend">
-                        <div class="input-group-text">
-                        <input type="radio" aria-label="Radio button for following text input">
-                        </div>
-                      </div>
-                      <input type="text" class="form-control" aria-label="Text input with radio button" placeholder="Opration">
-                    </div>
-                    </div>
+                    {{-- <textarea class="form-control form-rounded" rows="3"></textarea> --}}
+                    
                   </div>
-
                 {{-- </form> --}}
                 
           </div>

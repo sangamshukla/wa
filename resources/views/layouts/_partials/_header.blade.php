@@ -222,7 +222,7 @@
                     <!-- item-->
                     <a href="/profile" class="dropdown-item notify-item">
                         <i class="mdi mdi-account-circle mr-1"></i>
-                        <span>My Account</span>
+                        <span>Profile</span>
                     </a>
 {{-- 
                     <!-- item-->

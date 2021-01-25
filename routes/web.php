@@ -24,6 +24,10 @@ Auth::routes();
 Route::get('/admin-login', 'App\Http\Controllers\Auth\LoginController@adminLogin');
 Route::get('/login', 'App\Http\Controllers\Auth\LoginController@showLoginForm');
 Route::post('/login', 'App\Http\Controllers\Auth\LoginController@login')->name('login');
+Route::get('/teacher-login', 'App\Http\Controllers\Auth\LoginController@teacherLogin');
+Route::get('/operation-login', 'App\Http\Controllers\Auth\LoginController@operationLogin');
+
+
 
 
 Route::group(['middleware' => 'auth'], function () {
@@ -57,12 +61,19 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
+    Route::get('/home', [HomeController::class ,'index']);
+
     Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
     Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
     Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
     Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
 
-    Route::get('/admin-dashboard', [HomeController::class ,'index']);
+    // Route::get('/student-dashboard', [HomeController::class ,'studentDasboard']);
+    Route::get('/admin-dashboard', [HomeController::class ,'adminDashboard']);
+    Route::get('/teacher-dashboard', [HomeController::class ,'teacherDashboard']);
+
+    Route::get('/operation-dashboard', [HomeController::class ,'operationDashboard']);
+
     Route::get('add-teacher', [TeacherController::class, 'create'])->name('add-teacher');
     Route::post('add-teacher', [TeacherController::class, 'store'])->name('add-teacher');
 
