@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('content')
 <!-- start page title -->
 <div class="row">
@@ -47,9 +48,9 @@
                     </div>
 
                     <div class="col">
-                     <label for="inputState">Class</label>
+                     <label for="inputState">Select Year</label>
                      <select name="class_master_id" required id="inputState" class="form-control">
-                       <option selected>Choose...</option>
+                       <option selected>...Select Year...</option>
                        <option value="1">Year 1</option>
                        <option value="2">Year 2</option>
                        <option value="3">Year 3</option>
@@ -57,8 +58,7 @@
                      </select>
                     </div>
                   </div>
-
-
+{{-- 
                   <div class="row">
                     <div class="col-md-6">
                       <label for="inputState">User Type &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
@@ -71,8 +71,21 @@
                         <input class="form-check-input" type="radio" name="user_type" id="inlineRadio3" value="operation">
                         <label class="form-check-label" for="inlineRadio3">Operation</label>
                       </div>
+                    </div>  --}}
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label for="inputState">User Type &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <div class="form-check-inline">
+                      <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" value="Teacher" name="user_type">Teacher
+                      </label>
                     </div>
-                    {{-- <textarea class="form-control form-rounded" rows="3"></textarea> --}}
+                    <div class="form-check-inline">
+                      <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" value="Operation" name="user_type">Opration
+                      </label>
+                    </div>
                     
                   </div>
                 {{-- </form> --}}

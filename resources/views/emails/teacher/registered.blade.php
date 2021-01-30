@@ -1,7 +1,6 @@
 @component('mail::message')
 # Hi {{$user->name}}
 
-Congratulations ! 
 
 @if($user->role == 'teacher')
 @component('mail::button', ['url' => url('teacher-dashboard')])

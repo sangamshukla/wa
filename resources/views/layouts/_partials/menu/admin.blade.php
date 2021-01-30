@@ -8,21 +8,25 @@
         <li>
             <a href="{{ url('/add-teacher') }}">Add Teacher</a>
         </li>
+        <li>
+            <a href="{{ url('/manage-teacher') }}">Manage Teacher</a>
+        </li>
     </ul>
 </li>
 
 <li class="side-nav-item">
     <a href="javascript: void(0);" class="side-nav-link">
         <i class="uil-briefcase"></i>
-        <span> Batch </span>
+        <span> Classes </span>
         <span class="menu-arrow"></span>
     </a>
     <ul class="side-nav-second-level" aria-expanded="false">
         <li>
-            <a href="apps-projects-list.html">Add Batch</a>
+            {{-- <a href="{{ url('/batch') }}">Add Batch</a> --}}
+            <a href="{{ url('/create-classes') }}">Add Class</a>
         </li>
         <li>
-            <a href="apps-projects-details.html">Manage Batch</a>
+            <a href="{{ url('/manage-classes') }}">Manage Classes</a>
         </li>
         
     </ul>

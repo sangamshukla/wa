@@ -3,7 +3,9 @@
  <link href="{{ asset('assets/css/app-modern.min.css') }}" rel="stylesheet" type="text/css" id="light-style" />
  <link href="{{ asset('assets/css/app-modern-dark.min.css') }}" rel="stylesheet" type="text/css" id="dark-style" />
 
-
+<!-- Datatables css -->
+<link href="/assets/css/vendor/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
+<link href="/assets/css/vendor/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
  <style>
     .border-lable-flt {
       display: block;
@@ -65,10 +67,24 @@
       border-top-left-radius: 0;
     }
     
-    .form-control:focus {
+    /* .form-control:focus {
       color: #804000;
       background-color: #fff;
       border-color: #006633;
       box-shadow: 0 0 0 0.2rem rgba(0, 102, 51, 0.25);
+    } */
+
+    /* .form-group {
+        margin-bottom: 1rem;
+        border: solid 1px gray;
+        border-radius: 0.50rem;
+        padding: 6px;
+    } */
+    .no-mr{
+      margin-bottom: 0 !important;
+    }
+    .no-border {
+      border: none !important;
+      padding: 0 !important;
     }
     </style>

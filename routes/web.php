@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BatchController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
@@ -71,11 +72,22 @@ Route::group(['middleware' => 'auth'], function () {
     // Route::get('/student-dashboard', [HomeController::class ,'studentDasboard']);
     Route::get('/admin-dashboard', [HomeController::class ,'adminDashboard']);
     Route::get('/teacher-dashboard', [HomeController::class ,'teacherDashboard']);
-
     Route::get('/operation-dashboard', [HomeController::class ,'operationDashboard']);
+
+
 
     Route::get('add-teacher', [TeacherController::class, 'create'])->name('add-teacher');
     Route::post('add-teacher', [TeacherController::class, 'store'])->name('add-teacher');
+    Route::get('manage-teacher', [TeacherController::class, 'index'])->name('manage-teacher');
+
+
+    // batch controller for class
+    Route::get('create-classes', [BatchController::class, 'create'])->name('class.create');
+    Route::post('create-classes', [BatchController::class, 'store'])->name('class.store');
+    Route::get('manage-classes', [BatchController::class, 'index'])->name('manage-class');
+
+
+
 
     Route::get('add-product', [TeacherController::class, 'store'])->name('add-product');
     Route::post('add-product', [TeacherController::class, 'store'])->name('add-product');

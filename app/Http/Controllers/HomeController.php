@@ -19,15 +19,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    // public function index()
-    // {
-    //     if (auth()->user()->role === 'admin') {
-    //         return redirect('/admin-dashboard');
-    //     } else {
-    //         return redirect('/student-dashboard');
-    //     }
-    // }
-
+    
     public function index()
     {
         if (auth()->user()->role === 'admin') {
@@ -39,10 +31,6 @@ class HomeController extends Controller
         }
     }
     
-    // public function studentDasboard()
-    // {
-    //     return view('dashboard');
-    // }
     public function adminDashboard()
     {
         return view('dashboard.admin');
