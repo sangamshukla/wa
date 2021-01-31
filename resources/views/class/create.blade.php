@@ -92,8 +92,8 @@
                 {{-- <div class="row"> --}}
                  <div class="col">
                   <div class="form-group">
-                    <label for="inputState">Select Year</label>
-                      <select name="class_master_id" required id="inputState" class="form-control">
+                    <label for="select_year">Select Year</label>
+                      <select name="class_master_id" required id="select_year" class="form-control">
                         <option selected>... Select Year ...</option>
                         @foreach($classes as $class)
                           <option value="{{ $class->id }}">{{ $class->name }}</option>
@@ -105,8 +105,8 @@
 
                  <div class="col">
                   <div class="form-group">
-                    <label for="inputState">Select Subject</label>
-                      <select name="subject_id" required id="inputState" class="form-control">
+                    <label for="subject_id">Select Subject</label>
+                      <select name="subject_id" required id="subject_id" class="form-control">
                         <option selected>... Select Subject ...</option>
                         @foreach($subjects as $subject)
                         <option value="{{ $subject->id }}">{{ $subject->name }}</option>
@@ -119,12 +119,8 @@
                 {{-- <div class="row"> --}}
                 <div class="col">
                   <div class="form-group">
-                    <label for="inputState">Select Multiple Topic</label>
-                      <select name="class_master_id" multiple required id="inputState" class="form-control js-example-basic-multiple">
-                        <option value="1">General Discussion</option>
-                        <option value="2">Principals Of Physics</option>
-                        <option value="3">Electrostats</option>
-                        <option value="4">Peirodic Table</option>
+                    <label for="topic_id">Select Multiple Topic</label>
+                      <select name="topic_id" multiple required id="topic_id" class="form-control js-example-basic-multiple">
                       </select>
                   </div>
                 </div>
@@ -182,7 +178,24 @@ $('#generate-session').on('click', function(){
   $('#append-row').append(card)
 });
   //  <button type="button" class="btn del btn-danger btn-xs">x</button>
-
-
+$('#select_year').on('change', function(){
+  var year_id_value = $('#select_year').val();
+  $.get("/api/subjects/"+year_id_value, function(data, status){
+    $('#subject_id').empty();
+    $('#subject_id').append('<option value="">Choose Subject</option>');
+    $.each(data,function(index,subcategory){
+      $('#subject_id').append('<option value="'+subcategory.id+'">'+subcategory.name+'</option>');
+    });
+  });
+});
+$('#subject_id').on('change', function(){
+  var subject_id_value = $('#subject_id').val();
+  $.get("/api/topics/"+subject_id_value, function(data, status){
+    $('#topic_id').empty();
+    $.each(data,function(index,subcategory){
+      $('#topic_id').append('<option value="'+subcategory.id+'">'+subcategory.name+'</option>');
+    });
+  });
+});
 </script>
 @endsection

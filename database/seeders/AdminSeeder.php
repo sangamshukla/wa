@@ -17,7 +17,7 @@ class AdminSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'name' => 'Admin',
+            'name' => 'Andrew Smith',
             'email' => 'admin@wallingtonacademy.co.uk',
             'email_verified_at' => now(),
             'password' => Hash::make('wallington'),
@@ -37,7 +37,7 @@ class AdminSeeder extends Seeder
         // ]);
 
         DB::table('users')->insert([
-            'name' => 'Teacher',
+            'name' => 'Mike Canery',
             'email' => 'teacher@wallingtonacademy.co.uk',
             'email_verified_at' => now(),
             'password' => Hash::make('wallington'),
@@ -47,7 +47,7 @@ class AdminSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            'name' => 'operation',
+            'name' => 'Chuck Larabee',
             'email' => 'operation@wallingtonacademy.co.uk',
             'email_verified_at' => now(),
             'password' => Hash::make('wallington'),
