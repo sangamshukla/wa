@@ -31,15 +31,17 @@
                 @include('_form.success')
                   <div class="row">
                       <div class="col">
-                        <div class="form-group">
+                        <div class="form-group" id="select_class_master">
                           <label for="inputState">Select Class</label>
-                            <select name="class_settings_id" required id="inputState" class="form-control">
+                            <select name="class_settings_id" required id="class_settings_id" class="form-control">
                               <option selected>... Select Class ...</option>
                               @foreach($classsettings as $classsetting)
                                 <option value="{{ $classsetting->id }}">{{ $classsetting->name }}</option>
                               @endforeach
                             </select>
                         </div>
+                        {{-- class_settings_id --}}
+                        @include('_form.input', ['title' => 'Enter Class Name','class'=>'class_settings_id', 'name' => 'class_settings'])
                       </div>
                       <div class="col">
                         @include('_form.input', ['title' => 'Class Price Per Session', 'name' => 'batch_price_per_session'])
@@ -142,7 +144,7 @@
 // });
 
   $(document).ready(function() {
-    $('.name-toggle').hide();
+    $('.class_settings_id').hide();
     $('.js-example-basic-multiple').select2();
 });
 $('#generate-session').on('click', function(){
@@ -182,6 +184,13 @@ $('#subject_id').on('change', function(){
       $('#topic_id').append('<option value="'+subcategory.id+'">'+subcategory.name+'</option>');
     });
   });
+});
+
+$('#class_settings_id').on('change', function(){
+  if($('#class_settings_id').val() == 5){
+    $('#select_class_master').hide();
+    $('.class_settings_id').show();
+  }
 });
 </script>
 @endsection

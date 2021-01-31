@@ -5,7 +5,9 @@
             <img src="assets/images/users/avatar-1.jpg" alt="user-image" height="67"  class="rounded-circle shadow-sm">
             
             <span class="leftbar-user-name">{{ auth()->user()->name }} </span>
-            <h6> {{ \Carbon\Carbon::now()->format('H:i:s')}}</h6>
+            {{-- <h3> {{ \Carbon\Carbon::now()->format('H:i:s')}}</h3> --}}
+            <h3> {{ \Carbon\Carbon::now()->format('H:i:s')}}</h3>
+
             
 
     

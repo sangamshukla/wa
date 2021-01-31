@@ -21,6 +21,11 @@ class Batch extends Model
         return $this->belongsTo(Subject::class, 'subject_id');
     }
 
+    public function classSettings()
+    {
+        return $this->belongsTo(ClassSettings::class, 'class_settings_id');
+    }
+
     public function teacher()
     {
         return $this->belongsTo(User::class, 'created_by');

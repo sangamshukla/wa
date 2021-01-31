@@ -35,9 +35,10 @@
                         <thead>
                             <tr>
                                 <th>S.No</th>
-                                <th>Teacher Name</th>
-                                <th>Class Price Per Session</th>
-                                <th>Total Nubmer Of Session</th>
+                                <th>Class Name</th>
+                                <th>Price Per Session</th>
+                                <th>Assign Teacher</th>
+                                <th>Total Nubmer Of Sessions</th>
                                 <th>Class Start Date & Time</th>
                                 <th>Class</th>
                                 <th>Subject</th>
@@ -50,8 +51,9 @@
                         @foreach($batches as $batch)
                             <tr>
                                 <td>{{ $batch->id }}</td>
-                                <td>{{ $batch->assignteacher->name }}</td>
+                                <td>{{ $batch->classSettings->name }}</td>
                                 <td>{{ $batch->batch_price_per_session }}</td>
+                                <td>{{ $batch->assignteacher->name }}</td>
                                 <td>{{ $totals }}</td>
                                 {{-- <td>{{ $batch->batch_start_date }}</td> --}}
                                 <td>{{ $batch->batch_start_date }}</td>

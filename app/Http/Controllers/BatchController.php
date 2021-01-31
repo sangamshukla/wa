@@ -53,15 +53,20 @@ class BatchController extends Controller
         $request->validate([
             'name' => 'required',
         ]);
-
+        if ($request->class_settings != '') {
+            $classSettings = ClassSettings::updateOrCreate(['name' => $request->class_settings]);
+            $class = $classSettings->id;
+        } else {
+            $class = $request->class_settings_id;
+        }
         $batch = Batch::Create([
             'name'=>$request->name,
             'batch_price_per_session'=>$request->batch_price_per_session,
             'batch_start_date'=>$request->batch_start_date,
             'subject_id'=>$request->subject_id,
             'class_master_id'=>$request->class_master_id,
-            'class_settings_id'=>$request->class_settings_id,
-            'duration_per_sessions_id'=>$request->duration_per_sessions_id,
+            'class_settings_id'=>$class,
+            'duration_per_session'=>$request->duration_per_sessions_id,
             'teacher_available_status'=>$request->teacher_available_status,
             'created_by' => auth()->user()->id
         ]);
