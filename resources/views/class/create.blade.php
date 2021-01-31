@@ -29,9 +29,7 @@
 
               <div class="card-body ">
                 @include('_form.success')
-
-
-                    <div class="row">
+                  <div class="row">
                       <div class="col">
                         <div class="form-group">
                           <label for="inputState">Select Class</label>
@@ -42,20 +40,16 @@
                               @endforeach
                             </select>
                         </div>
-                       </div>
-
-    
- 
-                     <div class="col">
-                      @include('_form.input', ['title' => 'Class Price Per Session', 'name' => 'batch_price_per_session'])
-                    </div> 
-
-                    <div class="col">
-                      @include('_form.input', ['title' => 'Class Start Date & Time', 'name' => 'batch_start_date', 'type' => 'datetime-local'])
-                    </div>    
+                      </div>
+                      <div class="col">
+                        @include('_form.input', ['title' => 'Class Price Per Session', 'name' => 'batch_price_per_session'])
+                      </div> 
+                      <div class="col">
+                        @include('_form.input', ['title' => 'Class Start Date & Time', 'name' => 'batch_start_date', 'type' => 'datetime-local'])
+                      </div>    
                   </div>
-                  
-                      <div class="row">
+                  {{-- row 2 --}}
+                  <div class="row">
                       <div class="col">
                           <div class="form-group" id="select_form">
                             <label for="inputState">Assign Teacher</label>
@@ -67,72 +61,64 @@
                               </select>
                           </div>
                       </div> 
+                      <div class="col">
+                        @include('_form.input', ['title' => 'Teacher Available Status', 'name' => 'teacher_available_status',])
+                      </div> 
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="inputState">Duration Per Session</label>
+                            <select name="duration_per_sessions_id" required id="inputState" class="form-control">
+                              <option selected>... Select Duration Per Session ...</option>
+                              <option>30</option>
+                              <option>60</option>
+                              <option>90</option> 
+                              {{-- @foreach($durationpersessions as $durationpersession)
+                              <option value="{{ $durationpersession->id }}">{{ $subject->durationpersession }}</option>
+                            @endforeach --}}
+                            </select> 
+                        </div> 
+                      </div>
+                  </div> 
 
-                     <div class="col">
-                      @include('_form.input', ['title' => 'Teacher Available Status', 'name' => 'teacher_available_status',])
-                    </div> 
-      
-    
-                  
-                <div class="col">
+                <div class="row">
+                  <div class="col">
                     <div class="form-group">
-                      <label for="inputState">Duration Per Session</label>
-                        <select name="duration_per_sessions_id" required id="inputState" class="form-control">
-                          <option selected>... Select Duration Per Session ...</option>
-                           <option>30</option>
-                          <option>60</option>
-                          <option>90</option> 
-                          {{-- @foreach($durationpersessions as $durationpersession)
-                          <option value="{{ $durationpersession->id }}">{{ $subject->durationpersession }}</option>
-                        @endforeach --}}
-                         </select> 
-                    </div> 
-                </div> 
-
-                {{-- <div class="row"> --}}
-                 <div class="col">
-                  <div class="form-group">
-                    <label for="select_year">Select Year</label>
-                      <select name="class_master_id" required id="select_year" class="form-control">
-                        <option selected>... Select Year ...</option>
-                        @foreach($classes as $class)
-                          <option value="{{ $class->id }}">{{ $class->name }}</option>
+                      <label for="select_year">Select Year</label>
+                        <select name="class_master_id" required id="select_year" class="form-control">
+                          <option selected>... Select Year ...</option>
+                          @foreach($classes as $class)
+                            <option value="{{ $class->id }}">{{ $class->name }}</option>
+                          @endforeach
+                        </select>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="subject_id">Select Subject</label>
+                        <select name="subject_id" required id="subject_id" class="form-control">
+                          <option selected>... Select Subject ...</option>
+                          @foreach($subjects as $subject)
+                          <option value="{{ $subject->id }}">{{ $subject->name }}</option>
                         @endforeach
-                      </select>
-                  </div>
-                 </div>  
-                  
-
-                 <div class="col">
-                  <div class="form-group">
-                    <label for="subject_id">Select Subject</label>
-                      <select name="subject_id" required id="subject_id" class="form-control">
-                        <option selected>... Select Subject ...</option>
-                        @foreach($subjects as $subject)
-                        <option value="{{ $subject->id }}">{{ $subject->name }}</option>
-                      @endforeach
-                      </select>
-                  </div>
-                </div>
-                </div>
-
-                {{-- <div class="row"> --}}
-                <div class="col">
-                  <div class="form-group">
-                    <label for="topic_id">Select Multiple Topic</label>
-                      <select name="topic_id" multiple required id="topic_id" class="form-control js-example-basic-multiple">
-                      </select>
+                        </select>
+                    </div>
                   </div>
                 </div>
 
-                {{-- <div class="row"> --}}
-                <div class="col">
-                  <div class="form-group">
-                    <button type="button" class="btn btn-primary" id="generate-session" style="margin-top:1.4rem; float:right;">Generate Session</button>
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="topic_id">Select Multiple Topic</label>
+                        <select name="topic_id" multiple required id="topic_id" class="form-control js-example-basic-multiple">
+                        </select>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <button type="button" class="btn btn-primary" id="generate-session" style="margin-top:1.4rem; float:right;">Generate Session</button>
+                    </div>
                   </div>
                 </div>
-              </div>
-
               {{-- card code for add session --}}
               <div class="row" style="display:none" id="append-row">
               </div>
