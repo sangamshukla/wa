@@ -30,25 +30,21 @@
               <div class="card-body ">
                 @include('_form.success')
 
-                  {{-- <div class="row">
-                    <div class="col">
-                      @include('_form.input', ['title' => 'Class Name', 'name' => 'name', 'placeholder' => 'name'])  
-                    </div> --}}
 
                     <div class="row">
                       <div class="col">
-                          <div class="form-group" id="select_form">
-                            <label for="inputState">Select Teacher</label>
-                              <select name="name" required id="class_name" class="form-control">
-                                 <option selected>... Select Teacher ...</option>
-                                 @foreach($assignteachers as $assignteacher)
-                                <option value="{{ $assignteacher->id }}">{{ $assignteacher->name }}</option>
-                                 @endforeach 
-                              </select>
-                          </div>
-                        {{-- @include('_form.input', ['title' => 'Class Name','style' => '','class' => 'name-toggle', 'name' => 'name']) --}}
-                      </div>
-      
+                        <div class="form-group">
+                          <label for="inputState">Select Class</label>
+                            <select name="class_settings_id" required id="inputState" class="form-control">
+                              <option selected>... Select Class ...</option>
+                              @foreach($classsettings as $classsetting)
+                                <option value="{{ $classsetting->id }}">{{ $classsetting->name }}</option>
+                              @endforeach
+                            </select>
+                        </div>
+                       </div>
+
+    
  
                      <div class="col">
                       @include('_form.input', ['title' => 'Class Price Per Session', 'name' => 'batch_price_per_session'])
@@ -59,25 +55,42 @@
                     </div>    
                   </div>
                   
+                      <div class="row">
+                      <div class="col">
+                          <div class="form-group" id="select_form">
+                            <label for="inputState">Assign Teacher</label>
+                              <select name="name" required id="class_name" class="form-control">
+                                 <option selected>... Select Teacher ...</option>
+                                 @foreach($assignteachers as $assignteacher)
+                                <option value="{{ $assignteacher->id }}">{{ $assignteacher->name }}</option>
+                                 @endforeach 
+                              </select>
+                          </div>
+                      </div> 
+
+                     <div class="col">
+                      @include('_form.input', ['title' => 'Teacher Available Status', 'name' => 'teacher_available_status',])
+                    </div> 
+      
     
                   
-              <div class="row">
                 <div class="col">
                     <div class="form-group">
-                      <label for="inputState">Select Duration Per Session</label>
-                        <select name="duration_per_session" required id="inputState" class="form-control">
+                      <label for="inputState">Duration Per Session</label>
+                        <select name="duration_per_sessions_id" required id="inputState" class="form-control">
                           <option selected>... Select Duration Per Session ...</option>
-                          <option>30</option>
+                           <option>30</option>
                           <option>60</option>
-                          <option>90</option>
-                          {{-- @foreach($subjects as $subject)
-                          <option value="{{ $subject->id }}">{{ $subject->name }}</option>
+                          <option>90</option> 
+                          {{-- @foreach($durationpersessions as $durationpersession)
+                          <option value="{{ $durationpersession->id }}">{{ $subject->durationpersession }}</option>
                         @endforeach --}}
-                        </select>
-                    </div>
-                </div>
+                         </select> 
+                    </div> 
+                </div> 
 
-                <div class="col">
+                {{-- <div class="row"> --}}
+                 <div class="col">
                   <div class="form-group">
                     <label for="inputState">Select Year</label>
                       <select name="class_master_id" required id="inputState" class="form-control">
@@ -87,8 +100,8 @@
                         @endforeach
                       </select>
                   </div>
-                 </div>
-                 
+                 </div>  
+                  
 
                  <div class="col">
                   <div class="form-group">
@@ -103,7 +116,7 @@
                 </div>
                 </div>
 
-                <div class="row">
+                {{-- <div class="row"> --}}
                 <div class="col">
                   <div class="form-group">
                     <label for="inputState">Select Multiple Topic</label>
@@ -116,6 +129,7 @@
                   </div>
                 </div>
 
+                {{-- <div class="row"> --}}
                 <div class="col">
                   <div class="form-group">
                     <button type="button" class="btn btn-primary" id="generate-session" style="margin-top:1.4rem; float:right;">Generate Session</button>
@@ -141,9 +155,9 @@
 @section('scripts')
 <script>
 
-$('.del').on('click', function(){
-    this.closest('div').remove();
-});
+// $('.del').on('click', function(){
+//     this.closest('div').remove();
+// });
 
   $(document).ready(function() {
     $('.name-toggle').hide();
@@ -152,7 +166,6 @@ $('.del').on('click', function(){
 $('#generate-session').on('click', function(){
   $('#append-row').show();
   var value_session = $("#append-row").find($("h6") ).length + 1;
-  
   var value_session = "Session-"+value_session;
   var selectvalue = $('.js-example-basic-multiple').val();
   var selectvalue1 = $('.js-example-basic-multiple :selected').text();
@@ -165,14 +178,8 @@ $('#generate-session').on('click', function(){
       list_text = list_text+'<br/>'+selText;
     }
   });
-  var card='<div class="col-md-4"><div class="card" style="min-height: 200px; max-width:300px;"><h6 class="card-header"><input class="form-control" name="session_name[]" value="'+value_session+'"></input></h6><div class="card-body"><input type="datetime-local" name="date_time_session" class="form-control"> '+list_text+'</div></div></div>';
+  var card='<div class="card mr-2" style="min-height: 200px; max-width:300px;"><h6 class="card-header"><input class="form-control" name="session_name[]" value="'+value_session+'"></input><button type="button" onclick="$(this).closest(\'div\').remove();" class="del btn btn-danger btn-xs">x</button></h6><div class="card-body"><input type="datetime-local" name="date_time_session[]" class="form-control"> '+list_text+'</div></div>';
   $('#append-row').append(card)
-});
-$('#class_name').on('change', function(){
-  if(this.value == 11){
-    $('.name-toggle').show();
-    $('#select_form').hide();
-  }
 });
   //  <button type="button" class="btn del btn-danger btn-xs">x</button>
 

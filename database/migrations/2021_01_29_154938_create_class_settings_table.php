@@ -16,8 +16,8 @@ class CreateClassSettingsTable extends Migration
         Schema::create('class_settings', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('created_by');
-            $table->integer('status');
+            // $table->integer('created_by');
+            // $table->integer('status');
             $table->timestamps();
         });
     }

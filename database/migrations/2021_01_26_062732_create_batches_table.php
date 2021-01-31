@@ -21,7 +21,8 @@ class CreateBatchesTable extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('batch_price_per_session')->nullable();
-            $table->date('batch_start_date');
+            $table->date('teacher_available_status');
+            $table->dateTime('batch_start_date');
             $table->foreignIdFor(ClassMaster::class);
             $table->foreignIdFor(Subject::class);
             $table->timestamps();

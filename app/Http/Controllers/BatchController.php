@@ -9,6 +9,7 @@ use App\Models\Subject;
 use App\Models\Teacher;
 use App\Models\User;
 use Carbon\Carbon;
+use Database\Seeders\ClassSettings as SeedersClassSettings;
 use Illuminate\Http\Request;
 
 class BatchController extends Controller
@@ -23,7 +24,7 @@ class BatchController extends Controller
         $totals = Batch::count();
         $totalprice = Batch::count();
 
-        $batches = Batch::all();
+        $batches = Batch::latest()->get();
         return view('class.index', compact('batches', 'totals', 'totalprice'));
     }
 
@@ -37,7 +38,8 @@ class BatchController extends Controller
         $assignteachers = User::all();
         $classes = ClassMaster::all();
         $subjects = Subject::all();
-        return view('class.create', compact('classes', 'subjects', 'assignteachers'));
+        $classsettings = ClassSettings::all();
+        return view('class.create', compact('classes', 'subjects', 'assignteachers', 'classsettings'));
     }
 
     /**
@@ -58,8 +60,12 @@ class BatchController extends Controller
             'batch_start_date'=>$request->batch_start_date,
             'subject_id'=>$request->subject_id,
             'class_master_id'=>$request->class_master_id,
+            'class_settings_id'=>$request->class_settings_id,
+            'duration_per_sessions_id'=>$request->duration_per_sessions_id,
+            'teacher_available_status'=>$request->teacher_available_status,
             'created_by' => auth()->user()->id
         ]);
+
         return redirect(route('manage-class'))->with('status', 'Class Added Successfully');
     }
 

@@ -53,7 +53,9 @@
                                 <td>{{ $batch->assignteacher->name }}</td>
                                 <td>{{ $batch->batch_price_per_session }}</td>
                                 <td>{{ $totals }}</td>
+                                {{-- <td>{{ $batch->batch_start_date }}</td> --}}
                                 <td>{{ $batch->batch_start_date }}</td>
+
                                 <td>{{ $batch->classmaster->name }}</td>
                                 <td>{{ $batch->subject->name }}</td>
                                 <td>{{ $totalprice }}</td>  
@@ -80,6 +82,7 @@
 <script>
     $(document).ready( function () {
         $('#myTable').DataTable();
+        // $('#myTable').DataTable( {"scrollX": true} );
     } );
 </script>
 
