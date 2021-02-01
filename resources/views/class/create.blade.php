@@ -43,9 +43,12 @@
                         {{-- class_settings_id --}}
                         @include('_form.input', ['title' => 'Enter Class Name','class'=>'class_settings_id', 'name' => 'class_settings'])
                       </div>
+
                       <div class="col">
-                        @include('_form.input', ['title' => 'Class Price Per Session', 'name' => 'batch_price_per_session'])
+                        @include('_form.input', ['title' => 'Class Price Per Session', 'name' => 'batch_price_per_session','placeholder' => '&euro;', 'type' => 'number'])
+                        {{-- @include('_form.input', ['title' => 'Class Price Per Session(&euro)', 'name' => 'batch_price_per_session']) --}}
                       </div> 
+
                       <div class="col">
                         @include('_form.input', ['title' => 'Class Start Date & Time', 'name' => 'batch_start_date', 'type' => 'datetime-local'])
                       </div>    
@@ -150,19 +153,21 @@
 $('#generate-session').on('click', function(){
   $('#append-row').show();
   var value_session = $("#append-row").find($("h6") ).length + 1;
+  var index_val = value_session;
   var value_session = "Session-"+value_session;
   var selectvalue = $('.js-example-basic-multiple').val();
   var selectvalue1 = $('.js-example-basic-multiple :selected').text();
-  console.log(selectvalue);
   var list_text = '';
   $(".js-example-basic-multiple option:selected").each(function () {
    var $this = $(this);
    if ($this.length) {
     var selText = $this.text();
-      list_text = list_text+'<br/>'+selText;
+    var selVal = $this.val();
+      list_text = list_text+'<input type="hidden" id="" name="topic_'+index_val+'[]" value="'+selVal+'"><br/>'+selText;
     }
+
   });
-  var card='<div class="card mr-2" style="min-height: 200px; max-width:300px;"><h6 class="card-header"><input class="form-control" name="session_name[]" value="'+value_session+'"></input><button type="button" onclick="$(this).closest(\'div\').remove();" class="del btn btn-danger btn-xs">x</button></h6><div class="card-body"><input type="datetime-local" name="date_time_session[]" class="form-control"> '+list_text+'</div></div>';
+  var card='<div class="card mr-2" style="min-height: 200px; max-width:300px;"><h6 class="card-header"><input class="form-control" name="session_name['+index_val+'][]" value="'+value_session+'"></input><button type="button" onclick="$(this).closest(\'div\').remove();" class="del btn btn-danger btn-xs">x</button></h6><div class="card-body"><input type="datetime-local" name="date_time_session['+index_val+'][]" class="form-control"> '+list_text+' <br/></div><textarea class="form-control mt-2" placeholder="Enter Comment" name="comment['+index_val+'][]"></textarea></div>';
   $('#append-row').append(card)
 });
   //  <button type="button" class="btn del btn-danger btn-xs">x</button>

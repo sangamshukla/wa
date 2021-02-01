@@ -1,11 +1,10 @@
 <?php
 
-use App\Models\Batch;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBatchSessionTable extends Migration
+class CreateBatchTopicsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,12 +13,10 @@ class CreateBatchSessionTable extends Migration
      */
     public function up()
     {
-        Schema::create('batch_session', function (Blueprint $table) {
+        Schema::create('batch_topics', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Batch::class);
-            $table->string('name');
-            $table->dateTime('start_date_time');
-            $table->text('comment')->nullable();
+            $table->integer('batch_session_id');
+            $table->integer('topic_id');
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class CreateBatchSessionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('batch_session');
+        Schema::dropIfExists('batch_topics');
     }
 }

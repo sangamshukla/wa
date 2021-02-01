@@ -7,10 +7,6 @@
             <span class="leftbar-user-name">{{ auth()->user()->name }} </span>
             {{-- <h3> {{ \Carbon\Carbon::now()->format('H:i:s')}}</h3> --}}
             <h3> {{ \Carbon\Carbon::now()->format('H:i:s')}}</h3>
-
-            
-
-    
         </a>
     </div>
 

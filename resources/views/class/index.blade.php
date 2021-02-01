@@ -34,15 +34,16 @@
                     <table id="myTable" class="table dt-responsive nowrap w-100">
                         <thead>
                             <tr>
-                                <th>S.No</th>
+                                {{-- <th>S.No</th> --}}
                                 <th>Class Name</th>
-                                <th>Price Per Session</th>
                                 <th>Assign Teacher</th>
-                                <th>Total Nubmer Of Sessions</th>
+                                <th> Price Per Session(&euro;)</th>
+                                <th>Total Price</th>
+                                {{-- <th>Class Price</th> --}}
+                                <th>Nubmer Of Sessions</th>
                                 <th>Class Start Date & Time</th>
                                 <th>Class</th>
                                 <th>Subject</th>
-                                <th>Total Price </th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -50,17 +51,18 @@
                         <tbody>
                         @foreach($batches as $batch)
                             <tr>
-                                <td>{{ $batch->id }}</td>
+                                {{-- <td>{{ $batch->id }}</td> --}}
                                 <td>{{ $batch->classSettings->name }}</td>
-                                <td>{{ $batch->batch_price_per_session }}</td>
                                 <td>{{ $batch->assignteacher->name }}</td>
-                                <td>{{ $totals }}</td>
-                                {{-- <td>{{ $batch->batch_start_date }}</td> --}}
+                                <td>{{ $batch->batch_price_per_session }}</td>
+                                <td>{{ $batch->batchSession->count() * $batch->batch_price_per_session }}</td>
+                                <td>{{ $batch->batchSession->count() }}</td>
+                                {{-- <td>{{ $totalprice }}</td>   --}}
+                                
+                                {{-- <td>{{ $totals }}</td> --}}
                                 <td>{{ $batch->batch_start_date }}</td>
-
                                 <td>{{ $batch->classmaster->name }}</td>
                                 <td>{{ $batch->subject->name }}</td>
-                                <td>{{ $totalprice }}</td>  
                                 <td>
                                   <a href=""><i class="fa fa-edit"></i>edit</a>
                                   <a href=""><i class="fa fa-eye"></i>delete</a>

@@ -35,4 +35,9 @@ class Batch extends Model
     {
         return $this->belongsTo(User::class, 'name');
     }
+
+    public function batchSession()
+    {
+        return $this->hasMany(BatchSession::class, 'batch_id');
+    }
 }

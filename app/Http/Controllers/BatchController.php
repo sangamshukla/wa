@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Batch;
+use App\Models\BatchSession;
+use App\Models\BatchTopic;
 use App\Models\ClassMaster;
 use App\Models\ClassSettings;
 use App\Models\Subject;
@@ -50,6 +52,7 @@ class BatchController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $request->validate([
             'name' => 'required',
         ]);
@@ -70,6 +73,25 @@ class BatchController extends Controller
             'teacher_available_status'=>$request->teacher_available_status,
             'created_by' => auth()->user()->id
         ]);
+        $index = 1;
+        foreach ($request->session_name as $session_name) {
+            $d = $request->date_time_session[$index][0];
+            $comment = $request->comment[$index][0];
+            $batchSession = BatchSession::create([
+                'batch_id' => $batch->id,
+                'name' => $session_name[0],
+                'start_date_time' => $d,
+                'comment' => $comment
+            ]);
+            $topicx = 'topic_'.$index;
+            foreach ($request->{$topicx} as $t) {
+                BatchTopic::create([
+                    'batch_session_id' => $batchSession->id,
+                    'topic_id' => $t
+                ]);
+            }
+            $index++;
+        }
 
         return redirect(route('manage-class'))->with('status', 'Class Added Successfully');
     }
