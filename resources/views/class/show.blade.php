@@ -37,8 +37,8 @@
                                 {{-- <th>S.No</th> --}}
                                 <th>Class Name</th>
                                 <th>Assign Teacher</th>
-                                <th> Price Per Session(&euro;)</th>
-                                <th>Total Price</th>
+                                <th>(&euro; ) Price Per Session</th>
+                                <th>(&euro; ) Total Price</th>
                                 {{-- <th>Class Price</th> --}}
                                 <th>Nubmer Of Sessions</th>
                                 <th>Class Start Date & Time</th>
@@ -66,7 +66,8 @@
                                 <td>
                                   <a href=""><i class="fa fa-edit"></i>edit</a>
                                   <a href=""><i class="fa fa-eye"></i>delete</a>
-                                  <a href=""><i class="fa fa-edit"></i>view</a>
+                                  <a href="{{ url('show-classes', $batch->id)}}">show</a>
+
                                 </td> 
                             </tr>
                         @endforeach
@@ -86,7 +87,6 @@
 <script>
     $(document).ready( function () {
         $('#myTable').DataTable();
-        // $('#myTable').DataTable( {"scrollX": true} );
     } );
 </script>
 

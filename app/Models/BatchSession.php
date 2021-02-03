@@ -10,4 +10,9 @@ class BatchSession extends Model
     use HasFactory;
     protected $table = 'batch_session';
     protected $guarded=[];
+
+    public function topics()
+    {
+        return  $this->hasMany(BatchTopic::class, 'batch_session_id');
+    }
 }

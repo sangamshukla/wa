@@ -102,9 +102,10 @@ class BatchController extends Controller
      * @param  \App\Models\Batch  $batch
      * @return \Illuminate\Http\Response
      */
-    public function show(Batch $batch)
+    public function show(Request $request, $id)
     {
-        //
+        $batch = Batch::find($id);
+        return view('class.show', compact('batch'));
     }
 
     /**

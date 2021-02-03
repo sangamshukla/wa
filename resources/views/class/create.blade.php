@@ -26,9 +26,31 @@
               <div class="card-header card-header-success">
                 <h4 class="card-title">Add New Classes</h4>
               </div>
+               
 
               <div class="card-body ">
                 @include('_form.success')
+
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <label for="inputState">Class Type &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="user_type" id="inlineRadio2" value="teacher">
+                      <label class="form-check-label" for="inlineRadio2">Online</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="user_type" id="inlineRadio3" value="operation">
+                      <label class="form-check-label" for="inlineRadio3">Offline</label>
+                    </div>
+                  </div>  
+                </div>
+                
+
+
+
+
                   <div class="row">
                       <div class="col">
                         <div class="form-group" id="select_class_master">

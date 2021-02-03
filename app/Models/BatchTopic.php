@@ -9,4 +9,9 @@ class BatchTopic extends Model
 {
     use HasFactory;
     protected $guarded=[];
+
+    public function topic()
+    {
+        return $this->belongsTo(Topic::class, 'topic_id');
+    }
 }
