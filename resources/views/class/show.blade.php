@@ -12,7 +12,10 @@
                   <li class="breadcrumb-item active">Add Teacher</li>
               </ol>
           </div>
-          <h4 class="page-title">List Of Class</h4>
+          <h4 class="page-title">Show Classes</h4>
+          {{-- <h3 style="text-align: center" >{{ Str::ucfirst($batch->classSettings->name) . ' -> ' . $batch->assignteacher->name . ' -> ' . $batch->batch_start_date}}</h3> --}}
+          <h3 style="text-align: center" >{{ Str::ucfirst($batch->classSettings->name) . ' -> ' . Str::ucfirst($batch->assignteacher->name ). ' -> ' . Str::ucfirst($batch->batch_start_date)}}</h3>
+
       </div>
   </div>
 </div>     
@@ -22,53 +25,29 @@
       <div class="row">
         <div class="col-md-12">
             <div class="card ">
-              {{-- <div class="card-header card-header-success">
-                <h4 class="card-title">Add New Teacher</h4>
-                <p class="card-category">Fill the required fields</p>
-              </div> --}}
-
               <div class="card-body ">
                 @include('_form.success')
 
                 {{-- <form> --}}
-                    <table id="myTable" class="table dt-responsive nowrap w-100">
-                        <thead>
+                    <table id="myTable" class="table table-bordered">
+                    {{-- <table id="myTable" class="table dt-responsive nowrap w-100"> --}}
+                        <thead style="color:#2b58ace8">
                             <tr>
-                                {{-- <th>S.No</th> --}}
-                                <th>Class Name</th>
-                                <th>Assign Teacher</th>
-                                <th>(&euro; ) Price Per Session</th>
-                                <th>(&euro; ) Total Price</th>
-                                {{-- <th>Class Price</th> --}}
-                                <th>Nubmer Of Sessions</th>
-                                <th>Class Start Date & Time</th>
-                                <th>Class</th>
-                                <th>Subject</th>
-                                <th>Action</th>
+                                <th>Session Name</th>
+                                <th>Session Topic</th>
+                                <th> Session Date & Time</th>
+                                <th>Comment</th>
                             </tr>
                         </thead>
-                    
                         <tbody>
-                        @foreach($batches as $batch)
+                        @foreach($batch->batchSession as $session)
                             <tr>
-                                {{-- <td>{{ $batch->id }}</td> --}}
-                                <td>{{ $batch->classSettings->name }}</td>
-                                <td>{{ $batch->assignteacher->name }}</td>
-                                <td>{{ $batch->batch_price_per_session }}</td>
-                                <td>{{ $batch->batchSession->count() * $batch->batch_price_per_session }}</td>
-                                <td>{{ $batch->batchSession->count() }}</td>
-                                {{-- <td>{{ $totalprice }}</td>   --}}
-                                
-                                {{-- <td>{{ $totals }}</td> --}}
-                                <td>{{ $batch->batch_start_date }}</td>
-                                <td>{{ $batch->classmaster->name }}</td>
-                                <td>{{ $batch->subject->name }}</td>
-                                <td>
-                                  <a href=""><i class="fa fa-edit"></i>edit</a>
-                                  <a href=""><i class="fa fa-eye"></i>delete</a>
-                                  <a href="{{ url('show-classes', $batch->id)}}">show</a>
-
-                                </td> 
+                                <td>{{ $session->name }}</td>  
+                                <td>@foreach($session->topics as $t)
+                                    {{ $t->topic->name }}                                       
+                                    @endforeach</td> 
+                                <td>{{ $session->start_date_time }}</td>  
+                                <td>{{ $session->comment }}</td>  
                             </tr>
                         @endforeach
                         </tbody>
@@ -87,6 +66,7 @@
 <script>
     $(document).ready( function () {
         $('#myTable').DataTable();
+        // $('#myTable').DataTable( {"scrollX": true} );
     } );
 </script>
 

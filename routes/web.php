@@ -71,6 +71,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Route::get('/student-dashboard', [HomeController::class ,'studentDasboard']);
     Route::get('/admin-dashboard', [HomeController::class ,'adminDashboard']);
+    Route::get('/admin-show', [HomeController::class ,'adminshow']);
+
     Route::get('/teacher-dashboard', [HomeController::class ,'teacherDashboard']);
     Route::get('/operation-dashboard', [HomeController::class ,'operationDashboard']);
     

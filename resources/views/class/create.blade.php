@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+
 <!-- start page title -->
 <div class="row">
   <div class="col-12">
@@ -14,44 +15,31 @@
           <h4 class="page-title">Add Classes</h4>
       </div>
   </div>
-</div>     
-<!-- end page title --> 
+</div>  
 
+<!-- end page title --> 
      <div class="content">
       <div class="row">
         <div class="col-md-12">
-          <form method="post" action="{{ route('class.store') }}" autocomplete="off" class="form-horizontal">
+          <form method="post" onsubmit="return validateDateTime()" action="{{ route('class.store') }}" autocomplete="off" class="form-horizontal">
             @csrf
             <div class="card ">
               <div class="card-header card-header-success">
                 <h4 class="card-title">Add New Classes</h4>
               </div>
-               
-
+              
               <div class="card-body ">
                 @include('_form.success')
-
-
-                <div class="row">
-                  <div class="col-md-6">
-                    <label for="inputState">Class Type &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="user_type" id="inlineRadio2" value="teacher">
-                      <label class="form-check-label" for="inlineRadio2">Online</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="user_type" id="inlineRadio3" value="operation">
-                      <label class="form-check-label" for="inlineRadio3">Offline</label>
-                    </div>
-                  </div>  
-                </div>
                 
 
+               <div class="row mb-4">
+                  <div class="col-md-1 offset-2"><p style="margin-top: 48%;">Class Type</p></div>
+                  <div class="col-md-3">@include('_form.radio', ['class' => 'primary', 'id' => 'name', 'name' => 'status', 'title' => 'Online'])</div>
+                  <div class="col-md-3">@include('_form.radio', ['class' => 'green', 'id' => 'name1', 'name' => 'status', 'title' => 'Offline'])</div>
+                </div> 
 
-
-
-                  <div class="row">
+                {{-- select class/batch --}}
+                 <div class="row">
                       <div class="col">
                         <div class="form-group" id="select_class_master">
                           <label for="inputState">Select Class</label>
@@ -62,20 +50,29 @@
                               @endforeach
                             </select>
                         </div>
-                        {{-- class_settings_id --}}
+                        {{-- for other --}}
                         @include('_form.input', ['title' => 'Enter Class Name','class'=>'class_settings_id', 'name' => 'class_settings'])
                       </div>
 
+                      {{-- Class Price Per Session  --}}
                       <div class="col">
-                        @include('_form.input', ['title' => 'Class Price Per Session', 'name' => 'batch_price_per_session','placeholder' => '&euro;', 'type' => 'number'])
-                        {{-- @include('_form.input', ['title' => 'Class Price Per Session(&euro)', 'name' => 'batch_price_per_session']) --}}
+                        <div class="form-group">
+                          <label for="simpleinput">(&euro;) Class Price Per Session</label>
+                          <input type="number" id="simpleinput" name="batch_price_per_session" class="form-control">
+                        </div>
                       </div> 
 
+                      {{-- Class Start Date & Time --}}
                       <div class="col">
-                        @include('_form.input', ['title' => 'Class Start Date & Time', 'name' => 'batch_start_date', 'type' => 'datetime-local'])
-                      </div>    
+                        <div class="form-group">
+                          <label for="class_date_time">Class Start Date & Time</label>
+                          <input type="datetime-local" id="class_date_time" name="batch_start_date" class="form-control">
+                        </div>
+                      </div>  
+
                   </div>
-                  {{-- row 2 --}}
+
+                  {{-- row 2 Assign Teacher --}}
                   <div class="row">
                       <div class="col">
                           <div class="form-group" id="select_form">
@@ -88,9 +85,16 @@
                               </select>
                           </div>
                       </div> 
+
+                      {{-- Teacher Available Status --}}
                       <div class="col">
-                        @include('_form.input', ['title' => 'Teacher Available Status', 'name' => 'teacher_available_status',])
+                        <div class="form-group">
+                          <label for="simpleinput">Teacher Available Status</label>
+                          <input type="text" id="simpleinput" name="teacher_available_status" class="form-control">
+                        </div>
                       </div> 
+
+                      {{-- Duration Per Session --}}
                       <div class="col">
                         <div class="form-group">
                           <label for="inputState">Duration Per Session</label>
@@ -107,6 +111,7 @@
                       </div>
                   </div> 
 
+                  {{-- Select Year--}}
                 <div class="row">
                   <div class="col">
                     <div class="form-group">
@@ -119,6 +124,8 @@
                         </select>
                     </div>
                   </div>
+
+                  {{-- Select Subject --}}
                   <div class="col">
                     <div class="form-group">
                       <label for="subject_id">Select Subject</label>
@@ -132,6 +139,7 @@
                   </div>
                 </div>
 
+                {{-- Select Multiple Topic --}}
                 <div class="row">
                   <div class="col">
                     <div class="form-group">
@@ -140,14 +148,19 @@
                         </select>
                     </div>
                   </div>
+
+                  {{-- Generate Session + --}}
                   <div class="col">
                     <div class="form-group">
-                      <button type="button" class="btn btn-primary" id="generate-session" style="margin-top:1.4rem; float:right;">Generate Session</button>
+                      <button type="button" class="btn btn-primary" id="generate-session" style="margin-top:1.4rem; float:right;">+</button>
                     </div>
                   </div>
                 </div>
+
               {{-- card code for add session --}}
-              <div class="row" style="display:none" id="append-row">
+              <div class="row" id="append-row" style="display:none">
+                <div id="row-list"></div>
+                <button type="button" style="display:none" class="btn btn-primary generate-session" style="margin-top:1.4rem; float:right;">+</button>
               </div>
 
               {{-- /card code for add session --}}
@@ -173,6 +186,7 @@
     $('.js-example-basic-multiple').select2();
 });
 $('#generate-session').on('click', function(){
+  $('#generate-session').hide();
   $('#append-row').show();
   var value_session = $("#append-row").find($("h6") ).length + 1;
   var index_val = value_session;
@@ -189,7 +203,29 @@ $('#generate-session').on('click', function(){
     }
 
   });
-  var card='<div class="card mr-2" style="min-height: 200px; max-width:300px;"><h6 class="card-header"><input class="form-control" name="session_name['+index_val+'][]" value="'+value_session+'"></input><button type="button" onclick="$(this).closest(\'div\').remove();" class="del btn btn-danger btn-xs">x</button></h6><div class="card-body"><input type="datetime-local" name="date_time_session['+index_val+'][]" class="form-control"> '+list_text+' <br/></div><textarea class="form-control mt-2" placeholder="Enter Comment" name="comment['+index_val+'][]"></textarea></div>';
+  $('.generate-session').show();
+  var card='<div class="card mr-2" style="min-height: 200px; max-width:300px;"><h6 class="card-header"><input class="form-control" name="session_name['+index_val+'][]" value="'+value_session+'"></input><button type="button" onclick="$(this).closest(\'div\').remove();" class="del btn btn-danger btn-xs">x</button></h6><div class="card-body"><input type="datetime-local" onChange="validateDateTime()" name="date_time_session['+index_val+'][]" id="date_time_session_1" class="form-control " /> '+list_text+' <br/></div><textarea class="form-control mt-2" placeholder="Enter Comment" name="comment['+index_val+'][]"></textarea></div>';
+  $('#row-list').append(card)
+});
+
+$('.generate-session').on('click', function(){
+  $('#append-row').show();
+  var value_session = $("#append-row").find($("h6") ).length + 1;
+  var index_val = value_session;
+  var value_session = "Session-"+value_session;
+  var selectvalue = $('.js-example-basic-multiple').val();
+  var selectvalue1 = $('.js-example-basic-multiple :selected').text();
+  var list_text = '';
+  $(".js-example-basic-multiple option:selected").each(function () {
+   var $this = $(this);
+   if ($this.length) {
+    var selText = $this.text();
+    var selVal = $this.val();
+      list_text = list_text+'<input type="hidden" id="" name="topic_'+index_val+'[]" value="'+selVal+'"><br/>'+selText;
+    }
+
+  });
+  var card='<div class="card mr-2" style="min-height: 200px; max-width:300px;"><h6 class="card-header"><input class="form-control" name="session_name['+index_val+'][]" value="'+value_session+'"></input><button type="button" onclick="$(this).closest(\'div\').remove();" class="del btn btn-danger btn-xs">x</button></h6><div class="card-body"><input type="datetime-local" onChange="validateDateTime()" name="date_time_session['+index_val+'][]" id="date_time_session_1" class="form-control " /> '+list_text+' <br/></div><textarea class="form-control mt-2" placeholder="Enter Comment" name="comment['+index_val+'][]"></textarea></div>';
   $('#append-row').append(card)
 });
   //  <button type="button" class="btn del btn-danger btn-xs">x</button>
@@ -203,7 +239,24 @@ $('#select_year').on('change', function(){
     });
   });
 });
-$('#subject_id').on('change', function(){
+
+function validateDateTime()
+{
+  var source_val = $('#class_date_time').val();
+  var nowDate= new Date(source_val);
+  if(! $('#date_time_session_1').val()){
+    alert("Please Add Atleast 1 Session Before Saving the Class.");
+    return false;
+  }
+  var Time1 = new Date($('#date_time_session_1').val());
+  if(nowDate > Time1){
+    alert("Start Date Can Not Be Greater Than Batch Start Date");
+    return false;
+  }
+  return true;
+}
+
+$('#subject_id').change(function(){
   var subject_id_value = $('#subject_id').val();
   $.get("/api/topics/"+subject_id_value, function(data, status){
     $('#topic_id').empty();

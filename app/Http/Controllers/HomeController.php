@@ -46,4 +46,9 @@ class HomeController extends Controller
     {
         return view('dashboard.operation');
     }
+
+    public function adminshow()
+    {
+        return view('dashboard.admin-show');
+    }
 }

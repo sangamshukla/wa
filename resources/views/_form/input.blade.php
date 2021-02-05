@@ -1,7 +1,7 @@
 @if(!isset($col))
 <div class="form-group {{ $class ?? ''}}" style="{{ $style ?? '' }}">
     <label for="{{ $name }}" class="">{{ $title }}</label>
-    <input id="{{ $name }}" type="{{ $type ?? 'text' }}" class="form-control  @error($name) is-invalid @enderror" name="{{ $name }}" value="{{ old($name) }}" placeholder="{!! $placeholder ?? '' !!}" autofocus>
+    <input id="{{ $name }}" type="{{ $type ?? 'text' }}" class="form-control  @error($name) is-invalid @enderror" name="{{ $name }}" {{ $readonly ?? '' }} value="{{ old($name) }}" placeholder="{!! $placeholder ?? '' !!}" autofocus>
      @error($name)
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
