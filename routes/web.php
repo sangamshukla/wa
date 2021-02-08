@@ -79,20 +79,26 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 
-
+// Teacher Controller
     Route::get('add-teacher', [TeacherController::class, 'create'])->name('add-teacher');
     Route::post('add-teacher', [TeacherController::class, 'store'])->name('add-teacher');
     Route::get('manage-teacher', [TeacherController::class, 'index'])->name('manage-teacher');
+    Route::get('edit-teacher/{id}', [TeacherController::class, 'edit'])->name('edit-teacher');
+    Route::post('edit-teacher/{id}', [TeacherController::class, 'update'])->name('update-teacher');
+    Route::get('show-teacher/{id}', [TeacherController::class, 'show'])->name('show-teacher');
+    Route::get('destroy-teacher/{id}', [TeacherController::class, 'destroy'])->name('destroy-teacher');
+
+
 
 
     // batch controller for class
     Route::get('create-classes', [BatchController::class, 'create'])->name('class.create');
     Route::post('create-classes', [BatchController::class, 'store'])->name('class.store');
     Route::get('manage-classes', [BatchController::class, 'index'])->name('manage-class');
+    Route::get('edit-classes/{id}', [BatchController::class, 'edit'])->name('edit-class');
+    Route::post('edit-classes/{id}', [BatchController::class, 'update'])->name('update-class');
     Route::get('show-classes/{id}', [BatchController::class, 'show'])->name('show-class');
-
-
-
+    Route::get('destroy-classes/{id}', [BatchController::class, 'destroy'])->name('destroy-class');
 
 
     Route::get('add-product', [TeacherController::class, 'store'])->name('add-product');

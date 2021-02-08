@@ -35,69 +35,65 @@
                 {{-- <form> --}}
                   <div class="row">
                     <div class="col">
-                      {{-- @include('_form.input', ['title' => 'Name', 'name' => 'name', 'placeholder' => 'Name']) --}}
                       <div class="form-group">
                         <label for="simpleinput">Name</label>
-                        <input type="text" id="simpleinput" name="name" placeholder="Name" class="form-control">
+                        <input type="text" id="name" name="name" placeholder="Name" value="{{ $teacher->User->name }}" class="form-control">
                       </div>
                     </div>
 
+                    {{-- Email --}}
                     <div class="col">
-                     {{-- @include('_form.input', ['title' => 'Email', 'name' => 'email', 'placeholder' => 'Email']) --}}
                      <div class="form-group">
                       <label for="simpleinput">Email</label>
-                      <input type="email" id="email" name="email" placeholder="Email" class="form-control">
+                      <input type="email" id="email" name="email" placeholder="Email" value="{{ $teacher->User->email }}" class="form-control">
                     </div>
                     </div>
 
                   </div>
 
+                  {{-- contact Number --}}
                   <div class="row">
                     <div class="col">
-                      {{-- @include('_form.input', ['title' => 'Contact', 'name' => 'contact_number', 'placeholder' => 'Contact Number']) --}}
                       <div class="form-group">
                         <label for="simpleinput">Contact Number</label>
-                        <input type="number" id="contact_number" name="contact_number" placeholder="Contact Number" class="form-control">
+                        <input type="number" id="contact_number" name="contact_number" placeholder="Contact Number" value="{{ $teacher->user->contact_number }}" class="form-control">
                       </div>
                     </div>
 
+                    {{-- Year/Batch --}}
                     <div class="col">
                      <label for="inputState">Select Year</label>
-                     <select name="class_master_id" required id="inputState" class="form-control">
+                     <select name="class_master_id"  required id="inputState" class="form-control">
                        <option selected>...Select Year...</option>
-                       <option value="1">Year 1</option>
-                       <option value="2">Year 2</option>
-                       <option value="3">Year 3</option>
-                       <option value="4">Year 4</option>
+
+                       <option value="1" @if($teacher->class_master_id ==1)
+                        {{ 'selected' }} @endif>Year 1</option>
+
+                       <option value="2" @if($teacher->class_master_id ==2)
+                        {{ 'selected' }} @endif>Year 2</option>
+
+                       <option value="3" @if($teacher->class_master_id ==3)
+                        {{ 'selected' }} @endif>Year 3</option>
+
+                       <option value="4" @if($teacher->class_master_id ==4)
+                        {{ 'selected' }} @endif>Year 4</option>
+                        
                      </select>
                     </div>
                   </div>
-{{-- 
-                  <div class="row">
-                    <div class="col-md-6">
-                      <label for="inputState">User Type &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
 
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="user_type" id="inlineRadio2" value="teacher">
-                        <label class="form-check-label" for="inlineRadio2">Teacher</label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="user_type" id="inlineRadio3" value="operation">
-                        <label class="form-check-label" for="inlineRadio3">Operation</label>
-                      </div>
-                    </div>  --}}
-
+                  {{-- User Type --}}
                     <div class="row">
                       <div class="col-md-6">
                         <label for="inputState">User Type &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                     <div class="form-check-inline">
                       <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input" value="Teacher" name="user_type">Teacher
+                        <input type="checkbox" class="form-check-input" value="Teacher" name="user_type" {{ $teacher->user_type == 'Teacher' ? 'checked' : ''}}>Teacher
                       </label>
                     </div>
                     <div class="form-check-inline">
                       <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input" value="Operation" name="user_type">Opration
+                        <input type="checkbox" class="form-check-input" value="Operation" name="user_type" {{ $teacher->user_type == 'Operation' ? 'checked' : ''}}>Opration
                       </label>
                     </div>
                     

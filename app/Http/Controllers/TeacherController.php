@@ -32,10 +32,9 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        $weekOff = WeeklyOff::all();
-        $classMasters = ClassMaster::all();
-        $subjects = Subject::all();
-        return view('teacher.create', compact('weekOff', 'classMasters', 'subjects'));
+        $teachers = Teacher::all();
+        // $classes = ClassMaster::all();
+        return view('teacher.create', compact('teachers'));
     }
 
     /**
@@ -46,13 +45,11 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
         $request->validate([
             'name'=>'required',
             'email'=>'required',
-            'contact_number'=>'required',
-            // 'user_type'=>'required',
         ]);
+
         $password = Str::random(8);
         $user = User::Create([
             'name'=>$request->name,
@@ -69,7 +66,7 @@ class TeacherController extends Controller
         ]);
 
         Mail::to($user->email)->send(new TeacherSuccessfullyRegistered($user, $password));
-        return redirect(route('add-teacher'))->with('status', 'Teacher Added Successfully');
+        return redirect(route('manage-teacher'))->with('status', 'Teacher Added Successfully');
     }
 
     /**
@@ -78,9 +75,12 @@ class TeacherController extends Controller
      * @param  \App\Models\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function show(Teacher $teacher)
+
+
+    public function show($id)
     {
-        //
+        $teacher = Teacher::find($id);
+        return view('teacher.show', compact('teacher'));
     }
 
     /**
@@ -89,9 +89,11 @@ class TeacherController extends Controller
      * @param  \App\Models\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function edit(Teacher $teacher)
+
+    public function edit(Request $request, $id)
     {
-        //
+        $teacher = Teacher::find($id);
+        return view('teacher.edit', compact('teacher'));
     }
 
     /**
@@ -101,9 +103,21 @@ class TeacherController extends Controller
      * @param  \App\Models\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Teacher $teacher)
+    public function update(Request $request, $id)
     {
-        //
+        $user = User::updateOrCreate(
+            [
+                'id' => $request->id
+            ],
+            [
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'contact_number'=>$request->contact_number,
+            'class_master_id' => $request->class_master_id,
+            'role'=>$request->user_type,
+            ]
+        );
+        return redirect(route('manage-teacher'))->with('status', 'Teacher Updated Successfully');
     }
 
     /**
@@ -112,10 +126,13 @@ class TeacherController extends Controller
      * @param  \App\Models\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Teacher $teacher)
+    public function destroy($id)
     {
-        //
+        $teacher = Teacher::find($id);
+        $teacher->delete();
+        return redirect(route('manage-teacher'))->with('status', 'Teacher Deleted Successfully');
     }
+
     public function login()
     {
         return view('admin.login');

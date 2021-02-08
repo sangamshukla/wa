@@ -114,9 +114,10 @@ class BatchController extends Controller
      * @param  \App\Models\Batch  $batch
      * @return \Illuminate\Http\Response
      */
-    public function edit(Batch $batch)
+    public function edit($id)
     {
-        //
+        $class = Batch::find($id);
+        return view('class.edit', compact('class'));
     }
 
     /**
@@ -128,7 +129,22 @@ class BatchController extends Controller
      */
     public function update(Request $request, Batch $batch)
     {
-        //
+        $class = Batch::updateOrCreate(
+            [
+            'id'=>$request->id
+            ],
+            [
+            'name'=>$request->name,
+            'batch_price_per_session'=>$request->batch_price_per_session,
+            'batch_start_date'=>$request->batch_start_date,
+            'subject_id'=>$request->subject_id,
+            'class_master_id'=>$request->class_master_id,
+            // 'class_settings_id'=>$class,
+            'duration_per_session'=>$request->duration_per_sessions_id,
+            'teacher_available_status'=>$request->teacher_available_status,
+            'created_by' => auth()->user()->id
+            ]
+        );
     }
 
     /**
@@ -137,8 +153,10 @@ class BatchController extends Controller
      * @param  \App\Models\Batch  $batch
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Batch $batch)
+    public function destroy(Request $request, $id)
     {
-        //
+        $class = Batch::find($id);
+        $class->delete();
+        return redirect(route('manage-class'))->with('status', 'Class Deleted Successfully');
     }
 }

@@ -12,7 +12,7 @@
                   <li class="breadcrumb-item active">Add Teacher</li>
               </ol>
           </div>
-          <h4 class="page-title" style="color:#A6C439">List Of Class</h4>
+          <h4 class="page-title" style="color:#A6C439">Manage Classes</h4>
       </div>
   </div>
 </div>     
@@ -26,11 +26,8 @@
                 @include('_form.success')
 
                 {{-- <form> --}}
-                    {{-- <table id="myTable" class="table dt-responsive nowrap w-100"> --}}
-                        {{-- <table id="myTable" class="table table-striped dt-responsive nowrap w-100"> --}}
                         <table id="myTable" class="table table-bordered">
-                        {{-- <table id="myTable" class="table table-striped dt-responsive nowrap w-100"> --}}
-                        <thead style="color:#2b58ace8">
+                        <thead style="background-color:#7DC234;color:#fff;">
                             <tr>
                                 <th>S.No</th>
                                 <th>Class Name</th>
@@ -39,7 +36,7 @@
                                 <th>Total Price</th>
                                 <th>Nubmer Of Sessions</th>
                                 <th>Class Start Date & Time</th>
-                                <th>Class</th>
+                                <th>Year</th>
                                 <th>Subject</th>
                                 <th>status</th>
                                 <th style="width:73.6979px;">Action</th>
@@ -49,6 +46,7 @@
                         <tbody>
                         @foreach($batches as $batch)
                             <tr>
+                                
                                 <td>{{ $batch->id }}</td>
                                 <td>{{ $batch->classSettings->name }}</td>
                                 <td>{{ $batch->assignteacher->name }}</td>
@@ -61,9 +59,9 @@
                                 <td></td>
 
                                 <td>
-                                  <a href="javascript: void(0);" class="action-icon"> <i style="color:#A6C439"class="mdi mdi-pencil"></i></a>
-                                  <a href="javascript: void(0);" class="action-icon"> <i style="color:red" class="mdi mdi-delete"></i></a>
-                                  <a href="{{ url('show-classes', $batch->id)}}" class="action-icon"> <i style="color:#2b58ace8" width="500" height="200"class="mdi mdi-eye"></i></a>
+                                  <a href="{{ url('edit-classes', $batch->id) }}" class="action-icon"> <i style="color:#A6C439"class="mdi mdi-pencil"></i></a>
+                                  <a href="{{ url('destroy-classes', $batch->id) }}" onclick = "return confirm('Are You Sure For Delete ?')" class="action-icon"> <i style="color:red" class="mdi mdi-delete"></i></a>
+                                  <a href="{{ url('show-classes', $batch->id) }}" class="action-icon"> <i style="color:#2b58ace8" width="500" height="200"class="mdi mdi-eye"></i></a>
 
 
                                   {{-- <a style="color:#2b58ace8" href=""><i class="fa fa-edit"></i>edit</a> --}}

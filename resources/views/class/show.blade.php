@@ -30,8 +30,8 @@
 
                 {{-- <form> --}}
                     <table id="myTable" class="table table-bordered">
-                    {{-- <table id="myTable" class="table dt-responsive nowrap w-100"> --}}
-                        <thead style="color:#2b58ace8">
+                        {{-- <thead style="color:#2b58ace8"> --}}
+                        <thead style="background-color:#7DC234;color:#fff;">
                             <tr>
                                 <th>Session Name</th>
                                 <th>Session Topic</th>

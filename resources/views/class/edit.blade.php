@@ -34,8 +34,8 @@
 
                <div class="row mb-4">
                   <div class="col-md-1"><p style="margin-top: 48%;">Class Type</p></div>
-                  <div class="col-md-3">@include('_form.radio', ['class' => 'info', 'id' => 'name', 'name' => 'status', 'title' => 'Online'])</div>
-                  <div class="col-md-3">@include('_form.radio', ['class' => 'info', 'id' => 'name1', 'name' => 'status', 'title' => 'Offline'])</div>
+                  <div class="col-md-3">@include('_form.radio', ['class' => 'primary', 'id' => 'name', 'name' => 'status', 'title' => 'Online'])</div>
+                  <div class="col-md-3">@include('_form.radio', ['class' => 'green', 'id' => 'name1', 'name' => 'status', 'title' => 'Offline'])</div>
                 </div> 
 
                 {{-- select class/batch --}}
@@ -47,18 +47,20 @@
                               <option selected>... Select Class ...</option>
                               @foreach($classsettings as $classsetting)
                                 <option value="{{ $classsetting->id }}">{{ $classsetting->name }}</option>
+                                {{-- <option value="1" {{ $classsetting->quantity == 1 ? 'selected' : '' }}>1</option> --}}
+
                               @endforeach
                             </select>
                         </div>
                         {{-- for other --}}
-                        @include('_form.input', ['title' => 'Enter Class Name','class'=>'class_settings_id', 'name' => 'class_settings'])
+                        @include('_form.input', ['title' => 'Enter Class Name','class'=>'class_settings_id', 'name' => 'class_settings', 'value' => "{{ $class->class_settings }}"])
                       </div>
 
                       {{-- Class Price Per Session  --}}
                       <div class="col">
                         <div class="form-group">
                           <label for="simpleinput">(&euro;) Class Price Per Session</label>
-                          <input type="number" id="simpleinput" name="batch_price_per_session" class="form-control">
+                          <input type="number" id="simpleinput" name="batch_price_per_session" value="{{ $batch->batch_price_per_session }}" class="form-control">
                         </div>
                       </div> 
 
@@ -66,10 +68,7 @@
                       <div class="col">
                         <div class="form-group">
                           <label for="class_date_time">Class Start Date & Time</label>
-                          <input type="date" id="class_date_time" min="{{ Carbon\Carbon::today()->format('Y-m-d') }}" name="batch_start_date" class="form-control">
-                          {{-- <input type="datetime-local" id="class_date_time" name="batch_start_date" class="form-control"> --}}
-
-
+                          <input type="datetime-local" id="class_date_time" name="batch_start_date" value="{{ $batch->batch_start_date }}" class="form-control">
                         </div>
                       </div>  
 
@@ -93,7 +92,7 @@
                       <div class="col">
                         <div class="form-group">
                           <label for="simpleinput">Teacher Available Status</label>
-                          <input type="text" id="simpleinput" name="teacher_available_status" class="form-control">
+                          <input type="text" id="simpleinput" name="teacher_available_status" value="{{ $batch->teacher_available_status }}" class="form-control">
                         </div>
                       </div> 
 

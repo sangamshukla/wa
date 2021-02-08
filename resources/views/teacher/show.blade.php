@@ -12,7 +12,8 @@
                   <li class="breadcrumb-item active">Add Teacher</li>
               </ol>
           </div>
-          <h4 class="page-title" style="color:#A6C439">Manage Teacher</h4>
+          <h4 class="page-title">Show Classes</h4>
+
       </div>
   </div>
 </div>     
@@ -26,39 +27,27 @@
                 @include('_form.success')
 
                 {{-- <form> --}}
-                        <table id="myTable" class="table table-bordered">
+                    <table id="myTable" class="table table-bordered">
+                        {{-- <thead style="color:#2b58ace8"> --}}
                         <thead style="background-color:#7DC234;color:#fff;">
-
                             <tr>
-                                <th>S.No</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Contact Number</th>
                                 <th>Year</th>
                                 <th>User Type</th>
-                                <th style="width:73.6979px;">Action</th>
                             </tr>
                         </thead>
-                    
                         <tbody>
-                         @foreach($teachers as $teacher)
+                        {{-- @foreach($teachers as $teacher) --}}
                             <tr>
-                                
-                                <td>{{ $teacher->id }}</td>
                                 <td>{{ $teacher->user->name }}</td>
-                                <td>{{ $teacher->user->email }}</td>
+                                <td>{{ $teacher->userforemail->email }}</td>
                                 <td>{{ $teacher->user->contact_number }}</td>
                                 <td>{{ $teacher->classmaster->name }}</td>
                                 <td>{{ $teacher->user_type }}</td>
-                                
-
-                                <td>
-                                  <a href="{{ url('edit-teacher', $teacher->id) }}" class="action-icon"> <i style="color:#A6C439"class="mdi mdi-pencil"></i></a>
-                                  <a href="{{ url('destroy-teacher', $teacher->id) }}" onclick = "return confirm('Are You Sure For Delete ?')" class="action-icon"> <i style="color:red" class="mdi mdi-delete"></i></a>
-                                  <a href="{{ url('show-teacher', $teacher->id) }}" class="action-icon"> <i style="color:#2b58ace8" width="500" height="200"class="mdi mdi-eye"></i></a>
-                                </td>   
                             </tr>
-                        @endforeach 
+                        {{-- @endforeach  --}}
                         </tbody>
                     </table>
                     
