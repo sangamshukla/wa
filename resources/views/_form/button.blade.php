@@ -1,1 +1,1 @@
-<button type="submit" class="btn  btn-primary">{{ $title }}</button>
+<button type="submit" class="btn  btn-info">{{ $title }}</button>

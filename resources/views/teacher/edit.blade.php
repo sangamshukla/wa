@@ -21,11 +21,11 @@
      <div class="content">
       <div class="row">
         <div class="col-md-12">
-          <form method="post" action="{{ route('add-teacher') }}" autocomplete="off" class="form-horizontal">
+          <form method="post" action="{{ route('edit-teacher', $teacher->id) }}" autocomplete="off" class="form-horizontal">
             @csrf
             <div class="card ">
               <div class="card-header card-header-success">
-                <h4 class="card-title">Add New Teacher</h4>
+                <h4 class="card-title">Update Teacher</h4>
                 <p class="card-category">Fill the required fields</p>
               </div>
 
@@ -103,7 +103,7 @@
           </div>
         
               <div class="card-footer ml-auto mr-auto">
-                @include('_form.button',['title'=>'Save Teacher'])
+                @include('_form.button',['title'=>'Update Teacher'])
               </div>
             </div>
           </form>

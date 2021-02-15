@@ -12,7 +12,7 @@
                   <li class="breadcrumb-item active">Add Teacher</li>
               </ol>
           </div>
-          <h4 class="page-title">Show Classes</h4>
+          <h4 class="page-title">Teacher Details</h4>
 
       </div>
   </div>

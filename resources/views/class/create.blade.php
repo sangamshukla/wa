@@ -34,6 +34,7 @@
 
                <div class="row mb-4">
                   <div class="col-md-1"><p style="margin-top: 48%;">Class Type</p></div>
+                  {{-- <div class="col-md-1"><p style="margin-top: 1%;">Class Type</p></div> --}}
                   <div class="col-md-3">@include('_form.radio', ['class' => 'info', 'id' => 'name', 'name' => 'status', 'title' => 'Online'])</div>
                   <div class="col-md-3">@include('_form.radio', ['class' => 'info', 'id' => 'name1', 'name' => 'status', 'title' => 'Offline'])</div>
                 </div> 
@@ -61,22 +62,21 @@
                           <input type="number" id="simpleinput" name="batch_price_per_session" class="form-control">
                         </div>
                       </div> 
-
+                  
+                      
                       {{-- Class Start Date & Time --}}
                       <div class="col">
                         <div class="form-group">
                           <label for="class_date_time">Class Start Date & Time</label>
                           <input type="date" id="class_date_time" min="{{ Carbon\Carbon::today()->format('Y-m-d') }}" name="batch_start_date" class="form-control">
                           {{-- <input type="datetime-local" id="class_date_time" name="batch_start_date" class="form-control"> --}}
-
-
                         </div>
                       </div>  
-
                   </div>
 
                   {{-- row 2 Assign Teacher --}}
                   <div class="row">
+                     @if(auth()->user()->role == 'admin')
                       <div class="col">
                           <div class="form-group" id="select_form">
                             <label for="inputState">Assign Teacher</label>
@@ -88,14 +88,17 @@
                               </select>
                           </div>
                       </div> 
+                      @endif
 
                       {{-- Teacher Available Status --}}
+                      @if(auth()->user()->role == 'admin')
                       <div class="col">
                         <div class="form-group">
                           <label for="simpleinput">Teacher Available Status</label>
                           <input type="text" id="simpleinput" name="teacher_available_status" class="form-control">
                         </div>
                       </div> 
+                      @endif
 
                       {{-- Duration Per Session --}}
                       <div class="col">
@@ -115,6 +118,8 @@
                   </div> 
 
                   {{-- Select Year--}}
+
+
                 <div class="row">
                   <div class="col">
                     <div class="form-group">
@@ -180,9 +185,6 @@
 @section('scripts')
 <script>
 
-// $('.del').on('click', function(){
-//     this.closest('div').remove();
-// });
 
   $(document).ready(function() {
     $('.class_settings_id').hide();
@@ -275,5 +277,7 @@ $('#class_settings_id').on('change', function(){
     $('.class_settings_id').show();
   }
 });
+
+
 </script>
 @endsection

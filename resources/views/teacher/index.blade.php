@@ -26,7 +26,7 @@
                 @include('_form.success')
 
                 {{-- <form> --}}
-                        <table id="myTable" class="table table-bordered">
+                        <table id="myTable" class="table table-bordered table-responsive w-100 d-block d-md-table">
                         <thead style="background-color:#7DC234;color:#fff;">
 
                             <tr>
@@ -48,7 +48,8 @@
                                 <td>{{ $teacher->user->name }}</td>
                                 <td>{{ $teacher->user->email }}</td>
                                 <td>{{ $teacher->user->contact_number }}</td>
-                                <td>{{ $teacher->classmaster->name }}</td>
+                                <td></td>
+                                {{-- <td>{{ $teacher->classmaster->name }}</td> --}}
                                 <td>{{ $teacher->user_type }}</td>
                                 
 

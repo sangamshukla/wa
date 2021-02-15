@@ -2,7 +2,7 @@
     <div class="container-fluid">
 
         <!-- LOGO -->
-        <a href="index.html" class="topnav-logo" style="margin-left: 70px;">
+        <a href="index.html" class="topnav-logo">
             <span class="topnav-logo-lg">
                 <img src="{{ asset('logo.png') }}" alt="" height="64" class="ml-2">
             </span>
@@ -155,12 +155,12 @@
 
                 </div>
             </li> --}}
-{{-- 
+
             <li class="notification-list">
                 <a class="nav-link right-bar-toggle" href="javascript: void(0);">
                     <i class="dripicons-gear noti-icon"></i>
                 </a>
-            </li> --}}
+            </li> 
 
             <li class="dropdown notification-list">
                 <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown" id="topbar-userdrop" href="#" role="button" aria-haspopup="true"
@@ -215,9 +215,15 @@
         </ul>
         <a class="button-menu-mobile disable-btn">
             <div class="lines">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span style="
+                background-color: grey;
+            "></span>
+            <span style="
+            background-color: grey;
+        "></span>
+        <span style="
+        background-color: grey;
+    "></span>
             </div>
         </a>
         <div class="app-search dropdown">

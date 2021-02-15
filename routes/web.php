@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\BatchController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TeacherByBatchController;
 use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 
@@ -68,6 +70,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
     Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
     Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
+    // Route::post('profile', ['as' => 'profile.image', 'uses' => 'App\Http\Controllers\ProfileController@imageupload']);
+    // Route::get('image-upload', [ProfileController::class, 'imageUpload'])->name('image-upload');
+    Route::post('profile/update', [ProfileController::class, 'imageUpload'])->name('image-upload');
+
 
     // Route::get('/student-dashboard', [HomeController::class ,'studentDasboard']);
     Route::get('/admin-dashboard', [HomeController::class ,'adminDashboard']);
@@ -77,21 +83,17 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/operation-dashboard', [HomeController::class ,'operationDashboard']);
     
 
-
-
-// Teacher Controller
+    // Teacher Controller for admin [login]
     Route::get('add-teacher', [TeacherController::class, 'create'])->name('add-teacher');
     Route::post('add-teacher', [TeacherController::class, 'store'])->name('add-teacher');
     Route::get('manage-teacher', [TeacherController::class, 'index'])->name('manage-teacher');
     Route::get('edit-teacher/{id}', [TeacherController::class, 'edit'])->name('edit-teacher');
-    Route::post('edit-teacher/{id}', [TeacherController::class, 'update'])->name('update-teacher');
+    Route::post('edit-teacher/{id}', [TeacherController::class, 'update'])->name('edit-teacher');
     Route::get('show-teacher/{id}', [TeacherController::class, 'show'])->name('show-teacher');
     Route::get('destroy-teacher/{id}', [TeacherController::class, 'destroy'])->name('destroy-teacher');
 
 
-
-
-    // batch controller for class
+    // batch/class controller for admin [login]
     Route::get('create-classes', [BatchController::class, 'create'])->name('class.create');
     Route::post('create-classes', [BatchController::class, 'store'])->name('class.store');
     Route::get('manage-classes', [BatchController::class, 'index'])->name('manage-class');

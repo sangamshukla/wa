@@ -7,6 +7,10 @@
 <link href="/assets/css/vendor/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
 <link href="/assets/css/vendor/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
 
+<!-- Summernote css for editor -->
+<link href="assets/css/vendor/summernote-bs4.css" rel="stylesheet" type="text/css" />
+
+
  <style>
     .border-lable-flt {
       display: block;

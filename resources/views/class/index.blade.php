@@ -26,12 +26,14 @@
                 @include('_form.success')
 
                 {{-- <form> --}}
-                        <table id="myTable" class="table table-bordered">
+                        <table id="myTable" class="table table-bordered table-responsive w-100 d-block d-md-table">
                         <thead style="background-color:#7DC234;color:#fff;">
                             <tr>
                                 <th>S.No</th>
                                 <th>Class Name</th>
+                                @if(auth()->user()->role == 'admin')
                                 <th>Assign Teacher</th>
+                                @endif
                                 <th> Price Per Session(&euro;)</th>
                                 <th>Total Price</th>
                                 <th>Nubmer Of Sessions</th>
@@ -49,7 +51,9 @@
                                 
                                 <td>{{ $batch->id }}</td>
                                 <td>{{ $batch->classSettings->name }}</td>
+                                @if(auth()->user()->role == 'admin')
                                 <td>{{ $batch->assignteacher->name }}</td>
+                                @endif
                                 <td>{{ $batch->batch_price_per_session }}</td>
                                 <td>{{ $batch->batchSession->count() * $batch->batch_price_per_session }}</td>
                                 <td>{{ $batch->batchSession->count() }}</td>
@@ -59,14 +63,9 @@
                                 <td></td>
 
                                 <td>
-                                  <a href="{{ url('edit-classes', $batch->id) }}" class="action-icon"> <i style="color:#A6C439"class="mdi mdi-pencil"></i></a>
+                                  <a href="" class="action-icon"> <i style="color:#A6C439"class="mdi mdi-pencil"></i></a>
                                   <a href="{{ url('destroy-classes', $batch->id) }}" onclick = "return confirm('Are You Sure For Delete ?')" class="action-icon"> <i style="color:red" class="mdi mdi-delete"></i></a>
-                                  <a href="{{ url('show-classes', $batch->id) }}" class="action-icon"> <i style="color:#2b58ace8" width="500" height="200"class="mdi mdi-eye"></i></a>
-
-
-                                  {{-- <a style="color:#2b58ace8" href=""><i class="fa fa-edit"></i>edit</a> --}}
-                                  {{-- <a style="color:#2b58ace8"  href=""><i class="fa fa-eye"></i>delete</a> --}}
-                                  {{-- <a style="color:#2b58ace8" href="{{ url('show-classes', $batch->id)}}"><i class="fa fa-edit"></i>view</a> --}}
+                                  <a target="_blanck" href="{{ url('show-classes', $batch->id) }}" class="action-icon"> <i style="color:#2b58ace8" width="500" height="200"class="mdi mdi-eye"></i></a>
                                 </td> 
                             </tr>
                         @endforeach

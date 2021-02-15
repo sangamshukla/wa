@@ -12,7 +12,7 @@
                   <li class="breadcrumb-item active">Add Teacher</li>
               </ol>
           </div>
-          <h4 class="page-title">Show Classes</h4>
+          <h4 class="page-title">Classes Details</h4>
           {{-- <h3 style="text-align: center" >{{ Str::ucfirst($batch->classSettings->name) . ' -> ' . $batch->assignteacher->name . ' -> ' . $batch->batch_start_date}}</h3> --}}
           <h3 style="text-align: center" >{{ Str::ucfirst($batch->classSettings->name) . ' -> ' . Str::ucfirst($batch->assignteacher->name ). ' -> ' . Str::ucfirst($batch->batch_start_date)}}</h3>
 

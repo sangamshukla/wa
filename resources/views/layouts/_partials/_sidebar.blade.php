@@ -2,13 +2,13 @@
 
     <div class="leftbar-user">
         <a href="javascript: void(0);">
-            <img src="/assets/images/users/avatar-1.jpg" alt="user-image" height="67"  class="rounded-circle shadow-sm">
+            <img src="/assets/images/users/avatar-1.jpg" alt="user-image" height="100"  class="rounded-circle shadow-sm">
             {{-- <img src="{{ asset('/images/users/avatar-1.jpg') }}" alt="user-image" height="67"  class="rounded-circle shadow-sm"> --}}
 
             
             <span class="leftbar-user-name">{{ auth()->user()->name }} </span>
             {{-- <h3> {{ \Carbon\Carbon::now()->format('H:i:s')}}</h3> --}}
-            <h3 style="color:#2b58ace8"> {{ \Carbon\Carbon::now()->format('H:i:s')}}</h3>
+            <h3 style="color:#A6C439"> {{ \Carbon\Carbon::now()->format('H:i:s')}}</h3>
         </a>
     </div>
 
@@ -41,7 +41,8 @@
 
          <li class="side-nav-item">
             <a href="{{ url('admin-login') }}" class="side-nav-link">
-                <i class="mdi mdi-logout-variant"></i>
+                {{-- <i class="mdi mdi-logout-variant"></i> --}}
+                <i class="uil uil-arrow-from-right"></i> 
                 <span> Logout</span>
             </a>
         </li>

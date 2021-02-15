@@ -21,7 +21,7 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $teachers = Teacher::all();
+        $teachers = Teacher::latest()->get();
         return view('teacher.index', compact('teachers'));
     }
 
@@ -46,8 +46,11 @@ class TeacherController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'=>'required',
-            'email'=>'required',
+            'name' => 'required',
+            'email' => 'required',
+            'contact_number' => 'required | max:10',
+            // 'year' => 'required',
+            'user_type' => 'required',
         ]);
 
         $password = Str::random(8);
@@ -105,9 +108,11 @@ class TeacherController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $teacher = Teacher::find($id);
+       
         $user = User::updateOrCreate(
             [
-                'id' => $request->id
+                'id' => $teacher->user_id
             ],
             [
             'name'=>$request->name,
@@ -117,6 +122,11 @@ class TeacherController extends Controller
             'role'=>$request->user_type,
             ]
         );
+        $teacher->update([
+            'user_id' => $user->id,
+            'class_master_id' => $request->class_master_id,
+            'user_type'=>strtolower($request->user_type),
+        ]);
         return redirect(route('manage-teacher'))->with('status', 'Teacher Updated Successfully');
     }
 

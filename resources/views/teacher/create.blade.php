@@ -35,7 +35,6 @@
                 {{-- <form> --}}
                   <div class="row">
                     <div class="col">
-                      {{-- @include('_form.input', ['title' => 'Name', 'name' => 'name', 'placeholder' => 'Name']) --}}
                       <div class="form-group">
                         <label for="simpleinput">Name</label>
                         <input type="text" id="simpleinput" name="name" placeholder="Name" class="form-control">
@@ -43,7 +42,6 @@
                     </div>
 
                     <div class="col">
-                     {{-- @include('_form.input', ['title' => 'Email', 'name' => 'email', 'placeholder' => 'Email']) --}}
                      <div class="form-group">
                       <label for="simpleinput">Email</label>
                       <input type="email" id="email" name="email" placeholder="Email" class="form-control">
@@ -54,7 +52,6 @@
 
                   <div class="row">
                     <div class="col">
-                      {{-- @include('_form.input', ['title' => 'Contact', 'name' => 'contact_number', 'placeholder' => 'Contact Number']) --}}
                       <div class="form-group">
                         <label for="simpleinput">Contact Number</label>
                         <input type="number" id="contact_number" name="contact_number" placeholder="Contact Number" class="form-control">
@@ -92,19 +89,36 @@
                         <label for="inputState">User Type &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                     <div class="form-check-inline">
                       <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input" value="Teacher" name="user_type">Teacher
+                        <input type="checkbox" class="form-check-input" value="teacher" name="user_type">Teacher
                       </label>
                     </div>
                     <div class="form-check-inline">
                       <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input" value="Operation" name="user_type">Opration
+                        <input type="checkbox" class="form-check-input" value="operation" name="user_type">Opration
                       </label>
-                    </div>
-                    
-                  </div>
-                {{-- </form> --}}
+                    </div> 
+                  </div>   
+{{-- 
+                  <div class="row">
+                    <div class="col-md-4">
+                      <label for="inputState">User Type</label>
+                      <div class="funkyradio">
+                            <div class="funkyradio-info">
+                                <input type="checkbox" class="form-check-input" value="Teacher" name="user_type" id="checkbox1" checked/>
+                                <label for="checkbox1">Teacher</label>
+                            </div>
+
+                            <div class="funkyradio-info">
+                                <input type="checkbox" name="checkbox" id="checkbox2" checked/>
+                                <input type="checkbox" class="form-check-input" value="Operation" name="user_type" id="checkbox1" checked/>
+                                <label for="checkbox2">Opration</label>
+                            </div>
+                        </div>
                 
-          </div>
+                  </div>
+                  </div>  --}}
+                {{-- </form> --}}
+              </div>
         
               <div class="card-footer ml-auto mr-auto">
                 @include('_form.button',['title'=>'Save Teacher'])
@@ -114,4 +128,6 @@
         </div>
       </div>
      </div>
+
+     
 @endsection

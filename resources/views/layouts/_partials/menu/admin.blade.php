@@ -16,13 +16,12 @@
 
 <li class="side-nav-item">
     <a href="javascript: void(0);" class="side-nav-link">
-        <i class="uil-briefcase"></i>
+        <i class="uil uil-home"></i> 
         <span> Classes </span>
         <span class="menu-arrow"></span>
     </a>
     <ul class="side-nav-second-level" aria-expanded="false">
         <li>
-            {{-- <a href="{{ url('/batch') }}">Add Batch</a> --}}
             <a href="{{ url('/create-classes') }}">Add Class</a>
         </li>
         <li>
@@ -34,7 +33,7 @@
 
 <li class="side-nav-item">
     <a href="javascript: void(0);" class="side-nav-link">
-        <i class="uil-copy-alt"></i>
+        <i class="mdi mdi-human-capacity-increase"></i>
         <span> Student </span>
         <span class="menu-arrow"></span>
     </a>

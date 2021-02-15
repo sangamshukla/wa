@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\PasswordRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
@@ -17,6 +18,12 @@ class ProfileController extends Controller
     {
         return view('profile.edit');
     }
+    public function imageupload(Request $request)
+    {
+        if ($request->hasFile('image')) {
+            $request->file('image')->store('storeimage');
+        }
+    }
 
     /**
      * Update the profile
@@ -27,7 +34,6 @@ class ProfileController extends Controller
     public function update(ProfileRequest $request)
     {
         auth()->user()->update($request->all());
-
         return back()->withStatus(__('Profile successfully updated.'));
     }
 

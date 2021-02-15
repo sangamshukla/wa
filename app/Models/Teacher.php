@@ -21,10 +21,10 @@ class Teacher extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    // public function userforcontact()
-    // {
-    //     return $this->belongsTo(User::class);
-    // }
+    public function userforcontact()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function classmaster()
     {

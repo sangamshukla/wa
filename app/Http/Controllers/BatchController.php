@@ -53,9 +53,31 @@ class BatchController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        $request->validate([
-            'name' => 'required',
-        ]);
+        if (auth()->user()->role == 'admin') {
+            $request->validate([
+                'class_settings_id' => 'required',
+                'batch_price_per_session' => 'required',
+                'batch_start_date' => 'required',
+                'name' => 'required',
+                'teacher_available_status' => 'required',
+                'duration_per_sessions_id' => 'required',
+                'class_master_id' => 'required',
+                'subject_id' => 'required',
+                'topic_id' => 'required',
+            ]);
+        }
+        if (auth()->user()->role == 'teacher') {
+            $request->validate([
+                'class_settings_id' => 'required',
+                'batch_price_per_session' => 'required',
+                'batch_start_date' => 'required',
+                'duration_per_sessions_id' => 'required',
+                'class_master_id' => 'required',
+                'subject_id' => 'required',
+                'topic_id' => 'required',
+            ]);
+        }
+        
         if ($request->class_settings != '') {
             $classSettings = ClassSettings::updateOrCreate(['name' => $request->class_settings]);
             $class = $classSettings->id;
@@ -63,7 +85,7 @@ class BatchController extends Controller
             $class = $request->class_settings_id;
         }
         $batch = Batch::Create([
-            'name'=>$request->name,
+            'name'=> auth()->user()->role == 'teacher' ? auth()->user()->id : $request->name,
             'batch_price_per_session'=>$request->batch_price_per_session,
             'batch_start_date'=>$request->batch_start_date,
             'subject_id'=>$request->subject_id,
