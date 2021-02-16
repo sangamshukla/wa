@@ -70,12 +70,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
     Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
     Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
-    // Route::post('profile', ['as' => 'profile.image', 'uses' => 'App\Http\Controllers\ProfileController@imageupload']);
-    // Route::get('image-upload', [ProfileController::class, 'imageUpload'])->name('image-upload');
-    Route::post('profile/update', [ProfileController::class, 'imageUpload'])->name('image-upload');
+    Route::post('profile/save', [ProfileController::class, 'store'])->name('image-upload');
 
 
-    // Route::get('/student-dashboard', [HomeController::class ,'studentDasboard']);
+
     Route::get('/admin-dashboard', [HomeController::class ,'adminDashboard']);
     Route::get('/admin-show', [HomeController::class ,'adminshow']);
 

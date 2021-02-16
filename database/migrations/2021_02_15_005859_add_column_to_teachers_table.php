@@ -15,8 +15,8 @@ class AddColumnToTeachersTable extends Migration
     {
         Schema::table('teachers', function (Blueprint $table) {
             $table->string('image_file');
-            $table->string('video');
-            $table->text('about');
+            $table->text('video')->nullable();
+            $table->text('about')->nullable();
         });
     }
 
@@ -30,7 +30,7 @@ class AddColumnToTeachersTable extends Migration
         Schema::table('teachers', function (Blueprint $table) {
             $table->dropColumn('image_file');
             $table->dropColumn('video');
-            $table->dropColumn('about');            
+            $table->dropColumn('about');
         });
     }
 }
