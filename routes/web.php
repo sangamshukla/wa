@@ -35,7 +35,7 @@ Route::get('/operation-login', 'App\Http\Controllers\Auth\LoginController@operat
 Route::get('/student-register', 'App\Http\Controllers\Auth\LoginController@studentRegister')->name('student-register');
 Route::post('/student-register', 'App\Http\Controllers\Auth\RegisterController@register')->name('student-register');
 Route::get('/student-login', 'App\Http\Controllers\Auth\LoginController@studentLogin')->name('student-login');
-Route::post('/student-login', 'App\Http\Controllers\Auth\LoginController@studentLogin')->name('student-login');
+Route::post('/student-login', 'App\Http\Controllers\Auth\LoginController@login')->name('student-login');
 
 
 
@@ -88,7 +88,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/teacher-dashboard', [HomeController::class ,'teacherDashboard']);
     Route::get('/operation-dashboard', [HomeController::class ,'operationDashboard']);
 
-    Route::get('/student-dashboard', [HomeController::class ,'studentDashboard']);
     Route::get('/student-dashboard', [HomeController::class ,'studentDashboard']);
     
 
