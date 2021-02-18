@@ -28,10 +28,14 @@
                         <!-- Logo -->
                         <div class="auth-brand text-center text-lg-left">
                             <a href="/" class="logo-dark">
-                                <span><img src="assets/images/logo-dark.png" alt="" height="18"></span>
+                                <span>
+                                    <img src="{{ asset('logo.png') }}" alt="" height="64">
+                                </span>
                             </a>
                             <a href="/" class="logo-light">
-                                <span><img src="assets/images/logo.png" alt="" height="18"></span>
+                                <span>
+                                    <img src="{{ asset('logo.png') }}" alt="" height="64" class="ml-2">
+                                </span>
                             </a>
                         </div>
 
@@ -63,7 +67,7 @@
                                 <button class="btn btn-primary btn-block" type="submit"><i class="mdi mdi-login"></i> Log In </button>
                             </div>
                             <!-- social-->
-                            <div class="text-center mt-4">
+                            {{-- <div class="text-center mt-4">
                                 <p class="text-muted font-16">Sign in with</p>
                                 <ul class="social-list list-inline mt-3">
                                     <li class="list-inline-item">
@@ -79,7 +83,7 @@
                                         <a href="javascript: void(0);" class="social-list-item border-secondary text-secondary"><i class="mdi mdi-github-circle"></i></a>
                                     </li>
                                 </ul>
-                            </div>
+                            </div> --}}
                         </form>
                         <!-- end form-->
 

@@ -4,7 +4,8 @@
         <!-- LOGO -->
         <a href="index.html" class="topnav-logo">
             <span class="topnav-logo-lg">
-                <img src="{{ asset('logo.png') }}" alt="" height="64" class="ml-2">
+               
+                
             </span>
             <span class="topnav-logo-sm">
                 <img src="{{ asset('logo.png') }}" alt="" height="64" class="ml-2">
