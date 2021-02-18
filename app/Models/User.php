@@ -12,13 +12,12 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     const ADMIN = 'admin';
-
-    const STUDENT = 'student';
     
     const TEACHER = 'teacher';
 
     const OPERATION = 'operation';
-
+    
+    const STUDENT = 'student';
 
     /**
      * The attributes that are mass assignable.

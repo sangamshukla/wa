@@ -115,8 +115,14 @@
                             </select> 
                         </div> 
                       </div>
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="simpleinput">No. of Seats</label>
+                          <input type="text" id="no_of_seats" name="no_of_seats" class="form-control">
+                        </div>
+                      </div> 
                   </div> 
-
+                  
                   {{-- Select Year--}}
 
 

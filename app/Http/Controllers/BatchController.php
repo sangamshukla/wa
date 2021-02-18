@@ -25,9 +25,10 @@ class BatchController extends Controller
     {
         $totals = Batch::count();
         $totalprice = Batch::count();
+        $totnoofseats = Batch::count();
 
         $batches = Batch::latest()->get();
-        return view('class.index', compact('batches', 'totals', 'totalprice'));
+        return view('class.index', compact('batches', 'totals', 'totalprice', 'totnoofseats'));
     }
 
     /**
@@ -72,6 +73,7 @@ class BatchController extends Controller
                 'batch_price_per_session' => 'required',
                 'batch_start_date' => 'required',
                 'duration_per_sessions_id' => 'required',
+                'no_of_seats' => 'required',
                 'class_master_id' => 'required',
                 'subject_id' => 'required',
                 'topic_id' => 'required',
@@ -92,6 +94,7 @@ class BatchController extends Controller
             'class_master_id'=>$request->class_master_id,
             'class_settings_id'=>$class,
             'duration_per_session'=>$request->duration_per_sessions_id,
+            'no_of_seats'=>$request->no_of_seats,
             'teacher_available_status'=>$request->teacher_available_status,
             'created_by' => auth()->user()->id
         ]);

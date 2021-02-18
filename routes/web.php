@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeacherByBatchController;
 use App\Http\Controllers\TeacherController;
+use App\Models\Batch;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,7 +20,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $batches = Batch::latest()->get();
+    return view('welcome', compact('batches'));
 });
 
 Auth::routes();
@@ -29,6 +31,12 @@ Route::get('/login', 'App\Http\Controllers\Auth\LoginController@showLoginForm');
 Route::post('/login', 'App\Http\Controllers\Auth\LoginController@login')->name('login');
 Route::get('/teacher-login', 'App\Http\Controllers\Auth\LoginController@teacherLogin');
 Route::get('/operation-login', 'App\Http\Controllers\Auth\LoginController@operationLogin');
+
+Route::get('/student-register', 'App\Http\Controllers\Auth\LoginController@studentRegister')->name('student-register');
+Route::post('/student-register', 'App\Http\Controllers\Auth\RegisterController@register')->name('student-register');
+Route::get('/student-login', 'App\Http\Controllers\Auth\LoginController@studentLogin')->name('student-login');
+Route::post('/student-login', 'App\Http\Controllers\Auth\LoginController@studentLogin')->name('student-login');
+
 
 
 
@@ -79,6 +87,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/teacher-dashboard', [HomeController::class ,'teacherDashboard']);
     Route::get('/operation-dashboard', [HomeController::class ,'operationDashboard']);
+
+    Route::get('/student-dashboard', [HomeController::class ,'studentDashboard']);
+    Route::get('/student-dashboard', [HomeController::class ,'studentDashboard']);
     
 
     // Teacher Controller for admin [login]

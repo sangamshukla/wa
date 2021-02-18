@@ -9,6 +9,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Batch extends Model
 {
     use HasFactory;
+    public $casts = [
+        'batch_start_date' => 'datetime'
+    ];
     protected $guarded = [];
 
 

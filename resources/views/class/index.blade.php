@@ -40,6 +40,7 @@
                                 <th>Class Start Date & Time</th>
                                 <th>Year</th>
                                 <th>Subject</th>
+                                <th>No Of Seats</th>
                                 <th>status</th>
                                 <th style="width:73.6979px;">Action</th>
                             </tr>
@@ -60,6 +61,7 @@
                                 <td>{{ $batch->batch_start_date }}</td>
                                 <td>{{ $batch->classmaster->name }}</td>
                                 <td>{{ $batch->subject->name }}</td>
+                                <td>{{ $batch->no_of_seats }}</td>
                                 <td></td>
 
                                 <td>

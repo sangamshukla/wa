@@ -50,4 +50,14 @@ class LoginController extends Controller
     {
         return view('auth.operation_login');
     }
+
+    public function studentRegister()
+    {
+        return view('auth.student_register');
+    }
+    
+    public function studentLogin()
+    {
+        return view('auth.student_login');
+    }
 }
