@@ -70,6 +70,7 @@ Route::group(['middleware' => 'auth'], function () {
         return view('pages.upgrade');
     })->name('upgrade');
 });
+Route::get('student-details/{id}', [BatchController::class, 'studentDetails'])->name('student-details');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', [HomeController::class ,'index']);
@@ -91,7 +92,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/student-dashboard', [HomeController::class ,'studentDashboard']);
     
 
-    // Teacher Controller for admin [login]
+    // Teacher Controller
     Route::get('add-teacher', [TeacherController::class, 'create'])->name('add-teacher');
     Route::post('add-teacher', [TeacherController::class, 'store'])->name('add-teacher');
     Route::get('manage-teacher', [TeacherController::class, 'index'])->name('manage-teacher');
@@ -101,7 +102,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('destroy-teacher/{id}', [TeacherController::class, 'destroy'])->name('destroy-teacher');
 
 
-    // batch/class controller for admin [login]
+
+    // batch/class controller
     Route::get('create-classes', [BatchController::class, 'create'])->name('class.create');
     Route::post('create-classes', [BatchController::class, 'store'])->name('class.store');
     Route::get('manage-classes', [BatchController::class, 'index'])->name('manage-class');
@@ -109,7 +111,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('edit-classes/{id}', [BatchController::class, 'update'])->name('update-class');
     Route::get('show-classes/{id}', [BatchController::class, 'show'])->name('show-class');
     Route::get('destroy-classes/{id}', [BatchController::class, 'destroy'])->name('destroy-class');
-
+    Route::get('student', [BatchController::class, 'student'])->name('student');
+    Route::get('available-courses', [BatchController::class, 'availableCourses'])->name('available-courses');
+    Route::post('book-now', [BatchController::class, 'bookNow'])->name('book.now');
 
     Route::get('add-product', [TeacherController::class, 'store'])->name('add-product');
     Route::post('add-product', [TeacherController::class, 'store'])->name('add-product');

@@ -2,20 +2,14 @@
 
 @section('content')
 <!-- start page title -->
-<div class="row">
-  <div class="col-12">
-      <div class="page-title-box">
-          <div class="page-title-right">
-              <ol class="breadcrumb m-0">
-                  <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
-                  <li class="breadcrumb-item"><a href="javascript: void(0);">Teacher</a></li>
-                  <li class="breadcrumb-item active">Add Teacher</li>
-              </ol>
-          </div>
-          <h4 class="page-title" style="color:#A6C439">Manage Classes</h4>
-      </div>
-  </div>
-</div>     
+@include('layouts._partials.breadcrumb', [
+    'menuone'=> 'Home', 
+    'menutwo' =>'Add Classes',
+    'menuthree' => 'Manage Classes',
+    'menutwourl' => '/create-classes',
+    'menuthreeurl' => '#',
+    'title' => 'Manage Classes'
+])
 <!-- end page title --> 
 
      <div class="content">
@@ -34,23 +28,24 @@
                                 @if(auth()->user()->role == 'admin')
                                 <th>Assign Teacher</th>
                                 @endif
-                                <th> Price Per Session(&euro;)</th>
+                                <th> Price Per Session(&pound;)</th>
                                 <th>Total Price</th>
                                 <th>Nubmer Of Sessions</th>
                                 <th>Class Start Date & Time</th>
                                 <th>Year</th>
                                 <th>Subject</th>
                                 <th>No Of Seats</th>
-                                <th>status</th>
+                                {{-- <th>status</th> --}}
                                 <th style="width:73.6979px;">Action</th>
                             </tr>
                         </thead>
                     
                         <tbody>
+                            @php $i=1; @endphp
                         @foreach($batches as $batch)
                             <tr>
                                 
-                                <td>{{ $batch->id }}</td>
+                                <td>{{ $i }}</td>
                                 <td>{{ $batch->classSettings->name }}</td>
                                 @if(auth()->user()->role == 'admin')
                                 <td>{{ $batch->assignteacher->name }}</td>
@@ -62,7 +57,7 @@
                                 <td>{{ $batch->classmaster->name }}</td>
                                 <td>{{ $batch->subject->name }}</td>
                                 <td>{{ $batch->no_of_seats }}</td>
-                                <td></td>
+                                {{-- <td></td> --}}
 
                                 <td>
                                   <a href="" class="action-icon"> <i style="color:#A6C439"class="mdi mdi-pencil"></i></a>
@@ -70,6 +65,7 @@
                                   <a target="_blanck" href="{{ url('show-classes', $batch->id) }}" class="action-icon"> <i style="color:#2b58ace8" width="500" height="200"class="mdi mdi-eye"></i></a>
                                 </td> 
                             </tr>
+                            @php $i++; @endphp
                         @endforeach
                         </tbody>
                     </table>
@@ -85,10 +81,12 @@
 
 @section('scripts')
 <script>
-    $(document).ready( function () {
-        $('#myTable').DataTable();
-        // $('#myTable').DataTable( {"scrollX": true} );
-    } );
+    $(document).ready(function(){
+        $('#myTable').DataTable({
+            paging: true,
+            ordering:  true
+        });    
+} );
 </script>
 
 @endsection

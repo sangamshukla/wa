@@ -7,15 +7,12 @@
       <div class="page-title-box">
           <div class="page-title-right">
               <ol class="breadcrumb m-0">
-                  <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
-                  <li class="breadcrumb-item"><a href="javascript: void(0);">Teacher</a></li>
-                  <li class="breadcrumb-item active">Add Teacher</li>
+                  <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
+                  <li class="breadcrumb-item"><a href="{{ url('#') }}">Show Classes</a></li>
               </ol>
           </div>
-          <h4 class="page-title">Classes Details</h4>
-          {{-- <h3 style="text-align: center" >{{ Str::ucfirst($batch->classSettings->name) . ' -> ' . $batch->assignteacher->name . ' -> ' . $batch->batch_start_date}}</h3> --}}
-          <h3 style="text-align: center" >{{ Str::ucfirst($batch->classSettings->name) . ' -> ' . Str::ucfirst($batch->assignteacher->name ). ' -> ' . Str::ucfirst($batch->batch_start_date)}}</h3>
-
+          <h4 class="page-title">Show Classes </h4>
+          <h3 style="text-align: center" >{{ Str::ucfirst($batch->classSettings->name) . ' - ' . Str::ucfirst($batch->assignteacher->name ). ' - ' . Str::substr($batch->batch_start_date,0,-3) }}</h3>    
       </div>
   </div>
 </div>     
@@ -46,13 +43,16 @@
                                 <td>@foreach($session->topics as $t)
                                     {{ $t->topic->name }}                                       
                                     @endforeach</td> 
-                                <td>{{ $session->start_date_time }}</td>  
+                                <td>{{ $session->start_date_time }}</td> 
+                                {{-- <td>{{ $session->first_date_time }}</td>   --}}
                                 <td>{{ $session->comment }}</td>  
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
-                    
+                    <a class="btn btn-success" href="{{ url('manage-classes') }}" role="button">Back</a>
+                    {{-- <a href="{{ url('manage-classes') }}" class="btn btn-primary btn-lg disabled" role="button" aria-disabled="true">Back</a> --}}
+
                 {{-- </form> --}}
                 
           </div>
@@ -60,6 +60,7 @@
         </div>
       </div>
      </div>
+     
 @endsection
 
 @section('scripts')

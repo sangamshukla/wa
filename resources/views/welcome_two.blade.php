@@ -35,8 +35,18 @@
 					<li><a href="study-material.html">Study Material</a></li>
 				</ul>
 				<ul class="nav-buttons">
-					{{-- <li><a class="login" href="#login-link">Login</a></li> --}}
-					<li><a class="reg-button" href="{{ url('/login')}}">Login</a></li>
+					@auth
+						<li><a class="login" href="{{ url('/student-dashboard')}} ">Welcome {{ auth()->user()->name }}</a></li>
+					@endauth																
+					
+					@guest
+						<li><a class="login" href="{{ url('/student-login')}}">Login</a></li>
+					@endguest
+
+					@guest
+					<li><a class="reg-button" href="{{ url('/student-register') }}">Register</a></li>
+					@endguest
+
 				</ul>
 			</nav>
 		</div>
@@ -53,6 +63,7 @@
 						fuga
 						corrupti!</div>
 				</div>
+
 				<form class="search-here" action>
 					<div class="search-icon-box">
 						<!-- <img class="search-icon" src="assets/search.svg" alt="search-icon"> -->
@@ -280,12 +291,15 @@
 		<div class="how-works-text">How It Works!</div>
 		<div class="how-works-extra" id="hw-works-extra-1">
 			<div class="hw-img-div" id="hw-img-div-1">
-				<img src="{{ asset('frontend/assets/ayd1.svg') }}" alt="" class="hw-img">
+				{{-- <img src="{{ asset('frontend/assets/ayd1.jpeg') }}" style="width: 588px;" alt="" class="hw-img"> --}}
+				<img src="{{ asset('frontend/assets/ayd1.jpeg') }}" style="width: 588px;" alt="" class="hw-img">
+
 			</div>
 			<div class="hw-text" id="hw-text-1">
 				<div class="hw-step">Step -1</div>
 				<div class="hw-title">Ask your Doubt</div>
-				<div class="hw-lorem">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi repudiandae ullam,
+				<div class="hw-lorem">
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi repudiandae ullam,
 					alias nam
 					reprehenderit deleniti earum cum. Quia, officiis. Excepturi necessitatibus fugiat asperiores quas
 					illo soluta obcaecati exercitationem dignissimos temporibus.
@@ -296,250 +310,85 @@
 			<div class="hw-text" id="hw-text-2">
 				<div class="hw-step">Step -2</div>
 				<div class="hw-title">Ask your Doubt</div>
-				<div class="hw-lorem">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi repudiandae ullam,
+				<div class="hw-lorem">
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi repudiandae ullam,
 					alias nam
 					reprehenderit deleniti earum cum. Quia, officiis. Excepturi necessitatibus fugiat asperiores quas
 					illo soluta obcaecati exercitationem dignissimos temporibus.
 				</div>
 			</div>
 			<div class="hw-img-div" id="hw-img-div-2">
-				<img src="{{ asset('frontend/assets/ayd2.svg') }}" alt="" class="hw-img">
+				<img src="{{ asset('frontend/assets/ayd2.jpeg') }}" style="width: 588px;" alt="" class="hw-img">
 			</div>
 		</div>
 	</div>
 	<div class="available-courses">
-		<div class="available-courses-text">Available Courses</div>
+		<a href={{ url('/available-courses') }}><div class="available-courses-text">Available Courses</div>
+		{{-- <div class="available-courses-text"><a href={{ url('/available-courses') }}></div></a> --}}
+
 		<ul class="nav-course">
 			<li><a href="#classnein">Class 9</a></li>
 			<li><a href="#classten">Class 10</a></li>
 			<li><a href="#elevenplus">11+</a></li>
 		</ul>
 		<div class="card-stack">
-			<div class="card" id="card1">
-				<div class="cover">
-					<div class="cover-over"></div>
+			
+			@foreach($batches as $batch)
+				<div class="card" id="card1">
+					<div class="cover">
+						<div class="cover-over"></div>
+						@if($batch->subject->name == 'English')
+						{{-- <img src="{{ asset('frontend/assets/card-cover.png') }}" alt=""> --}}
 
-					<img src="{{ asset('frontend/assets/card-cover.png') }}" alt="">
-				</div>
-				<div class="info">
-					<div class="inf-header">Johanna Paul</div>
-					<div class="inf-sub">GCSC final Math Booster</div>
-					<div class="inf-more">
-						<div class="inf-seats">
-							<div class="inf-more-tex">No. of Seats</div>
-							<div class="seat-no">36</div>
-						</div>
-						<div class="inf-divider"></div>
-						<div class="info-date">
-							<div class="inf-more-tex">Start Date</div>
-							<div class="date-no">10 Feb, 2021</div>
-						</div>
-					</div>
-					<div class="inf-det-pri">
-						<div>
-							<a class="inf-view-det" href="#details">View Details</a>
-						</div>
-						<div class="inf-price">&pound; 150&ast;</div>
-					</div>
+							<img src="{{ asset('frontend/assets/English/English.jpg') }}" alt="">
+						@endif
+						@if($batch->subject->name == 'Maths')
+							<img src="{{ asset('frontend/assets/Maths/Maths.jpg') }}" alt="">
+						@endif
+						@if($batch->subject->name == 'Physics')
+							<img src="{{ asset('frontend/assets/Physics/Physics.jpg') }}" alt="">
+						@endif
+						@if($batch->subject->name == 'Chemistry')
+							<img src="{{ asset('frontend/assets/card-cover.png') }}" alt="">
+						@endif
+						{{-- <img src="{{ asset('frontend/assets/card-cover.png') }}" alt=""> --}}
+						
 
-				</div>
-			</div>
-			<div class="card" id="card2">
-				<div class="cover">
-					<div class="cover-over"></div>
-					<img src="{{ asset('frontend/assets/card-cover.png') }}" alt="">
-				</div>
-				<div class="info">
-					<div class="inf-header">Johanna Paul</div>
-					<div class="inf-sub">GCSC final Math Booster</div>
-					<div class="inf-more">
-						<div class="inf-seats">
-							<div class="inf-more-tex">No. of Seats</div>
-							<div class="seat-no">36</div>
-						</div>
-						<div class="inf-divider"></div>
-						<div class="info-date">
-							<div class="inf-more-tex">Start Date</div>
-							<div class="date-no">10 Feb, 2021</div>
-						</div>
-					</div>
-					<div class="inf-det-pri">
-						<div>
-							<a class="inf-view-det" href="#details">View Details</a>
-						</div>
-						<div class="inf-price">&pound; 150&ast;</div>
-					</div>
 
-				</div>
-			</div>
-			<div class="card" id="card3">
-				<div class="cover">
-					<div class="cover-over"></div>
-					<img src="{{ asset('frontend/assets/card-cover.png') }}" alt="">
-				</div>
-				<div class="info">
-					<div class="inf-header">Johanna Paul</div>
-					<div class="inf-sub">GCSC final Math Booster</div>
-					<div class="inf-more">
-						<div class="inf-seats">
-							<div class="inf-more-tex">No. of Seats</div>
-							<div class="seat-no">36</div>
-						</div>
-						<div class="inf-divider"></div>
-						<div class="info-date">
-							<div class="inf-more-tex">Start Date</div>
-							<div class="date-no">10 Feb, 2021</div>
-						</div>
 					</div>
-					<div class="inf-det-pri">
-						<div>
-							<a class="inf-view-det" href="#details">View Details</a>
+					
+					<div class="info">
+						<div class="inf-header">{{ $batch->classSettings->name }}</div>
+						<div class="inf-sub">{{ $batch->subject->name }}</div>
+						
+						
+						<div class="inf-more">
+							<div class="inf-seats">
+								<div class="inf-more-tex">No. of Seats</div>
+								<div class="seat-no">
+									{{ $batch->no_of_seats }}
+								</div>
+							</div>
+							<div class="inf-divider"></div>
+							<div class="info-date">
+								<div class="inf-more-tex">Start Date</div>
+								<div class="date-no">
+									{{ $batch->batch_start_date->format('d M, Y') }}
+								</div>
+							</div>
 						</div>
-						<div class="inf-price">&pound; 150&ast;</div>
-					</div>
+						
+						<div class="inf-det-pri">
+							<div>
+								<a class="inf-view-det" href="{{ url('/student-details', $batch->id)}}">View Details</a>
+								{{-- <a class="inf-view-det" href="#">View Details</a> --}}
 
-				</div>
-			</div>
-			<div class="card" id="card4">
-				<div class="cover">
-					<div class="cover-over"></div>
-					<img src="{{ asset('frontend/assets/card-cover.png') }}" alt="">
-				</div>
-				<div class="info">
-					<div class="inf-header">Johanna Paul</div>
-					<div class="inf-sub">GCSC final Math Booster</div>
-					<div class="inf-more">
-						<div class="inf-seats">
-							<div class="inf-more-tex">No. of Seats</div>
-							<div class="seat-no">36</div>
-						</div>
-						<div class="inf-divider"></div>
-						<div class="info-date">
-							<div class="inf-more-tex">Start Date</div>
-							<div class="date-no">10 Feb, 2021</div>
+							</div>
+							<div class="inf-price">&pound; {{ $batch->batch_price_per_session }} &ast;</div>
 						</div>
 					</div>
-					<div class="inf-det-pri">
-						<div>
-							<a class="inf-view-det" href="#details">View Details</a>
-						</div>
-						<div class="inf-price">&pound; 150&ast;</div>
-					</div>
-
 				</div>
-			</div>
-			<div class="card" id="card5">
-				<div class="cover">
-					<div class="cover-over"></div>
-					<img src="{{ asset('frontend/assets/card-cover.png') }}" alt="">
-				</div>
-				<div class="info">
-					<div class="inf-header">Johanna Paul</div>
-					<div class="inf-sub">GCSC final Math Booster</div>
-					<div class="inf-more">
-						<div class="inf-seats">
-							<div class="inf-more-tex">No. of Seats</div>
-							<div class="seat-no">36</div>
-						</div>
-						<div class="inf-divider"></div>
-						<div class="info-date">
-							<div class="inf-more-tex">Start Date</div>
-							<div class="date-no">10 Feb, 2021</div>
-						</div>
-					</div>
-					<div class="inf-det-pri">
-						<div>
-							<a class="inf-view-det" href="#details">View Details</a>
-						</div>
-						<div class="inf-price">&pound; 150&ast;</div>
-					</div>
-
-				</div>
-			</div>
-			<div class="card" id="card6">
-				<div class="cover">
-					<div class="cover-over"></div>
-					<img src="{{ asset('frontend/assets/card-cover.png') }}" alt="">
-				</div>
-				<div class="info">
-					<div class="inf-header">Johanna Paul</div>
-					<div class="inf-sub">GCSC final Math Booster</div>
-					<div class="inf-more">
-						<div class="inf-seats">
-							<div class="inf-more-tex">No. of Seats</div>
-							<div class="seat-no">36</div>
-						</div>
-						<div class="inf-divider"></div>
-						<div class="info-date">
-							<div class="inf-more-tex">Start Date</div>
-							<div class="date-no">10 Feb, 2021</div>
-						</div>
-					</div>
-					<div class="inf-det-pri">
-						<div>
-							<a class="inf-view-det" href="#details">View Details</a>
-						</div>
-						<div class="inf-price">&pound; 150&ast;</div>
-					</div>
-
-				</div>
-			</div>
-			<div class="card" id="card7">
-				<div class="cover">
-					<div class="cover-over"></div>
-					<img src="{{ asset('frontend/assets/card-cover.png') }}" alt="">
-				</div>
-				<div class="info">
-					<div class="inf-header">Johanna Paul</div>
-					<div class="inf-sub">GCSC final Math Booster</div>
-					<div class="inf-more">
-						<div class="inf-seats">
-							<div class="inf-more-tex">No. of Seats</div>
-							<div class="seat-no">36</div>
-						</div>
-						<div class="inf-divider"></div>
-						<div class="info-date">
-							<div class="inf-more-tex">Start Date</div>
-							<div class="date-no">10 Feb, 2021</div>
-						</div>
-					</div>
-					<div class="inf-det-pri">
-						<div>
-							<a class="inf-view-det" href="#details">View Details</a>
-						</div>
-						<div class="inf-price">&pound; 150&ast;</div>
-					</div>
-
-				</div>
-			</div>
-			<div class="card" id="card8">
-				<div class="cover">
-					<div class="cover-over"></div>
-					<img src="{{ asset('frontend/assets/card-cover.png') }}" alt="">
-				</div>
-				<div class="info">
-					<div class="inf-header">Johanna Paul</div>
-					<div class="inf-sub">GCSC final Math Booster</div>
-					<div class="inf-more">
-						<div class="inf-seats">
-							<div class="inf-more-tex">No. of Seats</div>
-							<div class="seat-no">36</div>
-						</div>
-						<div class="inf-divider"></div>
-						<div class="info-date">
-							<div class="inf-more-tex">Start Date</div>
-							<div class="date-no">10 Feb, 2021</div>
-						</div>
-					</div>
-					<div class="inf-det-pri">
-						<div>
-							<a class="inf-view-det" href="#details">View Details</a>
-						</div>
-						<div class="inf-price">&pound; 150&ast;</div>
-					</div>
-
-				</div>
-			</div>
+			@endforeach
 		</div>
 	</div>
 	<div class="why11">

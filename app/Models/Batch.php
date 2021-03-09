@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use phpDocumentor\Reflection\Types\ClassString;
 
 class Batch extends Model
 {
@@ -43,4 +44,5 @@ class Batch extends Model
     {
         return $this->hasMany(BatchSession::class, 'batch_id');
     }
+   
 }

@@ -14,7 +14,7 @@ class AddColumnToTeachersTable extends Migration
     public function up()
     {
         Schema::table('teachers', function (Blueprint $table) {
-            $table->string('image_file');
+            $table->string('image_file')->nullable();
             $table->text('video')->nullable();
             $table->text('about')->nullable();
         });

@@ -3,12 +3,11 @@
 
         <!-- LOGO -->
         <a href="index.html" class="topnav-logo">
-            <span class="topnav-logo-lg">
-               
+            <span class="topnav-logo-lg">  
                 
             </span>
             <span class="topnav-logo-sm">
-                <img src="{{ asset('logo.png') }}" alt="" height="64" class="ml-2">
+                <a href="{{ url('/')}}"><img src="{{ asset('logo.png') }}" alt="" height="64" class="ml-2"></a>
             </span>
         </a>
 
@@ -31,7 +30,7 @@
                             </span>Notification
                         </h5>
                     </div>
-
+{{-- 
                     <div style="max-height: 230px;" data-simplebar>
                         <!-- item-->
                         <a href="javascript:void(0);" class="dropdown-item notify-item">
@@ -93,22 +92,21 @@
                                 <small class="text-muted">13 days ago</small>
                             </p>
                         </a>
-                    </div>
+                    </div> --}}
 
                     <!-- All-->
-                    <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
+                    {{-- <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
                         View All
-                    </a>
+                    </a> --}}
 
                 </div>
             </li>
-
-
+{{--             
             <li class="notification-list">
                 <a class="nav-link right-bar-toggle" href="javascript: void(0);">
                     <i class="dripicons-gear noti-icon"></i>
                 </a>
-            </li> 
+            </li>  --}}
 
             <li class="dropdown notification-list">
                 <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown" id="topbar-userdrop" href="#" role="button" aria-haspopup="true"

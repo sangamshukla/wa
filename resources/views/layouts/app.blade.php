@@ -60,7 +60,7 @@
 
 
     <!-- Right Sidebar -->
-    <div class="right-bar">
+    {{-- <div class="right-bar">
 
         <div class="rightbar-title">
             <a href="javascript:void(0);" class="right-bar-toggle float-right">
@@ -112,11 +112,10 @@
             </div> <!-- end padding-->
 
         </div>
-    </div>
+    </div> --}}
 
-    <div class="rightbar-overlay"></div>
+    {{-- <div class="rightbar-overlay"></div> --}}
     <!-- /Right-bar -->
-
 
     <!-- bundle -->
    @include('layouts._partials._js')

@@ -21,6 +21,8 @@ class TeacherController extends Controller
      */
     public function index()
     {
+        // $teachers = Teacher::orderBy('id', 'ASC')->get();
+        // $teachers = Teacher::letest()->get();
         $teachers = Teacher::latest()->get();
         return view('teacher.index', compact('teachers'));
     }
@@ -142,6 +144,10 @@ class TeacherController extends Controller
         $teacher->delete();
         return redirect(route('manage-teacher'))->with('status', 'Teacher Deleted Successfully');
     }
+    // public function student(Request $request)
+    // {
+    //     return view('')
+    // }
 
     public function login()
     {

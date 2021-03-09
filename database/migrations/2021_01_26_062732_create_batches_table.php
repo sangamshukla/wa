@@ -26,6 +26,8 @@ class CreateBatchesTable extends Migration
             $table->dateTime('batch_start_date');           
             $table->foreignIdFor(ClassMaster::class);
             $table->foreignIdFor(Subject::class);
+            $table->string('status')->nullable();
+            $table->string('location')->nullable();
             $table->timestamps();
         });
     }

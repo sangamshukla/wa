@@ -10,5 +10,6 @@
 <script src="assets/js/vendor/summernote-bs4.min.js"></script>
 <!-- Summernote demo -->
 <script src="assets/js/pages/demo.summernote.js"></script>
+{{-- date time picker --}}
+<script src="/datepicker/jquery.datetimepicker.full.min.js"></script>
 
-    
