@@ -1,5 +1,5 @@
 <section class="first_block">
-    <div class="container-fluid"">
+    <div class="container-fluid">
         <div class=" row">
     <div class="col">
         <section class="header_banner_section mt-5 mb-5">
@@ -11,7 +11,6 @@
                     <form class="search-here" action="">
                         <div class="search-icon-box">
                             <!-- <img class="search-icon" src="assets/search.svg" alt="search-icon"> -->
-
                         </div>
                         <input type="text" autocomplete="off" id="search" name="search" placeholder="Search here"
                             required="">
@@ -89,42 +88,7 @@
                             </defs>
                         </svg>
                 
-                        <!-- <svg class="person-study" width="836" height="673" fill="none" viewbox="0 0 836 673"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <circle class="bluelarge" cx="68" cy="108" r="18" fill="#78E5E1" />
-                            <circle class="lightbluegrad" opacity=".7" cx="740.5" cy="545.5" r="13.5"
-                                fill="url(#paint0_linear)" />
-                            <circle class="pinkupper" cx="8" cy="8" r="8" fill="url(#paint1_linear)" />
-                            <circle class="pinklower" cx="802" cy="559" r="8" fill="url(#paint2_linear)" />
-                            <circle class="yellowbig" cx="142.5" cy="18.5" r="14.5" fill="#FBD95E" />
-                            <circle class="greenweird" cx="789" cy="485" r="13" fill="#A6C437" />
-                            <circle class="skyblueright" opacity=".6" cx="756" cy="60" r="10" fill="#5ED5FB" />
-                            <circle class="yellowsmall" opacity=".6" cx="784" cy="27" r="5" fill="#FBD95E" />
-                            <circle class="darkbluetiny" cx="74" cy="37" r="6" fill="#1D7DEA" />
-                
-                
-                
-                
-                            <defs>
-                                <lineargradient id="paint0_linear" x1="713.5" y1="545.5" x2="740.5" y2="572.5"
-                                    gradientunits="userSpaceOnUse">
-                                    <stop stop-color="#43E695" />
-                                    <stop offset="1" stop-color="#3BB2B8" />
-                                </lineargradient>
-                                <lineargradient id="paint1_linear" x1="24" y1="8" x2="8" y2="-8" gradientunits="userSpaceOnUse">
-                                    <stop stop-color="#FF7676" />
-                                    <stop offset="1" stop-color="#F54EA2" />
-                                </lineargradient>
-                                <lineargradient id="paint2_linear" x1="818" y1="559" x2="802" y2="543"
-                                    gradientunits="userSpaceOnUse">
-                                    <stop stop-color="#FF7676" />
-                                    <stop offset="1" stop-color="#F54EA2" />
-                                </lineargradient>
-                            </defs>
-                        </svg> -->
-                    </div>
-
-          
+                    </div>          
                 
             </div>
         </section>
@@ -172,7 +136,7 @@
     </div>
 </section>
 <!-- card-tab section  -->
-<section class="card_section">
+    <section class="card_section">
     <div class="container-fulid">
         <div class="cource_heading">Available Courses</div>
         <div class="">
@@ -224,16 +188,20 @@
                                 </div>
                                 <div class="class_section">
                                     <div class="class_type">class type</div>
-                                    <div><span class="online">online</span><span class="dot-prime"></span></div>
-                                    
+                                    <div>
+                                        <span class="online">
+                                        {{ $batch->status == 1 ? 'Online' : 'Offline' }}
+                                        </span>
+                                        {{-- for color  --}}
+                                        <span class="dot{{ $batch->status == 1 ? '' : '-prime' }}"></span></div>   
+                                    </div>
                                 </div>
-                            </div>
                             <div class="view_detail_block pb-3">
                                 <a href="{{ url('/student-details', $batch->id)}}" class="view_detail">
                                     View details
                                 </a>
                                 <a href="#" class="price_card">
-                                    &pound; {{ $batch->batch_price_per_session }} *
+                                    &pound; {{ $batch->batch_price_per_session }} 
                                 </a>
                             </div>
                         </div>
@@ -241,6 +209,7 @@
                     @endforeach
                   
                 </div>
+                
 
             </div>
         </div>

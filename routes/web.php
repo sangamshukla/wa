@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $batches = Batch::latest()->get();
+    $batches = Batch::latest()->take(8)->get();
     return view('welcome', compact('batches'));
 });
 
@@ -36,40 +36,6 @@ Route::get('/student-register', 'App\Http\Controllers\Auth\LoginController@stude
 Route::post('/student-register', 'App\Http\Controllers\Auth\RegisterController@register')->name('student-register');
 Route::get('/student-login', 'App\Http\Controllers\Auth\LoginController@studentLogin')->name('student-login');
 Route::post('/student-login', 'App\Http\Controllers\Auth\LoginController@login')->name('student-login');
-
-
-
-
-
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('table-list', function () {
-        return view('pages.table_list');
-    })->name('table');
-
-    Route::get('typography', function () {
-        return view('pages.typography');
-    })->name('typography');
-
-    Route::get('icons', function () {
-        return view('pages.icons');
-    })->name('icons');
-
-    Route::get('map', function () {
-        return view('pages.map');
-    })->name('map');
-
-    Route::get('notifications', function () {
-        return view('pages.notifications');
-    })->name('notifications');
-
-    Route::get('rtl-support', function () {
-        return view('pages.language');
-    })->name('language');
-
-    Route::get('upgrade', function () {
-        return view('pages.upgrade');
-    })->name('upgrade');
-});
 Route::get('student-details/{id}', [BatchController::class, 'studentDetails'])->name('student-details');
 
 Route::group(['middleware' => 'auth'], function () {
@@ -113,8 +79,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('destroy-classes/{id}', [BatchController::class, 'destroy'])->name('destroy-class');
     Route::get('student', [BatchController::class, 'student'])->name('student');
     Route::get('available-courses', [BatchController::class, 'availableCourses'])->name('available-courses');
-    Route::post('book-now', [BatchController::class, 'bookNow'])->name('book.now');
+    
+
 
     Route::get('add-product', [TeacherController::class, 'store'])->name('add-product');
     Route::post('add-product', [TeacherController::class, 'store'])->name('add-product');
 });
+    Route::get('buy-now', [BatchController::class, 'buyNow'])->name('buy.now');
+    Route::post('buy-now', [BatchController::class, 'buyNow'])->name('buy.now');

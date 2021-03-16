@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Batch;
+// use GuzzleHttp\Psr7\Request;
+use Illuminate\Http\Request;
+
 class HomeController extends Controller
 {
     /**
@@ -29,7 +33,7 @@ class HomeController extends Controller
             return redirect('/teacher-dashboard');
         } elseif (auth()->user()->role === 'operation') {
             return redirect('/operation-dashboard');
-        } else {
+        } elseif (auth()->user()->role === 'student') {
             return redirect('/student-dashboard');
         }
     }
@@ -50,8 +54,10 @@ class HomeController extends Controller
         return view('dashboard.operation');
     }
 
-    public function studentDashboard()
+    public function studentDashboard(Request $request)
     {
-        return view('dashboard.student');
+        // $students = Batch::latest()->take(8)->get();
+        $students = Batch::latest()->take(8)->get();
+        return view('dashboard.student', compact('students'));
     }
 }

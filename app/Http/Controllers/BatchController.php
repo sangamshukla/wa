@@ -199,7 +199,10 @@ class BatchController extends Controller
     public function studentDetails(Request $request, $id)
     {
         $batch = Batch::find($id);
-        return view('class.student_details', compact('batch'));
+        // get all batches of the same class
+        $allBatches = Batch::where('class_master_id', $batch->class_master_id)
+        ->where('id', '!=', $id)->get();
+        return view('class.student_details', compact('batch', 'allBatches'));
     }
     public function availableCourses(Request $request)
     {
@@ -215,5 +218,12 @@ class BatchController extends Controller
             'order_id' => mt_rand(111111, 999999)
         ]);
         return redirect('/student')->with('success', 'Class Booked Successfully');
+    }
+
+    public function buyNow(Request $request)
+    {
+        $relatedBatch = Batch::find($request->batch_id);
+       
+        return view('class.buy_now', compact('relatedBatch'));
     }
 }

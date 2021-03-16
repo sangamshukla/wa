@@ -47,17 +47,12 @@
                                 <td>{{ $batch->batch->duration_per_session }}</td>                        
                                 <td>
                                   <a href="#" data-toggle="modal" data-target="#batch{{ $batch->id }}" >View Session Details</a>
-
                                 </td> 
                             </tr>
-
-
                         @endforeach
                         </tbody>
-                    </table>
-                    
-                {{-- </form> --}}
-                
+                    </table>                    
+                {{-- </form> --}}                
           </div>
             </div>
         </div>

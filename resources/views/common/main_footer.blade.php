@@ -44,7 +44,4 @@
             </div>
         </div>
     </footer>
-      <!-- Swiper JS -->
-      <script src="{{ asset('wa/coustom.js') }}"></script>
-</body>
-</html>
+    

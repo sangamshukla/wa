@@ -20,8 +20,8 @@
                 <div class="row mb-4">
                   <div class="col-md-1"><p style="margin-top: 48%;">Class Type</p></div>
                   {{-- <div class="col-md-1"><p style="margin-top: 1%;">Class Type</p></div> --}}
-                  <div class="col-md-3">@include('_form.radio', ['class' => 'info', 'id' => 'name', 'name' => 'status', 'title' => 'Online', 'style' => 'margin-top:11%'])</div>
-                  <div class="col-md-3">@include('_form.radio', ['class' => 'info', 'id' => 'name1', 'name' => 'status', 'title' => 'Offline', 'style' => 'margin-top:11%'])</div>                
+                  <div class="col-md-3">@include('_form.radio', ['value'=>1,'class' => 'info', 'id' => 'name', 'name' => 'status', 'title' => 'Online', 'style' => 'margin-top:11%'])</div>
+                  <div class="col-md-3">@include('_form.radio', ['value'=>0,'class' => 'info', 'id' => 'name1', 'name' => 'status', 'title' => 'Offline', 'style' => 'margin-top:11%'])</div>                
 
                   {{-- Location --}}
                   <div class="col-md-4">
