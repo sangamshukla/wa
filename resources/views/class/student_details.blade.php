@@ -55,7 +55,8 @@
                         </div>
                         
                        <div class="d-flex flex-sm-row flex-column mt-3"><p class="doler_text">£ {{ $batch->batch_price_per_session }}</p><div class="buy_cta m-3">
-                            <button class="btn btn_block text-capitalize add_cart_section my-2 my-sm-0" type="button">Add to Cart</button>
+                            <a href="{{ route('cart.add', $batch->id) }}" class="btn btn_block text-capitalize add_cart_section my-2 my-sm-0">Add to Cart</a>
+                            {{-- <button class="btn btn_block text-capitalize add_cart_section my-2 my-sm-0" type="button">Add to Cart</button> --}}
                             {{-- <form method="POST" action="{{ route('buy.now') }}"> --}}
                                 {{-- @csrf --}}
                                 {{-- <input type="hidden"  name="batch_id" value="{{ $batch->id }}"> --}}
@@ -119,9 +120,10 @@
                     <div class="cource_title mt-3 mb-3">Courses you would like to buy</div>
                     <div class="swiper-container subject_card_block" id="swipercard">
                         <div class="swiper-wrapper">
+                            @php $i=1 @endphp
                             @foreach($allBatches as $relatedBatch)
                             <div class="swiper-slide card">
-                                <div class="single-district card1 slid_card">
+                                <div class="single-district card{{ $i }} slid_card">
                                     <div class="card_img mb-3">
                                         @if($relatedBatch->subject->name == 'English')
                                             <img src="{{ asset('frontend/assets/English/English.jpg') }}" alt="">
@@ -147,7 +149,7 @@
                                                 <p>No Of Seats</p>
                                                 <p>{{ $batch->no_of_seats }}</p>
                                             </div>
-                                            <div class="border_div pl-3 "></div>
+                                            {{-- <div class="border_div pl-3 "></div> --}}
                                             {{-- <div class="date_block">
                                                 <p>No Of Seats</p>
                                                 <p>{{ $batch->no_of_seats }}</p>
@@ -168,13 +170,14 @@
                                         <a href="#" class="view_detail">
                                             View details
                                         </a>
-                                        <a href="#" class="price_card">
+                                        <a href="#" class="price_card price_bg{{ $i }}">
                                             {{-- £ 150* --}}
                                             &pound; {{ $batch->batch_price_per_session }} 
                                         </a>
                                     </div>
                                 </div>
                             </div>
+                            @php $i++ @endphp
                             @endforeach
                         </div>
                         <!-- Add Pagination -->

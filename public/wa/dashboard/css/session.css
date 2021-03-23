@@ -251,27 +251,27 @@ select.form-control.border-0 {
 }
 /* subject card border */
 .subject1 {
-    border: 2px solid #ed92fa;
+    border: 3px solid #ed92fa;
     border-radius: 10px;
 }
 .subject2{
-    border: 2px solid #ff8a78;
+    border: 3px solid #ff8a78;
     border-radius: 10px;
 }
 .subject3{
-    border: 2px solid #e99e68;
+    border: 3px solid #e99e68;
     border-radius: 10px;
 }
 .subject4{
-    border: 2px solid #58a1e5;
+    border: 3px solid #58a1e5;
     border-radius: 10px;
 }
 .subject5{
-    border: 2px solid #a0ec71;
+    border: 3px solid #a0ec71;
     border-radius: 10px;
 }
 .subject6{
-    border: 2px solid #74eac5;
+    border: 3px solid #74eac5;
     border-radius: 10px;
 }
 .subject7{
@@ -279,7 +279,7 @@ select.form-control.border-0 {
     border-radius: 10px;
 }
 .subject8{
-    border: 2px solid #58a1e5;
+    border: 3px solid #58a1e5;
     border-radius: 10px;
 }
 .price_bg1{

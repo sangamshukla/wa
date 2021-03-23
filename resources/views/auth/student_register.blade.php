@@ -109,6 +109,19 @@
                       >
                     </div>
                     <div class="form-group">
+                      <select name="class_master_id" class="form-control">
+                        @foreach($classMasters as $classMaster)
+
+                          <option value="{{ $classMaster->id }}">{{ $classMaster->name }}</option>
+                        @endforeach
+                      </select>
+                      <label
+                        class="form-control-placeholder"
+                        for="contact-person"
+                        >Year</label
+                      >
+                    </div>
+                    <div class="form-group">
                       <input
                         type="email"
                         name="email"

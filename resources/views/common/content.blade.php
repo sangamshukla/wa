@@ -151,15 +151,15 @@
                 </div>
 
                 <div class="row mt-4">
+                    @php $i=1 @endphp
                     @foreach($batches as $batch)
                     <div class="col-md-3 filter_box filter {{ $batch->classmaster->name == 'Year 1' ? 'class9' : ($batch->classmaster->name == 'Year 2' ? 'class10' : 'class11') }}">
-                        <div class="single-district card1">
+                        <div class="single-district card{{ $i }}">
                             <div class="card_img mb-3">
                                 @if($batch->subject->name == 'English')
                                   <img src="{{ asset('frontend/assets/English/English.jpg') }}" alt="">
                                 @endif
                                 @if($batch->subject->name == 'Maths')
-                                    {{-- <img src="{{ asset('frontend/assets/Maths/Maths.jpg') }}" alt=""> --}}
                                     <img src="{{ asset('frontend/assets/Maths/Math.jpg') }}" alt="">
                                 @endif
                                 @if($batch->subject->name == 'Physics')
@@ -200,15 +200,18 @@
                                 <a href="{{ url('/student-details', $batch->id)}}" class="view_detail">
                                     View details
                                 </a>
-                                <a href="#" class="price_card">
+                                {{-- @php $i = 1 @endphp --}}
+                                <a href="#" class="price_card price_bg{{ $i }}">
                                     &pound; {{ $batch->batch_price_per_session }} 
                                 </a>
+                                {{-- @php i++ @endphp --}}
                             </div>
                         </div>
                     </div>
+                    @php $i++ @endphp
                     @endforeach
                   
-                </div>
+                </div> 
                 
 
             </div>

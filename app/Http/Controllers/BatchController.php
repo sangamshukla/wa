@@ -40,6 +40,7 @@ class BatchController extends Controller
      */
     public function create()
     {
+        // $i = 1;
         $assignteachers = User::all();
         $classes = ClassMaster::all();
         $subjects = Subject::all();
@@ -222,8 +223,9 @@ class BatchController extends Controller
 
     public function buyNow(Request $request)
     {
-        $relatedBatch = Batch::find($request->batch_id);
-       
-        return view('class.buy_now', compact('relatedBatch'));
+        // dd(session()->get('cart'));
+        
+        $relatedBatches = Batch::whereIn('id', array_keys(session()->get('cart')))->get();
+        return view('class.buy_now', compact('relatedBatches'));
     }
 }

@@ -26,7 +26,7 @@
             </ul>
             <div class="my-2 my-lg-0 login_block">
                 @auth
-                <button class="btn btn_block text-capitalize my-2 my-sm-0" type="button" id="login"><a href="{{ url('/student-dashboard') }}">Welcome {{ auth()->user()->name }}</a></button>
+                <button class="btn btn_block text-capitalize my-2 my-sm-0" type="button" id="login"><a href="{{ url('/home') }}">Welcome {{ auth()->user()->name }}</a></button>
                 @endauth
                 @guest
                 <button class="btn btn_block text-capitalize my-2 my-sm-0" type="button" id="login"><a href="{{ url('/student-login') }}">login</a></button>

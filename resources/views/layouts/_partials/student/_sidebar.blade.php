@@ -34,7 +34,7 @@
         <a class="nav-link collapsed" href="#">
             <div class="nav_images"><img src="/wa/dashboard/img/teacher.svg"> </div>
             <br>
-            <span>Teachers ffff</span>
+            <span>Teachers</span>
         </a>
     </li>
     <!-- Nav Item - Charts -->

@@ -89,8 +89,7 @@ student details local
                                 @endforeach
                                 
                         </tbody>
-                    </table>
-                    
+                    </table>                   
             </div>
             </div>
          </div>

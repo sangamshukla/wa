@@ -21,9 +21,11 @@
               </div>
               <div class="paymet_setion">
                 <div class="buy_cards_block">
+                  @foreach($relatedBatches as $relatedBatch)
                   <div class="card_cart_div">
                     <a href="#" class="close"></a>
                       <div class="single-district card3">
+                        @php $i =1 @endphp
                           <div class="card_img mb-3">
                               @if($relatedBatch->subject->name == 'English')
                                   <img src="{{ asset('frontend/assets/English/English.jpg') }}" alt="">
@@ -49,7 +51,7 @@
                                       <p>No Of Seats</p>
                                       <p>{{ $relatedBatch->no_of_seats }}</p>
                                   </div>
-                                  <div class="border_div pl-3 "></div>
+                                  {{-- <div class="border_div pl-3 "></div> --}}
                                   {{-- <div class="date_block">
                                       <p>No Of Seats</p>
                                       <p>{{ $batch->no_of_seats }}</p>
@@ -70,12 +72,16 @@
                               <a href="#" class="view_detail">
                                   View details
                               </a>
-                              <a href="#" class="price_card">
+                              <a href="#" class="price_card price_bg{{ $i }}">
                                 &pound; {{ $relatedBatch->batch_price_per_session }} 
                               </a>
                           </div>
+                          @php $i++ @endphp
+
                       </div>
                   </div>
+                  @endforeach
+                  
                 </div>
                 <hr />
                 <div class="coupon_block">
@@ -93,21 +99,21 @@
                 <div>
                   <div class="cource_detail_section">
                     <div>Course cost</div>
-                    <div>£ 150</div>
+                    <div>£ {{ $relatedBatches->sum('batch_price_per_session') }}</div>
                   </div>
                   <div class="cource_detail_section">
-                    <div>Tax 1</div>
-                    <div>£ 10</div>
+                    <div>Tax </div>
+                    <div>£  0</div>
                   </div>
-                  <div class="cource_detail_section">
+                  {{-- <div class="cource_detail_section">
                     <div>Tax 2</div>
                     <div>£ 150</div>
-                  </div>
+                  </div> --}}
                 </div>
                 <hr class="border_bottom" />
                 <div class="total_amount_block">
                   <div class="total">Total</div>
-                  <div>£ 150</div>
+                  <div>£ {{$relatedBatches->sum('batch_price_per_session')}}</div>
                 </div>
                 <div class="form-group term_pera mt-3">
                   <label class="container-checkbox">
@@ -117,8 +123,61 @@
                   </label>
                 </div>
                 <div class="pay_cta mb-5">
-                  <button class="pay_now btn desktopshow">Pay Now</button>
+                  @guest
+                  <button class="pay_now btn desktopshow" data-toggle="modal" data-target="#exampleModalCenter">Pay Now</button>
+                @endguest
+                @auth
+                <button class="pay_now btn desktopshow" >Pay Now (£ {{$relatedBatch->batch_price_per_session+0}})</button>
+                @endauth
                 </div>
+                {{-- model --}}
+                <!-- Button trigger modal -->
+                  {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                    Launch demo modal
+                  </button> --}}
+
+                  <!-- Modal -->
+                  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content" style="background-color: #EAEAEA">
+                        <h4 style="text-align: center;" >Student Login</h4>
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+                          {{-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button> --}}
+                        </div>
+                        <div class="modal-body" >
+                          <form method="POST" action="{{ route('login') }}">
+                            @csrf
+                            @include('_form.input', ['title' => 'Email Address', 'name' => 'email'])
+                            @include('_form.input', ['title' => 'Password', 'name' => 'password', 'type' => 'password'])
+                    
+                            <div class="form-group row">
+                                <div class="col-md-6 offset-md-4">
+                                    {{-- <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                    
+                                        <label class="form-check-label" for="remember">
+                                            {{ __('Remember Me') }}
+                                        </label>
+                                    </div> --}}
+                                </div>
+                            </div>
+                    
+                            <div class="form-group mb-0 text-center">
+                                <button style="background: #1d6771;" class="btn btn-primary" type="submit"> Log In </button>
+                            </div>                            
+                        </form>
+                        </div>
+                        <div class="modal-footer">
+                          <button style="background: #1d6771;" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {{-- close model --}}
               </div>
             </div>
           </div>

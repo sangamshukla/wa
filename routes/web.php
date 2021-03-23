@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BatchController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeacherByBatchController;
 use App\Http\Controllers\TeacherController;
@@ -56,6 +57,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/operation-dashboard', [HomeController::class ,'operationDashboard']);
 
     Route::get('/student-dashboard', [HomeController::class ,'studentDashboard']);
+    Route::get('/session-list', [HomeController::class , 'sessionList']);
+
     
 
     // Teacher Controller
@@ -87,3 +90,5 @@ Route::group(['middleware' => 'auth'], function () {
 });
     Route::get('buy-now', [BatchController::class, 'buyNow'])->name('buy.now');
     Route::post('buy-now', [BatchController::class, 'buyNow'])->name('buy.now');
+
+    Route::get('add-to-cart/{id}', [PaymentController::class, 'payment'])->name('cart.add');

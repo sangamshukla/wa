@@ -22,11 +22,15 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>    
 </head>
+
 <body>
 @include('common.nav')
 @yield('content')
 @yield('footer_one')
 @include('common.main_footer')
 @yield('js')
+<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+    @csrf
+</form>
 </body>
 </html>

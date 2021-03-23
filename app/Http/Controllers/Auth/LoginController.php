@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Batch;
+use App\Models\ClassMaster;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -53,7 +55,8 @@ class LoginController extends Controller
 
     public function studentRegister()
     {
-        return view('auth.student_register');
+        $classMasters = ClassMaster::all();
+        return view('auth.student_register', compact('classMasters'));
     }
     
     public function studentLogin()

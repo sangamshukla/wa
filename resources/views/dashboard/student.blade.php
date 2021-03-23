@@ -19,8 +19,8 @@
         <div class="profile_details card py-4 px-4 text-center">
            <div class="profile">
             <div class="profile_icon"><img src="/wa/dashboard/img/user.png"></div>
-            <p class="name mb-1">John Paul</p>
-            <p class="class_section"><span>class:</span><span>XI</span></p>
+            <p class="name mb-1">{{ auth()->user()->name }}</p>
+            <p class="class_section"><span>class:</span><span>{{ auth()->user()->student->classmaster->name }}</span></p>
             <a href="#" class="profile"><span>view Profile</span></a>
            </div>
            <div class="border_bottom_dotted"></div>
@@ -71,13 +71,14 @@
         <div class="col-lg-12 mb-4">
             <div class="card mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold cource_class_tile">Other Available Cources for Class <span>9</span>th</span></h6>
+                    <h6 class="m-0 font-weight-bold cource_class_tile">Other Available Cources for Class <span>{{ auth()->user()->student->classmaster->name }}</span></span></h6>
                 </div>
             </div>
-            <div class="row">
+            <div class="row">           
+                @php $i = 1; @endphp             
                 @foreach($students as $student)
                 <div class="col-lg-3 mb-4">
-                    <div class="card subject1">
+                    <div class="card subject{{ $i }}">
                         <div class="subject_img_block">
                             {{-- <img src="/wa/dashboard/img/card-cover.png" class="subject_img"> --}}
                             @if($student->subject->name == 'English')
@@ -99,6 +100,7 @@
                                 <p>{{ $student->classSettings->name }} </p>
                                 <p>{{ $student->subject->name }}</p>
                             </div>
+                        
                             <div class="card_details d-flex justify-content-center">
                                 <div class="seat_block pr-3">
                                     <p>No Of Seats</p>
@@ -112,18 +114,28 @@
                             </div>
                         </div>
                         <div class="view_detail_block d-flex justify-content-between pb-3">
-                            <a href="#" class="view_detail pl-3">
+                            <a href="{{ url('/student-details', $student->id)}}" class="view_detail pl-3">
                                 View details
                             </a>
-                            <p class="price_card price_bg1">
+                            {{-- @php $p =1 @endphp --}}
+
+                            <p class="price_card price_bg{{ $i }} }}">
                                 <strong>£</strong> {{ $student->batch_price_per_session }}
                             </p>
+                        {{-- @php $p++; @endphp --}}
+
                         </div>
                     </div>
                 </div>
-            @endforeach
+                @php $i++; @endphp
+                @endforeach
             </div>
         </div>
     </div>
 </section> 
+@endsection
+
+@section('style')
+<link href="/wa/dashboard/css/student-admin.css" rel="stylesheet">
+<link href="/wa/dashboard/css/session.css" rel="stylesheet"> 
 @endsection
