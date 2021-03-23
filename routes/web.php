@@ -91,4 +91,4 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('buy-now', [BatchController::class, 'buyNow'])->name('buy.now');
     Route::post('buy-now', [BatchController::class, 'buyNow'])->name('buy.now');
 
-    Route::get('add-to-cart/{id}', [PaymentController::class, 'payment'])->name('cart.add');
+    Route::get('add-to-cart/{batchId}', [PaymentController::class, 'payment'])->name('cart.add');
