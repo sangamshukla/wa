@@ -90,4 +90,5 @@ var swiper = new Swiper(".subject_card_block", {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
     },
+    
 });

@@ -148,11 +148,11 @@
 
     <!-- card-tab section  -->
     <!-- footer from section -->
-@include('common.main_footer')
+    @include('common.main_footer')
     <!-- Swiper JS -->
      <script>
       document.FIX_HEADER_TOP = 35;
     </script>
-    <script src="{{ asset('wa/coustom.js') }}"></script>
+    {{-- <script src="{{ asset('wa/coustom.js') }}"></script> --}}
   </body>
 </html>

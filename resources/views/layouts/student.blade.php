@@ -35,9 +35,11 @@
     @csrf
 </form>
     <!-- Page Wrapper -->
+    {{-- <div id="wrapper"> --}}
+      {{-- <div class="background_overlay"></div> --}}
     <div id="wrapper">
+      <div class="background_overlay"></div>
         @include('layouts._partials.student._sidebar')
-
       
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">

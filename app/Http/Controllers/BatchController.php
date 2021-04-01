@@ -223,8 +223,35 @@ class BatchController extends Controller
 
     public function buyNow(Request $request)
     {
-        // dd(session()->get('cart'));
-        
+        if (!$request->classId) {
+            $relatedBatches = Batch::whereIn('id', array_keys(session()->get('cart') ?? []))->get();
+            return view('class.buy_now', compact('relatedBatches'));
+        }
+        $product = Batch::find($request->classId);
+        $cart = session()->get('cart');
+        // if cart is empty then this the first product
+
+        if (!$cart) {
+            $cart = [
+                $request->classId => ["product_id" => $product->id,"quantity" => 1,
+                        'price' => $product->batch_price_per_session
+                        ]
+                    ];
+            session()->put('cart', $cart);
+        }
+        if (isset($cart[$request->classId])) {
+            // $cart[$request->classId]['quantity']++;
+            // session()->put('cart', $cart);
+            $relatedBatches = Batch::whereIn('id', array_keys(session()->get('cart')))->get();
+            return view('class.buy_now', compact('relatedBatches'));
+        }
+        // if item not exist in cart then add to cart with quantity = 1
+        $cart[$request->classId] = [
+            "product_id" => $product->id,
+            "quantity" => 1,
+            'price' => $product->batch_price_per_session
+        ];
+        session()->put('cart', $cart);
         $relatedBatches = Batch::whereIn('id', array_keys(session()->get('cart')))->get();
         return view('class.buy_now', compact('relatedBatches'));
     }

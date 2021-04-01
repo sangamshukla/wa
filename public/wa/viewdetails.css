@@ -9,6 +9,10 @@ body {
 	#register a{
 	color:#fff;
 	}
+  .cart-svg-icon{
+    color: #fff !important;
+    margin-right: 17px;
+  }
 /* nav barcss */
 .navbar {
   padding: 0.5rem 4rem;
@@ -45,6 +49,23 @@ body {
 }
 .dropdown-menu a {
   color: #fff;
+}
+.cart_image_block{
+  margin-top: 18px;
+}
+.cart_no{
+  position: absolute;
+    color: #fff;
+    background-color: #e74a3b;
+    border: 1px solid;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    padding: 1px;
+    text-align: center;
+    top: 26px;
+    right: 249px;
+    font-size: 11px;
 }
 .navbar .nav-item .nav-link {
   text-decoration: none;
@@ -1387,6 +1408,29 @@ input:focus + label {
 }
 /* view detail css end */
 @media only screen and (max-width: 768px) {
+  /* nav */
+  .cart_image_block{
+    margin-top: 18px;
+    width: 28px;
+    height: 28px;
+  }
+  .cart_no {
+    position: absolute;
+    color: #fff;
+    background-color: #e74a3b;
+    border: 1px solid;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    padding: 1px;
+    text-align: center;
+    font-size: 11px;
+    left: 20px;
+    top: unset;
+}
+  #login a {
+    color: #fff;
+  }
   .left_block:after {
     content: "";
     position: absolute;
@@ -1454,7 +1498,7 @@ input:focus + label {
   button#register {
     color: #fff;
     font-size: 18px;
-    padding: 10px 30px;
+    padding: 10px 0px;
   }
   .navbar .nav-item .nav-link {
     text-decoration: none;
@@ -1678,6 +1722,7 @@ input:focus + label {
   text-align: left;
   padding-left: 0;
 }
+
  /* view detail css start */
 
 }

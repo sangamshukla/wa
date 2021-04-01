@@ -9,8 +9,8 @@
                         
                     </div>
                     <!-- image block -->
+                    
                    <div class="row">
-
                         <!-- Content Column -->
                         <div class=" col-xl-4 col-lg-4 mb-4 ">
                             <div class="mt-3 mb-3 tab-card">
@@ -38,7 +38,7 @@
                                               <div class="card-header" id="headingOne">
                                                 <h5 class="mb-0">
                                                     <div class="d-flex justify-content-around">
-                                                        <div><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
+                                                        <div class="card_img"><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
                                                     <div>
                                                         <p class="subject_card">Subject</p>
                                                         <p class="card_subject_title1">Maths</p>
@@ -70,7 +70,7 @@
                                               <div class="card-header" id="headingTwo">
                                                 <h5 class="mb-0">
                                                     <div class="d-flex justify-content-around">
-                                                        <div><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
+                                                        <div class="card_img"><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
                                                     <div>
                                                         <p class="subject_card">Subject</p>
                                                         <p class="card_subject_title1">Maths</p>
@@ -102,7 +102,7 @@
                                               <div class="card-header" id="headingThree">
                                                 <h5 class="mb-0">
                                                     <div class="d-flex justify-content-around">
-                                                        <div><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
+                                                        <div class="card_img"><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
                                                     <div>
                                                         <p class="subject_card">Subject</p>
                                                         <p class="card_subject_title1">Maths</p>
@@ -134,7 +134,7 @@
                                                 <div class="card-header" id="headingFour">
                                                   <h5 class="mb-0">
                                                       <div class="d-flex justify-content-around">
-                                                          <div><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
+                                                          <div class="card_img"><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
                                                       <div>
                                                           <p class="subject_card">Subject</p>
                                                           <p class="card_subject_title1">Maths</p>
@@ -166,7 +166,7 @@
                                                 <div class="card-header" id="headingFive">
                                                   <h5 class="mb-0">
                                                       <div class="d-flex justify-content-around">
-                                                          <div><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
+                                                          <div class="card_img"><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
                                                       <div>
                                                           <p class="subject_card">Subject</p>
                                                           <p class="card_subject_title1">Maths</p>
@@ -198,7 +198,7 @@
                                                 <div class="card-header" id="headingSix">
                                                   <h5 class="mb-0">
                                                       <div class="d-flex justify-content-around">
-                                                          <div><img src="{{asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
+                                                          <div class="card_img"><img src="{{asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
                                                       <div>
                                                           <p class="subject_card">Subject</p>
                                                           <p class="card_subject_title1">Maths</p>
@@ -235,7 +235,7 @@
                                                   <div class="card-header" id="headingOne">
                                                     <h5 class="mb-0">
                                                         <div class="d-flex justify-content-around">
-                                                            <div><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
+                                                            <div class="card_img"><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
                                                         <div>
                                                             <p class="subject_card">Subject</p>
                                                             <p class="card_subject_title1">Maths</p>
@@ -268,7 +268,7 @@
                                                   <div class="card-header" id="headingTwo">
                                                     <h5 class="mb-0">
                                                         <div class="d-flex justify-content-around">
-                                                            <div><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
+                                                            <div class="card_img"><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
                                                         <div>
                                                             <p class="subject_card">Subject</p>
                                                             <p class="card_subject_title1">Maths</p>
@@ -300,7 +300,7 @@
                                                   <div class="card-header" id="headingThree">
                                                     <h5 class="mb-0">
                                                         <div class="d-flex justify-content-around">
-                                                            <div><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
+                                                            <div class="card_img"><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
                                                         <div>
                                                             <p class="subject_card">Subject</p>
                                                             <p class="card_subject_title1">Maths</p>
@@ -332,7 +332,7 @@
                                                     <div class="card-header" id="headingFour">
                                                       <h5 class="mb-0">
                                                           <div class="d-flex justify-content-around">
-                                                              <div><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
+                                                              <div class="card_img"><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
                                                           <div>
                                                               <p class="subject_card">Subject</p>
                                                               <p class="card_subject_title1">Maths</p>
@@ -364,7 +364,7 @@
                                                     <div class="card-header" id="headingFive">
                                                       <h5 class="mb-0">
                                                           <div class="d-flex justify-content-around">
-                                                              <div><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
+                                                              <div class="card_img"><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
                                                           <div>
                                                               <p class="subject_card">Subject</p>
                                                               <p class="card_subject_title1">Maths</p>
@@ -396,7 +396,7 @@
                                                     <div class="card-header" id="headingSix">
                                                       <h5 class="mb-0">
                                                           <div class="d-flex justify-content-around">
-                                                              <div><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
+                                                              <div class="card_img"><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
                                                           <div>
                                                               <p class="subject_card">Subject</p>
                                                               <p class="card_subject_title1">Maths</p>
@@ -432,7 +432,7 @@
                                                   <div class="card-header" id="headingOne">
                                                     <h5 class="mb-0">
                                                         <div class="d-flex justify-content-around">
-                                                            <div><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
+                                                            <div class="card_img"><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
                                                         <div>
                                                             <p class="subject_card">Subject</p>
                                                             <p class="card_subject_title1">Maths</p>
@@ -465,7 +465,7 @@
                                                   <div class="card-header" id="headingTwo">
                                                     <h5 class="mb-0">
                                                         <div class="d-flex justify-content-around">
-                                                            <div><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
+                                                            <div class="card_img"><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
                                                         <div>
                                                             <p class="subject_card">Subject</p>
                                                             <p class="card_subject_title1">Maths</p>
@@ -497,7 +497,7 @@
                                                   <div class="card-header" id="headingThree">
                                                     <h5 class="mb-0">
                                                         <div class="d-flex justify-content-around">
-                                                            <div><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
+                                                            <div class="card_img"><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
                                                         <div>
                                                             <p class="subject_card">Subject</p>
                                                             <p class="card_subject_title1">Maths</p>
@@ -529,7 +529,7 @@
                                                     <div class="card-header" id="headingFour">
                                                       <h5 class="mb-0">
                                                           <div class="d-flex justify-content-around">
-                                                              <div><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
+                                                              <div class="card_img"><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
                                                           <div>
                                                               <p class="subject_card">Subject</p>
                                                               <p class="card_subject_title1">Maths</p>
@@ -561,7 +561,7 @@
                                                     <div class="card-header" id="headingFive">
                                                       <h5 class="mb-0">
                                                           <div class="d-flex justify-content-around">
-                                                              <div><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
+                                                              <div class="card_img"><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
                                                           <div>
                                                               <p class="subject_card">Subject</p>
                                                               <p class="card_subject_title1">Maths</p>
@@ -593,7 +593,7 @@
                                                     <div class="card-header" id="headingSix">
                                                       <h5 class="mb-0">
                                                           <div class="d-flex justify-content-around">
-                                                              <div><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
+                                                              <div class="card_img"><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
                                                           <div>
                                                               <p class="subject_card">Subject</p>
                                                               <p class="card_subject_title1">Maths</p>

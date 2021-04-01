@@ -6,8 +6,8 @@
                     WA Academy. All Rights Reserved</div>
                 <div class="footer_link">
                     <ul>
-                        <li><a href="#">Terms of Use</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="{{url('terms-of-use')}}">Terms of Use</a></li>
+                        <li><a href="{{url('privacy-policy')}}">Privacy Policy</a></li>
                         <li> <a href="">Copyright</a></li>
                         <li><a href="">Disclaimer</a></li>
                     </ul>

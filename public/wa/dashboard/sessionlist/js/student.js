@@ -52,5 +52,9 @@
     }, 1000, 'easeInOutExpo');
     e.preventDefault();
   });
-
+  // slide for header
+  $("#sidebarToggleTop").click(function(){
+    $(".background_overlay").hide();
+  });
+  // end here
 })(jQuery); // End of use strict

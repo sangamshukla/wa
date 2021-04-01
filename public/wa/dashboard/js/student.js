@@ -52,5 +52,8 @@
     }, 1000, 'easeInOutExpo');
     e.preventDefault();
   });
+  $("#sidebarToggleTop").click(function(){
+    $(".background_overlay").hide();
+  });
 
 })(jQuery); // End of use strict

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BatchController;
+use App\Http\Controllers\FooterContentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
@@ -37,7 +38,7 @@ Route::get('/student-register', 'App\Http\Controllers\Auth\LoginController@stude
 Route::post('/student-register', 'App\Http\Controllers\Auth\RegisterController@register')->name('student-register');
 Route::get('/student-login', 'App\Http\Controllers\Auth\LoginController@studentLogin')->name('student-login');
 Route::post('/student-login', 'App\Http\Controllers\Auth\LoginController@login')->name('student-login');
-Route::get('student-details/{id}', [BatchController::class, 'studentDetails'])->name('student-details');
+Route::get('/student-details/{id}', [BatchController::class, 'studentDetails'])->name('student-details');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', [HomeController::class ,'index']);
@@ -84,7 +85,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('available-courses', [BatchController::class, 'availableCourses'])->name('available-courses');
     
 
-
     Route::get('add-product', [TeacherController::class, 'store'])->name('add-product');
     Route::post('add-product', [TeacherController::class, 'store'])->name('add-product');
 });
@@ -92,3 +92,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('buy-now', [BatchController::class, 'buyNow'])->name('buy.now');
 
     Route::get('add-to-cart/{batchId}', [PaymentController::class, 'payment'])->name('cart.add');
+    Route::get('remove-from-cart/{removeFromCart}', [PaymentController::class, 'removeFromCart'])->name('cart.remove');
+    // Route::post('add-to-cart/{batchId}', [PaymentController::class, 'payment'])->name('cart.add');
+    Route::get('terms-of-use', [FooterContentController::class, 'termsofuse'])->name('terms.of.use');
+    Route::get('privacy-policy', [FooterContentController::class, 'privacyPolicy'])->name('privacy.policy');
+

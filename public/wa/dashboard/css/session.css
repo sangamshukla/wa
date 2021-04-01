@@ -1,6 +1,7 @@
 input.serch_block.bg-white.form-control.bg-light.border-0.small{
     width: 300px;
 }
+
 select.form-control.border-0:focus{
     outline: none;
 }
@@ -18,9 +19,25 @@ select.form-control.border-0 {
   .nav_images{
     margin-bottom: -10px;
   }
-.sidebar{
+ 
+/* start sidebaar */
+.sidebar {
     width: 8rem;
-}
+    height: calc(100vh - 75px);
+    z-index: 4;
+    position: sticky;
+    top: 0;
+  } 
+  .topbar{
+    position: fixed;
+    z-index: 10;
+    width: calc(90vw - -31px);
+    background: #fff;
+  }
+  /* end here */
+  .background_overlay{
+    display: none;
+  }
 .sidebar-brand-icon img{
     width:100px;
     padding: 10px;
@@ -313,9 +330,27 @@ span.badge.badge-danger.badge-counter{
     margin-top: -3px;
     left: 50px;
 }
+.profile_details{
+    margin-top: 20px;
+}
+
 @media only screen and (max-width: 768px){
     .list_announce{
         width: 100%;
     }
+    .profile_details{
+        margin-top: 0px;
+    }
+    .background_overlay{
+        display: block;
+        position: fixed;
+        left: 0;
+        top: 70px;
+        height: 100%;
+        width: 100%;
+        z-index: 3;
+        background: rgba(0,0,0,.8);
+        transition: all .2s ease-out 0s;
+      }
     
 }

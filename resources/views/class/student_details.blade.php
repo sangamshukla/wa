@@ -2,10 +2,14 @@
 @section('css')
     <link rel="stylesheet" href="{{ asset('wa/viewdetails.css') }}">
 @endsection
-    <!-- subject cartsection -->
- 
-@section('content')
-
+    <!-- cart icon -->
+ @section('carticon')
+  {{-- <img src="{{ asset('wa/assets/img/cart.svg')}}"> --}}
+ {{-- <a href="{{ url('buy-now')}}"><img src="{{ asset('wa/assets/img/cart.svg')}}"></a> --}}
+{{-- 
+ <span class="cart_no">{{ count(session()->get('cart') ?? []) }}</span> --}}
+ @endsection
+@section('content')  
 <section class="math_booster">
     <div class="container-fluid">
         <div class="row">
@@ -60,7 +64,19 @@
                             {{-- <form method="POST" action="{{ route('buy.now') }}"> --}}
                                 {{-- @csrf --}}
                                 {{-- <input type="hidden"  name="batch_id" value="{{ $batch->id }}"> --}}
-                                <button class="btn btn_block text-capitalize buy_now_cta my-2 my-sm-0" id="buyNow">Buy Now</button>
+                                {{-- before button --}}
+                                {{-- <button class="btn btn_block text-capitalize buy_now_cta my-2 my-sm-0" id="buyNow">Buy Now</button><br><br> --}}
+                                <a href="{{ route('buy.now') }}?classId={{ $batch->id }}"><button class="btn btn_block text-capitalize my-2 my-sm-0" type="button"
+                                    id="register">Buy Now</button></a><br><br>
+                                                    
+                                {{-- for success msg --}}
+                                @include('_form.success')
+                                {{-- @if (session('status'))
+                                <div class="alert alert-success">
+                                    {{ session('status') }}
+                                </div>
+                                 @endif --}}
+                                {{-- end success msg --}}
                             {{-- </form> --}}
                         </div></div>
                         <div class=" share_sectiond-flex flex-sm-row mt-5">
@@ -95,24 +111,13 @@
                     </div>
                     <div class="right_section mt-5">
                         <p class="learn_heading">What You Will Learn</p>
-                       <div class="card-link-block">
+                        @foreach($batch->batchSession as $session)
+                          <div class="card-link-block">
                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's. Ipsum has been the industry's. 
                         </div>
-                        <div class="card-link-block">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's. Ipsum has been the industry's. 
-                         </div>
-                         <div class="card-link-block">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's. Ipsum has been the industry's. 
-                         </div>
-                         <div class="card-link-block">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's. Ipsum has been the industry's. 
-                         </div>
-                         <div class="card-link-block">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's. Ipsum has been the industry's. 
-                         </div>
-                         <div class="card-link-block">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's. Ipsum has been the industry's. 
-                         </div>
+                    @endforeach
+                     
+                        
 
                     </div>
                 </div>
@@ -122,21 +127,23 @@
                         <div class="swiper-wrapper">
                             @php $i=1 @endphp
                             @foreach($allBatches as $relatedBatch)
-                            <div class="swiper-slide card">
+                            <div style="cursor:pointer;" onClick="(function(){
+                                window.location.href = '/student-details/{{ $relatedBatch->id }}';
+                            })();return false;" class="swiper-slide card">
                                 <div class="single-district card{{ $i }} slid_card">
                                     <div class="card_img mb-3">
                                         @if($relatedBatch->subject->name == 'English')
-                                            <img src="{{ asset('frontend/assets/English/English.jpg') }}" alt="">
+                                            <img style="width:100%;" src="{{ asset('frontend/assets/English/English.jpg') }}" alt="">
                                         @endif
                                         @if($relatedBatch->subject->name == 'Maths')
                                             {{-- <img src="{{ asset('frontend/assets/Maths/Maths.jpg') }}" alt=""> --}}
-                                            <img src="{{ asset('frontend/assets/Maths/Math.jpg') }}" alt="">
+                                            <img style="width:100%;" src="{{ asset('frontend/assets/Maths/Math.jpg') }}" alt="">
                                         @endif
                                         @if($relatedBatch->subject->name == 'Physics')
-                                            <img src="{{ asset('frontend/assets/Physics/Physics.jpg') }}" alt="">
+                                            <img style="width:100%;" src="{{ asset('frontend/assets/Physics/Physics.jpg') }}" alt="">
                                         @endif
                                         @if($relatedBatch->subject->name == 'Chemistry')
-                                            <img src="{{ asset('frontend/assets/card-cover.png') }}" alt="">
+                                            <img style="width:100%;" src="{{ asset('frontend/assets/card-cover.png') }}" alt="">
                                         @endif
                                     </div>
                                     <div class="card_block_info pl-3 pr-3">
@@ -170,7 +177,7 @@
                                         <a href="#" class="view_detail">
                                             View details
                                         </a>
-                                        <a href="#" class="price_card price_bg{{ $i }}">
+                                        <a href="{{ url('/student-details', $batch->id)}}" class="price_card price_bg{{ $i }}">
                                             {{-- £ 150* --}}
                                             &pound; {{ $batch->batch_price_per_session }} 
                                         </a>
@@ -197,6 +204,7 @@
 </section>
 @endsection
 @section('js')
+
     <script src="{{ asset('wa/viewdetails.js') }}"></script>
     <script>
         $(document).ready(function(){

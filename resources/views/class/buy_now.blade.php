@@ -2,10 +2,11 @@
 @section('css')
     <link rel="stylesheet" href="{{ asset('wa/buynow.css') }}">
 @endsection
+
 @section('content')
     <!-- subject cartsection -->
-    <section class="quickpay_block">
-      <div class="container-fluid">
+    <section class="quickpay_block">     
+      <div class="container-fluid">   
         <div class="row">
           <div class="col">
             <button class="pay_now btn mobilw_show">Pay Now</button>
@@ -20,12 +21,17 @@
                 />
               </div>
               <div class="paymet_setion">
+                @include('_form.success')
+
                 <div class="buy_cards_block">
+                  @php $i = 1 @endphp
                   @foreach($relatedBatches as $relatedBatch)
-                  <div class="card_cart_div">
-                    <a href="#" class="close"></a>
-                      <div class="single-district card3">
-                        @php $i =1 @endphp
+                  <div  class="card_cart_div">
+                    <a href="{{ route('cart.remove', $relatedBatch->id) }}" class="close"></a>
+                      <div style="cursor:pointer;" onClick="(function(){
+                        window.location.href = '/student-details/{{ $relatedBatch->id }}';
+                        })();return false;" class="single-district card{{ $i }}">
+                        {{-- @php $i =1 @endphp --}}
                           <div class="card_img mb-3">
                               @if($relatedBatch->subject->name == 'English')
                                   <img src="{{ asset('frontend/assets/English/English.jpg') }}" alt="">
@@ -76,10 +82,11 @@
                                 &pound; {{ $relatedBatch->batch_price_per_session }} 
                               </a>
                           </div>
-                          @php $i++ @endphp
+                          {{-- @php $i++ @endphp --}}
 
                       </div>
                   </div>
+                  @php $i++ @endphp
                   @endforeach
                   
                 </div>
@@ -183,18 +190,17 @@
           </div>
         </div>
       </div>
+
     </section>
+    
     @endsection
     <!-- Swiper JS -->
-    {{-- <script>
-      document.FIX_HEADER_TOP = 35;
-    </script>
-    <script src="coustom.js"></script> --}}
+     
     @section('js')
     <script src="{{ asset('wa/buynow.js') }}"></script>
+    <script src="coustom.js"></script> 
     @endsection
     {{-- for scroll --}}
-    <script>
-      document.FIX_HEADER_TOP = 35;
-    </script>
-    <script src="coustom.js"></script>
+    
+    <script src="{{asset('wa/coustom.js') }}"></script>
+    

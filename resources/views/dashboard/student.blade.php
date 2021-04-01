@@ -77,7 +77,9 @@
             <div class="row">           
                 @php $i = 1; @endphp             
                 @foreach($students as $student)
-                <div class="col-lg-3 mb-4">
+                <div style="cursor:pointer;" onClick="(function(){
+                    window.location.href = '/student-details/{{ $student->id }}';
+                     })();return false;" class="col-lg-3 mb-4">
                     <div class="card subject{{ $i }}">
                         <div class="subject_img_block">
                             {{-- <img src="/wa/dashboard/img/card-cover.png" class="subject_img"> --}}
