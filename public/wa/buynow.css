@@ -52,6 +52,15 @@ body {
 .cart_image_block{
   margin-top: 18px;
 }
+.cart_img_block:hover{
+  text-decoration:none;
+  }
+  
+.cart-svg-icon{
+  color: #333; 
+  margin-right:30px;
+}
+
 .cart_no{
   position: absolute;
     color: #fff;
@@ -62,9 +71,11 @@ body {
     height: 20px;
     padding: 1px;
     text-align: center;
-    top: 26px;
-    right: 249px;
+    top: 22px;
+    right: 290px;
     font-size: 11px;
+    /* margin-right: 10px; */
+    
 }
 .navbar .nav-item .nav-link {
   text-decoration: none;

@@ -5,6 +5,7 @@ body {
 }
 #login a {
   color: #333;
+  text-decoration:none;
 }
 /* nav barcss */
 .navbar {
@@ -45,7 +46,17 @@ body {
 }
 .cart_image_block{
   margin-top: 18px;
+  text-decoration:none; 
 }
+.cart_img_block:hover{
+  text-decoration:none;
+  }
+
+.cart-svg-icon{
+  color: #333; 
+  margin-right:30px;
+}
+
 .cart_no{
   position: absolute;
     color: #fff;
@@ -56,9 +67,9 @@ body {
     height: 20px;
     padding: 1px;
     text-align: center;
-    top: 26px;
-    right: 249px;
-    font-size: 11px;
+    top: 22px;
+    right: 270px;
+    font-size: 11px;  
 }
 .navbar .nav-item .nav-link {
   text-decoration: none;

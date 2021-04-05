@@ -97,3 +97,4 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('terms-of-use', [FooterContentController::class, 'termsofuse'])->name('terms.of.use');
     Route::get('privacy-policy', [FooterContentController::class, 'privacyPolicy'])->name('privacy.policy');
 
+    Route::post('/pay', [PaymentController::class , 'pay'])->name('payment.makePayment');

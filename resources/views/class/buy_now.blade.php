@@ -29,7 +29,7 @@
                   <div  class="card_cart_div">
                     <a href="{{ route('cart.remove', $relatedBatch->id) }}" class="close"></a>
                       <div style="cursor:pointer;" onClick="(function(){
-                        window.location.href = '/student-details/{{ $relatedBatch->id }}';
+                        window.location.href = '/testing/public/student-details/{{ $relatedBatch->id }}';
                         })();return false;" class="single-district card{{ $i }}">
                         {{-- @php $i =1 @endphp --}}
                           <div class="card_img mb-3">
@@ -134,14 +134,13 @@
                   <button class="pay_now btn desktopshow" data-toggle="modal" data-target="#exampleModalCenter">Pay Now</button>
                 @endguest
                 @auth
-                <button class="pay_now btn desktopshow" >Pay Now (£ {{$relatedBatch->batch_price_per_session+0}})</button>
+                <form method="POST" action="{{ route('payment.makePayment') }}">
+                  @csrf
+                  <button type="submit" id="btReload" class="pay_now btn desktopshow" >Pay Now</button>
+
+                </form>
                 @endauth
                 </div>
-                {{-- model --}}
-                <!-- Button trigger modal -->
-                  {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                    Launch demo modal
-                  </button> --}}
 
                   <!-- Modal -->
                   <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -150,9 +149,6 @@
                         <h4 style="text-align: center;" >Student Login</h4>
                         <div class="modal-header">
                           <h5 class="modal-title" id="exampleModalLongTitle"></h5>
-                          {{-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button> --}}
                         </div>
                         <div class="modal-body" >
                           <form method="POST" action="{{ route('login') }}">
@@ -190,17 +186,19 @@
           </div>
         </div>
       </div>
-
     </section>
-    
     @endsection
     <!-- Swiper JS -->
-     
+    <script>
+      document.FIX_HEADER_TOP = 35;
+    </script>
     @section('js')
     <script src="{{ asset('wa/buynow.js') }}"></script>
-    <script src="coustom.js"></script> 
-    @endsection
-    {{-- for scroll --}}
     
     <script src="{{asset('wa/coustom.js') }}"></script>
+    @endsection
     
+    {{-- for scroll --}}
+    
+    <!--<script src="coustom.js"></script>-->
+   

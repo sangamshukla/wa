@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Batch;
+use App\Models\Order;
+use App\Models\OrderItems;
+use App\Models\OrderPayment;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
@@ -48,5 +51,26 @@ class PaymentController extends Controller
         session()->put('cart', []);
         session()->put('cart', $arr);
         return redirect(route('buy.now'))->with('status', 'Your class removed successfully !');
+    }
+
+
+    public function pay(Request $request)
+    {
+        $order = OrderPayment::create([
+            'student_id' => auth()->user()->id,
+            'order_amount' =>  Batch::whereIn('id', array_keys(session()->get('cart') ?? []))
+                                ->sum('batch_price_per_session')
+        ]);
+        $b = Batch::whereIn('id', array_keys(session()->get('cart') ?? []))->get();
+        
+        foreach ($b as $k) {
+            OrderItems::create([
+                'order_payment_id' => $order->id,
+                'no_of_items' => 1,
+                'batch_id' => $k->id
+            ]);
+        }
+        session()->put('cart', []);
+        return view('payment.success');
     }
 }

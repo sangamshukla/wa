@@ -8,7 +8,7 @@
 {{-- <iframe src="{{asset('wa/assets/img/privacy-policy.pdf')}}" width="100%" height="700"></iframe> --}}
 <h4>Privacy</h4>
 
-<p>The Tutorful Website helps Students to find Tutors, Tutors to market their services, and for Students to book and pay for Lessons. All of these terms and conditions apply to Students and Tutors, unless they specifically state otherwise, or are marked with a "T", when they only apply to Tutors. Clause 5 only applies to Tutors. These terms and conditions replace any previous versions of them.</p>
+{{-- <p>The Tutorful Website helps Students to find Tutors, Tutors to market their services, and for Students to book and pay for Lessons. All of these terms and conditions apply to Students and Tutors, unless they specifically state otherwise, or are marked with a "T", when they only apply to Tutors. Clause 5 only applies to Tutors. These terms and conditions replace any previous versions of them.</p> --}}
 
 <p> This privacy policy sets out how Wallington Academy uses and protects any information that you give Wallington Academy when you use this website.</p>
 <p> Wallington Academy is committed to ensuring that your privacy is protected. Should we ask you to provide certain information by which you can be identified when using this website, then you can be assured that it will only be used in accordance with this privacy statement.</p>

@@ -4,7 +4,7 @@
         <div style="color: #1d6771"class="alert alert-success">
         {{-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <i class="fa fa-close"></i>
-        </button> --}}
+        </button>  --}}
         <span>{{ session('status') }}</span>
         </div>
     </div>

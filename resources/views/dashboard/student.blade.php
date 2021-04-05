@@ -3,10 +3,11 @@
 @section('content')
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">My Session</h1>
+    <h1 class="h3 mb-0 text-gray-800 my_session">My Session</h1>
 </div>
 <!-- image block -->
 <div class="row">
+    @include('_form.success')
     <div class="col-xl-8 col-lg-7 text-center">
         <img src="/wa/dashboard/img/banner.svg" class="session_img mt-4">
         <p class="mt-5 session_buy_subheading">There are no Sessions available</p>

@@ -42,28 +42,60 @@ class HomeController extends Controller
     
     public function adminDashboard()
     {
-        return view('dashboard.admin');
+        if (auth()->user()->role === 'admin') {
+            return view('dashboard.admin');
+        } elseif (auth()->user()->role === 'teacher') {
+            return redirect('/teacher-dashboard');
+        } elseif (auth()->user()->role === 'operation') {
+            return redirect('/operation-dashboard');
+        } elseif (auth()->user()->role === 'student') {
+            return redirect('/student-dashboard');
+        }
     }
 
     public function teacherDashboard()
     {
-        return view('dashboard.teacher');
+        if (auth()->user()->role === 'admin') {
+            return redirect('/admin-dashboard');
+        } elseif (auth()->user()->role === 'teacher') {
+            return view('dashboard.teacher');
+        } elseif (auth()->user()->role === 'operation') {
+            return redirect('/operation-dashboard');
+        } elseif (auth()->user()->role === 'student') {
+            return redirect('/student-dashboard');
+        }
     }
 
     public function operationDashboard()
     {
-        return view('dashboard.operation');
+        if (auth()->user()->role === 'admin') {
+            return redirect('/admin-dashboard');
+        } elseif (auth()->user()->role === 'teacher') {
+            return redirect('/teacher-dashboard');
+        } elseif (auth()->user()->role === 'operation') {
+            return view('dashboard.operation');
+        } elseif (auth()->user()->role === 'student') {
+            return redirect('/student-dashboard');
+        }
     }
 
     public function studentDashboard(Request $request)
     {
-        $student = Student::where('user_id', auth()->user()->id)->first();
-        $students = Batch::where('class_master_id', $student->class_master_id)->latest()->take(8)->get();
-        // buy now || orders table
-        // if(Orders::where('user_id', auth()->user()->id)->exists()){
-        // return redirect('/session-list');
-        // }
-        return view('dashboard.student', compact('students'));
+        if (auth()->user()->role === 'admin') {
+            return redirect('/admin-dashboard');
+        } elseif (auth()->user()->role === 'teacher') {
+            return redirect('/teacher-dashboard');
+        } elseif (auth()->user()->role === 'operation') {
+            return redirect('/operation-dashboard');
+        } elseif (auth()->user()->role === 'student') {
+            $student = Student::where('user_id', auth()->user()->id)->first();
+            $students = Batch::where('class_master_id', $student->class_master_id)->latest()->take(8)->get();
+            // buy now || orders table
+            // if(Orders::where('user_id', auth()->user()->id)->exists()){
+            // return redirect('/session-list');
+            // }
+            return view('dashboard.student', compact('students'));
+        }
     }
     public function sessionList()
     {

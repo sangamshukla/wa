@@ -194,6 +194,7 @@ class BatchController extends Controller
     public function student(Request $request)
     {
         $batches = Orders::latest()->get();
+
         return view('class.student', compact('batches'));
     }
     

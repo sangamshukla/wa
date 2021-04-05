@@ -10,12 +10,6 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     @include('layouts._partials._css')
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-
-
-
-
-
-
 </head>
 <body class="loading" data-layout="detached" data-layout-config='{"leftSidebarCondensed":false,"darkMode":false, "showRightSidebarOnStart": true}'>
 

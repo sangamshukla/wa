@@ -19,7 +19,9 @@ select.form-control.border-0 {
   .nav_images{
     margin-bottom: -10px;
   }
- 
+  .my_session{
+    margin-top: 82px;
+  }
 /* start sidebaar */
 .sidebar {
     width: 8rem;
@@ -331,10 +333,11 @@ span.badge.badge-danger.badge-counter{
     left: 50px;
 }
 .profile_details{
-    margin-top: 20px;
+    margin-top: -40px;
 }
 
 @media only screen and (max-width: 768px){
+    
     .list_announce{
         width: 100%;
     }
