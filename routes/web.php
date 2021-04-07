@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApiController;
 use App\Http\Controllers\BatchController;
 use App\Http\Controllers\FooterContentController;
 use App\Http\Controllers\HomeController;
@@ -98,3 +99,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('privacy-policy', [FooterContentController::class, 'privacyPolicy'])->name('privacy.policy');
 
     Route::post('/pay', [PaymentController::class , 'pay'])->name('payment.makePayment');
+
+    Route::post('/login-api', [ApiController::class, 'login']);

@@ -98,6 +98,11 @@ button#register {
   font-size: 16px;
   border-radius: 8px;
 }
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 .navbar .nav-item .nav-link:hover {
   color: #1d6771;

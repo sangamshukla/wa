@@ -52,7 +52,10 @@ class PaymentController extends Controller
         session()->put('cart', $arr);
         return redirect(route('buy.now'))->with('status', 'Your class removed successfully !');
     }
-
+    // public function payforsuccess(Request $request)
+    // {
+    //     return view('payment.success');
+    // }
 
     public function pay(Request $request)
     {

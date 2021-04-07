@@ -137,7 +137,6 @@
                 <form method="POST" action="{{ route('payment.makePayment') }}">
                   @csrf
                   <button type="submit" id="btReload" class="pay_now btn desktopshow" >Pay Now</button>
-
                 </form>
                 @endauth
                 </div>
@@ -146,13 +145,17 @@
                   <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content" style="background-color: #EAEAEA">
+                        <a href="/"><img alt="Paris" style="width:27%;" src="{{ asset('wa/assets/img/logo.png')}}"></a><br>
                         <h4 style="text-align: center;" >Student Login</h4>
                         <div class="modal-header">
                           <h5 class="modal-title" id="exampleModalLongTitle"></h5>
                         </div>
                         <div class="modal-body" >
-                          <form method="POST" action="{{ route('login') }}">
+                          <form>
                             @csrf
+                            <div id="error" class="alert alert-danger">
+                              Incorrect Email Or Password
+                            </div>
                             @include('_form.input', ['title' => 'Email Address', 'name' => 'email'])
                             @include('_form.input', ['title' => 'Password', 'name' => 'password', 'type' => 'password'])
                     
@@ -169,7 +172,7 @@
                             </div>
                     
                             <div class="form-group mb-0 text-center">
-                                <button style="background: #1d6771;" class="btn btn-primary" type="submit"> Log In </button>
+                                <button style="background: #1d6771;" id="submitLogin" class="btn btn-primary" type="button"> Log In </button>
                             </div>                            
                         </form>
                         </div>
@@ -196,6 +199,26 @@
     <script src="{{ asset('wa/buynow.js') }}"></script>
     
     <script src="{{asset('wa/coustom.js') }}"></script>
+    <script>
+
+      $('#error').hide();
+      $('#submitLogin').on('click', function(){
+
+          // ajax for login
+          var email = $('#email').val();
+          var password = $('#password').val();
+          $.post( "/login-api",
+            { email: email, password: password, _token : "{{ csrf_token() }}" }).done(function( data ) {
+            if(data == 'success')
+            {
+              location.reload();
+            }else {
+              $('#error').show();
+            }
+          });
+      })
+     
+    </script>
     @endsection
     
     {{-- for scroll --}}
