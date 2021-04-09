@@ -13,7 +13,9 @@
         <p class="mt-5 session_buy_subheading">There are no Sessions available</p>
         <p class="session_buy_pera"> You have to buy a cource to start the activity here</p>
         <div>
-            <button class="btn session_buycta ">Buy now</button>
+
+            {{-- <button class="btn session_buycta ">Buy now</button> --}}
+            <button class="btn session_buycta "><a href="{{route('packages.details')}}">Buy now</button></a>
         </div>
     </div>
     <div class="col-xl-4 col-lg-5">

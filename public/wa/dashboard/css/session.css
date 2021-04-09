@@ -87,6 +87,7 @@ select.form-control.border-0 {
     color: #fff;
     margin-bottom: 40px;
     text-align: center;
+    /* text-decoration: none; */
 }
 .profile_icon img{
     width: 100px;

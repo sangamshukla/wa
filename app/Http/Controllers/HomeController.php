@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Batch;
 use App\Models\Student;
+use Carbon\Carbon;
 // use GuzzleHttp\Psr7\Request;
 use Illuminate\Http\Request;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -97,8 +98,13 @@ class HomeController extends Controller
             return view('dashboard.student', compact('students'));
         }
     }
-    public function sessionList()
+    public function sessionList(Request $request)
     {
-        return view('dashboard.session-list');
+        $batches = Batch::latest()->get();
+        $today = Batch::all();
+        // $today = Batch::whereDate('session_start_date', Carbon::today());
+        $tomorrow = Batch::whereDate('session_start_date', Carbon::tomorrow());
+        // $tomorrow = Batch::whereDate('session_start_date', Carbon::yesterday());
+        return view('dashboard.session-list', compact('batches', 'today', 'tomorrow'));
     }
 }

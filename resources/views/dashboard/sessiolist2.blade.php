@@ -17,13 +17,13 @@
                                 <div class="tab-card-header">
                                   <ul class="nav nav-tabs" id="myTab" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link tab_cta active" id="one-tab" data-toggle="tab" href="#one" role="tab" aria-controls="One" aria-selected="true">Today’s</a>
+                                        <a class="nav-link tab_cta active" id="one-tab" data-toggle="tab" href="#one" role="tab" aria-controls="One" aria-selected="true">All sessions</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link tab_cta" id="two-tab" data-toggle="tab" href="#two" role="tab" aria-controls="Two" aria-selected="false">Tomorrow</a>
+                                        <a class="nav-link tab_cta" id="two-tab" data-toggle="tab" href="#two" role="tab" aria-controls="Two" aria-selected="false">Today’s</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link tab_cta" id="three-tab" data-toggle="tab" href="#three" role="tab" aria-controls="Three" aria-selected="false">All sessions</a>
+                                        <a class="nav-link tab_cta" id="three-tab" data-toggle="tab" href="#three" role="tab" aria-controls="Three" aria-selected="false">Upcoming</a>
                                     </li>
                                   </ul>
                                 </div>
@@ -35,106 +35,396 @@
                                         <div class="tab-pane fade show active p-3" id="one" role="tabpanel" aria-labelledby="one-tab">
                                           <div id="accordion">
                                             <div class="card mb-3">
-                                                @foreach($today as $batch)
                                               <div class="card-header" id="headingOne">
                                                 <h5 class="mb-0">
                                                     <div class="d-flex justify-content-around">
                                                         <div class="card_img"><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
                                                     <div>
                                                         <p class="subject_card">Subject</p>
-                                                        <p class="card_subject_title1">{{$batch->subject->name}}</p>
+                                                        <p class="card_subject_title1">Maths</p>
                                                     </div>
                                                     <div class="border-left first_left_border"></div>
                                                     <div>
-                                                        <p class="subject_card">Join Now</p>
-                                                        {{-- <p class="card_subject_title2">Maths</p> --}}
-                                                        <a href="#">join now</a>
+                                                        <p class="subject_card">Subject</p>
+                                                        <p class="card_subject_title2">Maths</p>
                                                     </div>
                                                     <div class="border-left second_left_border"></div>
-                                                    
+                                                    <div>
+                                                        <p class="subject_card">Subject</p>
+                                                        <p class="card_subject_title3">Maths</p>
+                                                    </div>
                                                     <button class="btn btn-link card_cta" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                                        <img src="{{ asset('wa/dashboard/sessionlist/img/chevron.svg') }}" alt="arrow" title="arrow">
                                                      </button>
                                                 </div>
-                                                {{-- <p class="date_text">Feb 04, 2021- Feb 21,20201</p> --}}
-                                                <p class="date_text">{{ $batch->batch_start_date }}{{ \Carbon\Carbon::now()->format(' l ') }}</p>
-
-
+                                                <p class="date_text">Feb 04, 2021- Feb 21,20201</p>
                                                 </h5>
                                               </div>
                                               <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                                                 <div class="card-body">
-                                                  {{-- Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS. --}}
-                                                  {{--  --}}
-                                                  @foreach($batch->batchSession as $session) 
-                                                  <th>session name</th>
-                                                    <td>{{ $session->name }}</td>
-                                                  <th>Topic</th>
-                                                   <td> @foreach($session->topics as $t)
-                                                    {{ $t->topic->name }}</td>                                    
-                                                    @endforeach 
-                                                    <th>Teacher Name</th>
-                                                    <td>{{ $batch->classSettings->name }}</td>
-                                                 @endforeach
-                                                  {{--  --}}
+                                                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
                                                 </div>
                                               </div>
-                                              @endforeach
                                             </div>
+                                            <div class="card mb-3">
+                                              <div class="card-header" id="headingTwo">
+                                                <h5 class="mb-0">
+                                                    <div class="d-flex justify-content-around">
+                                                        <div class="card_img"><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
+                                                    <div>
+                                                        <p class="subject_card">Subject</p>
+                                                        <p class="card_subject_title1">Maths</p>
+                                                    </div>
+                                                    <div class="border-left first_left_border"></div>
+                                                    <div>
+                                                        <p class="subject_card">Subject</p>
+                                                        <p class="card_subject_title2">Maths</p>
+                                                    </div>
+                                                    <div class="border-left second_left_border"></div>
+                                                    <div>
+                                                        <p class="subject_card">Subject</p>
+                                                        <p class="card_subject_title3">Maths</p>
+                                                    </div>
+                                                    <button class="btn btn-link card_cta" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
+                                                         <img src="{{ asset('wa/dashboard/sessionlist/img/chevron.svg') }}" alt="arrow" title="arrow">
+                                                     </button>
+                                                </div>
+                                                <p class="date_text">Feb 04, 2021- Feb 21,20201</p>
+                                                </h5>
+                                              </div>
+                                              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                                <div class="card-body">
+                                                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="card mb-3">
+                                              <div class="card-header" id="headingThree">
+                                                <h5 class="mb-0">
+                                                    <div class="d-flex justify-content-around">
+                                                        <div class="card_img"><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
+                                                    <div>
+                                                        <p class="subject_card">Subject</p>
+                                                        <p class="card_subject_title1">Maths</p>
+                                                    </div>
+                                                    <div class="border-left first_left_border"></div>
+                                                    <div>
+                                                        <p class="subject_card">Subject</p>
+                                                        <p class="card_subject_title2">Maths</p>
+                                                    </div>
+                                                    <div class="border-left second_left_border"></div>
+                                                    <div>
+                                                        <p class="subject_card">Subject</p>
+                                                        <p class="card_subject_title3">Maths</p>
+                                                    </div>
+                                                    <button class="btn btn-link card_cta" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseOne">
+                                                         <img src="{{ asset('wa/dashboard/sessionlist/img/chevron.svg') }}" alt="arrow" title="arrow">
+                                                     </button>
+                                                </div>
+                                                <p class="date_text">Feb 04, 2021- Feb 21,20201</p>
+                                                </h5>
+                                              </div>
+                                              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                                <div class="card-body">
+                                                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="card mb-3">
+                                                <div class="card-header" id="headingFour">
+                                                  <h5 class="mb-0">
+                                                      <div class="d-flex justify-content-around">
+                                                          <div class="card_img"><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
+                                                      <div>
+                                                          <p class="subject_card">Subject</p>
+                                                          <p class="card_subject_title1">Maths</p>
+                                                      </div>
+                                                      <div class="border-left first_left_border"></div>
+                                                      <div>
+                                                          <p class="subject_card">Subject</p>
+                                                          <p class="card_subject_title2">Maths</p>
+                                                      </div>
+                                                      <div class="border-left second_left_border"></div>
+                                                      <div>
+                                                          <p class="subject_card">Subject</p>
+                                                          <p class="card_subject_title3">Maths</p>
+                                                      </div>
+                                                      <button class="btn btn-link card_cta" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseOne">
+                                                           <img src="{{ asset('wa/dashboard/sessionlist/img/chevron.svg') }}" alt="arrow" title="arrow">
+                                                       </button>
+                                                  </div>
+                                                  <p class="date_text">Feb 04, 2021- Feb 21,20201</p>
+                                                  </h5>
+                                                </div>
+                                                <div id="collapseThree" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+                                                  <div class="card-body">
+                                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="card mb-3">
+                                                <div class="card-header" id="headingFive">
+                                                  <h5 class="mb-0">
+                                                      <div class="d-flex justify-content-around">
+                                                          <div class="card_img"><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
+                                                      <div>
+                                                          <p class="subject_card">Subject</p>
+                                                          <p class="card_subject_title1">Maths</p>
+                                                      </div>
+                                                      <div class="border-left first_left_border"></div>
+                                                      <div>
+                                                          <p class="subject_card">Subject</p>
+                                                          <p class="card_subject_title2">Maths</p>
+                                                      </div>
+                                                      <div class="border-left second_left_border"></div>
+                                                      <div>
+                                                          <p class="subject_card">Subject</p>
+                                                          <p class="card_subject_title3">Maths</p>
+                                                      </div>
+                                                      <button class="btn btn-link card_cta" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseOne">
+                                                           <img src="{{ asset('wa/dashboard/sessionlist/img/chevron.svg') }}" alt="arrow" title="arrow">
+                                                       </button>
+                                                  </div>
+                                                  <p class="date_text">Feb 04, 2021- Feb 21,20201</p>
+                                                  </h5>
+                                                </div>
+                                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                                  <div class="card-body">
+                                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="card mb-3">
+                                                <div class="card-header" id="headingSix">
+                                                  <h5 class="mb-0">
+                                                      <div class="d-flex justify-content-around">
+                                                          <div class="card_img"><img src="{{asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
+                                                      <div>
+                                                          <p class="subject_card">Subject</p>
+                                                          <p class="card_subject_title1">Maths</p>
+                                                      </div>
+                                                      <div class="border-left first_left_border"></div>
+                                                      <div>
+                                                          <p class="subject_card">Subject</p>
+                                                          <p class="card_subject_title2">Maths</p>
+                                                      </div>
+                                                      <div class="border-left second_left_border"></div>
+                                                      <div>
+                                                          <p class="subject_card">Subject</p>
+                                                          <p class="card_subject_title3">Maths</p>
+                                                      </div>
+
+                                                        <button class="btn btn-link card_cta" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                        <img src="{{ asset('wa/dashboard/sessionlist/img/chevron.svg') }}" alt="arrow" title="arrow">
+                                                      </button>
+                                                  </div>
+                                                  <p class="date_text">Feb 04, 2021- Feb 21,20201</p>
+                                                  </h5>
+                                                </div>
+                                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                                  <div class="card-body">
+                                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                                  </div>
+                                                </div>
+                                              </div>
                                           </div>            
                                         </div>
                                         <div class="tab-pane fade p-3" id="two" role="tabpanel" aria-labelledby="two-tab">
                                             <div id="accordion">
                                                 <div class="card mb-3">
                                                   <div class="card-header" id="headingOne">
-                                                    @foreach($today as $batch)
-                                                    <div class="card-header" id="headingOne">
+                                                    <h5 class="mb-0">
+                                                        <div class="d-flex justify-content-around">
+                                                            <div class="card_img"><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
+                                                        <div>
+                                                            <p class="subject_card">Subject</p>
+                                                            <p class="card_subject_title1">Maths</p>
+                                                        </div>
+                                                        <div class="border-left first_left_border"></div>
+                                                        <div>
+                                                            <p class="subject_card">Subject</p>
+                                                            <p class="card_subject_title2">Maths</p>
+                                                        </div>
+                                                        <div class="border-left second_left_border"></div>
+                                                        <div>
+                                                            <p class="subject_card">Subject</p>
+                                                            <p class="card_subject_title3">Maths</p>
+                                                        </div>
+                                                        <button class="btn btn-link card_cta" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                             <img src="{{ asset('wa/dashboard/sessionlist/img/chevron.svg') }}" alt="arrow" title="arrow">
+                                                         </button>
+                                                    </div>
+                                                    <p class="date_text">Feb 04, 2021- Feb 21,20201</p>
+                                                    </h5>
+                                                  </div>
+                                              
+                                                  <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                                    <div class="card-body">
+                                                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <div class="card mb-3">
+                                                  <div class="card-header" id="headingTwo">
+                                                    <h5 class="mb-0">
+                                                        <div class="d-flex justify-content-around">
+                                                            <div class="card_img"><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
+                                                        <div>
+                                                            <p class="subject_card">Subject</p>
+                                                            <p class="card_subject_title1">Maths</p>
+                                                        </div>
+                                                        <div class="border-left first_left_border"></div>
+                                                        <div>
+                                                            <p class="subject_card">Subject</p>
+                                                            <p class="card_subject_title2">Maths</p>
+                                                        </div>
+                                                        <div class="border-left second_left_border"></div>
+                                                        <div>
+                                                            <p class="subject_card">Subject</p>
+                                                            <p class="card_subject_title3">Maths</p>
+                                                        </div>
+                                                        <button class="btn btn-link card_cta" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
+                                                             <img src="{{ asset('wa/dashboard/sessionlist/img/chevron.svg') }}" alt="arrow" title="arrow">
+                                                         </button>
+                                                    </div>
+                                                    <p class="date_text">Feb 04, 2021- Feb 21,20201</p>
+                                                    </h5>
+                                                  </div>
+                                                  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                                    <div class="card-body">
+                                                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <div class="card mb-3">
+                                                  <div class="card-header" id="headingThree">
+                                                    <h5 class="mb-0">
+                                                        <div class="d-flex justify-content-around">
+                                                            <div class="card_img"><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
+                                                        <div>
+                                                            <p class="subject_card">Subject</p>
+                                                            <p class="card_subject_title1">Maths</p>
+                                                        </div>
+                                                        <div class="border-left first_left_border"></div>
+                                                        <div>
+                                                            <p class="subject_card">Subject</p>
+                                                            <p class="card_subject_title2">Maths</p>
+                                                        </div>
+                                                        <div class="border-left second_left_border"></div>
+                                                        <div>
+                                                            <p class="subject_card">Subject</p>
+                                                            <p class="card_subject_title3">Maths</p>
+                                                        </div>
+                                                      <button class="btn btn-link card_cta" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                        <img src="{{ asset('wa/dashboard/sessionlist/img/chevron.svg') }}" alt="arrow" title="arrow">
+                                                      </button>
+                                                    </div>
+                                                    <p class="date_text">Feb 04, 2021- Feb 21,20201</p>
+                                                    </h5>
+                                                  </div>
+                                                  <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                                    <div class="card-body">
+                                                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <div class="card mb-3">
+                                                    <div class="card-header" id="headingFour">
                                                       <h5 class="mb-0">
                                                           <div class="d-flex justify-content-around">
                                                               <div class="card_img"><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
                                                           <div>
                                                               <p class="subject_card">Subject</p>
-                                                              <p class="card_subject_title1">{{$batch->subject->name}}</p>
+                                                              <p class="card_subject_title1">Maths</p>
                                                           </div>
                                                           <div class="border-left first_left_border"></div>
                                                           <div>
-                                                              <p class="subject_card">Join Now</p>
-                                                              {{-- <p class="card_subject_title2">Maths</p> --}}
-                                                              <a href="#">join now</a>
+                                                              <p class="subject_card">Subject</p>
+                                                              <p class="card_subject_title2">Maths</p>
                                                           </div>
                                                           <div class="border-left second_left_border"></div>
-                                                          
-                                                          <button class="btn btn-link card_cta" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                             <img src="{{ asset('wa/dashboard/sessionlist/img/chevron.svg') }}" alt="arrow" title="arrow">
+                                                          <div>
+                                                              <p class="subject_card">Subject</p>
+                                                              <p class="card_subject_title3">Maths</p>
+                                                          </div>
+                                                          <button class="btn btn-link card_cta" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseOne">
+                                                               <img src="{{ asset('wa/dashboard/sessionlist/img/chevron.svg') }}" alt="arrow" title="arrow">
                                                            </button>
                                                       </div>
-                                                      {{-- <p class="date_text">Feb 04, 2021- Feb 21,20201</p> --}}
-                                                      <p class="date_text">{{ $batch->batch_start_date }}{{ \Carbon\Carbon::now()->format(' l ') }}</p>
-      
-      
+                                                      <p class="date_text">Feb 04, 2021- Feb 21,20201</p>
                                                       </h5>
                                                     </div>
-                                                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                                    <div id="collapseThree" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
                                                       <div class="card-body">
-                                                        {{-- Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS. --}}
-                                                        {{--  --}}
-                                                        @foreach($batch->batchSession as $session) 
-                                                        <th>session name</th>
-                                                          <td>{{ $session->name }}</td>
-                                                        <th>Topic</th>
-                                                         <td> @foreach($session->topics as $t)
-                                                          {{ $t->topic->name }}</td>                                    
-                                                          @endforeach 
-                                                          <th>Teacher Name</th>
-                                                          <td>{{ $batch->classSettings->name }}</td>
-                                                       @endforeach
-                                                        {{--  --}}
+                                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
                                                       </div>
                                                     </div>
-                                                    @endforeach
                                                   </div>
-                                                </div>
-                                            </div>  
+                                                  <div class="card mb-3">
+                                                    <div class="card-header" id="headingFive">
+                                                      <h5 class="mb-0">
+                                                          <div class="d-flex justify-content-around">
+                                                              <div class="card_img"><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
+                                                          <div>
+                                                              <p class="subject_card">Subject</p>
+                                                              <p class="card_subject_title1">Maths</p>
+                                                          </div>
+                                                          <div class="border-left first_left_border"></div>
+                                                          <div>
+                                                              <p class="subject_card">Subject</p>
+                                                              <p class="card_subject_title2">Maths</p>
+                                                          </div>
+                                                          <div class="border-left second_left_border"></div>
+                                                          <div>
+                                                              <p class="subject_card">Subject</p>
+                                                              <p class="card_subject_title3">Maths</p>
+                                                          </div>
+                                                          <button class="btn btn-link card_cta" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseOne">
+                                                               <img src="{{ asset('wa/dashboard/sessionlist/img/chevron.svg') }}" alt="arrow" title="arrow">
+                                                           </button>
+                                                      </div>
+                                                      <p class="date_text">Feb 04, 2021- Feb 21,20201</p>
+                                                      </h5>
+                                                    </div>
+                                                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                                      <div class="card-body">
+                                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <div class="card mb-3">
+                                                    <div class="card-header" id="headingSix">
+                                                      <h5 class="mb-0">
+                                                          <div class="d-flex justify-content-around">
+                                                              <div class="card_img"><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
+                                                          <div>
+                                                              <p class="subject_card">Subject</p>
+                                                              <p class="card_subject_title1">Maths</p>
+                                                          </div>
+                                                          <div class="border-left first_left_border"></div>
+                                                          <div>
+                                                              <p class="subject_card">Subject</p>
+                                                              <p class="card_subject_title2">Maths</p>
+                                                          </div>
+                                                          <div class="border-left second_left_border"></div>
+                                                          <div>
+                                                              <p class="subject_card">Subject</p>
+                                                              <p class="card_subject_title3">Maths</p>
+                                                          </div>
+                                                          <button class="btn btn-link card_cta" data-toggle="collapse" data-target="#collapseSix" aria-expanded="true" aria-controls="collapseOne">
+                                                               <img src="{{ asset('wa/dashboard/sessionlist/img/chevron.svg') }}" alt="arrow" title="arrow">
+                                                           </button>
+                                                      </div>
+                                                      <p class="date_text">Feb 04, 2021- Feb 21,20201</p>
+                                                      </h5>
+                                                    </div>
+                                                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                                      <div class="card-body">
+                                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                              </div>  
                                         </div>
                                         <div class="tab-pane fade p-3" id="three" role="tabpanel" aria-labelledby="three-tab">
                                             <div id="accordion">
@@ -439,6 +729,9 @@
                                     </div>
                                 </div>
                             </div>
+
+                          
+
                         </div>
                         <div class="col-xl-4 col-lg-4 mb-4 ">
                             <div class="profile_details card py-4 px-4 text-center thirdbox">

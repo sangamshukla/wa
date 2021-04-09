@@ -156,6 +156,9 @@
                             <div id="error" class="alert alert-danger">
                               Incorrect Email Or Password
                             </div>
+                            <div id="email_password" class="alert alert-danger">
+                              Please Enter Email and Password
+                            </div>
                             @include('_form.input', ['title' => 'Email Address', 'name' => 'email'])
                             @include('_form.input', ['title' => 'Password', 'name' => 'password', 'type' => 'password'])
                     
@@ -202,11 +205,17 @@
     <script>
 
       $('#error').hide();
+      $('#email_password').hide();
+      // email_password
       $('#submitLogin').on('click', function(){
-
+        
           // ajax for login
           var email = $('#email').val();
           var password = $('#password').val();
+          if(email == '' && password == '')
+          {
+           $('#email_password').show();
+          }
           $.post( "/login-api",
             { email: email, password: password, _token : "{{ csrf_token() }}" }).done(function( data ) {
             if(data == 'success')
@@ -214,6 +223,7 @@
               location.reload();
             }else {
               $('#error').show();
+              
             }
           });
       })

@@ -4,6 +4,7 @@ use App\Http\Controllers\ApiController;
 use App\Http\Controllers\BatchController;
 use App\Http\Controllers\FooterContentController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PackagesDetailsController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeacherByBatchController;
@@ -60,6 +61,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/student-dashboard', [HomeController::class ,'studentDashboard']);
     Route::get('/session-list', [HomeController::class , 'sessionList']);
+    // Route::post('/session-list', [HomeController::class , 'sessionListSave']);
+
 
     
 
@@ -101,3 +104,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/pay', [PaymentController::class , 'pay'])->name('payment.makePayment');
 
     Route::post('/login-api', [ApiController::class, 'login']);
+    // packages details
+    Route::get('/packages-details', [PackagesDetailsController::class, 'packagesDetails'])->name('packages.details');
