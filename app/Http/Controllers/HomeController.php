@@ -101,10 +101,8 @@ class HomeController extends Controller
     public function sessionList(Request $request)
     {
         $batches = Batch::latest()->get();
-        $today = Batch::all();
-        // $today = Batch::whereDate('session_start_date', Carbon::today());
-        $tomorrow = Batch::whereDate('session_start_date', Carbon::tomorrow());
-        // $tomorrow = Batch::whereDate('session_start_date', Carbon::yesterday());
+        $today = Batch::whereDate('batch_start_date', Carbon::today())->get();
+        $tomorrow = Batch::whereDate('batch_start_date', Carbon::tomorrow())->get();
         return view('dashboard.session-list', compact('batches', 'today', 'tomorrow'));
     }
 }
