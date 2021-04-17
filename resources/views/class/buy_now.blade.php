@@ -1,12 +1,13 @@
 @extends('layouts.main')
 @section('css')
     <link rel="stylesheet" href="{{ asset('wa/buynow.css') }}">
+    <link rel="stylesheet" href="{{ asset('wa/modal.css') }}">
 @endsection
 
 @section('content')
     <!-- subject cartsection -->
-    <section class="quickpay_block">     
-      <div class="container-fluid">   
+    <section class="quickpay_block">
+      <div class="container-fluid">
         <div class="row">
           <div class="col">
             <button class="pay_now btn mobilw_show">Pay Now</button>
@@ -71,7 +72,7 @@
                                     {{ $relatedBatch->status == 1 ? 'Online' : 'Offline' }}
                                     </span>
                                     {{-- for color  --}}
-                                    <span class="dot{{ $relatedBatch->status == 1 ? '' : '-prime' }}"></span></div>   
+                                    <span class="dot{{ $relatedBatch->status == 1 ? '' : '-prime' }}"></span></div>
                                 </div>
                             </div>
                           <div class="view_detail_block pb-3">
@@ -79,7 +80,7 @@
                                   View details
                               </a>
                               <a href="#" class="price_card price_bg{{ $i }}">
-                                &pound; {{ $relatedBatch->batch_price_per_session }} 
+                                &pound; {{ $relatedBatch->batch_price_per_session }}
                               </a>
                           </div>
                           {{-- @php $i++ @endphp --}}
@@ -88,7 +89,7 @@
                   </div>
                   @php $i++ @endphp
                   @endforeach
-                  
+
                 </div>
                 <hr />
                 <div class="coupon_block">
@@ -108,7 +109,7 @@
                     <div>Course cost</div>
                     <div>£ {{ $relatedBatches->sum('batch_price_per_session') }}</div>
                   </div>
-                  <div class="cource_detail_section">
+                  <div class="cource_detail_section"> 
                     <div>Tax </div>
                     <div>£  0</div>
                   </div>
@@ -131,10 +132,10 @@
                 </div>
                 <div class="pay_cta mb-5">
                   @guest
-                  <button class="pay_now btn desktopshow" data-toggle="modal" data-target="#exampleModalCenter">Pay Now</button>
+                  <button class="pay_now btn desktopshow" data-toggle="modal" data-target="#exampleModal">Pay Now</button>
                 @endguest
                 @auth
-                <form method="POST" action="{{ route('payment.makePayment') }}">
+                <form method="POST" id="paymentForm" action="{{ route('payment.makePayment') }}">
                   @csrf
                   <button type="submit" id="btReload" class="pay_now btn desktopshow" >Pay Now</button>
                 </form>
@@ -142,7 +143,7 @@
                 </div>
 
                   <!-- Modal -->
-                  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                  {{-- <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content" style="background-color: #EAEAEA">
                         <a href="/"><img alt="Paris" style="width:27%;" src="{{ asset('wa/assets/img/logo.png')}}"></a><br>
@@ -161,32 +162,164 @@
                             </div>
                             @include('_form.input', ['title' => 'Email Address', 'name' => 'email'])
                             @include('_form.input', ['title' => 'Password', 'name' => 'password', 'type' => 'password'])
-                    
                             <div class="form-group row">
                                 <div class="col-md-6 offset-md-4">
                                     {{-- <div class="form-check">
                                         <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                    
+
                                         <label class="form-check-label" for="remember">
                                             {{ __('Remember Me') }}
                                         </label>
                                     </div> --}}
-                                </div>
+                                {{-- </div>
                             </div>
-                    
+
                             <div class="form-group mb-0 text-center">
                                 <button style="background: #1d6771;" id="submitLogin" class="btn btn-primary" type="button"> Log In </button>
-                            </div>                            
+                            </div>
                         </form>
                         </div>
                         <div class="modal-footer">
-                          <button style="background: #1d6771;" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button style="background: #1d6771;" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
                           {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
+                        {{-- </div>
+                      </div>
+                    </div>
+                  </div> --}}
+            {{-- close model --}}
+            <section class="modal_section">
+                  <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-body">
+                            <section class="modal_tab">
+                                <div class="container-fluid">
+                                  <div class="row">
+                                    <div class="col-sm-12">
+                                      <div class="modal_logo text-center">
+                                          <img alt="logo-img" title="logo-img" src="{{asset('wa/assets/img/logo.png')}}" width="120">
+                                      </div>
+                                        <div class="modal_cta_sections mt-5">
+                                          <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                            <li class="nav-item text-center"> <a class="nav-link active btl" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true"><button id="" class="btn btn_block_modal"> Login</button></a> </li>
+                                            <li class="nav-item text-center"> <a class="nav-link btr" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false"><button id="login-modal" class="btn btn_block_modal active">Sign up</button></a> </li>
+                                          </ul>
+                                        </div>
+
+                                        <div class="tab-content" id="pills-tabContent">
+                                          <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                                            <div class="modal_login_section">
+                                              <div class="pos-rel">
+                                                <div id="organizer-details" class="tab-pane active">
+                                                  <form class="seminor-login-form">
+                                                    @csrf
+                                                    <div id="error" class="alert alert-danger">
+                                                        Incorrect Email Or Password
+                                                        </div>
+                                                        <div id="email_password" class="alert alert-danger">
+                                                        Please Enter Email and Password
+                                                        </div>
+
+                                                    <div class="form-group">
+                                                    @include('_form.input', ['title' => 'Email Address', 'name' => 'email'])
+                                                    {{-- <input type="email" name="email" id="email" class="form-control" required="" autocomplete="off"> --}}
+                                                    {{-- <label class="form-control-placeholder" for="contact-person">Email Address</label> --}}
+                                                </div>
+                                                <div class="form-group">
+                                                        @include('_form.input', ['title' => 'Password', 'name' => 'password', 'type' => 'password'])
+                                                      {{-- <input type="password" name="password" class="form-control" required="" autocomplete="off"> --}}
+                                                      {{-- <label class="form-control-placeholder" for="contact-email">Password</label> --}}
+                                                    </div>
+                                                    <div class="btn-check-log text-center">
+                                                      <button id="submitLogin" class="btn-check-login loginmodal_cta" type="button">
+                                                        Login
+                                                      </button>
+                                                    </div>
+
+                                                    <div class="form-group mt-3">
+
+
+                                                        {{-- <label class="form-check-label" for="remember"> --}}
+
+                                                        <label class="container-checkbox">
+                                                            {{ __('Remember Me') }}
+                                                            {{-- Remember Me --}}
+                                                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                                        {{-- <input type="checkbox" checked="checked" required=""> --}}
+                                                        <span class="checkmark-box"></span>
+                                                      </label>
+                                                    </div>
+                                                  </form>
+                                                </div>
+                                                <!-- Tab panes -->
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                                        <div class="modal_signup_section">
+                                          <div class="pos-rel">
+                                            <div id="organizer-details" class="tab-pane active">
+                                              <form class="seminor-login-form">
+                                                <div class="form-group">
+                                                    @include('_form.input', ['title' => 'First Name', 'name' => 'first_name', 'class'=>'form-control'])
+                                                    {{-- <input type="text" class="form-control" name="first_name" id="first_name" required="" autocomplete="off">
+                                                    <label class="form-control-placeholder" for="first_name">First Name</label> --}}
+                                                </div>
+                                                <div class="form-group">
+                                                    @include('_form.input', ['title' => 'Last Name', 'name' => 'last_name', 'class'=>'form-control'])
+                                                  {{-- <input type="text" class="form-control" name="last_name" required="" autocomplete="off">
+                                                  <label class="form-control-placeholder" for="last_name">Last Name</label> --}}
+                                                </div>
+                                                <div class="form-group">
+                                                  <input type="email" class="form-control" required="" autocomplete="off">
+                                                  <label class="form-control-placeholder" for="contact-person">Email Address</label>
+                                                </div>
+                                                <div class="form-group">
+                                                  <input type="password" class="form-control" required="" autocomplete="off">
+                                                  <label class="form-control-placeholder" for="contact-email">Password</label>
+                                                </div>
+                                                <div class="btn-check-log text-center">
+                                                  <button type="button" id="signUp" class="btn-check-login loginmodal_cta">
+                                                    Sign up
+                                                  </button>
+                                                </div>
+
+                                                <div class="form-group mt-3">
+                                                  <label class="container-checkbox">
+                                                    Remember Me
+                                                    <input type="checkbox" checked="checked" required="">
+                                                    <span class="checkmark-box"></span>
+                                                  </label>
+                                                </div>
+                                              </form>
+                                            </div>
+                                            <!-- Tab panes -->
+                                          </div>
+                                        </div>
+
+                                          </div>
+                                        </div>
+
+
+
+                                      <div class="sepration text-center">
+                                        <p class="subtitle fancy"><span>OR</span></p>
+                                      </div>
+                                      <div class="social_icon ml-1 social_icon_modal">
+                                        <a href="#"> <img src="{{asset('wa/assets/img/fb.svg')}}"></a>
+                                        <a href="#"> <img src="{{asset('wa/assets/img/Google.svg')}}"></a>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </section>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                {{-- close model --}}
+                    </section>
+
               </div>
             </div>
           </div>
@@ -200,7 +333,7 @@
     </script>
     @section('js')
     <script src="{{ asset('wa/buynow.js') }}"></script>
-    
+
     <script src="{{asset('wa/coustom.js') }}"></script>
     <script>
 
@@ -208,7 +341,7 @@
       $('#email_password').hide();
       // email_password
       $('#submitLogin').on('click', function(){
-        
+
           // ajax for login
           var email = $('#email').val();
           var password = $('#password').val();
@@ -220,18 +353,30 @@
             { email: email, password: password, _token : "{{ csrf_token() }}" }).done(function( data ) {
             if(data == 'success')
             {
+                // window.location.href="/pay";
               location.reload();
+            // alert("logged in");
+            // $("#paymentForm").submit();
+
+
             }else {
               $('#error').show();
-              
+
             }
           });
       })
-     
+
+    </script>
+    <script>
+        $('#signUp').on('click', function(){
+            var fname=$('#first_name').val();
+            var lname=$('#last_name').val();
+            console.log(fname);
+            console.log(lname);
+        })
     </script>
     @endsection
-    
+
     {{-- for scroll --}}
-    
+
     <!--<script src="coustom.js"></script>-->
-   

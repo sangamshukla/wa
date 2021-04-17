@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ApiController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BatchController;
 use App\Http\Controllers\FooterContentController;
 use App\Http\Controllers\HomeController;
@@ -9,7 +10,9 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeacherByBatchController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\TeacherDashboardController;
 use App\Models\Batch;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,7 +46,7 @@ Route::post('/student-login', 'App\Http\Controllers\Auth\LoginController@login')
 Route::get('/student-details/{id}', [BatchController::class, 'studentDetails'])->name('student-details');
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/home', [HomeController::class ,'index']);
+    Route::get('/home', [HomeController::class, 'index']);
 
     Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
     Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
@@ -53,18 +56,18 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 
-    Route::get('/admin-dashboard', [HomeController::class ,'adminDashboard']);
-    Route::get('/admin-show', [HomeController::class ,'adminshow']);
+    Route::get('/admin-dashboard', [HomeController::class, 'adminDashboard']);
+    Route::get('/admin-show', [HomeController::class, 'adminshow']);
 
-    Route::get('/teacher-dashboard', [HomeController::class ,'teacherDashboard']);
-    Route::get('/operation-dashboard', [HomeController::class ,'operationDashboard']);
+    Route::get('/teacher-dashboard', [HomeController::class, 'teacherDashboard']);
+    Route::get('/operation-dashboard', [HomeController::class, 'operationDashboard']);
 
-    Route::get('/student-dashboard', [HomeController::class ,'studentDashboard']);
-    Route::get('/session-list', [HomeController::class , 'sessionList']);
+    Route::get('/student-dashboard', [HomeController::class, 'studentDashboard']);
+    Route::get('/session-list', [HomeController::class, 'sessionList']);
     // Route::post('/session-list', [HomeController::class , 'sessionListSave']);
 
 
-    
+
 
     // Teacher Controller
     Route::get('add-teacher', [TeacherController::class, 'create'])->name('add-teacher');
@@ -88,22 +91,27 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('student', [BatchController::class, 'student'])->name('student');
     Route::get('available-courses', [BatchController::class, 'availableCourses'])->name('available-courses');
     // Route::get('/packages-details', [BatchController::class, 'packagesDetails'])->name('packages.details');
-    
+
 
     Route::get('add-product', [TeacherController::class, 'store'])->name('add-product');
     Route::post('add-product', [TeacherController::class, 'store'])->name('add-product');
 });
-    Route::get('buy-now', [BatchController::class, 'buyNow'])->name('buy.now');
-    Route::post('buy-now', [BatchController::class, 'buyNow'])->name('buy.now');
+Route::get('buy-now', [BatchController::class, 'buyNow'])->name('buy.now');
+Route::post('buy-now', [BatchController::class, 'buyNow'])->name('buy.now');
 
-    Route::get('add-to-cart/{batchId}', [PaymentController::class, 'payment'])->name('cart.add');
-    Route::get('remove-from-cart/{removeFromCart}', [PaymentController::class, 'removeFromCart'])->name('cart.remove');
-    // Route::post('add-to-cart/{batchId}', [PaymentController::class, 'payment'])->name('cart.add');
-    Route::get('terms-of-use', [FooterContentController::class, 'termsofuse'])->name('terms.of.use');
-    Route::get('privacy-policy', [FooterContentController::class, 'privacyPolicy'])->name('privacy.policy');
+Route::get('add-to-cart/{batchId}', [PaymentController::class, 'payment'])->name('cart.add');
+Route::get('remove-from-cart/{removeFromCart}', [PaymentController::class, 'removeFromCart'])->name('cart.remove');
+// Route::post('add-to-cart/{batchId}', [PaymentController::class, 'payment'])->name('cart.add');
+Route::get('terms-of-use', [FooterContentController::class, 'termsofuse'])->name('terms.of.use');
+Route::get('privacy-policy', [FooterContentController::class, 'privacyPolicy'])->name('privacy.policy');
 
-    Route::post('/pay', [PaymentController::class , 'pay'])->name('payment.makePayment');
+Route::post('/pay', [PaymentController::class, 'pay'])->name('payment.makePayment');
+//needs to be removed. testing purpuse only
+// Route::get('/pay', [PaymentController::class, 'pay'])->name('payment.makePayment');
 
-    Route::post('/login-api', [ApiController::class, 'login']);
-    // packages details
-    Route::get('/packages-details', [PackagesDetailsController::class, 'packagesDetails'])->name('packages.details');
+Route::post('/login-api', [ApiController::class, 'login']);
+Route::post('/signup', [RegisterController::class, 'create']);
+// packages details
+Route::get('/packages-details', [PackagesDetailsController::class, 'packagesDetails'])->name('packages.details');
+//teacher dashboard
+Route::get('/teacher-new-dashboard', [TeacherDashboardController::class, 'index'])->name('teacher-new-dashboard');

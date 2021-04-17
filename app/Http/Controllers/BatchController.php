@@ -14,6 +14,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Database\Seeders\ClassSettings as SeedersClassSettings;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class BatchController extends Controller
@@ -57,7 +58,7 @@ class BatchController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-       
+
         if (auth()->user()->role == 'admin') {
             $request->validate([
                 'class_settings_id' => 'required',
@@ -83,7 +84,7 @@ class BatchController extends Controller
                 'topic_id' => 'required',
             ]);
         }
-        
+
         if ($request->class_settings != '') {
             $classSettings = ClassSettings::updateOrCreate(['name' => $request->class_settings]);
             $class = $classSettings->id;
@@ -91,21 +92,21 @@ class BatchController extends Controller
             $class = $request->class_settings_id;
         }
         $batch = Batch::Create([
-            'name'=> auth()->user()->role == 'teacher' ? auth()->user()->id : $request->name,
-            'batch_price_per_session'=>$request->batch_price_per_session,
-            'batch_start_date'=>$request->batch_start_date,
-            'subject_id'=>$request->subject_id,
-            'class_master_id'=>$request->class_master_id,
-            'class_settings_id'=>$class,
-            'duration_per_session'=>$request->duration_per_sessions_id,
-            'no_of_seats'=>$request->no_of_seats,
-            'teacher_available_status'=>$request->teacher_available_status,
+            'name' => auth()->user()->role == 'teacher' ? auth()->user()->id : $request->name,
+            'batch_price_per_session' => $request->batch_price_per_session,
+            'batch_start_date' => $request->batch_start_date,
+            'subject_id' => $request->subject_id,
+            'class_master_id' => $request->class_master_id,
+            'class_settings_id' => $class,
+            'duration_per_session' => $request->duration_per_sessions_id,
+            'no_of_seats' => $request->no_of_seats,
+            'teacher_available_status' => $request->teacher_available_status,
             // 'book_now'=>$request->book_now,
-            'status'=>$request->status,
-            'location'=>$request->location,
+            'status' => $request->status,
+            'location' => $request->location,
             'created_by' => auth()->user()->id
         ]);
-        
+
         $index = 0;
         $name = 1;
         foreach ($request->session_name as $session_name) {
@@ -119,7 +120,7 @@ class BatchController extends Controller
             ]);
             BatchTopic::create([
                 'batch_session_id' => $batchSession->id,
-                'topic_id' => $request->topic_id['Session-'.$name]
+                'topic_id' => $request->topic_id['Session-' . $name]
             ]);
             $index++;
             $name++;
@@ -163,18 +164,18 @@ class BatchController extends Controller
     {
         $class = Batch::updateOrCreate(
             [
-            'id'=>$request->id
+                'id' => $request->id
             ],
             [
-            'name'=>$request->name,
-            'batch_price_per_session'=>$request->batch_price_per_session,
-            'batch_start_date'=>$request->batch_start_date,
-            'subject_id'=>$request->subject_id,
-            'class_master_id'=>$request->class_master_id,
-            // 'class_settings_id'=>$class,
-            'duration_per_session'=>$request->duration_per_sessions_id,
-            'teacher_available_status'=>$request->teacher_available_status,
-            'created_by' => auth()->user()->id
+                'name' => $request->name,
+                'batch_price_per_session' => $request->batch_price_per_session,
+                'batch_start_date' => $request->batch_start_date,
+                'subject_id' => $request->subject_id,
+                'class_master_id' => $request->class_master_id,
+                // 'class_settings_id'=>$class,
+                'duration_per_session' => $request->duration_per_sessions_id,
+                'teacher_available_status' => $request->teacher_available_status,
+                'created_by' => auth()->user()->id
             ]
         );
     }
@@ -197,13 +198,13 @@ class BatchController extends Controller
 
         return view('class.student', compact('batches'));
     }
-    
+
     public function studentDetails(Request $request, $id)
     {
         $batch = Batch::find($id);
         // get all batches of the same class
         $allBatches = Batch::where('class_master_id', $batch->class_master_id)
-        ->where('id', '!=', $id)->get();
+            ->where('id', '!=', $id)->get();
         return view('class.student_details', compact('batch', 'allBatches'));
     }
     public function availableCourses(Request $request)
@@ -234,10 +235,11 @@ class BatchController extends Controller
 
         if (!$cart) {
             $cart = [
-                $request->classId => ["product_id" => $product->id,"quantity" => 1,
-                        'price' => $product->batch_price_per_session
-                        ]
-                    ];
+                $request->classId => [
+                    "product_id" => $product->id, "quantity" => 1,
+                    'price' => $product->batch_price_per_session
+                ]
+            ];
             session()->put('cart', $cart);
         }
         if (isset($cart[$request->classId])) {
@@ -255,5 +257,8 @@ class BatchController extends Controller
         session()->put('cart', $cart);
         $relatedBatches = Batch::whereIn('id', array_keys(session()->get('cart')))->get();
         return view('class.buy_now', compact('relatedBatches'));
+
+        //model login
+
     }
 }

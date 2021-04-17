@@ -1,15 +1,14 @@
-@extends('layouts.student')
-@section('content')
+
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800 session_heading">My Session</h1>
-                        
+
                     </div>
                     <!-- image block -->
-                    
+
                    <div class="row">
                         <!-- Content Column -->
                         <div class=" col-xl-4 col-lg-4 mb-4 ">
@@ -47,11 +46,11 @@
                                                     <div class="border-left first_left_border"></div>
                                                     <div>
                                                         <p class="subject_card">Join Now</p>
-                                                        {{-- <p class="card_subject_title2">Maths</p> --}}
-                                                        <a href="#">join now</a>
+                                                         <p class="card_subject_title2"><a href="#">Join Now</a></p>
+
                                                     </div>
                                                     <div class="border-left second_left_border"></div>
-                                                    
+
                                                     <button class="btn btn-link card_cta" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                                        <img src="{{ asset('wa/dashboard/sessionlist/img/chevron.svg') }}" alt="arrow" title="arrow">
                                                      </button>
@@ -66,22 +65,27 @@
                                                 <div class="card-body">
                                                   {{-- Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS. --}}
                                                   {{--  --}}
-                                                  @foreach($batch->batchSession as $session) 
-                                                  <th>session name</th>
-                                                    <td>{{ $session->name }}</td>
+                                                  <table class="table">
+                                                  <tr>
+                                                  <th>Session</th>
                                                   <th>Topic</th>
+                                                  <th>Teacher</th>
+                                                  </tr>
+                                                  @foreach($batch->batchSession as $session)
+                                                  <tr>
+                                                    <td>{{ $session->name }}</td>
                                                    <td> @foreach($session->topics as $t)
-                                                    {{ $t->topic->name }}</td>                                    
-                                                    @endforeach 
-                                                    <th>Teacher Name</th>
+                                                    {{ $t->topic->name }}</td>
+                                                    @endforeach
                                                     <td>{{ $batch->classSettings->name }}</td>
+                                                    </tr>
                                                  @endforeach
-                                                  {{--  --}}
+                                                 </table>
                                                 </div>
                                               </div>
                                               @endforeach
                                             </div>
-                                          </div>            
+                                          </div>
                                         </div>
                                         <div class="tab-pane fade p-3" id="two" role="tabpanel" aria-labelledby="two-tab">
                                             <div id="accordion">
@@ -103,28 +107,28 @@
                                                               <a href="#">join now</a>
                                                           </div>
                                                           <div class="border-left second_left_border"></div>
-                                                          
+
                                                           <button class="btn btn-link card_cta" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                                              <img src="{{ asset('wa/dashboard/sessionlist/img/chevron.svg') }}" alt="arrow" title="arrow">
                                                            </button>
                                                       </div>
                                                       {{-- <p class="date_text">Feb 04, 2021- Feb 21,20201</p> --}}
                                                       <p class="date_text">{{ $batch->batch_start_date->format('d M, Y') }}</p>
-      
-      
+
+
                                                       </h5>
                                                     </div>
                                                     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                                                       <div class="card-body">
                                                         {{-- Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS. --}}
                                                         {{--  --}}
-                                                        @foreach($batch->batchSession as $session) 
+                                                        @foreach($batch->batchSession as $session)
                                                         <th>session name</th>
                                                           <td>{{ $session->name }}</td>
                                                         <th>Topic</th>
                                                          <td> @foreach($session->topics as $t)
-                                                          {{ $t->topic->name }}</td>                                    
-                                                          @endforeach 
+                                                          {{ $t->topic->name }}</td>
+                                                          @endforeach
                                                           <th>Teacher Name</th>
                                                           <td>{{ $batch->classSettings->name }}</td>
                                                        @endforeach
@@ -134,7 +138,7 @@
                                                     @endforeach
                                                   </div>
                                                 </div>
-                                            </div>  
+                                            </div>
                                         </div>
                                         <div class="tab-pane fade p-3" id="three" role="tabpanel" aria-labelledby="three-tab">
                                             <div id="accordion">
@@ -152,45 +156,48 @@
                                                             <div class="border-left first_left_border"></div>
                                                             <div>
                                                                 <p class="subject_card">Join Now</p>
-                                                                {{-- <p class="card_subject_title2">Maths</p> --}}
-                                                                <a href="#">join now</a>
+                                                                <a href="#">
+                                                                    <p class="card_subject_title2">Join Now</p>
+                                                                </a>
                                                             </div>
                                                             <div class="border-left second_left_border"></div>
-                                                            
+
                                                             <button class="btn btn-link card_cta" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                                                <img src="{{ asset('wa/dashboard/sessionlist/img/chevron.svg') }}" alt="arrow" title="arrow">
                                                              </button>
                                                         </div>
                                                         {{-- <p class="date_text">Feb 04, 2021- Feb 21,20201</p> --}}
                                                         <p class="date_text">{{ $batch->batch_start_date->format('d M, Y') }}</p>
-        
-        
+
+
                                                         </h5>
                                                       </div>
                                                       <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                                                         <div class="card-body">
                                                           {{-- Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS. --}}
                                                           {{--  --}}
-                                                          
-                                                         @foreach($batch->batchSession as $session) 
-                                                
-                                                          <th>session name</th>
-                                                          
+                                                          <table class="table">
+                                                          <tr>
+                                                              <th>session name</th>
+                                                              <th>Topic</th>
+                                                              <th>Teacher Name</th>
+                                                          </tr>
+                                                          @foreach($batch->batchSession as $session)
+                                                          <tr>
                                                             <td>{{ $session->name }}</td>
-                                                          <th>Topic</th>
                                                            <td> @foreach($session->topics as $t)
-                                                            {{ $t->topic->name }}</td>                                    
-                                                            @endforeach 
-                                                            <th>Teacher Name</th>
+                                                            {{ $t->topic->name }}</td>
+                                                            @endforeach
                                                             <td>{{ $batch->classSettings->name }}</td>
-                                                         @endforeach 
-                                                          {{--  --}}
+                                                            </tr>
+                                                         @endforeach
+                                                         </table>
                                                         </div>
                                                       </div>
                                                       @endforeach
                                                     </div>
                                                   </div>
-                                                </div>              
+                                                </div>
                                         </div>
                                       </div>
                                 </div>
@@ -203,21 +210,21 @@
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold announce">Announcements</h6>
                                     <a href="#" class=" close close_card"><span>X</span></a>
-                                   
+
                                 </div>
                                 <div class="card-body">
-                               
+
                                     <div class="mt-4">
                                         <p class="mr-2 list_announce">
-                                            <span>https://www.w3schools.com/cssref</span> 
+                                            <span>https://www.w3schools.com/cssref</span>
                                             <span>go</span>
                                         </p>
                                         <p class="mr-2 list_announce">
-                                            <span>https://www.w3schools.com/cssref</span> 
+                                            <span>https://www.w3schools.com/cssref</span>
                                             <span>go</span>
                                         </p>
                                         <p class="mr-2 list_announce">
-                                            <span>https://www.w3schools.com/cssref</span> 
+                                            <span>https://www.w3schools.com/cssref</span>
                                             <span>go</span>
                                         </p>
                                     </div>
@@ -232,7 +239,7 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-6">
-                                            <div class="card text-center mb-2">
+                                            <div class="card text-center mb-2 subject1">
                                                 <div class="card-body p-0 cource_done_card">
                                                     <p class="mb-0 mt-2">Course Completed</p>
                                                     <p><strong>16</strong></p>
@@ -240,7 +247,7 @@
                                             </div>
                                         </div>
                                         <div class="col-6">
-                                            <div class="card text-center mb-2">
+                                            <div class="card text-center mb-2 subject2">
                                                 <div class="card-body p-0 cource_done_card">
                                                     <p class="mb-0 mt-2">Course Completed</p>
                                                     <p><strong>16</strong></p>
@@ -248,7 +255,7 @@
                                             </div>
                                         </div>
                                         <div class="col-6">
-                                            <div class="card text-center mb-2">
+                                            <div class="card text-center mb-2 subject3">
                                                 <div class="card-body p-0 cource_done_card">
                                                     <p class="mb-0 mt-2">Course Completed</p>
                                                     <p><strong>16</strong></p>
@@ -256,7 +263,7 @@
                                             </div>
                                         </div>
                                         <div class="col-6">
-                                            <div class="card text-center mb-2">
+                                            <div class="card text-center mb-2 subject4">
                                                 <div class="card-body p-0 cource_done_card">
                                                     <p class="mb-0 mt-2">Course Completed</p>
                                                     <p><strong>16</strong></p>
@@ -314,7 +321,7 @@
                                        <a href="#" class="balance"><p><span>+</span><span>Add Balance</span></p></a>
                                    </div>
                                    <div class="col-md-6 col-xs-16">
-                                   
+
                                     <p class="wallet_balance"><span>Wallet balance:</span><strong>&nbsp;£ 1500</strong></p>
                                     </div>
                                </div>
@@ -401,7 +408,7 @@
                                             <p><a href="">View </a></p>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -411,24 +418,19 @@
 
             </div>
             <!-- End of Main Content -->
-@endsection
-@section('session.css')
 <link rel="stylesheet" href="{{ asset('wa/dashboard/sessionlist/css/student-admin.css') }}">
 
 <link rel="stylesheet" href="{{ asset('wa/dashboard/sessionlist/css/session.css') }}">
-@endsection
 
-@section('js')
-<script src="/wa/dashboard/sessionlist/vendor/jquery/jquery.min.js"></script>
-<script src="/wa/dashboard/sessionlist/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="{{ asset('wa/dashboard/sessionlist/vendor/jquery/jquery.min.js')}}"></script>
+<!--<script src="/wa/dashboard/sessionlist/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>-->
 <!-- Core plugin JavaScript-->
-<script src="/wa/dashboard/sessionlist/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!--<script src="/wa/dashboard/sessionlist/vendor/jquery-easing/jquery.easing.min.js"></script>-->
 <!-- Custom scripts for all pages-->
-<script src="/wa/dashboard/sessionlist/js/student.js"></script>
+<script src="{{ asset('wa/dashboard/sessionlist/js/student.js') }}"></script>
   <!-- Page level plugins -->
-  <script src="/wa/dashboard/sessionlist/vendor/chart.js/Chart.min.js"></script>
+  <script src="{{ asset('wa/dashboard/sessionlist/vendor/chart.js/Chart.min.js') }}"></script>
 
   <!-- Page level custom scripts -->
-  <script src="/wa/dashboard/sessionlist/js/demo/chart-area-demo.js"></script>
-  <script src="/wa/dashboard/sessionlist/js/demo/chart-pie-demo.js"></script>
-@endsection
+  <script src="{{ asset('wa/dashboard/sessionlist/js/demo/chart-area-demo.js')}}"></script>
+  <script src="{{ asset('wa/dashboard/sessionlist/js/demo/chart-pie-demo.js')}}"></script>

@@ -1272,7 +1272,7 @@ section.math_booster{
   font-size: 16px;
   border-radius: 4px;
   font-weight: 500;
-  margin-left: 7px; 
+  margin-left: 7px;
 }
 /* session_section */
 .card_header {
@@ -1377,7 +1377,7 @@ section.math_booster{
 }
 .subject_card_block{
   min-height: 550px;
-  
+
 }
 .cource_title{
   font-size: 32px;
@@ -1801,7 +1801,7 @@ color: #fff;
 font-size: 16px;
 border-radius: 4px;
 font-weight: 500;
-margin-left: 7px; 
+margin-left: 7px;
 }
 /* session_section */
 .card_header {
@@ -2271,3 +2271,33 @@ font-size: 32px;
 
 
 }
+/* Packages css start */
+section.card_package{
+  padding: 0% 3%;
+  position: relative;
+}
+section.card_package{
+
+    background-image: url(../assets/img/abbg.svg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+
+}
+button.btn.filter-button.filter_tab_active {
+  border-bottom: 2px solid #1D6771;
+  color:#1D6771;
+}
+button.btn.filter-button.filter_tab_active:focus{
+  outline: none;
+}
+section.card_package .cource_heading{
+text-align: left;
+}
+section.card_package .cource_heading:before{
+  left:0;
+}
+button.btn.filter-button.filter_tab_active:focus{
+  outline: none;
+  box-shadow:none;
+}
+/* Packages css end */

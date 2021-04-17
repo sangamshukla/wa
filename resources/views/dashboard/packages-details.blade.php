@@ -2,6 +2,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('wa/style.css') }}">
+
 @endsection
 
 
@@ -20,7 +21,7 @@
                         <button class="btn filter-button" data-filter="class11">11+</button>
                     </div>
                 </div>
-{{-- 
+{{--
                 <div class="row mt-4">
                     <div class="col-md-3 filter_box filter class9">
                         <div class="single-district card1">
@@ -46,7 +47,7 @@
                                 <div class="class_section">
                                     <div class="class_type">class type</div>
                                     <div><span class="online">online</span><span class="dot"></span></div>
-                                    
+
                                 </div>
                             </div>
                             <div class="view_detail_block pb-3">
@@ -83,7 +84,7 @@
                                 <div class="class_section">
                                     <div class="class_type">class type</div>
                                     <div><span class="online">online</span><span class="dot"></span></div>
-                                    
+
                                 </div>
                             </div>
                             <div class="view_detail_block pb-3">
@@ -120,7 +121,7 @@
                                 <div class="class_section">
                                     <div class="class_type">class type</div>
                                     <div><span class="online">online</span><span class="dot"></span></div>
-                                    
+
                                 </div>
                             </div>
                             <div class="view_detail_block pb-3">
@@ -157,7 +158,7 @@
                                 <div class="class_section">
                                     <div class="class_type">class type</div>
                                     <div><span class="online">online</span><span class="dot"></span></div>
-                                    
+
                                 </div>
                             </div>
                             <div class="view_detail_block pb-3">
@@ -194,7 +195,7 @@
                                 <div class="class_section">
                                     <div class="class_type">class type</div>
                                     <div><span class="online">online</span><span class="dot"></span></div>
-                                    
+
                                 </div>
                             </div>
                             <div class="view_detail_block pb-3">
@@ -231,7 +232,7 @@
                                 <div class="class_section">
                                     <div class="class_type">class type</div>
                                     <div><span class="online">online</span><span class="dot"></span></div>
-                                    
+
                                 </div>
                             </div>
                             <div class="view_detail_block pb-3">
@@ -269,7 +270,7 @@
                                 <div class="class_section">
                                     <div class="class_type">class type</div>
                                     <div><span class="online">online</span><span class="dot"></span></div>
-                                    
+
                                 </div>
                             </div>
                             <div class="view_detail_block pb-3">
@@ -306,7 +307,7 @@
                                 <div class="class_section">
                                     <div class="class_type">class type</div>
                                     <div><span class="online">online</span><span class="dot"></span></div>
-                                    
+
                                 </div>
                             </div>
                             <div class="view_detail_block pb-3">
@@ -365,7 +366,7 @@
                                         {{ $batch->status == 1 ? 'Online' : 'Offline' }}
                                         </span>
                                         {{-- for color  --}}
-                                        <span class="dot{{ $batch->status == 1 ? '' : '-prime' }}"></span></div>   
+                                        <span class="dot{{ $batch->status == 1 ? '' : '-prime' }}"></span></div>
                                     </div>
                                 </div>
                             <div class="view_detail_block pb-3">
@@ -374,19 +375,19 @@
                                 </a>
                                 {{-- @php $i = 1 @endphp --}}
                                 <a href="{{ url('/student-details', $batch->id)}}" class="price_card price_bg{{ $i }}">
-                                    &pound; {{ $batch->batch_price_per_session }} 
+                                    &pound; {{ $batch->batch_price_per_session }}
                                 </a>
                                 {{-- @php i++ @endphp --}}
                             </div>
                         </div>
                         {{-- <a> --}}
-                        
+
                     </div>
                     @php $i++ @endphp
                     @endforeach
-                
-                </div>               
-            
+
+                </div>
+
 
             </div>
         </div>

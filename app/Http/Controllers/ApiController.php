@@ -15,7 +15,7 @@ class ApiController extends Controller
     public function getSubjects($id)
     {
         $subjects = Subject::where('class_master_id', $id)->get();
-        
+
         return response()->json($subjects);
     }
 

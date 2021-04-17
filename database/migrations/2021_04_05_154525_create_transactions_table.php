@@ -17,7 +17,8 @@ class CreateTransactionsTable extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Order::class);
-            $table->string('payment_status');
+            // $table->foreign('order_payment_id')->constrained('order_items');
+            $table->string('payment_status')->default('Yes');
             $table->timestamps();
         });
     }
