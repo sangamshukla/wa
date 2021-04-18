@@ -115,3 +115,4 @@ Route::post('/signup', [RegisterController::class, 'create']);
 Route::get('/packages-details', [PackagesDetailsController::class, 'packagesDetails'])->name('packages.details');
 //teacher dashboard
 Route::get('/teacher-new-dashboard', [TeacherDashboardController::class, 'index'])->name('teacher-new-dashboard');
+// for test
