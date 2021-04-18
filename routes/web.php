@@ -11,7 +11,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeacherByBatchController;
 use App\Http\Controllers\LiveSessionController;
 use App\Http\Controllers\TeacherController;
-use App\Http\Controllers\LiveSessionController;
 use App\Http\Controllers\TeacherDashboardController;
 use App\Models\Batch;
 use Illuminate\Support\Facades\Auth;
