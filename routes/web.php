@@ -10,6 +10,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeacherByBatchController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\LiveSessionController;
 use App\Http\Controllers\TeacherDashboardController;
 use App\Models\Batch;
 use Illuminate\Support\Facades\Auth;
@@ -115,3 +116,12 @@ Route::post('/signup', [RegisterController::class, 'create']);
 Route::get('/packages-details', [PackagesDetailsController::class, 'packagesDetails'])->name('packages.details');
 //teacher dashboard
 Route::get('/teacher-new-dashboard', [TeacherDashboardController::class, 'index'])->name('teacher-new-dashboard');
+
+
+//live session
+Route::get('/live-session-detail', [LiveSessionController::class, 'livesessiondetail'])->name('live-session-detail');
+Route::get('/live-session', [LiveSessionController::class, 'livesession'])->name('live-session');
+
+// Teacher Calander routes.
+Route::get('teacher-calander/{id}', [TeacherCalanderController::class, 'index'])->name('teacher-calander');
+Route::post('teacher-calander/{id}', [TeacherCalanderController::class, 'sessions']);
