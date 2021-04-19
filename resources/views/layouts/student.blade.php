@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  
+
 <head>
 
     <meta charset="utf-8">
@@ -9,10 +9,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Student dashboard</title>
+    <title>Student Dashboard</title>
 
     <!-- Custom fonts for this template-->
-   
+
     <link href="/wa/dashboard/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
@@ -23,7 +23,7 @@
         type="text/css"
       />
     <!-- Custom styles for this template-->
-    
+
     @yield('session.css')
     @yield('style')
 
@@ -40,7 +40,7 @@
     <div id="wrapper">
       <div class="background_overlay"></div>
         @include('layouts._partials.student._sidebar')
-      
+
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
@@ -49,13 +49,13 @@
 
               <!-- Topbar -->
               @include('layouts._partials.student._nav')
-              <!-- End of Topbar -->  
-              
+              <!-- End of Topbar -->
+
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                   @yield('content')
                 </div>
-                
+
           </div>
           <!-- End of Main Content -->
           <!-- Footer -->

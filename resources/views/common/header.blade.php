@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    
+
     <link rel="stylesheet" href="{{ asset('wa/style.css') }}">
     {{-- <link rel="stylesheet" href="{{ asset('wa/welcome.css') }}"> --}}
     {{-- <link rel="stylesheet" href="{{ asset('wa/loginregistercss/style.css') }}"> --}}
@@ -24,3 +24,6 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 </head>
 <body>
+    @yield('content_for_login')
+</body>
+</html>

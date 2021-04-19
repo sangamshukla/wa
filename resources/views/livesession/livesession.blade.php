@@ -1,8 +1,8 @@
 @extends('layouts.main')
-@section('css')
-<link rel="stylesheet" href="{{ asset('wa/livesession/css/liveclassdetail.css') }}">
-<link rel="stylesheet" href="{{ asset('wa/welcome.css') }}">
-@endsection
+    @section('css')
+    <link rel="stylesheet" href="{{ asset('wa/livesession/css/liveclassdetail.css') }}">
+    <link rel="stylesheet" href="{{ asset('wa/welcome.css') }}">
+    @endsection
 @section('content')
 
     <div class="mt-5 live_class_section">
