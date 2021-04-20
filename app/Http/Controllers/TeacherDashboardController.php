@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Batch;
 use Illuminate\Http\Request;
 
 class TeacherDashboardController extends Controller
 {
     public function index()
     {
-        return view('teacher.dashboard');
+        $batches = Batch::whereCreatedBy(auth()->user()->id)->latest()->get();
+        return view('teacher.dashboard', compact('batches'));
     }
 }

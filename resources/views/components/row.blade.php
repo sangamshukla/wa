@@ -1,15 +1,17 @@
 
                           <div class="subject_edit">
                             <div class="subject_practis">
-                              <p class="subject">Math Practice</p>
+                              <p class="subject">{{ $batch->id }}</p>
                               <p class="time_pera">
-                                <span>23 Jan,</span
+                                <span>{{ $batch->batch_start_date->format('Y-m-d')}},</span
                                 ><span>04:00pm - 05:00pm</span>
                               </p>
                             </div>
                             <div class="starttime_block">
-                              <p class="sub_subject">Starts in</p>
-                              <p class="green_text">00:08:55</p>
+                              <p class="sub_subject">Start</p>
+                              <p class="green_text">
+                                <a href="{{ $batch->zoom->meeting_start_url }}" class="green_text">Start Meeting</a>
+                              </p>
                             </div>
                             <div class="class_block">
                               <p class="sub_subject">Class</p>

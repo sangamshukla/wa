@@ -6,14 +6,15 @@ use Illuminate\View\Component;
 
 class row extends Component
 {
+    public $batch;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($batch)
     {
-        //
+        $this->batch = $batch;
     }
 
     /**

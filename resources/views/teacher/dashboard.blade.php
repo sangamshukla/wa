@@ -341,62 +341,47 @@
                   <div class="add_class">+Add Class</div>
                   <div class="tab-content">
                     <div class="tab-pane active" role="tabpanel" id="menu1">
-                        <div class="card shadow mt-3">
-                        <div
-                          class="card-body card_left_border border_left_color1"
-                        >
-                        <x-row/>
-                        </div>
-                        </div>
-                      <div class="card shadow mt-3">
-                        <div
-                          class="card-body card_left_border border_left_color2"
-                        >
-                          <x-row/>
-                        </div>
-                      </div>
-                      <div class="card shadow mt-3">
-                        <div
-                          class="card-body card_left_border border_left_color3"
-                        >
-                        <x-row/>
-                        </div>
-                      </div>
-                      <div class="card shadow mt-3">
-                        <div
-                          class="card-body card_left_border border_left_color4"
-                        >
-                        <x-row/>
-                        </div>
-                      </div>
+                         {{--dynamic data  --}}
+                         @foreach ($batches as $batch)
+                         <div class="card shadow mt-3">
+                          <div
+                            class="card-body card_left_border border_left_color1"
+                          >
+                           <x-row :batch="$batch"/>
+                          </div>
+                          </div>
+                         @endforeach
+                        
+
+                         {{-- /dynamic data --}}
                     </div>
                     <div class="tab-pane" role="tabpanel" id="menu2">
-                                              <div class="card shadow mt-3">
+                      <div class="card shadow mt-3">
                         <div
                           class="card-body card_left_border border_left_color1"
                         >
-                        <x-row/>
+                        {{--  --}}
                         </div>
-                        </div>
+                      </div>
                       <div class="card shadow mt-3">
                         <div
                           class="card-body card_left_border border_left_color2"
                         >
-                          <x-row/>
+                          {{--  --}}
                         </div>
                       </div>
                       <div class="card shadow mt-3">
                         <div
                           class="card-body card_left_border border_left_color3"
                         >
-                        <x-row/>
+                        
                         </div>
                       </div>
                       <div class="card shadow mt-3">
                         <div
                           class="card-body card_left_border border_left_color4"
                         >
-                        <x-row/>
+                        
                         </div>
                       </div>
                     </div>
@@ -405,28 +390,28 @@
                         <div
                           class="card-body card_left_border border_left_color1"
                         >
-                        <x-row/>
+                        
                         </div>
                         </div>
                       <div class="card shadow mt-3">
                         <div
                           class="card-body card_left_border border_left_color2"
                         >
-                          <x-row/>
+                          
                         </div>
                       </div>
                       <div class="card shadow mt-3">
                         <div
                           class="card-body card_left_border border_left_color3"
                         >
-                        <x-row/>
+                        
                         </div>
                       </div>
                       <div class="card shadow mt-3">
                         <div
                           class="card-body card_left_border border_left_color4"
                         >
-                        <x-row/>
+                        
                         </div>
                       </div>
                     </div>
@@ -435,28 +420,28 @@
                         <div
                           class="card-body card_left_border border_left_color1"
                         >
-                        <x-row/>
+                        
                         </div>
                         </div>
                       <div class="card shadow mt-3">
                         <div
                           class="card-body card_left_border border_left_color2"
                         >
-                          <x-row/>
+                          
                         </div>
                       </div>
                       <div class="card shadow mt-3">
                         <div
                           class="card-body card_left_border border_left_color3"
                         >
-                        <x-row/>
+                        
                         </div>
                       </div>
                       <div class="card shadow mt-3">
                         <div
                           class="card-body card_left_border border_left_color4"
                         >
-                        <x-row/>
+                        
                         </div>
                       </div>
                     </div>
@@ -653,8 +638,9 @@
                                 </tr>
                               </thead>
                               <tbody>
+                                @foreach($batches as $key => $value)
                                 <tr class="session_card">
-                                  <td class="session_no">Session-1</td>
+                                  <td class="session_no">Session-11</td>
                                   <td class="session_no">Numbers</td>
                                   <td class="session_date">2021-03-10</td>
                                   <td class="session_date">21:30 PM</td>
@@ -670,6 +656,7 @@
                                       </div>
                                   </td>
                                 </tr>
+                                @endforeach
                                 <tr class="session_card">
                                   <td class="session_no">Session-1</td>
                                   <td class="session_no">Numbers</td>
