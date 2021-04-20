@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\MakeZoomMeeting;
 use App\Models\Batch;
 use App\Models\BatchSession;
 use App\Models\BatchTopic;
@@ -126,7 +127,11 @@ class BatchController extends Controller
             $name++;
         }
 
+        MakeZoomMeeting::dispatch($batch->id);
+
         return redirect(route('manage-class'))->with('status', 'Class Added Successfully');
+
+        //  return response()->json(['success'=>'Form is successfully submitted!']);
     }
 
     /**
@@ -259,6 +264,5 @@ class BatchController extends Controller
         return view('class.buy_now', compact('relatedBatches'));
 
         //model login
-
     }
 }

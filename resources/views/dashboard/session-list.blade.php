@@ -46,8 +46,7 @@
                                                     <div class="border-left first_left_border"></div>
                                                     <div>
                                                         <p class="subject_card">Join Now</p>
-                                                         <p class="card_subject_title2"><a href="#">Join Now</a></p>
-
+                                                         <p class="card_subject_title2"><a href="{{ $batch->zoom->meeting_join_url ?? ''  }}">Join Now</a></p>
                                                     </div>
                                                     <div class="border-left second_left_border"></div>
 
@@ -104,7 +103,7 @@
                                                           <div>
                                                               <p class="subject_card">Join Now</p>
                                                               {{-- <p class="card_subject_title2">Maths</p> --}}
-                                                              <a href="#">join now</a>
+                                                              <a href="{{ $batch->zoom->meeting_join_url ?? ''  }}">join now</a>
                                                           </div>
                                                           <div class="border-left second_left_border"></div>
 
@@ -156,7 +155,7 @@
                                                             <div class="border-left first_left_border"></div>
                                                             <div>
                                                                 <p class="subject_card">Join Now</p>
-                                                                <a href="#">
+                                                                <a href="{{ $batch->zoom->meeting_join_url ?? ''  }}">
                                                                     <p class="card_subject_title2">Join Now</p>
                                                                 </a>
                                                             </div>

@@ -44,5 +44,10 @@ class Batch extends Model
     {
         return $this->hasMany(BatchSession::class, 'batch_id');
     }
-   
+
+
+    public function zoom()
+    {
+        return $this->hasOne(CreatedSessions::class, 'session_id');
+    }
 }

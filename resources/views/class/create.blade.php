@@ -6,7 +6,7 @@
      <div class="content">
       <div class="row">
         <div class="col-md-12">
-          <form method="post" onsubmit="return validateDateTime()" action="{{ route('class.store') }}" autocomplete="off" class="form-horizontal" >
+          <form method="post" id="ajexForm" onsubmit="return validateDateTime()" action="{{ route('class.store') }}" autocomplete="off" class="form-horizontal" >
             @csrf
             <div class="card ">
               <div class="card-header card-header-success">
@@ -45,14 +45,14 @@
                             </select>
                         </div>
                         {{-- for other --}}
-                        @include('_form.input', ['value'=>old('class_settings'),'title' =>'Enter Class Name','class'=>'class_settings_id', 'name' => 'class_settings'])
+                        @include('_form.input', ['value'=>old('class_settings'),'title' =>'Enter Class Name','class'=>'class_settings_id', 'name' => 'class_settings', 'id' => 'class_settings'])
                       </div>
 
                       {{-- Class Price Per Session  --}}
                       <div class="col">
                         <div class="form-group">
                           <label for="simpleinput">(&pound;) Class Price Per Session</label>
-                          <input type="number" value="{{ old('batch_price_per_session') }}" class="form-control" id="simpleinput" name="batch_price_per_session" placeholder="&pound; Enter Class Price Per Session" >
+                          <input type="number" value="{{ old('batch_price_per_session') }}" class="form-control" id="batch_price_per_session" name="batch_price_per_session" placeholder="&pound; Enter Class Price Per Session" >
                         </div>
                       </div> 
                   
@@ -89,7 +89,7 @@
                       <div class="col">
                         <div class="form-group">
                           <label for="simpleinput">Teacher Available Status</label>
-                          <input type="text" id="simpleinput" name="teacher_available_status" value="{{ old('teacher_available_status')}} "class="form-control">
+                          <input type="text" id="teacher_available_status" name="teacher_available_status" value="{{ old('teacher_available_status')}} "class="form-control">
                         </div>
                       </div> 
                       @endif
@@ -98,7 +98,7 @@
                       <div class="col">
                         <div class="form-group">
                           <label for="inputState">Duration Per Session</label>
-                            <select name="duration_per_sessions_id" required id="inputState" value="{{ old('duration_per_sessions_id')}}"class="form-control">
+                            <select name="duration_per_sessions_id" required id="duration_per_sessions_id" value="{{ old('duration_per_sessions_id')}}"class="form-control">
                               <option selected>... Select Duration Per Session ...</option>
                               <option>30</option>
                               <option>60</option>
@@ -121,7 +121,7 @@
                   <div class="col">
                     <div class="form-group">
                       <label for="select_year">Select Year</label>
-                        <select name="class_master_id" class="form-control" required id="select_year" >
+                        <select name="class_master_id" class="form-control" required id="class_master_id" >
                           <option selected>... Select Year ...</option>
                           @foreach($classes as $class)
                             <option value="{{ $class->id }}">{{ $class->name }}</option>
@@ -183,4 +183,48 @@
 @endsection
 @section('scripts')
 <script src="{{ asset('javascript/create_class.js') }}"></script>
+{{-- 
+<script type="text/javascript">
+
+ $('#ajexForm').on('submit',function(event){
+     event.preventDefault();
+
+     let name = $('#name').val();
+     let location = $('#location').val();
+     let class_settings_id = $('#class_settings_id').val();
+     let class_settings = $('#class_settings').val();
+     let batch_price_per_session = $('#batch_price_per_session').val();
+     let class_date_time = $('#class_date_time').val();
+     let class_name= $('#class_name').val();
+     let teacher_available_status= $('#teacher_available_status').val();
+     let duration_per_sessions_id= $('#duration_per_sessions_id').val();
+     let no_of_seats= $('#no_of_seats').val();
+     let class_master_id = $('#class_master_id').val();
+     let subject_id = $('#subject_id').val();
+    //  let generate-session = $('#generate-session').val();
+
+     $.ajax({
+       url: "{{ route('class.store') }}",
+       type:"POST",
+       data:{
+         "_token": "{{ csrf_token() }}",
+         name:name,
+         location:location,
+         class_settings_id:class_settings_id,
+         class_settings:class_settings,
+         batch_price_per_session:batch_price_per_session,
+         batch_start_date:class_date_time,
+         class_name:class_name,
+         teacher_available_status:teacher_available_status,
+         duration_per_sessions_id:duration_per_sessions_id,
+         no_of_seats:no_of_seats,
+         class_master_id:class_master_id ,
+         subject_id:subject_id
+       },
+       success:function(response){
+         console.log(response);
+       },
+      });
+     });
+   </script> --}}
 @endsection
