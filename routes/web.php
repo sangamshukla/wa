@@ -118,6 +118,7 @@ Route::get('/packages-details', [PackagesDetailsController::class, 'packagesDeta
 Route::get('/teacher-new-dashboard', [TeacherDashboardController::class, 'index'])->name('teacher-new-dashboard');
 // for zoom
 // Route::get('/', [ZoomController::class, 'zoom'])->name('zoom');
+Route::get('/teacher-new-dashboard', [TeacherDashboardController::class, 'index'])->name('teacher-new-dashboard')->middleware('auth');
 
 
 //live session
