@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('wa/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('wa/welcome.css') }}">
 
 @endsection
 
@@ -402,5 +402,5 @@
 <script>
     document.FIX_HEADER_TOP = 35;
   </script>
-  <script src="{{ asset('wa/packagescoustom.js') }}"></script>
+  <script src="{{ asset('wa/coustom.js') }}"></script>
 @endsection

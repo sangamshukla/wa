@@ -10,7 +10,7 @@
             aria-controls="navbarTogglerDemo03" class="closebtn outer_close_btn">×</a>
             <ul class="navbar-nav text-capitalize mx-auto mt-2 mt-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Live Classes <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{url('live-session')}}">Live Classes <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('packages-details')}}">Packages</a>
@@ -26,12 +26,12 @@
             </ul>
                 {{-- @yield('carticon') --}}
                 {{-- <a class="_3SkBxJ" href="/viewcart?otracker=Cart_Icon_Click"><svg class="V3C5bO" width="14" height="14" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path class="_1bS9ic" d="M15.32 2.405H4.887C3 2.405 2.46.805 2.46.805L2.257.21C2.208.085 2.083 0 1.946 0H.336C.1 0-.064.24.024.46l.644 1.945L3.11 9.767c.047.137.175.23.32.23h8.418l-.493 1.958H3.768l.002.003c-.017 0-.033-.003-.05-.003-1.06 0-1.92.86-1.92 1.92s.86 1.92 1.92 1.92c.99 0 1.805-.75 1.91-1.712l5.55.076c.12.922.91 1.636 1.867 1.636 1.04 0 1.885-.844 1.885-1.885 0-.866-.584-1.593-1.38-1.814l2.423-8.832c.12-.433-.206-.86-.655-.86" fill="#fff"></path></svg><div class="KK-o3G">2</div><span>Cart</span></a> --}}
-                             
+
                 @auth
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 {{-- <button class="btn btn_block text-capitalize my-2 my-sm-0" type="button" id="login"><a href="{{ url('/home') }}">Welcome {{ auth()->user()->name }}</a></button> --}}
                 @endauth
-                
+
                 {{-- @guest --}}
                 <div class="my-2 my-lg-0 login_block">
                     {{-- <a class="cart_img_block" href="{{ url('buy-now')}}"> --}}
@@ -50,7 +50,7 @@
                     <path class="cart-svg-icon" width="22" height="22" fill="currentcolor" aria-hidden="true" role="img"><path d="M10.5 5.75V0H12v5.75h9.5l-3.818 12H4.318L.5 5.75h10zm-7.949 1.5l2.864 9h11.17l2.864-9H2.55h.001z"></path>
                     {{-- <a href="{{ url('buy-now')}}"><img src="{{ asset('wa/assets/img/cart.svg')}}"></a> --}}
                     <span class="cart_no">{{ count(session()->get('cart') ?? []) }}</span>
-                    
+
                     <path d="M19.5376 7.448C19.6336 7.448 19.7082 7.472 19.7616 7.52C19.8149 7.568 19.8416 7.63467 19.8416 7.72C19.8416 7.81067 19.8149 7.88 19.7616 7.928C19.7136 7.976 19.6389 8 19.5376 8H16.8896C16.7882 8 16.7109 7.976 16.6576 7.928C16.6096 7.88 16.5856 7.81067 16.5856 7.72C16.5856 7.63467 16.6122 7.568 16.6656 7.52C16.7189 7.472 16.7936 7.448 16.8896 7.448H17.8816V3.16L17.0096 3.728C16.9669 3.75467 16.9242 3.768 16.8816 3.768C16.8069 3.768 16.7402 3.73333 16.6816 3.664C16.6282 3.59467 16.6016 3.52 16.6016 3.44C16.6016 3.328 16.6442 3.248 16.7296 3.2L17.9456 2.408C18.0362 2.34933 18.1296 2.32 18.2256 2.32C18.3162 2.32 18.3909 2.34933 18.4496 2.408C18.5082 2.46667 18.5376 2.54933 18.5376 2.656V7.448H19.5376Z" fill="white"/>
                     <defs>
                     <clipPath id="clip0">
@@ -58,9 +58,9 @@
                     </clipPath>
                     </defs>
                 </svg>
-                
-                     
-{{-- 
+
+
+{{--
                     <svg class="cart-svg-icon" width="22" height="22" fill="currentcolor" aria-hidden="true" role="img"><path d="M10.5 5.75V0H12v5.75h9.5l-3.818 12H4.318L.5 5.75h10zm-7.949 1.5l2.864 9h11.17l2.864-9H2.55h.001z"></path></svg>
                     <a href="{{ url('buy-now')}}"><img src="{{ asset('wa/assets/img/cart.svg')}}"></a>
                     <span class="cart_no">{{ count(session()->get('cart') ?? []) }}</span> --}}
@@ -81,10 +81,10 @@
                     </button>
                     @endguest
                 </div>
-                {{-- <div class="my-2 my-lg-0 login_block">  
+                {{-- <div class="my-2 my-lg-0 login_block">
                     <div clss="cart_img">
                         <span class="cart_no">{{ count(session()->get('cart') ?? []) }}</span>
-                    </div> 
+                    </div>
                 <button class="btn btn_block text-capitalize my-2 my-sm-0" type="button" id="login"><a href="{{ url('/student-login') }}">login</a></button>
                 @endguest
 
@@ -93,7 +93,7 @@
                     id="register"> <a href="{{ url('/student-register') }}">Register</a></button>
                 @endguest --}}
             </div>
-            
+
         </div>
     </nav>
 </header>
