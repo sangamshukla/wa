@@ -12,7 +12,7 @@
         <!-- Sidebar - Brand -->
         <a
           class="sidebar-brand d-flex align-items-center justify-content-center"
-          href="index.html"
+          href="{{url("/")}}"
         >
           <div class="sidebar-brand-icon">
             <img src="{{asset('wa/teacherdashboard/img/logo.png')}}" title="logo" alt="logo" />
@@ -282,6 +282,9 @@
                     <i
                       class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"
                     ></i>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+    </form>
                     Logout
                   </a>
                 </div>
