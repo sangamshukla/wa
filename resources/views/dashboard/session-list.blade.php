@@ -50,7 +50,7 @@
                                                     </div>
                                                     <div class="border-left second_left_border"></div>
 
-                                                    <button class="btn btn-link card_cta" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                    <button class="btn btn-link card_cta" data-toggle="collapse" data-target="#collapse{{$batch->id}}" aria-expanded="true" aria-controls="collapseOne">
                                                        <img src="{{ asset('wa/dashboard/sessionlist/img/chevron.svg') }}" alt="arrow" title="arrow">
                                                      </button>
                                                 </div>
@@ -60,7 +60,7 @@
 
                                                 </h5>
                                               </div>
-                                              <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                              <div id="collapse{{$batch->id}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                                                 <div class="card-body">
                                                   {{-- Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS. --}}
                                                   {{--  --}}
@@ -107,7 +107,7 @@
                                                           </div>
                                                           <div class="border-left second_left_border"></div>
 
-                                                          <button class="btn btn-link card_cta" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
+                                                          <button class="btn btn-link card_cta" data-toggle="collapse" data-target="#collapse{{$batch->id}}" aria-expanded="true" aria-controls="collapseOne">
                                                              <img src="{{ asset('wa/dashboard/sessionlist/img/chevron.svg') }}" alt="arrow" title="arrow">
                                                            </button>
                                                       </div>
@@ -117,7 +117,7 @@
 
                                                       </h5>
                                                     </div>
-                                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                                    <div id="collapse{{$batch->id}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                                                       <div class="card-body">
                                                         {{-- Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS. --}}
                                                         {{--  --}}
@@ -144,6 +144,8 @@
                                                 <div class="card mb-3">
                                                     <div class="card-header" id="headingOne">
                                                       @foreach($batches as $batch)
+
+
                                                       <div class="card-header" id="headingOne">
                                                         <h5 class="mb-0">
                                                             <div class="d-flex justify-content-around">
@@ -161,17 +163,15 @@
                                                             </div>
                                                             <div class="border-left second_left_border"></div>
 
-                                                            <button class="btn btn-link card_cta" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-                                                               <img src="{{ asset('wa/dashboard/sessionlist/img/chevron.svg') }}" alt="arrow" title="arrow">
+                                                            <button class="btn btn-link card_cta" data-toggle="collapse" data-target="#collapse{{$batch->id}}" aria-expanded="true" aria-controls="collapseThree">
+                                                                   <img src="{{ asset('wa/dashboard/sessionlist/img/chevron.svg') }}" alt="arrow" title="arrow">
                                                              </button>
                                                         </div>
                                                         {{-- <p class="date_text">Feb 04, 2021- Feb 21,20201</p> --}}
                                                         <p class="date_text">{{ $batch->batch_start_date->format('d M, Y') }}</p>
-
-
                                                         </h5>
                                                       </div>
-                                                      <div id="collapseThree" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                                      <div id="collapse{{$batch->id}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                                                         <div class="card-body">
                                                           {{-- Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS. --}}
                                                           {{--  --}}
@@ -183,6 +183,7 @@
                                                           </tr>
                                                           @foreach($batch->batchSession as $session)
                                                           <tr>
+
                                                             <td>{{ $session->name }}</td>
                                                            <td> @foreach($session->topics as $t)
                                                             {{ $t->topic->name }}</td>
