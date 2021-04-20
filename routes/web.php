@@ -9,6 +9,7 @@ use App\Http\Controllers\PackagesDetailsController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeacherByBatchController;
+use App\Http\Controllers\LiveSessionController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\TeacherDashboardController;
 use App\Http\Controllers\ZoomController;
@@ -117,3 +118,12 @@ Route::get('/packages-details', [PackagesDetailsController::class, 'packagesDeta
 Route::get('/teacher-new-dashboard', [TeacherDashboardController::class, 'index'])->name('teacher-new-dashboard');
 // for zoom
 // Route::get('/', [ZoomController::class, 'zoom'])->name('zoom');
+
+
+//live session
+Route::get('/live-session-detail', [LiveSessionController::class, 'livesessiondetail'])->name('live-session-detail');
+Route::get('/live-session', [LiveSessionController::class, 'livesession'])->name('live-session');
+
+// Teacher Calander routes.
+Route::get('teacher-calander/{id}', [TeacherCalanderController::class, 'index'])->name('teacher-calander');
+Route::post('teacher-calander/{id}', [TeacherCalanderController::class, 'sessions']);

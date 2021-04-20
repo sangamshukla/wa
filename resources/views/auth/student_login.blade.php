@@ -1,5 +1,13 @@
-@include('common.header')
-    <header>
+@extends('layouts.main')
+@section('css')
+{{-- <link rel="stylesheet" href="{{ asset('wa/welcome.css') }}"> --}}
+
+    <link rel="stylesheet" href="{{ asset('wa/style.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('wa/welcome.css') }}"> --}}
+    {{-- <link rel="stylesheet" href="{{ asset('wa/loginregistercss/style.css') }}"> --}}
+@endsection
+{{-- @include('common.header') --}}
+    {{-- <header>
       <nav class="navbar navbar-expand-md navbar-light">
         <a class="navbar-brand" href="{{'/'}}"><img src="{{ asset('wa/assets/img/logo.png') }}" /></a>
         <button
@@ -46,19 +54,22 @@
             >
               <a href="{{ url('#') }}">login</a>
             </button>
-            
+
             <button
               class="btn btn_block text-capitalize my-2 my-sm-0"
               type="button"
               id="register"
             >
             <a href="{{url('student-register') }}">Register</a>
-              
+
             </button>
           </div>
         </div>
       </nav>
-    </header>
+    </header> --}}
+    @section('content')
+
+
     <section class="d-flex justify-content-center pb-5">
       <section class="image_section pb-5">
         <div class="container-fluid">
@@ -148,11 +159,11 @@
 
     <!-- card-tab section  -->
     <!-- footer from section -->
-    @include('common.main_footer')
+    {{-- @include('common.main_footer') --}}
     <!-- Swiper JS -->
      <script>
       document.FIX_HEADER_TOP = 35;
     </script>
     {{-- <script src="{{ asset('wa/coustom.js') }}"></script> --}}
-  </body>
-</html>
+
+@endsection
