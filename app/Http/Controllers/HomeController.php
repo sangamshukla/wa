@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Batch;
+use App\Models\BatchSession;
 use App\Models\OrderItems;
 use App\Models\OrderPayment;
 use App\Models\Student;
@@ -113,9 +114,12 @@ class HomeController extends Controller
             $couseBatches = OrderItems::whereIn('order_payment_id', $courses)->pluck('batch_id');
             $batches = Batch::whereIn('id', $couseBatches)->latest()->get();
             $today = Batch::whereIn('id', $couseBatches)->whereDate('batch_start_date', Carbon::today())->get();
-
+            // dd($couseBatches);
+            $today_session = BatchSession::whereIn('batch_id', $couseBatches)->whereDate('start_date_time', Carbon::today())->get();
+            $tomorrow_session = BatchSession::whereIn('batch_id', $couseBatches)->whereDate('start_date_time', Carbon::tomorrow())->get();
+            // dd($today_session);
             $tomorrow = Batch::whereIn('id', $couseBatches)->whereDate('batch_start_date', Carbon::tomorrow())->get();
-            return view('dashboard.student', compact('students', 'batches', 'today', 'tomorrow', 'courses', 'status'));
+            return view('dashboard.student', compact('students', 'batches', 'today', 'tomorrow', 'courses', 'status', 'today_session', 'tomorrow_session'));
         }
     }
     public function sessionList(Request $request)
