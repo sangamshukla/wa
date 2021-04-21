@@ -106,7 +106,7 @@
                                                     <td>@foreach ($batch->batchSession as $session )
                                                         @if (\Carbon\Carbon::parse($session->start_date_time)->format('d')===\Carbon\Carbon::now()->format('d'))
 
-                                                        {{$session->name}}-{{$}}
+                                                        {{$session->name}}-Topic Name
                                                         @endif
 
                                                     @endforeach</td>
