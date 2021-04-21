@@ -129,7 +129,7 @@
                                                           {{ $t->topic->name }}</td>
                                                           @endforeach
                                                           <th>Teacher Name</th>
-                                                          <td>{{ $batch->classSettings->name }}</td>
+                                                          <td>{{ $batch->teacher->name }}</td>
                                                        @endforeach
                                                         {{--  --}}
                                                       </div>
