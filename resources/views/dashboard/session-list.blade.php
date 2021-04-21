@@ -105,7 +105,11 @@
                                                     <td>@foreach ($batch->batchSession as $session )
                                                         @if (\Carbon\Carbon::parse($session->start_date_time)->format('d')===\Carbon\Carbon::now()->format('d'))
 
+<<<<<<< HEAD
                                                         {{$session->name}}-Topic Name
+=======
+                                                        {{$session->name}}-{{$}}
+>>>>>>> 010d839... added session
                                                         @endif
 
                                                     @endforeach</td>
