@@ -60,7 +60,7 @@ class TeacherController extends Controller
             'name'=>$request->name,
             'email'=>$request->email,
             'contact_number'=>$request->contact_number,
-            'password' => bcrypt($password),
+            'password' => bcrypt('wa@123'),
             'role'=>$request->user_type,
         ]);
         
