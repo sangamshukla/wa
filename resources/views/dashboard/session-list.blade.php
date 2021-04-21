@@ -71,7 +71,7 @@
                                                 <div class="card-body">
                                                   {{-- Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS. --}}
                                                   {{--  --}}
-                                                  <table class="table">
+                                                  {{-- <table class="table"> --}}
                                                       {{-- @php
                                                           dd($today_session);
                                                       @endphp --}}
@@ -93,7 +93,7 @@
                                                         <td><b>Topic</b></td>
                                                         <td>{{$batch->batchSession}}</td>
                                                  {{-- @endforeach --}}
-                                                <tr>
+                                                {{-- <tr>
                                                     <td><strong>Class Name</td>
                                                     <td>{{$batch->classSettings->name}}</td>
                                                 </tr>
@@ -110,7 +110,7 @@
                                                         @endif
 
                                                     @endforeach</td>
-                                                </tr>
+                                                </tr> --}}
                                                 {{-- <tr>
                                                     <td>Topic Name</td>
                                                     <td>@foreach ($batch as $topics )
@@ -124,6 +124,26 @@
                                                           {{ $t->topic->name }}</td>
                                                           @endforeach
                                                 </tr> --}}
+                                                    <table class="table">
+                                                          @foreach($batch->batchSession as $session)
+                                                          @if (\Carbon\Carbon::parse($session->start_date_time)->format('d')===\Carbon\Carbon::now()->format('d'))
+                                                          <tr>
+                                                              <td>Class Name</td>
+                                                          <td>{{ $batch->classSettings->name }}</td>
+                                                          </tr>
+                                                          <tr>
+                                                              <td>Teacher</td>
+                                                          <td>{{ $batch->teacher->name }}</td>
+                                                          </tr>
+
+                                                          <tr>
+                                                              <td>Topics</td>
+                                                           <td> @foreach($session->topics as $t)
+                                                            {{ $session->name }} - {{ $t->topic->name }}</td>
+                                                            @endforeach</tr>
+
+                                                            @endif
+                                                         @endforeach
                                                  </table>
                                                 </div>
                                               </div>
@@ -166,17 +186,45 @@
                                                       <div class="card-body">
                                                         {{-- Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS. --}}
                                                         {{--  --}}
-                                                        @foreach($batch->batchSession as $session)
-                                                        <th>Session name</th>
+
+
+
+
+
+                                                        {{-- @foreach($batch->batchSession as $session)
+
+                                                        <tr>
+                                                          <td>Session Name</td>
                                                           <td>{{ $session->start_date_time }}</td>
-                                                        <th>Topic</th>
+                                                        </tr>
                                                          <td> @foreach($session->topics as $t)
                                                           {{ $t->topic->name }}</td>
                                                           @endforeach
                                                           <th>Teacher Name</th>
                                                           <td>{{ $batch->classSettings->name }}</td>
-                                                       @endforeach
-                                                        {{--  --}}
+                                                       @endforeach --}}
+                                                        <table class="table">
+                                                          @foreach($batch->batchSession as $session)
+                                                          @if (\Carbon\Carbon::parse($session->start_date_time)->format('d')===\Carbon\Carbon::tomorrow()->format('d'))
+                                                          <tr>
+                                                              <td>Class Name</td>
+                                                          <td>{{ $batch->classSettings->name }}</td>
+                                                          </tr>
+                                                          <tr>
+                                                              <td>Teacher</td>
+                                                          <td>{{ $batch->teacher->name }}</td>
+                                                          </tr>
+
+                                                          <tr>
+                                                              <td>Topics</td>
+                                                           <td> @foreach($session->topics as $t)
+                                                            {{ $session->name }} - {{ $t->topic->name }}</td>
+                                                            @endforeach</tr>
+
+                                                            @endif
+                                                         @endforeach
+                                                 </table>
+
                                                       </div>
                                                     </div>
                                                     @endforeach
@@ -220,23 +268,49 @@
                                                         <div class="card-body">
                                                           {{-- Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS. --}}
                                                           {{--  --}}
-                                                          <table class="table">
-                                                          <tr>
-                                                              <th>session name</th>
-                                                              <th>Topic</th>
-                                                              <th>Teacher Name</th>
-                                                          </tr>
+                                                          {{-- <table class="table">
                                                           @foreach($batch->batchSession as $session)
+                                                          @if (\Carbon\Carbon::parse($session->start_date_time)->format('d')===\Carbon\Carbon::now()->format('d'))
                                                           <tr>
-
+                                                                <td>Session </td>
                                                             <td>{{ $session->name }}</td>
+                                                          </tr>
+                                                          <tr>
+                                                              <td>Topics</td>
                                                            <td> @foreach($session->topics as $t)
                                                             {{ $t->topic->name }}</td>
-                                                            @endforeach
+                                                            @endforeach</tr>
+                                                            <tr>
+                                                                <td>Class Name</td>
                                                             <td>{{ $batch->classSettings->name }}</td>
                                                             </tr>
+                                                            <tr>
+                                                                <td>{{\Carbon\Carbon::parse($session->start_date_time)->format('d')}}</td>
+                                                            </tr>
+                                                            @endif
                                                          @endforeach
-                                                         </table>
+                                                         </table> --}}
+                                                          <table class="table">
+                                                          @foreach($batch->batchSession as $session)
+
+                                                          <tr>
+                                                              <td>Class</td>
+                                                          <td>{{ $batch->classSettings->name }}</td>
+                                                          </tr>
+                                                          <tr>
+                                                              <td>Teacher</td>
+                                                          <td>{{ $batch->teacher->name }}</td>
+                                                          </tr>
+
+                                                          <tr>
+                                                              <td>Topics</td>
+                                                           <td> @foreach($session->topics as $t)
+                                                            {{ $session->name }} - {{ $t->topic->name }}</td>
+                                                            @endforeach</tr>
+
+
+                                                         @endforeach
+                                                 </table>
                                                         </div>
                                                       </div>
                                                       @endforeach

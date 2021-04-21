@@ -118,6 +118,7 @@ class HomeController extends Controller
             $today_session = BatchSession::whereIn('batch_id', $couseBatches)->whereDate('start_date_time', Carbon::today())->get();
             $tomorrow_session = BatchSession::whereIn('batch_id', $couseBatches)->whereDate('start_date_time', Carbon::tomorrow())->get();
             // dd($today_session);
+            // dd($batches);
             $tomorrow = Batch::whereIn('id', $couseBatches)->whereDate('batch_start_date', Carbon::tomorrow())->get();
             return view('dashboard.student', compact('students', 'batches', 'today', 'tomorrow', 'courses', 'status', 'today_session', 'tomorrow_session'));
         }
