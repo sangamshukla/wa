@@ -32,11 +32,11 @@
 <!-- Core plugin JavaScript-->
 <!--<script src="/wa/dashboard/sessionlist/vendor/jquery-easing/jquery.easing.min.js"></script>-->
 <!-- Custom scripts for all pages-->
-<script src="{{ asset('wa/dashboard/sessionlist/js/student.js') }}"></script>
+{{-- <script src="{{ asset('wa/dashboard/sessionlist/js/student.js') }}"></script> --}}
   <!-- Page level plugins -->
-  <script src="{{ asset('wa/dashboard/sessionlist/vendor/chart.js/Chart.min.js') }}"></script>
+  {{-- <script src="{{ asset('wa/dashboard/sessionlist/vendor/chart.js/Chart.min.js') }}"></script> --}}
 
   <!-- Page level custom scripts -->
-  <script src="{{ asset('wa/dashboard/sessionlist/js/demo/chart-area-demo.js')}}"></script>
-  <script src="{{ asset('wa/dashboard/sessionlist/js/demo/chart-pie-demo.js')}}"></script>
+  {{-- <script src="{{ asset('wa/dashboard/sessionlist/js/demo/chart-area-demo.js')}}"></script> --}}
+  {{-- <script src="{{ asset('wa/dashboard/sessionlist/js/demo/chart-pie-demo.js')}}"></script> --}}
 @endsection

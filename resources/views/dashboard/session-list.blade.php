@@ -1,5 +1,24 @@
 
-                <!-- Begin Page Content -->
+ <script>
+// function countdownTimer(dates,countdown) {
+//     const difference = +new Date(dates) - +new Date();
+//     let remaining = "Join Now";
+  
+//     if (difference > 0) {
+//       const parts = {
+//         days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+//         hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+//         minutes: Math.floor((difference / 1000 / 60) % 60),
+//         seconds: Math.floor((difference / 1000) % 60),
+//       };
+//       remaining = Object.keys(parts).map(part => {
+//       return `${parts[part]} ${part}`;
+//       }).join(" ");
+//     }
+//     document.getElementById(countdown).innerHTML = remaining;
+//   }
+</script>        
+       <!-- Begin Page Content -->
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
@@ -44,7 +63,21 @@
                                               <div class="card-header" id="headingOne">
                                                 <h5 class="mb-0">
                                                     <div class="d-flex justify-content-around">
-                                                        <div class="card_img"><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
+                                                        <div class="card_img" style="width:38%">
+                                                            {{-- <img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"> --}}
+                                                            @if($batch->subject->name == 'English')
+                                                            <img style="width:100%;" src="{{ asset('frontend/assets/English/English.jpg') }}" alt="">
+                                                          @endif
+                                                          @if($batch->subject->name == 'Maths')
+                                                              <img  style="width:100%;" src="{{ asset('frontend/assets/Maths/Math.jpg') }}" alt="">
+                                                          @endif
+                                                          @if($batch->subject->name == 'Physics')
+                                                              <img  style="width:100%;" src="{{ asset('frontend/assets/Physics/Physics.jpg') }}" alt="">
+                                                          @endif
+                                                          @if($batch->subject->name == 'Chemistry')
+                                                              <img style="width:100%;" src="{{ asset('frontend/assets/card-cover.png') }}" alt="">
+                                                          @endif
+                                                        </div>
                                                     <div>
                                                         <p class="subject_card">Subject</p>
                                                         <p class="card_subject_title1">{{$batch->subject->name}}</p>
@@ -52,7 +85,41 @@
                                                     <div class="border-left first_left_border"></div>
                                                     <div>
                                                         <p class="subject_card">Join Now</p>
-                                                         <p class="card_subject_title2"><a href="{{ $batch->zoom->meeting_join_url ?? ''  }}">Join Now</a></p>
+                                                        {{-- <div id="app"></div> --}}
+
+                                                         <p class="card_subject_title2">
+                                                             <a id="{{ $batch->id }}" href="{{ $batch->zoom->meeting_join_url ?? ''  }}">Join Now
+                                                            </a>
+                                                            <script>
+                                                                window.onload = (event) => {
+                                                                   
+                                                                    // alert("here");
+                                                                  function timer(){
+                                                                    setInterval(function() {
+                                                                        let difference = new Date("{{ $batch->batch_start_date->format('Y-m-d H:i:s') }}") - new Date();
+                                                                        let remaining = "Join Now";
+                                                                        // alert(difference);
+                                                                        // alert('{{ $batch->batch_start_date->format("Y-m-d h:i:s") }}'+'---'+difference);
+                                                                        if (difference > 0) {
+                                                                            const parts = {
+                                                                            // days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+                                                                            // hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+                                                                            m: Math.floor((difference / 1000 / 60) % 60),
+                                                                            s: Math.floor((difference / 1000) % 60),
+                                                                            };
+                                                                            remaining = Object.keys(parts).map(part => {
+                                                                            return `${parts[part]} ${part}`;
+                                                                            }).join(" ");
+                                                                        }
+                                                                        document.getElementById("{{ $batch->id }}").innerHTML = remaining;
+                                                                    }, 1000);
+                                                                    
+                                                                  }
+                                                                  timer();
+                                                                };
+                                                            </script>
+                                                        </p>
+
                                                     </div>
                                                     <div class="border-left second_left_border"></div>
 
@@ -60,17 +127,17 @@
                                                        <img src="{{ asset('wa/dashboard/sessionlist/img/chevron.svg') }}" alt="arrow" title="arrow">
                                                      </button>
                                                 </div>
-                                                {{-- <p class="date_text">Feb 04, 2021- Feb 21,20201</p> --}}
-                                                <p class="date_text">{{ $batch->batch_start_date->format('d M, Y') }}</p>
+                                                {{-- <p class="date_text">{{ $batch->batch_start_date->format('d M, Y') }}</p> --}}
 
-
+                                                <p class="date_text"  style="margin-top: -9px;
+                                                margin-left: 81px;">{{ $batch->batch_start_date->format('d M, Y H:i A') }}</p>
                                                 </h5>
                                               </div>
                                               <div id="collapse{{$batch->id}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                                                 <div class="card-body">
                                                   {{-- Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS. --}}
                                                   {{--  --}}
-                                                  <table class="table">
+                                                  {{-- <table class="table"> --}}
                                                       {{-- @php
                                                           dd($today_session);
                                                       @endphp --}}
@@ -92,7 +159,7 @@
                                                         <td><b>Topic</b></td>
                                                         <td>{{$batch->batchSession}}</td>
                                                  {{-- @endforeach --}}
-                                                <tr>
+                                                {{-- <tr>
                                                     <td><strong>Class Name</td>
                                                     <td>{{$batch->classSettings->name}}</td>
                                                 </tr>
@@ -105,15 +172,11 @@
                                                     <td>@foreach ($batch->batchSession as $session )
                                                         @if (\Carbon\Carbon::parse($session->start_date_time)->format('d')===\Carbon\Carbon::now()->format('d'))
 
-<<<<<<< HEAD
                                                         {{$session->name}}-Topic Name
-=======
-                                                        {{$session->name}}-{{$}}
->>>>>>> 010d839... added session
                                                         @endif
 
                                                     @endforeach</td>
-                                                </tr>
+                                                </tr> --}}
                                                 {{-- <tr>
                                                     <td>Topic Name</td>
                                                     <td>@foreach ($batch as $topics )
@@ -127,7 +190,26 @@
                                                           {{ $t->topic->name }}</td>
                                                           @endforeach
                                                 </tr> --}}
-                                                 </table>
+                                                    <table class="table">
+                                                          @foreach($batch->batchSession as $session)
+                                                          @if (\Carbon\Carbon::parse($session->start_date_time)->format('d')===\Carbon\Carbon::now()->format('d'))
+                                                          <tr>
+                                                              <td>Class Name</td>
+                                                          <td>{{ $batch->classSettings->name }}</td>
+                                                          </tr>
+                                                          <tr>
+                                                              <td>Teacher</td>
+                                                          <td>{{ $batch->teacher->name }}</td>
+                                                          </tr>
+
+                                                          <tr>
+                                                              <td>Topics</td>
+                                                           <td> @foreach($session->topics as $t)
+                                                            {{ $session->name }} - {{ $t->topic->name }}</td>
+                                                            @endforeach</tr>
+                                                            @endif
+                                                         @endforeach
+                                                    </table>
                                                 </div>
                                               </div>
                                               @endforeach
@@ -142,7 +224,22 @@
                                                     <div class="card-header" id="headingOne">
                                                       <h5 class="mb-0">
                                                           <div class="d-flex justify-content-around">
-                                                              <div class="card_img"><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
+                                                              <div class="card_img" style="width:38%">
+                                                                  {{-- <img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"> --}}
+                                                                  @if($batch->subject->name == 'English')
+                                                                  <img style="width:100%;" src="{{ asset('frontend/assets/English/English.jpg') }}" alt="">
+                                                                @endif
+                                                                @if($batch->subject->name == 'Maths')
+                                                                    <img  style="width:100%;" src="{{ asset('frontend/assets/Maths/Math.jpg') }}" alt="">
+                                                                @endif
+                                                                @if($batch->subject->name == 'Physics')
+                                                                    <img  style="width:100%;" src="{{ asset('frontend/assets/Physics/Physics.jpg') }}" alt="">
+                                                                @endif
+                                                                @if($batch->subject->name == 'Chemistry')
+                                                                    <img style="width:100%;" src="{{ asset('frontend/assets/card-cover.png') }}" alt="">
+                                                                @endif
+                                                                
+                                                                </div>
                                                           <div>
                                                               <p class="subject_card">Subject</p>
                                                               <p class="card_subject_title1">{{$batch->subject->name}}</p>
@@ -159,27 +256,48 @@
                                                              <img src="{{ asset('wa/dashboard/sessionlist/img/chevron.svg') }}" alt="arrow" title="arrow">
                                                            </button>
                                                       </div>
-                                                      {{-- <p class="date_text">Feb 04, 2021- Feb 21,20201</p> --}}
-                                                      <p class="date_text">{{ $batch->batch_start_date->format('d M, Y') }}</p>
-
+                                                      {{-- <p class="date_text">{{ $batch->batch_start_date->format('d M, Y') }}</p> --}}
+                                                      <p class="date_text"  style="margin-top: -9px;
+                                                      margin-left: 81px;">{{ $batch->batch_start_date->format('d M, Y H:i A') }}</p>
 
                                                       </h5>
                                                     </div>
                                                     <div id="collapse{{$batch->id}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                                                       <div class="card-body">
-                                                        {{-- Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS. --}}
-                                                        {{--  --}}
-                                                        @foreach($batch->batchSession as $session)
-                                                        <th>Session name</th>
+                                                       {{-- @foreach($batch->batchSession as $session)
+
+                                                        <tr>
+                                                          <td>Session Name</td>
                                                           <td>{{ $session->start_date_time }}</td>
-                                                        <th>Topic</th>
+                                                        </tr>
                                                          <td> @foreach($session->topics as $t)
                                                           {{ $t->topic->name }}</td>
                                                           @endforeach
                                                           <th>Teacher Name</th>
+                                                          <td>{{ $batch->classSettings->name }}</td>
+                                                       @endforeach --}}
+                                                        <table class="table">
+                                                          @foreach($batch->batchSession as $session)
+                                                          @if (\Carbon\Carbon::parse($session->start_date_time)->format('d')===\Carbon\Carbon::tomorrow()->format('d'))
+                                                          <tr>
+                                                              <td>Class Name</td>
+                                                          <td>{{ $batch->classSettings->name }}</td>
+                                                          </tr>
+                                                          <tr>
+                                                              <td>Teacher</td>
                                                           <td>{{ $batch->teacher->name }}</td>
-                                                       @endforeach
-                                                        {{--  --}}
+                                                          </tr>
+
+                                                          <tr>
+                                                              <td>Topics</td>
+                                                           <td> @foreach($session->topics as $t)
+                                                            {{ $session->name }} - {{ $t->topic->name }}</td>
+                                                            @endforeach</tr>
+
+                                                            @endif
+                                                         @endforeach
+                                                 </table>
+
                                                       </div>
                                                     </div>
                                                     @endforeach
@@ -197,7 +315,22 @@
                                                       <div class="card-header" id="headingOne">
                                                         <h5 class="mb-0">
                                                             <div class="d-flex justify-content-around">
-                                                                <div class="card_img"><img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"></div>
+                                                                <div class="card_img" style="width:38%">
+                                                                    {{-- <img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"> --}}
+                                                                    @if($batch->subject->name == 'English')
+                                                                    <img style="width:100%;" src="{{ asset('frontend/assets/English/English.jpg') }}" alt="">
+                                                                    @endif
+                                                                    @if($batch->subject->name == 'Maths')
+                                                                        <img  style="width:100%;" src="{{ asset('frontend/assets/Maths/Math.jpg') }}" alt="">
+                                                                    @endif
+                                                                    @if($batch->subject->name == 'Physics')
+                                                                        <img  style="width:100%;" src="{{ asset('frontend/assets/Physics/Physics.jpg') }}" alt="">
+                                                                    @endif
+                                                                    @if($batch->subject->name == 'Chemistry')
+                                                                        <img style="width:100%;" src="{{ asset('frontend/assets/card-cover.png') }}" alt="">
+                                                                    @endif
+                                                                
+                                                                </div>
                                                             <div>
                                                                 <p class="subject_card">Subject</p>
                                                                 <p class="card_subject_title1">{{$batch->subject->name}}</p>
@@ -206,7 +339,35 @@
                                                             <div>
                                                                 <p class="subject_card">Join Now</p>
                                                                 <a href="{{ $batch->zoom->meeting_join_url ?? ''  }}">
-                                                                    <p class="card_subject_title2">Join Now</p>
+                        
+                                                                    <p class="card_subject_title2" id="{{ $batch->id }}">Join Now</p>
+                                                                    {{-- <script>
+                                                                        window.onload = (event) => {
+                                                                           
+                                                                            // alert("here");
+                                                                          function timer(){
+                                                                            setInterval(function() {
+                                                                                let difference = new Date("{{ $batch->batch_start_date->format('Y-m-d h:i:s') }}") - new Date();
+                                                                                let remaining = "Join Now";
+                                                                                // alert('{{ $batch->batch_start_date->format("Y-m-d h:i:s") }}'+'---'+difference);
+                                                                                if (difference > 0) {
+                                                                                    const parts = {
+                                                                                    days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+                                                                                    hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+                                                                                    minutes: Math.floor((difference / 1000 / 60) % 60),
+                                                                                    seconds: Math.floor((difference / 1000) % 60),
+                                                                                    };
+                                                                                    remaining = Object.keys(parts).map(part => {
+                                                                                    return `${parts[part]} ${part}`;
+                                                                                    }).join(" ");
+                                                                                }
+                                                                                document.getElementById("{{ $batch->id }}").innerHTML = remaining;
+                                                                            }, 1000);
+                                                                            
+                                                                          }
+                                                                          timer();
+                                                                        };
+                                                                    </script> --}}
                                                                 </a>
                                                             </div>
                                                             <div class="border-left second_left_border"></div>
@@ -216,30 +377,56 @@
                                                              </button>
                                                         </div>
                                                         {{-- <p class="date_text">Feb 04, 2021- Feb 21,20201</p> --}}
-                                                        <p class="date_text">{{ $batch->batch_start_date->format('d M, Y') }}</p>
+                                                        <p class="date_text" style="margin-top: -9px;
+                                                        margin-left: 81px;">{{ $batch->batch_start_date->format('d M, Y H:i A') }}</p>
+                                                        
                                                         </h5>
                                                       </div>
                                                       <div id="collapse{{$batch->id}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                                                         <div class="card-body">
                                                           {{-- Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS. --}}
                                                           {{--  --}}
-                                                          <table class="table">
-                                                          <tr>
-                                                              <th>session name</th>
-                                                              <th>Topic</th>
-                                                              <th>Teacher Name</th>
-                                                          </tr>
+                                                          {{-- <table class="table">
                                                           @foreach($batch->batchSession as $session)
+                                                          @if (\Carbon\Carbon::parse($session->start_date_time)->format('d')===\Carbon\Carbon::now()->format('d'))
                                                           <tr>
-
+                                                                <td>Session </td>
                                                             <td>{{ $session->name }}</td>
+                                                          </tr>
+                                                          <tr>
+                                                              <td>Topics</td>
                                                            <td> @foreach($session->topics as $t)
                                                             {{ $t->topic->name }}</td>
-                                                            @endforeach
+                                                            @endforeach</tr>
+                                                            <tr>
+                                                                <td>Class Name</td>
                                                             <td>{{ $batch->classSettings->name }}</td>
                                                             </tr>
+                                                            <tr>
+                                                                <td>{{\Carbon\Carbon::parse($session->start_date_time)->format('d')}}</td>
+                                                            </tr>
+                                                            @endif
                                                          @endforeach
-                                                         </table>
+                                                         </table> --}}
+                                                          <table class="table">
+                                                          @foreach($batch->batchSession as $session)
+
+                                                          <tr>
+                                                              <td>Class</td>
+                                                          <td>{{ $batch->classSettings->name }}</td>
+                                                          </tr>
+                                                          <tr>
+                                                              <td>Teacher</td>
+                                                          <td>{{ $batch->teacher->name }}</td>
+                                                          </tr>
+
+                                                          <tr>
+                                                              <td>Topics</td>
+                                                           <td> @foreach($session->topics as $t)
+                                                            {{ $session->name }} - {{ $t->topic->name }}</td>
+                                                            @endforeach</tr>
+                                                         @endforeach
+                                                 </table>
                                                         </div>
                                                       </div>
                                                       @endforeach
@@ -260,12 +447,12 @@
                                     <a href="#" class=" close close_card"><span>X</span></a>
 
                                 </div>
-                                <div class="card-body">
+                                <div class="card-body" >
 
-                                    <div class="mt-4">
-                                        <p class="mr-2 list_announce">
+                                    <div class="mt-4" >
+                                        <p class="mr-2 list_announce" >
                                             <span>https://www.w3schools.com/cssref</span>
-                                            <span>go</span>
+                                            <span><a href="{{url('/student-details', $batch->id)}}">go</span></a>
                                         </p>
                                         <p class="mr-2 list_announce">
                                             <span>https://www.w3schools.com/cssref</span>
@@ -358,11 +545,11 @@
                             <div class="profile_details card py-4 px-4 text-center thirdbox">
                                <div class="profile">
                                 <div class="profile_icon"><img src="{{ asset('wa/dashboard/sessionlist/img/user.png') }}"></div>
-                                <p class="name mb-1">John Paul</p>
-                                <p class="class_section"><span>class:</span><span>XI</span></p>
+                                <p class="name mb-1">{{ auth()->user()->name }}</p>
+                                <p class="class_section"><span>Year:</span><span>{{ $batch->name }}</span></p>
                                 <a href="#" class="profile"><span>view Profile</span></a>
                                </div>
-                               <div class="border_bottom_dotted"></div>
+                               {{-- <div class="border_bottom_dotted"></div>
                                <div class="row">
                                    <div class="col-md-6 col-xs-16">
                                     <p class="wallet_heading">Wallet balance</p>
@@ -373,7 +560,7 @@
                                     <p class="wallet_balance"><span>Wallet balance:</span><strong>&nbsp;£ 1500</strong></p>
                                     </div>
                                </div>
-                               <div class="border_bottom_dotted"></div>
+                               <div class="border_bottom_dotted"></div> --}}
                             </div>
                              <!-- Announcements -->
                             <div class="card shadow mb-4">
@@ -477,7 +664,7 @@
 <!-- Custom scripts for all pages-->
 <script src="{{ asset('wa/dashboard/sessionlist/js/student.js') }}"></script>
   <!-- Page level plugins -->
-  <script src="{{ asset('wa/dashboard/sessionlist/vendor/chart.js/Chart.min.js') }}"></script>
+  {{-- <script src="{{ asset('wa/dashboard/sessionlist/vendor/chart.js/Chart.min.js') }}"></script> --}}
 
   <!-- Page level custom scripts -->
   <script src="{{ asset('wa/dashboard/sessionlist/js/demo/chart-area-demo.js')}}"></script>

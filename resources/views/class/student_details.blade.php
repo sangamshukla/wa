@@ -4,7 +4,7 @@
 @endsection
     <!-- cart icon -->
  @section('carticon')
-  {{-- <img src="{{ asset('wa/assets/img/cart.svg')}}"> --}}
+{{-- <img src="{{ asset('wa/assets/img/cart.svg')}}"> --}}
  {{-- <a href="{{ url('buy-now')}}"><img src="{{ asset('wa/assets/img/cart.svg')}}"></a> --}}
 {{-- 
  <span class="cart_no">{{ count(session()->get('cart') ?? []) }}</span> --}}

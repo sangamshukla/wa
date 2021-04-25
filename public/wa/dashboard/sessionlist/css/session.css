@@ -32,6 +32,7 @@ select.form-control.border-0 {
   background: #fff;
 }
 
+
 .background_overlay{
   display: none;
 }
@@ -179,6 +180,10 @@ select.form-control.border-0 {
   font-size: 14px;
   padding: 7px;
 }
+/* .text_decoration {
+  text-decoration: none;
+  color: #fff;
+} */
 .cource_class_tile {
   font-size: 20px;
   color: #333;
@@ -258,6 +263,8 @@ select.form-control.border-0 {
   color: #333;
   padding-top: 17px;
 }
+
+
 .price_card {
   max-width: fit-content;
   background: #ed92fa;

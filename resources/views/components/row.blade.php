@@ -1,21 +1,24 @@
 
+
                           <div class="subject_edit">
+                            {{-- <div class="class_block">
+                              <p class="sub_subject">Teacher</p>
+                              <p class="blue_text">{{ $batch->assignteacher->name }}</p>
+                            </div> --}}
                             <div class="subject_practis">
                               <p class="sub_subject">Class Name</p>
-                              
                               <p class="subject">{{ $batch->classSettings->name }}</p>
+                            </div>
+                          
+                            <div class="class_block">
                               <p class="sub_subject">Session & topic</p>
 
-                              @foreach($batch->batchSession as $session)
-                                @foreach($session->topics as $t)
+                            @foreach($batch->batchSession as $session)
+                            @foreach($session->topics as $t)
 
-                                  {{ $session->name.'-'.$t->topic->name.',' }}   
-                                @endforeach                                    
-                                    @endforeach
-                              <p class="time_pera">
-                                {{-- <span>{{ $batch->batch_start_date->format('Y-m-d')}},</span --}}
-                                {{-- ><span>04:00pm - 05:00pm</span> --}}
-                              </p>
+                              {{ $session->name.'-'.$t->topic->name.',' }}   
+                            @endforeach                                    
+                                @endforeach 
                             </div>
                             <div class="starttime_block">
                               <p class="sub_subject">Start</p>
@@ -27,13 +30,13 @@
                               <p class="sub_subject">Teacher</p>
                               <p class="blue_text">{{ $batch->assignteacher->name }}</p>
                             </div>
-                            {{-- <div class="class_block">
-                              <p class="sub_subject">Subject</p>
-                              <p class="blue_text">Maths</p>
-                            </div> --}}
+                            <div class="class_block">
+                              <p class="sub_subject">Date</p>
+                              <div class="session_date"><?php echo $Session = date('Y-m-d', strtotime( $session->start_date_time )); ?></div>
+                            </div>
                             <div class="class_block">
                               <p class="sub_subject">Time</p>
-                              <p class="blue_text">{{ $batch->batch_start_date->format('Y-m-d')}}</p>
+                              <div class="session_time"><?php echo $Session = date('H:i A', strtotime( $session->start_date_time )); ?></div>
                             </div>
                             {{-- <div class="class_mb">
                               <p class="sub_subject">Students</p>
