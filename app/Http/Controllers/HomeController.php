@@ -112,6 +112,7 @@ class HomeController extends Controller
             $courses = OrderPayment::where('student_id', auth()->user()->id)->pluck('id');
             $couseBatches = OrderItems::whereIn('order_payment_id', $courses)->pluck('batch_id');
             $batches = Batch::whereIn('id', $couseBatches)->latest()->get();
+            dd($batches);
             $today = Batch::whereIn('id', $couseBatches)->whereDate('batch_start_date', Carbon::today())->get();
             $tomorrow = Batch::whereIn('id', $couseBatches)->whereDate('batch_start_date', Carbon::tomorrow())->get();
             return view('dashboard.student', compact('students', 'batches', 'today', 'tomorrow', 'courses', 'status'));

@@ -43,7 +43,8 @@ class BatchController extends Controller
     public function create()
     {
         // $i = 1;
-        $assignteachers = User::all();
+        $assignteachers = User::all()->where('role', 'teacher');
+        // dd($assignteachers);
         $classes = ClassMaster::all();
         $subjects = Subject::all();
         $classsettings = ClassSettings::all();

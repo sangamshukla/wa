@@ -23,8 +23,8 @@
 
 
 @section('style')
-<link href="/wa/dashboard/css/student-admin.css" rel="stylesheet">
-<link href="/wa/dashboard/css/session.css" rel="stylesheet">
+<link href="{{asset('wa/dashboard/css/student-admin.css')}}" rel="stylesheet">
+<link href="{{asset('wa/dashboard/css/session.css')}}" rel="stylesheet">
 @endsection
 @section('js')
 <script src="{{ asset('wa/dashboard/sessionlist/vendor/jquery/jquery.min.js')}}"></script>

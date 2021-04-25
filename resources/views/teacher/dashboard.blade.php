@@ -252,7 +252,7 @@
                     />
                   </div>
                   <div class="mr-2 d-none d-lg-inline text-gray-600 small">
-                    Douglas McGee
+                    {{auth()->user()->name}}
                   </div>
                 </a>
                 <!-- Dropdown - User Information -->
@@ -351,7 +351,7 @@
                           </div>
                           </div>
                          @endforeach
-                        
+
 
                          {{-- /dynamic data --}}
                     </div>
@@ -374,14 +374,14 @@
                         <div
                           class="card-body card_left_border border_left_color3"
                         >
-                        
+
                         </div>
                       </div>
                       <div class="card shadow mt-3">
                         <div
                           class="card-body card_left_border border_left_color4"
                         >
-                        
+
                         </div>
                       </div>
                     </div>
@@ -390,28 +390,28 @@
                         <div
                           class="card-body card_left_border border_left_color1"
                         >
-                        
+
                         </div>
                         </div>
                       <div class="card shadow mt-3">
                         <div
                           class="card-body card_left_border border_left_color2"
                         >
-                          
+
                         </div>
                       </div>
                       <div class="card shadow mt-3">
                         <div
                           class="card-body card_left_border border_left_color3"
                         >
-                        
+
                         </div>
                       </div>
                       <div class="card shadow mt-3">
                         <div
                           class="card-body card_left_border border_left_color4"
                         >
-                        
+
                         </div>
                       </div>
                     </div>
@@ -420,28 +420,28 @@
                         <div
                           class="card-body card_left_border border_left_color1"
                         >
-                        
+
                         </div>
                         </div>
                       <div class="card shadow mt-3">
                         <div
                           class="card-body card_left_border border_left_color2"
                         >
-                          
+
                         </div>
                       </div>
                       <div class="card shadow mt-3">
                         <div
                           class="card-body card_left_border border_left_color3"
                         >
-                        
+
                         </div>
                       </div>
                       <div class="card shadow mt-3">
                         <div
                           class="card-body card_left_border border_left_color4"
                         >
-                        
+
                         </div>
                       </div>
                     </div>
@@ -633,268 +633,39 @@
                                   <th class="card_heading">Topic</th>
                                   <th class="card_heading">Date</th>
                                   <th class="card_heading">Time</th>
-                                  <th class="card_heading">Date</th>
+
                                   <th class="card_heading">Action</th>
                                 </tr>
                               </thead>
                               <tbody>
-                                @foreach($batches as $key => $value)
-                                <tr class="session_card">
-                                  <td class="session_no">Session-11</td>
-                                  <td class="session_no">Numbers</td>
-                                  <td class="session_date">2021-03-10</td>
-                                  <td class="session_date">21:30 PM</td>
-                                  <td class="session_date">2021-03-10</td>
-                                  <td class="session_date">
-                                      <div class="">
+                                @php
+                                    // echo $batches;
+                                @endphp
+                                  @foreach ($batches as $batch)
+                                  @foreach($batch->batchSession as $session)
+                                    {{-- @php
+                                        dd($session);
+                                    @endphp --}}
+                                  <tr class="session_card">
+                                      <td class="session_no">{{$session->name}}</td>
+                                      <td class="session_no">@foreach($session->topics as $t)
+                                                            {{ $t->topic->name }}</td>
+                                                            </td>@endforeach
+                                      <td class="session_date">{{\Carbon\Carbon::parse($session->start_date_time)->format('d-m-Y')}}</td>
+                                      <td class="session_date">{{\Carbon\Carbon::parse($session->start_date_time)->format('g:i A')}}</td>
+                                      <td class="session_date">
+                                          <div class="">
                                         <div class="session tooltip"><img src="{{asset('wa/teacherdashboard/img/eye.svg')}}" width="20" height="20">
                                             <span class="session tooltiptext">Tooltip text</span>
-                                          </div>
-                                          <div class="session tooltip"><img src="{{asset('wa/teacherdashboard/img/circle-tool.svg')}}" width="20" height="20">
+                                        </div>
+                                        <div class="session tooltip"><img src="{{asset('wa/teacherdashboard/img/circle-tool.svg')}}" width="20" height="20">
                                             <span class="session tooltiptext">Tooltip text</span>
-                                          </div>
-                                      </div>
-                                  </td>
-                                </tr>
-                                @endforeach
-                                <tr class="session_card">
-                                  <td class="session_no">Session-1</td>
-                                  <td class="session_no">Numbers</td>
-                                  <td class="session_date">2021-03-10</td>
-                                  <td class="session_date">21:30 PM</td>
-                                  <td class="session_date">2021-03-10</td>
-                                  <td class="session_date">
-                                      <div class="">
-                                        <div class="session tooltip"><img src="{{asset('wa/teacherdashboard/img/eye.svg')}}" width="20" height="20">
-                                            <span class="session tooltiptext">Tooltip text</span>
-                                          </div>
-                                          <div class="session tooltip"><img src="{{asset('wa/teacherdashboard/img/circle-tool.svg')}}" width="20" height="20">
-                                            <span class="session tooltiptext">Tooltip text</span>
-                                          </div>
-                                      </div>
-                                  </td>
-                                </tr>
-                                <tr class="session_card">
-                                  <td class="session_no">Session-1</td>
-                                  <td class="session_no">Numbers</td>
-                                  <td class="session_date">2021-03-10</td>
-                                  <td class="session_date">21:30 PM</td>
-                                  <td class="session_date">2021-03-10</td>
-                                  <td class="session_date">
-                                      <div class="">
-                                        <div class="session tooltip"><img src="{{asset('wa/teacherdashboard/img/eye.svg')}}" width="20" height="20">
-                                            <span class="session tooltiptext">Tooltip text</span>
-                                          </div>
-                                          <div class="session tooltip"><img src="{{asset('wa/teacherdashboard/img/circle-tool.svg')}}" width="20" height="20">
-                                            <span class="session tooltiptext">Tooltip text</span>
-                                          </div>
-                                      </div>
-                                  </td>
-                                </tr>
-                                <tr class="session_card">
-                                  <td class="session_no">Session-1</td>
-                                  <td class="session_no">Numbers</td>
-                                  <td class="session_date">2021-03-10</td>
-                                  <td class="session_date">21:30 PM</td>
-                                  <td class="session_date">2021-03-10</td>
-                                  <td class="session_date">
-                                      <div class="">
-                                        <div class="session tooltip"><img src="{{asset('wa/teacherdashboard/img/eye.svg')}}" width="20" height="20">
-                                            <span class="session tooltiptext">Tooltip text</span>
-                                          </div>
-                                          <div class="session tooltip"><img src="{{asset('wa/teacherdashboard/img/circle-tool.svg')}}" width="20" height="20">
-                                            <span class="session tooltiptext">Tooltip text</span>
-                                          </div>
-                                      </div>
-                                  </td>
-                                </tr>
-                                <tr class="session_card">
-                                  <td class="session_no">Session-1</td>
-                                  <td class="session_no">Numbers</td>
-                                  <td class="session_date">2021-03-10</td>
-                                  <td class="session_date">21:30 PM</td>
-                                  <td class="session_date">2021-03-10</td>
-                                  <td class="session_date">
-                                      <div class="">
-                                        <div class="session tooltip"><img src="{{asset('wa/teacherdashboard/img/eye.svg')}}" width="20" height="20">
-                                            <span class="session tooltiptext">Tooltip text</span>
-                                          </div>
-                                          <div class="session tooltip"><img src="{{asset('wa/teacherdashboard/img/circle-tool.svg')}}" width="20" height="20">
-                                            <span class="session tooltiptext">Tooltip text</span>
-                                          </div>
-                                      </div>
-                                  </td>
-                                </tr>
-                                <tr class="session_card">
-                                  <td class="session_no">Session-1</td>
-                                  <td class="session_no">Numbers</td>
-                                  <td class="session_date">2021-03-10</td>
-                                  <td class="session_date">21:30 PM</td>
-                                  <td class="session_date">2021-03-10</td>
-                                  <td class="session_date">
-                                      <div class="">
-                                        <div class="session tooltip"><img src="{{asset('wa/teacherdashboard/img/eye.svg')}}" width="20" height="20">
-                                            <span class="session tooltiptext">Tooltip text</span>
-                                          </div>
-                                          <div class="session tooltip"><img src="{{asset('wa/teacherdashboard/img/circle-tool.svg')}}" width="20" height="20">
-                                            <span class="session tooltiptext">Tooltip text</span>
-                                          </div>
-                                      </div>
-                                  </td>
-                                </tr>
-                                <tr class="session_card">
-                                  <td class="session_no">Session-1</td>
-                                  <td class="session_no">Numbers</td>
-                                  <td class="session_date">2021-03-10</td>
-                                  <td class="session_date">21:30 PM</td>
-                                  <td class="session_date">2021-03-10</td>
-                                  <td class="session_date">
-                                      <div class="">
-                                        <div class="session tooltip"><img src="{{asset('wa/teacherdashboard/img/eye.svg')}}" width="20" height="20">
-                                            <span class="session tooltiptext">Tooltip text</span>
-                                          </div>
-                                          <div class="session tooltip"><img src="{{asset('wa/teacherdashboard/img/circle-tool.svg')}}" width="20" height="20">
-                                            <span class="session tooltiptext">Tooltip text</span>
-                                          </div>
-                                      </div>
-                                  </td>
-                                </tr>
-                                <tr class="session_card">
-                                  <td class="session_no">Session-1</td>
-                                  <td class="session_no">Numbers</td>
-                                  <td class="session_date">2021-03-10</td>
-                                  <td class="session_date">21:30 PM</td>
-                                  <td class="session_date">2021-03-10</td>
-                                  <td class="session_date">
-                                      <div class="">
-                                        <div class="session tooltip"><img src="{{asset('wa/teacherdashboard/img/eye.svg')}}" width="20" height="20">
-                                            <span class="session tooltiptext">Tooltip text</span>
-                                          </div>
-                                          <div class="session tooltip"><img src="{{asset('wa/teacherdashboard/img/circle-tool.svg')}}" width="20" height="20">
-                                            <span class="session tooltiptext">Tooltip text</span>
-                                          </div>
-                                      </div>
-                                  </td>
-                                </tr>
-                                <tr class="session_card">
-                                  <td class="session_no">Session-1</td>
-                                  <td class="session_no">Numbers</td>
-                                  <td class="session_date">2021-03-10</td>
-                                  <td class="session_date">21:30 PM</td>
-                                  <td class="session_date">2021-03-10</td>
-                                  <td class="session_date">
-                                      <div class="">
-                                        <div class="session tooltip"><img src="{{asset('wa/teacherdashboard/img/eye.svg')}}" width="20" height="20">
-                                            <span class="session tooltiptext">Tooltip text</span>
-                                          </div>
-                                          <div class="session tooltip"><img src="{{asset('wa/teacherdashboard/img/circle-tool.svg')}}" width="20" height="20">
-                                            <span class="session tooltiptext">Tooltip text</span>
-                                          </div>
-                                      </div>
-                                  </td>
-                                </tr>
-                                <tr class="session_card">
-                                  <td class="session_no">Session-1</td>
-                                  <td class="session_no">Numbers</td>
-                                  <td class="session_date">2021-03-10</td>
-                                  <td class="session_date">21:30 PM</td>
-                                  <td class="session_date">2021-03-10</td>
-                                  <td class="session_date">
-                                      <div class="">
-                                        <div class="session tooltip"><img src="{{asset('wa/teacherdashboard/img/eye.svg')}}" width="20" height="20">
-                                            <span class="session tooltiptext">Tooltip text</span>
-                                          </div>
-                                          <div class="session tooltip"><img src="{{asset('wa/teacherdashboard/img/circle-tool.svg')}}" width="20" height="20">
-                                            <span class="session tooltiptext">Tooltip text</span>
-                                          </div>
-                                      </div>
-                                  </td>
-                                </tr>
-                                <tr class="session_card">
-                                  <td class="session_no">Session-1</td>
-                                  <td class="session_no">Numbers</td>
-                                  <td class="session_date">2021-03-10</td>
-                                  <td class="session_date">21:30 PM</td>
-                                  <td class="session_date">2021-03-10</td>
-                                  <td class="session_date">
-                                      <div class="">
-                                        <div class="session tooltip"><img src="{{asset('wa/teacherdashboard/img/eye.svg')}}" width="20" height="20">
-                                            <span class="session tooltiptext">Tooltip text</span>
-                                          </div>
-                                          <div class="session tooltip"><img src="{{asset('wa/teacherdashboard/img/circle-tool.svg')}}" width="20" height="20">
-                                            <span class="session tooltiptext">Tooltip text</span>
-                                          </div>
-                                      </div>
-                                  </td>
-                                </tr>
-                                <tr class="session_card">
-                                  <td class="session_no">Session-1</td>
-                                  <td class="session_no">Numbers</td>
-                                  <td class="session_date">2021-03-10</td>
-                                  <td class="session_date">21:30 PM</td>
-                                  <td class="session_date">2021-03-10</td>
-                                  <td class="session_date">
-                                      <div class="">
-                                        <div class="session tooltip"><img src="{{asset('wa/teacherdashboard/img/eye.svg')}}" width="20" height="20">
-                                            <span class="session tooltiptext">Tooltip text</span>
-                                          </div>
-                                          <div class="session tooltip"><img src="{{asset('wa/teacherdashboard/img/circle-tool.svg')}}" width="20" height="20">
-                                            <span class="session tooltiptext">Tooltip text</span>
-                                          </div>
-                                      </div>
-                                  </td>
-                                </tr>
-                                <tr class="session_card">
-                                  <td class="session_no">Session-1</td>
-                                  <td class="session_no">Numbers</td>
-                                  <td class="session_date">2021-03-10</td>
-                                  <td class="session_date">21:30 PM</td>
-                                  <td class="session_date">2021-03-10</td>
-                                  <td class="session_date">
-                                      <div class="">
-                                        <div class="session tooltip"><img src="{{asset('wa/teacherdashboard/img/eye.svg')}}" width="20" height="20">
-                                            <span class="session tooltiptext">Tooltip text</span>
-                                          </div>
-                                          <div class="session tooltip"><img src="{{asset('wa/teacherdashboard/img/circle-tool.svg')}}" width="20" height="20">
-                                            <span class="session tooltiptext">Tooltip text</span>
-                                          </div>
-                                      </div>
-                                  </td>
-                                </tr>
-                                <tr class="session_card">
-                                  <td class="session_no">Session-1</td>
-                                  <td class="session_no">Numbers</td>
-                                  <td class="session_date">2021-03-10</td>
-                                  <td class="session_date">21:30 PM</td>
-                                  <td class="session_date">2021-03-10</td>
-                                  <td class="session_date">
-                                      <div class="">
-                                        <div class="session tooltip"><img src="{{asset('wa/teacherdashboard/img/eye.svg')}}" width="20" height="20">
-                                            <span class="session tooltiptext">Tooltip text</span>
-                                          </div>
-                                          <div class="session tooltip"><img src="{{asset('wa/teacherdashboard/img/circle-tool.svg')}}" width="20" height="20">
-                                            <span class="session tooltiptext">Tooltip text</span>
-                                          </div>
-                                      </div>
-                                  </td>
-                                </tr>
-                                <tr class="session_card">
-                                  <td class="session_no">Session-1</td>
-                                  <td class="session_no">Numbers</td>
-                                  <td class="session_date">2021-03-10</td>
-                                  <td class="session_date">21:30 PM</td>
-                                  <td class="session_date">2021-03-10</td>
-                                  <td class="session_date">
-                                      <div class="">
-                                        <div class="session tooltip"><img src="{{asset('wa/teacherdashboard/img/eye.svg')}}" width="20" height="20">
-                                            <span class="session tooltiptext">Tooltip text</span>
-                                          </div>
-                                          <div class="session tooltip"><img src="{{asset('wa/teacherdashboard/img/circle-tool.svg')}}" width="20" height="20">
-                                            <span class="session tooltiptext">Tooltip text</span>
-                                          </div>
-                                      </div>
-                                  </td>
-                                </tr>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            @endforeach
+                            @endforeach
 
                               </tbody>
                             </table>

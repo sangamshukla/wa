@@ -10,6 +10,12 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     @include('layouts._partials._css')
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+
+
+
+
+
 </head>
 <body class="loading" data-layout="detached" data-layout-config='{"leftSidebarCondensed":false,"darkMode":false, "showRightSidebarOnStart": true}'>
 
@@ -54,7 +60,7 @@
 
 
     <!-- Right Sidebar -->
-    {{-- <div class="right-bar">
+    <div class="right-bar">
 
         <div class="rightbar-title">
             <a href="javascript:void(0);" class="right-bar-toggle float-right">
@@ -106,10 +112,11 @@
             </div> <!-- end padding-->
 
         </div>
-    </div> --}}
+    </div>
 
-    {{-- <div class="rightbar-overlay"></div> --}}
+    <div class="rightbar-overlay"></div>
     <!-- /Right-bar -->
+
 
     <!-- bundle -->
    @include('layouts._partials._js')

@@ -5,7 +5,7 @@
 <div class="row">
     @include('_form.success')
     <div class="col-xl-8 col-lg-7 text-center">
-        <img src="/wa/dashboard/img/banner.svg" class="session_img mt-4">
+        <img src="{{asset('wa/dashboard/img/banner.svg')}}" class="session_img mt-4">
         <p class="mt-5 session_buy_subheading">There are no Sessions available</p>
         <p class="session_buy_pera"> You have to buy a cource to start the activity here</p>
         <div>
@@ -17,7 +17,7 @@
     <div class="col-xl-4 col-lg-5">
         <div class="profile_details card py-4 px-4 text-center">
            <div class="profile">
-            <div class="profile_icon"><img src="/wa/dashboard/img/user.png"></div>
+            <div class="profile_icon"><img src="{{asset('wa/dashboard/img/user.png')}}"></div>
             <p class="name mb-1">{{ auth()->user()->name }}</p>
             <p class="class_section"><span>class:</span><span>{{ auth()->user()->student->classmaster->name }}</span></p>
             <a href="#" class="profile"><span>view Profile</span></a>
@@ -77,7 +77,7 @@
                 @php $i = 1; @endphp
                 @foreach($students as $student)
                 <div style="cursor:pointer;" onClick="(function(){
-                    window.location.href = '/student-details/{{ $student->id }}';
+                    window.location.href = '/testing/public/student-details/{{ $student->id }}';
                      })();return false;" class="col-lg-3 mb-4">
                     <div class="card subject{{ $i }}">
                         <div class="subject_img_block">

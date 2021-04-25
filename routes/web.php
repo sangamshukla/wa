@@ -11,6 +11,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeacherByBatchController;
 use App\Http\Controllers\LiveSessionController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\TeacherCalanderController;
 use App\Http\Controllers\TeacherDashboardController;
 use App\Http\Controllers\ZoomController;
 use App\Models\Batch;
@@ -61,7 +62,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin-dashboard', [HomeController::class, 'adminDashboard']);
     Route::get('/admin-show', [HomeController::class, 'adminshow']);
 
-    Route::get('/teacher-dashboard', [HomeController::class, 'teacherDashboard']);
+    Route::get('/teacher-new-dashboard', [HomeController::class, 'teacherDashboard']);
     Route::get('/operation-dashboard', [HomeController::class, 'operationDashboard']);
 
     Route::get('/student-dashboard', [HomeController::class, 'studentDashboard']);
@@ -115,7 +116,7 @@ Route::post('/signup', [RegisterController::class, 'create']);
 // packages details
 Route::get('/packages-details', [PackagesDetailsController::class, 'packagesDetails'])->name('packages.details');
 //teacher dashboard
-Route::get('/teacher-new-dashboard', [TeacherDashboardController::class, 'index'])->name('teacher-new-dashboard');
+Route::get('/teacher-dashboard', [TeacherDashboardController::class, 'index'])->name('teacher-dashboard');
 // for zoom
 // Route::get('/', [ZoomController::class, 'zoom'])->name('zoom');
 Route::get('/teacher-new-dashboard', [TeacherDashboardController::class, 'index'])->name('teacher-new-dashboard')->middleware('auth');

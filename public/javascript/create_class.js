@@ -12,13 +12,13 @@ $('#generate-session').on('click', function () {
 
     var firstDate = $('#class_date_time').val();
     var row = `
-    <div class="row" style="padding:1rem;"> 
+    <div class="row" style="padding:1rem;">
         <div class="col-md-3">
             <input type="text" name="session_start_date[]" class="showdatepicker form-control" value="${firstDate}" id="first_date_time" placeholder="Select Start Date & Time">
         </div>
         <div class="col-md-2">
             <input class="form-control" name="session_name[]" value="${value_session}" placeholder="Session Name">
-        </div> 
+        </div>
         <div class="col-md-3">
             <select name="topic_id[${value_session}]"  class="form-control js-example-basic-multiple" id="topic_id" placeholder="Select  Topic" >
             </select>
@@ -73,13 +73,13 @@ function addRow() {
     var index_val = value_session;
     var value_session = "Session-" + value_session;
     var row = `
-    <div class="row" style="padding:1rem;"> 
+    <div class="row" style="padding:1rem;">
         <div class="col-md-3">
             <input type="text" name="session_start_date[]" class="showdatepicker form-control" id="first_date_time_${index_val}" placeholder="Select Start Date & Time">
         </div>
         <div class="col-md-2">
             <input class="form-control" name="session_name[]" value="${value_session}" placeholder="Session Name">
-        </div> 
+        </div>
         <div class="col-md-3">
             <select name="topic_id[${value_session}]" class="form-control js-example-basic-multiple topic_id" id="topic_id_${index_val}" placeholder="Select  Topic" >
             </select>
