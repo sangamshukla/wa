@@ -450,18 +450,20 @@
                                 <div class="card-body" >
 
                                     <div class="mt-4" >
+                                        @foreach($batches as $batch)
                                         <p class="mr-2 list_announce" >
-                                            <span>https://www.w3schools.com/cssref</span>
+                                            <span>{{ $batch->classSettings->name }}</span>
                                             <span><a href="{{url('/student-details', $batch->id)}}">go</span></a>
                                         </p>
-                                        <p class="mr-2 list_announce">
+                                        @endforeach
+                                        {{-- <p class="mr-2 list_announce">
                                             <span>https://www.w3schools.com/cssref</span>
                                             <span>go</span>
                                         </p>
                                         <p class="mr-2 list_announce">
                                             <span>https://www.w3schools.com/cssref</span>
                                             <span>go</span>
-                                        </p>
+                                        </p> --}}
                                     </div>
                                 </div>
                             </div>
@@ -664,7 +666,7 @@
 <!-- Custom scripts for all pages-->
 <script src="{{ asset('wa/dashboard/sessionlist/js/student.js') }}"></script>
   <!-- Page level plugins -->
-  {{-- <script src="{{ asset('wa/dashboard/sessionlist/vendor/chart.js/Chart.min.js') }}"></script> --}}
+  <script src="{{ asset('wa/dashboard/sessionlist/vendor/chart.js/Chart.min.js') }}"></script>
 
   <!-- Page level custom scripts -->
   <script src="{{ asset('wa/dashboard/sessionlist/js/demo/chart-area-demo.js')}}"></script>
