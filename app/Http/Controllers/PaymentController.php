@@ -6,6 +6,7 @@ use App\Models\Batch;
 use App\Models\Order;
 use App\Models\OrderItems;
 use App\Models\OrderPayment;
+use App\Models\OrderSessions;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 
@@ -66,14 +67,21 @@ class PaymentController extends Controller
             'order_amount' =>  Batch::whereIn('id', array_keys(session()->get('cart') ?? []))
                 ->sum('batch_price_per_session')
         ]);
+        // dd(session('cart'));
         $b = Batch::whereIn('id', array_keys(session()->get('cart') ?? []))->get();
 
         foreach ($b as $k) {
-            OrderItems::create([
+            $item = OrderItems::create([
                 'order_payment_id' => $order->id,
                 'no_of_items' => 1,
-                'batch_id' => $k->id
+                'batch_id' => $k->id,
             ]);
+            // foreach (session('cart') as $key => $cart) {
+            //     if ($key == $b->id) {
+            //         foreach ($cart->session as $s) {
+            //         }
+            //     }
+            // }
             Transaction::create([
                 'order_id' => $order->id,
                 'payment_status' => 'yes'

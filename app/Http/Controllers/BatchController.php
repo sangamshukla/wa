@@ -8,9 +8,11 @@ use App\Models\BatchSession;
 use App\Models\BatchTopic;
 use App\Models\ClassMaster;
 use App\Models\ClassSettings;
+use App\Models\Event;
 use App\Models\Orders;
 use App\Models\Subject;
 use App\Models\Teacher;
+use App\Models\Topic;
 use App\Models\User;
 use Carbon\Carbon;
 use Database\Seeders\ClassSettings as SeedersClassSettings;
@@ -25,6 +27,8 @@ class BatchController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
+
     public function index()
     {
         $totals = Batch::count();
@@ -96,6 +100,7 @@ class BatchController extends Controller
             'name' => auth()->user()->role == 'teacher' ? auth()->user()->id : $request->name,
             'batch_price_per_session' => $request->batch_price_per_session,
             'batch_start_date' => $request->batch_start_date,
+            'batch_end_date' => $request->batch_end_date,
             'subject_id' => $request->subject_id,
             'class_master_id' => $request->class_master_id,
             'class_settings_id' => $class,
@@ -105,6 +110,7 @@ class BatchController extends Controller
             // 'book_now'=>$request->book_now,
             'status' => $request->status,
             'location' => $request->location,
+            'sell_each_session' => $request->sell_each_session,
             'created_by' => auth()->user()->id
         ]);
 
@@ -123,6 +129,17 @@ class BatchController extends Controller
                 'batch_session_id' => $batchSession->id,
                 'topic_id' => $request->topic_id['Session-' . $name]
             ]);
+
+            // make event
+            $topicname = Topic::find($request->topic_id['Session-' . $name]);
+            Event::create([
+                'batch_id' => $batch->id,
+                'title' => $d.''.$batch->classSettings->name.' '.$session_name.' '.$topicname->name.'',
+                'start' => Carbon::parse($d)->format('Y-m-d'),
+                'end' => Carbon::parse($d)->format('Y-m-d'),
+            ]);
+
+
             $index++;
             $name++;
         }
@@ -208,8 +225,11 @@ class BatchController extends Controller
     {
         $batch = Batch::find($id);
         // get all batches of the same class
-        $allBatches = Batch::where('class_master_id', $batch->class_master_id)
-            ->where('id', '!=', $id)->get();
+        $allBatches =Batch::where('class_master_id', $batch->class_master_id)
+            ->where('id', '!=', $id)
+            // session end date
+        ->whereDate('batch_end_date', '>=', Carbon::today())
+        ->get();
         return view('class.student_details', compact('batch', 'allBatches'));
     }
     public function availableCourses(Request $request)
@@ -236,13 +256,14 @@ class BatchController extends Controller
         }
         $product = Batch::find($request->classId);
         $cart = session()->get('cart');
+        // dd($product);
         // if cart is empty then this the first product
-
         if (!$cart) {
             $cart = [
                 $request->classId => [
                     "product_id" => $product->id, "quantity" => 1,
-                    'price' => $product->batch_price_per_session
+                    'price' => $product->batch_price_per_session,
+                    'session_id'=>$request->session_id
                 ]
             ];
             session()->put('cart', $cart);
@@ -257,12 +278,11 @@ class BatchController extends Controller
         $cart[$request->classId] = [
             "product_id" => $product->id,
             "quantity" => 1,
+            'session_id'=>$request->session_id,
             'price' => $product->batch_price_per_session
         ];
         session()->put('cart', $cart);
         $relatedBatches = Batch::whereIn('id', array_keys(session()->get('cart')))->get();
         return view('class.buy_now', compact('relatedBatches'));
-
-        //model login
     }
 }

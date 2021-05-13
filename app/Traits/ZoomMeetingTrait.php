@@ -89,6 +89,8 @@ trait ZoomMeetingTrait
             ]),
         ];
 
+        // dd($body);
+
         $response =  $this->client->post($url.$path, $body);
 
         return [

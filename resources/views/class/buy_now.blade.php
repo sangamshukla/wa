@@ -198,7 +198,9 @@
                                   <div class="row">
                                     <div class="col-sm-12">
                                       <div class="modal_logo text-center">
-                                          <img alt="logo-img" title="logo-img" src="{{asset('wa/assets/img/logo.png')}}" width="120">
+                                          {{-- <img alt="logo-img" title="logo-img" src="{{asset('wa/assets/img/logo.png')}}" width="120"> --}}
+                                          <a href="/"><img alt="logo-img" title="logo-img" src="{{asset('wa/assets/img/logo.png')}}" width="120"></a>
+
                                       </div>
                                         <div class="modal_cta_sections mt-5">
                                           <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">

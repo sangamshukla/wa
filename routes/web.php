@@ -4,6 +4,7 @@ use App\Http\Controllers\ApiController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BatchController;
 use App\Http\Controllers\FooterContentController;
+use App\Http\Controllers\FullCalenderController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PackagesDetailsController;
 use App\Http\Controllers\PaymentController;
@@ -66,9 +67,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/student-dashboard', [HomeController::class, 'studentDashboard']);
     Route::get('/session-list', [HomeController::class, 'sessionList']);
-    // Route::post('/session-list', [HomeController::class , 'sessionListSave']);
-
-
+    Route::get('zoom/{id}', [HomeController::class , 'zoom']);
 
     // Teacher Controller
     Route::get('add-teacher', [TeacherController::class, 'create'])->name('add-teacher');
@@ -91,8 +90,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('destroy-classes/{id}', [BatchController::class, 'destroy'])->name('destroy-class');
     Route::get('student', [BatchController::class, 'student'])->name('student');
     Route::get('available-courses', [BatchController::class, 'availableCourses'])->name('available-courses');
-    // Route::get('/packages-details', [BatchController::class, 'packagesDetails'])->name('packages.details');
-
+    Route::get('fortest', [BatchController::class, 'forTest']);
+    Route::post('fortestsave', [BatchController::class, 'forTestSave']);
 
     Route::get('add-product', [TeacherController::class, 'store'])->name('add-product');
     Route::post('add-product', [TeacherController::class, 'store'])->name('add-product');
@@ -128,3 +127,5 @@ Route::get('/live-session', [LiveSessionController::class, 'livesession'])->name
 // Teacher Calander routes.
 Route::get('teacher-calander/{id}', [TeacherCalanderController::class, 'index'])->name('teacher-calander');
 Route::post('teacher-calander/{id}', [TeacherCalanderController::class, 'sessions']);
+Route::get('fullcalender', [FullCalenderController::class, 'index']);
+Route::post('fullcalenderAjax', [FullCalenderController::class, 'ajax']);

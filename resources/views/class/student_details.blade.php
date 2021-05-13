@@ -11,6 +11,8 @@
  @endsection
 @section('content')  
 <section class="math_booster">
+    <form id="buynowform" method="POST" action="{{ route('buy.now') }}">
+        @csrf
     <div class="container-fluid">
         <div class="row">
             <div class="col">
@@ -66,7 +68,8 @@
                                 {{-- <input type="hidden"  name="batch_id" value="{{ $batch->id }}"> --}}
                                 {{-- before button --}}
                                 {{-- <button class="btn btn_block text-capitalize buy_now_cta my-2 my-sm-0" id="buyNow">Buy Now</button><br><br> --}}
-                                <a href="{{ route('buy.now') }}?classId={{ $batch->id }}"><button class="btn btn_block text-capitalize my-2 my-sm-0" type="button"
+                                {{-- href="{{ route('buy.now') }}?classId={{ $batch->id }}" --}}
+                                <a href="#" id="buyNow"><button class="btn btn_block text-capitalize my-2 my-sm-0" type="button"
                                     id="register">Buy Now</button></a><br><br>
                                                     
                                 {{-- for success msg --}}
@@ -95,17 +98,34 @@
                             <div class="card_date">Topic</div>
                             <div class="card_date">Date</div>
                             <div class="card_time">Time</div>
-                            <!-- <div class="blank_div"></div> -->
+                            
                         </div>
                         @foreach($batch->batchSession as $session)
+                        {{-- session start date --}}
+                        @if($session->start_date_time >= \Carbon\Carbon::today())
                             <div class="session_card">
                                 <div class="session_no">{{ $session->name }}</div>
                                 <div class="session_no">@foreach($session->topics as $t)
                                     {{ $t->topic->name }}                                       
                                     @endforeach </div>
+                                {{-- <div class="session_date">{{ $batch->batch_start_date->format('d M, Y H:i A') }}</div> --}}
+
                                 <div class="session_date"><?php echo $Session = date('Y-m-d', strtotime( $session->start_date_time )); ?></div>
+
                                 <div class="session_time"><?php echo $Session = date('H:i A', strtotime( $session->start_date_time )); ?></div>
+                                {{-- <div class="session_time"><input type="checkbox" style="width:40px;" class="form-control" name="session_id[]" value="{{ $session->id }}" /></div> --}}
+                                {{-- <div><input type="checkbox" style="width:40px;" class="form-control" name="session_id[]" value="{{ $session->id }}" /></div> --}}
+                                <div class="session_date">
+                                    <div class="check_form">
+                                      <div class="form-group">
+                                        <input name="session_id[]" value="{{ $session->id }}"  type="checkbox" id="html">
+                                        <label for="html" style="background: none;
+                                        border: none;"></label>
+                                      </div>
+                                    </div>
+                                </div>
                             </div>
+                        @endif    
                         @endforeach
 
                     </div>
@@ -197,9 +217,8 @@
             </div>
         </div>
     </div>
-    <form id="buynowform" method="POST" action="{{ route('buy.now') }}">
-        @csrf
         <input type="hidden" name="batch_id" value="{{ $batch->id }}">
+        <input type="hidden" name="classId" value="{{ $batch->id }}">
     </form>
 </section>
 @endsection

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Batch;
+use App\Models\BatchSession;
 use App\Models\OrderItems;
 use App\Models\OrderPayment;
 use App\Models\Student;
@@ -112,9 +113,26 @@ class HomeController extends Controller
             $courses = OrderPayment::where('student_id', auth()->user()->id)->pluck('id');
             $couseBatches = OrderItems::whereIn('order_payment_id', $courses)->pluck('batch_id');
             $batches = Batch::whereIn('id', $couseBatches)->latest()->get();
-            $today = Batch::whereIn('id', $couseBatches)->whereDate('batch_start_date', Carbon::today())->get();
+            // $today = Batch::whereIn('id', $couseBatches)->whereDate('batch_start_date', Carbon::today())->get();
+
+            $batchSessionsToday = BatchSession::whereIn('batch_id', $couseBatches)
+                ->whereDate('start_date_time', Carbon::today())->pluck('batch_id');
+            $today = Batch::whereIn('id', $batchSessionsToday)->get();
             $tomorrow = Batch::whereIn('id', $couseBatches)->whereDate('batch_start_date', Carbon::tomorrow())->get();
-            return view('dashboard.student', compact('students', 'batches', 'today', 'tomorrow', 'courses', 'status'));
+            $twos = Batch::whereIn('id', $couseBatches)->latest()->take(2)->get();
+            $three = Batch::whereIn('id', $couseBatches)->latest()->take(3)->get();
+            // $twos = Batch::whereIn('id', $couseBatches)->paginate(3);
+
+            return view('dashboard.student', compact(
+                'students',
+                'batches',
+                'today',
+                'tomorrow',
+                'courses',
+                'status',
+                'twos',
+                'three'
+            ));
         }
     }
     public function sessionList(Request $request)
@@ -122,8 +140,20 @@ class HomeController extends Controller
         $courses = OrderPayment::where('student_id', auth()->user()->id)->pluck('id');
         $couseBatches = OrderItems::whereIn('order_payment_id', $courses)->pluck('batch_id');
         $batches = Batch::whereIn('id', $couseBatches)->latest()->get();
-        $today = Batch::whereIn('id', $couseBatches)->whereDate('batch_start_date', Carbon::today())->get();
+        // find the sessions which are starting today
+        $batchSessionsToday = BatchSession::whereIn('batch_id', $couseBatches)
+            ->whereDate('start_date_time', Carbon::today())->pluck('batch_id');
+        $today = Batch::whereIn('id', $batchSessionsToday)->get();
         $tomorrow = Batch::whereIn('id', $couseBatches)->whereDate('batch_start_date', Carbon::tomorrow())->get();
+        $twos = Batch::whereIn('id', $couseBatches)->latest()->take(2)->get();
+
+        $three = Batch::whereIn('id', $couseBatches)->latest()->take(3)->get();
         return view('dashboard.session-list', compact('batches', 'today', 'tomorrow'));
+    }
+    public function zoom(Request $request, $id)
+    {
+        $batch = Batch::find($id);
+        // dd($batch);
+        return view('dashboard.zoom', compact('batch'));
     }
 }

@@ -11,10 +11,12 @@ $('#generate-session').on('click', function () {
     var value_session = "Session-" + value_session;
 
     var firstDate = $('#class_date_time').val();
+    $("#end_date_time").val(firstDate);
     var row = `
     <div class="row" style="padding:1rem;"> 
         <div class="col-md-3">
-            <input type="text" name="session_start_date[]" class="showdatepicker form-control" value="${firstDate}" id="first_date_time" placeholder="Select Start Date & Time">
+            <input type="text" onchange="getAvailability(event, '${value_session}')" name="session_start_date[]" class="showdatepicker form-control" value="${firstDate}" id="first_date_time" placeholder="Select Start Date & Time">
+            <span id="${value_session}"></span>
         </div>
         <div class="col-md-2">
             <input class="form-control" name="session_name[]" value="${value_session}" placeholder="Session Name">
@@ -66,7 +68,31 @@ function deletePlusButton() {
     }
 
 }
+/**
+ * get availablity from add more button
+ * @param {event} e 
+ * @param {*} id 
+ */
+function getAvailability(e, id) {
+    var batch_start_date_time = e.target.value;
+    $("#end_date_time").val(batch_start_date_time);
+    batch_start_date_time = batch_start_date_time.replaceAll("/", "-");
+    var teacher_id = $('#class_name').val();
+    var duration = $('#duration_per_sessions_id').val();
+    $.get("/api/teacher/" + teacher_id + '/' + batch_start_date_time + '/' + duration, function (data, status) {
+        // $("#teacher_available_status").val(data);
+        if (data == 'NO') {
+            $("#" + id).html("<span class='text-danger'>Teacher Not Available</span>");
 
+            $('#saveForm').prop('disabled', true);
+        } else {
+            // if teacher is available
+            $("#" + id).html("");
+
+            $('#saveForm').prop('disabled', false);
+        }
+    });
+}
 function addRow() {
     $('#append-row').show();
     var value_session = $("#append-row").find($("select")).length + 1;
@@ -75,7 +101,8 @@ function addRow() {
     var row = `
     <div class="row" style="padding:1rem;"> 
         <div class="col-md-3">
-            <input type="text" name="session_start_date[]" class="showdatepicker form-control" id="first_date_time_${index_val}" placeholder="Select Start Date & Time">
+            <input type="text" onchange="getAvailability(event, '${value_session}')" name="session_start_date[]" class="showdatepicker form-control" id="first_date_time_${index_val}" placeholder="Select Start Date & Time">
+            <span id="${value_session}"></span>
         </div>
         <div class="col-md-2">
             <input class="form-control" name="session_name[]" value="${value_session}" placeholder="Session Name">
@@ -147,8 +174,6 @@ function addRow() {
         });
     });
     deletePlusButton();
-
-
 }
 
 //  <button type="button" class="btn del btn-danger btn-xs">x</button>
@@ -160,6 +185,46 @@ $('#select_year').on('change', function () {
         $.each(data, function (index, subcategory) {
             $('#subject_id').append('<option value="' + subcategory.id + '">' + subcategory.name + '</option>');
         });
+    });
+});
+$('#class_name').on('change', function () {
+    var batch_start_date_time = $('#class_date_time').val();
+    batch_start_date_time = batch_start_date_time.replaceAll("/", "-");
+    var teacher_id = $('#class_name').val();
+    var duration = $('#duration_per_sessions_id').val();
+    $.get("/api/teacher/" + teacher_id + '/' + batch_start_date_time + '/' + duration, function (data, status) {
+        $("#teacher_available_status").val(data);
+        if (data == 'NO') {
+
+            $('#saveForm').prop('disabled', true);
+            $("#not_available").html("<span class='text-danger'>Teacher Not Available</span>");
+        } else {
+            $("#not_available").html("");
+
+            $('#saveForm').prop('disabled', false);
+        }
+    });
+});
+
+$('#class_date_time').on('change', function () {
+    var batch_start_date_time = $('#class_date_time').val();
+    batch_start_date_time = batch_start_date_time.replaceAll("/", "-");
+    var teacher_id = $('#class_name').val();
+    var duration = $('#duration_per_sessions_id').val();
+    $.get("/api/teacher/" + teacher_id + '/' + batch_start_date_time + '/' + duration, function (data, status) {
+        if (teacher_id != '... Select Teacher ...') {
+            if (data == 'NO') {
+
+                $('#saveForm').prop('disabled', true);
+                $("#not_available").html("<span class='text-danger'>Teacher Not Available</span>");
+            }
+            else {
+                $("#not_available").html("");
+
+                $('#saveForm').prop('disabled', false);
+            }
+            $("#teacher_available_status").val(data);
+        }
     });
 });
 
@@ -199,6 +264,10 @@ $('#class_settings_id').on('change', function () {
 // date time picker
 $('document').ready(function () {
     $('#class_date_time').datetimepicker({
+        formatDate: 'Y/m/d',
+        minDate: '-1970/01/01',//yesterday is minimum date(for today use 0 or -1970/01/01)
+    });
+    $('#end_date_time').datetimepicker({
         formatDate: 'Y/m/d',
         minDate: '-1970/01/01',//yesterday is minimum date(for today use 0 or -1970/01/01)
     });

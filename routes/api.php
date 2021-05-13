@@ -20,3 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::get('/subjects/{id}', [ApiController::class, 'getSubjects']);
 Route::get('/topics/{id}', [ApiController::class, 'getTopics']);
+Route::get('/teacher/{teacherId}/{datetime}/{duration?}', [ApiController::class, 'getAvailableTeacher']);

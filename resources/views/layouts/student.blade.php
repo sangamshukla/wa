@@ -2,7 +2,9 @@
 <html lang="en">
 
 <head>
+{{-- full calender css --}}
 
+{{-- end here --}}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -24,6 +26,7 @@
       />
     <!-- Custom styles for this template-->
 
+ <script src="/wa/dashboard/vendor/jquery/jquery.min.js"></script>
     @yield('session.css')
     @yield('style')
 
@@ -67,7 +70,7 @@
 
  <!-- Bootstrap core JavaScript-->
     @yield('js')
- <script src="/wa/dashboard/vendor/jquery/jquery.min.js"></script>
+ @yield('scripts')
  <script src="/wa/dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
  <!-- Core plugin JavaScript-->
  <script src="/wa/dashboard/vendor/jquery-easing/jquery.easing.min.js"></script>

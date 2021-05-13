@@ -44,17 +44,20 @@ select.form-control.border-0 {
   position: relative;
   font-size: 24px;
   line-height: 31.2px;
+  margin-top: 10px;
+  margin: 90px 0;
 }
 .session_heading:after {
   content: "";
   position: absolute;
   background: #42ffbb;
   width: 122px;
-  height: 24px;
+  height: 50px;
   margin: auto;
   z-index: -1;
   left: 0.8%;
-  top: 37%;
+  top: 100%;
+  /* margin-top: 10px; */
 }
 .session_img {
   width: 350px;
@@ -180,10 +183,7 @@ select.form-control.border-0 {
   font-size: 14px;
   padding: 7px;
 }
-/* .text_decoration {
-  text-decoration: none;
-  color: #fff;
-} */
+ 
 .cource_class_tile {
   font-size: 20px;
   color: #333;

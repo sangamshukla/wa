@@ -14,7 +14,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{ url('/student-dashboard')}}">
             <div class="nav_images"><img src="/wa/dashboard/img/dasboard.svg"> </div>
             <br>
             <span>Dashboard</span></a>
@@ -31,7 +31,7 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
+        <a class="nav-link collapsed" href="{{ url('live-session')}}">
             <div class="nav_images"><img src="/wa/dashboard/img/teacher.svg"> </div>
             <br>
             <span>Teachers</span>
@@ -39,7 +39,7 @@
     </li>
     <!-- Nav Item - Charts -->
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{ url('packages-details')}}">
             <div class="nav_images"><img src="/wa/dashboard/img/Online course.svg"> </div>
             <br>
 
@@ -47,12 +47,13 @@
     </li>
 
     <!-- Nav Item - Tables -->
-    <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+
+     <li class="nav-item">
+        <a class="nav-link" href="{{ url('fullcalender')}}">
             <div class="nav_images"><img src="/wa/dashboard/img/calender.svg"> </div>
             <br>
             <span>Calender</span></a>
-    </li>
+    </li> 
   <!-- Nav Item - Alerts -->
   <li class="nav-item dropdown no-arrow mx-1 pl-5">
     <a class="dropdown-toggle" href="#" id="alertsDropdown" role="button"
