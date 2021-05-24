@@ -23,11 +23,16 @@ class CreateBatchesTable extends Migration
             $table->string('batch_price_per_session')->nullable();
             $table->string('teacher_available_status')->nullable();
             $table->string('no_of_seats')->nullable();
-            $table->dateTime('batch_start_date');           
+            $table->dateTime('batch_start_date');
+            $table->dateTime('batch_end_date')->nullable();
             $table->foreignIdFor(ClassMaster::class);
             $table->foreignIdFor(Subject::class);
             $table->string('status')->nullable();
             $table->string('location')->nullable();
+            $table->string('sell_each_session')->default('0');
+            $table->integer('class_settings_id');
+            $table->string('duration_per_session')->nullable();
+            $table->string('created_by')->nullable();
             $table->timestamps();
         });
     }

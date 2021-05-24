@@ -1,0 +1,1 @@
+{{\Carbon\Carbon::parse($session->start_date_time)->format('h:i')}}-{{\Carbon\Carbon::parse($session->start_date_time)->addMinutes($batch->duration_per_session)->format('h:i')}}

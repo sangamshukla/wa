@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCreatedByToBatchTable extends Migration
+class CreateOrderSessionMapsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AddCreatedByToBatchTable extends Migration
      */
     public function up()
     {
-        Schema::table('batches', function (Blueprint $table) {
-            $table->integer('created_by');
+        Schema::create('order_session_maps', function (Blueprint $table) {
+            $table->id();
+            $table->integer('batch_id')->nullable();
+            $table->integer('session_id')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ class AddCreatedByToBatchTable extends Migration
      */
     public function down()
     {
-        Schema::table('batches', function (Blueprint $table) {
-            $table->dropColumn('created_by');
-        });
+        Schema::dropIfExists('order_session_maps');
     }
 }

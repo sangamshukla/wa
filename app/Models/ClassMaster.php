@@ -9,4 +9,9 @@ class ClassMaster extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function subjects()
+    {
+        return $this->hasMany(Subject::class, 'class_master_id');
+    }
 }

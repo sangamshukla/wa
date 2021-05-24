@@ -371,7 +371,8 @@
         data: {
             '_token': '{{ csrf_token() }}',
             currentDate:currentDate,
-            teacherId:teacherId},
+            teacherId:teacherId
+            },
         success: function (response) {
             // alert(response);
             $('#Teacherswithsession').html(response);
@@ -392,7 +393,6 @@ error: function (response) {
 </script>
 <script>
     $('#datepicker').change(function(){
-
         var monthSelected=$(".ui-datepicker-month option:selected" ).text();
         var todayDate=$("#datepicker").val();
         var res = todayDate.split("/");
