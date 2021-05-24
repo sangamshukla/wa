@@ -154,7 +154,7 @@
                             @php $i=1 @endphp
                             @foreach($allBatches as $relatedBatch)
                             <div style="cursor:pointer;" onClick="(function(){
-                                window.location.href = '/testing/public/student-details/{{ $relatedBatch->id }}';
+                                window.location.href = '/student-details/{{ $relatedBatch->id }}';
                             })();return false;" class="swiper-slide card">
                                 <div class="single-district card{{ $i }} slid_card">
                                     <div class="card_img mb-3">
