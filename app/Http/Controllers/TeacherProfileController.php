@@ -138,8 +138,6 @@ class TeacherProfileController extends Controller
             );
             return redirect()->back();
         }
-
-
         //parameters are (path, filename, disk)
         else {
             return 'please choose file';

@@ -1,8 +1,8 @@
 @extends('layouts.main')
 @section('css')
-{{-- <link rel="stylesheet" href="{{ asset('wa/welcome.css') }}"> --}}
 
-    <link rel="stylesheet" href="{{ asset('wa/style.css') }}">
+{{-- <link rel="stylesheet" href="{{ asset('wa/welcome.css') }}"> --}}
+<link rel="stylesheet" href="{{ asset('wa/style.css') }}">
     {{-- <link rel="stylesheet" href="{{ asset('wa/welcome.css') }}"> --}}
     {{-- <link rel="stylesheet" href="{{ asset('wa/loginregistercss/style.css') }}"> --}}
 @endsection

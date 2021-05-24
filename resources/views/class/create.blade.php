@@ -2,7 +2,7 @@
 @section('content')
 @include('layouts._partials.breadcrumb', ['menuone'=> 'Home', 'menutwo' =>'Classes', 'menuthree' => 'Manage Classes','menutwourl' => '#','menuthreeurl'=>'/manage-classes', 'title' => 'Add Classes'])
 
-<!-- end page title --> 
+<!-- end page title -->
      <div class="content">
       <div class="row">
         <div class="col-md-12">
@@ -12,10 +12,10 @@
               <div class="card-header card-header-success">
                 <h4 class="card-title">Add New Classes</h4>
               </div>
-              
+
               <div class="card-body ">
                 @include('_form.success')
-                
+
 
                 <div class="row mb-4">
                   <div class="col-md-1"><p style="margin-top: 48%;">Class Type</p></div>
@@ -118,7 +118,7 @@
                           <input type="text" id="teacher_available_status" name="teacher_available_status" value="{{ old('teacher_available_status')}} "class="form-control" readonly>
                            <span id="not_available"></span>
                         </div>
-                      </div> 
+                      </div>
                       @endif
 
                      
@@ -129,9 +129,9 @@
                           <label for="simpleinput">No. of Seats</label>
                           <input type="text" class="form-control" id="no_of_seats" name="no_of_seats" value="{{ old('no_of_seats')}}" placeholder="No. Of. Seats" >
                         </div>
-                      </div> 
-                  </div> 
-                  
+                      </div>
+                  </div>
+
                   {{-- Select Year--}}
                 <div class="row">
                   <div class="col">

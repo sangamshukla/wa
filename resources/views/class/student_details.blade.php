@@ -33,10 +33,10 @@
                         {{-- <img src="{{ asset('wa/assets/img/card-cover.png') }}"> --}}
                     </div>
                     <div class="left_block">
-                        {{-- <p class="sub_title mt-4">{{ Str::ucfirst($batch->classSettings->name) . '' .  Str::substr($batch->batch_start_date,0,-3) }}</p> --}}
+                         <a href="http://pariharz.com/testing/public/teacher-calander/<?php echo $batch->assignteacher->id; ?>">
                         <p class="name_section">{{ Str::ucfirst($batch->assignteacher->name) }} &nbsp;&nbsp;&nbsp;&nbsp;
                         {{ $batch->status != 1 ? 'Location : '.$batch->location : '' }}
-                        </p>
+                        </p></a>
                         
                           
                         <div class="card_details">
@@ -154,7 +154,7 @@
                             @php $i=1 @endphp
                             @foreach($allBatches as $relatedBatch)
                             <div style="cursor:pointer;" onClick="(function(){
-                                window.location.href = '/student-details/{{ $relatedBatch->id }}';
+                                window.location.href = '/testing/public/student-details/{{ $relatedBatch->id }}';
                             })();return false;" class="swiper-slide card">
                                 <div class="single-district card{{ $i }} slid_card">
                                     <div class="card_img mb-3">
@@ -203,7 +203,7 @@
                                         <a href="#" class="view_detail">
                                             View details
                                         </a>
-                                        <a href="{{ url('/student-details', $batch->id)}}" class="price_card price_bg{{ $i }}">
+                                        <a href="{{ url('/testing/public/student-details', $batch->id)}}" class="price_card price_bg{{ $i }}">
                                             {{-- £ 150* --}}
                                             &pound; {{ $batch->batch_price_per_session }}
                                         </a>

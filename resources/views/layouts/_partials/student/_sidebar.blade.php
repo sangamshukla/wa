@@ -2,11 +2,9 @@
   <ul class=" student_dashboard navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/testing/public">
         <div class="sidebar-brand-icon">
-          {{-- <img src="/wa/dashboard/img/logo.png" title="logo" alt="logo"> --}}
-          <img src="/wa/dashboard/img/logo.png" title="logo" alt="logo">
-
+          <img src="{{asset('wa/dashboard/img/logo.png')}}" title="logo" alt="logo">
         </div>
     </a>
     <!-- Divider -->
@@ -24,7 +22,7 @@
     <hr class="sidebar-divider">
     <li class="nav-item">
         <a class="nav-link collapsed" href="#">
-            <div class="nav_images"><img src="/wa/dashboard/img/wall-clock 1.svg"> </div>
+            <div class="nav_images"><img src="{{asset('wa/dashboard/img/wall-clock 1.svg')}}"> </div>
             <br>
             <span>Session</span>
         </a>

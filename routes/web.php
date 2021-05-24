@@ -13,7 +13,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeacherByBatchController;
 use App\Http\Controllers\LiveSessionController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\TeacherCalanderController;
 use App\Http\Controllers\TeacherDashboardController;
+use App\Http\Controllers\TeacherProfileController;
 use App\Http\Controllers\ZoomController;
 use App\Models\Batch;
 use Carbon\Carbon;
@@ -66,7 +68,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin-dashboard', [HomeController::class, 'adminDashboard']);
     Route::get('/admin-show', [HomeController::class, 'adminshow']);
 
-    Route::get('/teacher-dashboard', [HomeController::class, 'teacherDashboard']);
+    Route::get('/teacher-new-dashboard', [HomeController::class, 'teacherDashboard']);
     Route::get('/operation-dashboard', [HomeController::class, 'operationDashboard']);
 
     Route::get('/student-dashboard', [HomeController::class, 'studentDashboard']);
@@ -118,7 +120,20 @@ Route::post('/signup', [RegisterController::class, 'create']);
 // packages details
 Route::get('/packages-details', [PackagesDetailsController::class, 'packagesDetails'])->name('packages.details');
 //teacher dashboard
-Route::get('/teacher-new-dashboard', [TeacherDashboardController::class, 'index'])->name('teacher-new-dashboard');
+Route::get('/teacher-dashboard', [TeacherDashboardController::class, 'index'])->name('teacher-dashboard');
+Route::get('/teacher-profile', [TeacherProfileController::class, 'index'])->name('teacher-profile')->middleware('auth');
+Route::post('teacher-image', [TeacherProfileController::class, 'storeImage'])->name('teacher-image')->middleware('auth');
+Route::post('teacher-info', [TeacherProfileController::class, 'storeInformation'])->name('teacher-info')->middleware('auth');
+Route::post('teacher-idproof', [TeacherProfileController::class, 'storeIdproof'])->name('teacher-idproof')->middleware('auth');
+Route::post('teacher-experience', [TeacherProfileController::class, 'storeExperience'])->name('teacher-experience')->middleware('auth');
+Route::post('teacher-experience-edit', [TeacherProfileController::class, 'storeEditedExperience'])->name('teacher-experience-edit')->middleware('auth');
+Route::post('get-subject', [TeacherProfileController::class, 'getSubject'])->name('get-subject')->middleware('auth');
+Route::post('teacher-expertise', [TeacherProfileController::class, 'storeExpertise'])->name('teacher-expertise')->middleware('auth');
+Route::post('teacher-expertise-data', [TeacherProfileController::class, 'storeExpertiseData'])->name('teacher-expertise-data')->middleware('auth');
+Route::post('modal-data', [TeacherProfileController::class, 'modalData'])->name('modal-data')->middleware('auth');
+Route::post('price_info', [TeacherProfileController::class, 'storePrice'])->name('price_info')->middleware('auth');
+
+// Route::get('teacher-experience', [TeacherProfileController::class, 'showExperience'])->name('teacher-experience-show')->middleware('auth');
 // for zoom
 // Route::get('/', [ZoomController::class, 'zoom'])->name('zoom');
 Route::get('/teacher-new-dashboard', [TeacherDashboardController::class, 'index'])->name('teacher-new-dashboard')->middleware('auth');

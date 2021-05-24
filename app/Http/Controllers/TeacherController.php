@@ -47,6 +47,7 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         $request->validate([
             'name' => 'required',
             'email' => 'required',
@@ -57,17 +58,17 @@ class TeacherController extends Controller
 
         $password = Str::random(8);
         $user = User::Create([
-            'name'=>$request->name,
-            'email'=>$request->email,
-            'contact_number'=>$request->contact_number,
+            'name' => $request->name,
+            'email' => $request->email,
+            'contact_number' => $request->contact_number,
             'password' => bcrypt('wa@123'),
-            'role'=>$request->user_type,
+            'role' => $request->user_type,
         ]);
-        
+
         Teacher::Create([
             'user_id' => $user->id,
             'class_master_id' => $request->class_master_id,
-            'user_type'=>$request->user_type,
+            'user_type' => $request->user_type,
         ]);
 
         Mail::to($user->email)->send(new TeacherSuccessfullyRegistered($user, $password));
@@ -111,23 +112,23 @@ class TeacherController extends Controller
     public function update(Request $request, $id)
     {
         $teacher = Teacher::find($id);
-       
+
         $user = User::updateOrCreate(
             [
                 'id' => $teacher->user_id
             ],
             [
-            'name'=>$request->name,
-            'email'=>$request->email,
-            'contact_number'=>$request->contact_number,
-            'class_master_id' => $request->class_master_id,
-            'role'=>$request->user_type,
+                'name' => $request->name,
+                'email' => $request->email,
+                'contact_number' => $request->contact_number,
+                'class_master_id' => $request->class_master_id,
+                'role' => $request->user_type,
             ]
         );
         $teacher->update([
             'user_id' => $user->id,
             'class_master_id' => $request->class_master_id,
-            'user_type'=>strtolower($request->user_type),
+            'user_type' => strtolower($request->user_type),
         ]);
         return redirect(route('manage-teacher'))->with('status', 'Teacher Updated Successfully');
     }

@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 
 class TeacherDashboardController extends Controller
 {
+
     public function index()
     {
         $batches = Batch::whereCreatedBy(auth()->user()->id)->orWhere('name', auth()->id())->latest()->get();
