@@ -21,313 +21,14 @@
                         <button class="btn filter-button" data-filter="class11">11+</button>
                     </div>
                 </div>
-{{--
-                <div class="row mt-4">
-                    <div class="col-md-3 filter_box filter class9">
-                        <div class="single-district card1">
-                            <div class="card_img mb-3">
-                                <img src="{{ asset('wa/packages/assets/img/card-cover.png')}}">
-                            </div>
-                            <div class="card_block_info pl-3 pr-3">
-                                <div class="card_info">
-                                    <p>Joahna Paul</p>
-                                    <p>GCSC final Math Booster</p>
-                                </div>
-                                <div class="card_details">
-                                    <div class="seat_block pr-3">
-                                        <p>No Of Seats</p>
-                                        <p>32</p>
-                                    </div>
-                                    <div class="border_div pl-3 "></div>
-                                    <div class="date_block">
-                                        <p>No Of Seats</p>
-                                        <p>32</p>
-                                    </div>
-                                </div>
-                                <div class="class_section">
-                                    <div class="class_type">class type</div>
-                                    <div><span class="online">online</span><span class="dot"></span></div>
-
-                                </div>
-                            </div>
-                            <div class="view_detail_block pb-3">
-                                <a href="#" class="view_detail">
-                                    View details
-                                </a>
-                                <a href="viewdetail.html" class="price_card price_bg1">
-                                    £ 150*
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 filter_box filter class9">
-                        <div class="single-district card2">
-                            <div class="card_img mb-3">
-                                <img src="{{ asset('wa/packages/assets/img/card-cover.png')}}">
-                            </div>
-                            <div class="card_block_info pl-3 pr-3">
-                                <div class="card_info">
-                                    <p>Joahna Paul</p>
-                                    <p>GCSC final Math Booster</p>
-                                </div>
-                                <div class="card_details">
-                                    <div class="seat_block pr-3">
-                                        <p>No Of Seats</p>
-                                        <p>32</p>
-                                    </div>
-                                    <div class="border_div pl-3 "></div>
-                                    <div class="date_block">
-                                        <p>No Of Seats</p>
-                                        <p>32</p>
-                                    </div>
-                                </div>
-                                <div class="class_section">
-                                    <div class="class_type">class type</div>
-                                    <div><span class="online">online</span><span class="dot"></span></div>
-
-                                </div>
-                            </div>
-                            <div class="view_detail_block pb-3">
-                                <a href="#" class="view_detail">
-                                    View details
-                                </a>
-                                <a href="viewdetail.html" class="price_card price_bg2">
-                                    £ 150*
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 filter_box filter class10">
-                        <div class="single-district card3">
-                            <div class="card_img mb-3">
-                                <img src="{{ asset('wa/packages/assets/img/card-cover.png') }}">
-                            </div>
-                            <div class="card_block_info pl-3 pr-3">
-                                <div class="card_info">
-                                    <p>Joahna Paul</p>
-                                    <p>GCSC final Math Booster</p>
-                                </div>
-                                <div class="card_details">
-                                    <div class="seat_block pr-3">
-                                        <p>No Of Seats</p>
-                                        <p>32</p>
-                                    </div>
-                                    <div class="border_div pl-3 "></div>
-                                    <div class="date_block">
-                                        <p>No Of Seats</p>
-                                        <p>32</p>
-                                    </div>
-                                </div>
-                                <div class="class_section">
-                                    <div class="class_type">class type</div>
-                                    <div><span class="online">online</span><span class="dot"></span></div>
-
-                                </div>
-                            </div>
-                            <div class="view_detail_block pb-3">
-                                <a href="#" class="view_detail">
-                                    View details
-                                </a>
-                                <a href="viewdetail.html" class="price_card price_bg3">
-                                    £ 150*
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 filter_box filter class10">
-                        <div class="single-district card4">
-                            <div class="card_img mb-3">
-                                <img src="{{ asset('wa/packages/assets/img/card-cover.png') }}">
-                            </div>
-                            <div class="card_block_info pl-3 pr-3">
-                                <div class="card_info">
-                                    <p>Joahna Paul</p>
-                                    <p>GCSC final Math Booster</p>
-                                </div>
-                                <div class="card_details">
-                                    <div class="seat_block pr-3">
-                                        <p>No Of Seats</p>
-                                        <p>32</p>
-                                    </div>
-                                    <div class="border_div pl-3 "></div>
-                                    <div class="date_block">
-                                        <p>No Of Seats</p>
-                                        <p>32</p>
-                                    </div>
-                                </div>
-                                <div class="class_section">
-                                    <div class="class_type">class type</div>
-                                    <div><span class="online">online</span><span class="dot"></span></div>
-
-                                </div>
-                            </div>
-                            <div class="view_detail_block pb-3">
-                                <a href="#" class="view_detail">
-                                    View details
-                                </a>
-                                <a href="viewdetail.html" class="price_card price_bg4">
-                                    £ 150*
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 filter_box filter class11">
-                        <div class="single-district card5">
-                            <div class="card_img mb-3">
-                                <img src="{{ asset('wa/packages/assets/img/card-cover.png') }}">
-                            </div>
-                            <div class="card_block_info pl-3 pr-3">
-                                <div class="card_info">
-                                    <p>Joahna Paul</p>
-                                    <p>GCSC final Math Booster</p>
-                                </div>
-                                <div class="card_details">
-                                    <div class="seat_block pr-3">
-                                        <p>No Of Seats</p>
-                                        <p>32</p>
-                                    </div>
-                                    <div class="border_div pl-3 "></div>
-                                    <div class="date_block">
-                                        <p>No Of Seats</p>
-                                        <p>32</p>
-                                    </div>
-                                </div>
-                                <div class="class_section">
-                                    <div class="class_type">class type</div>
-                                    <div><span class="online">online</span><span class="dot"></span></div>
-
-                                </div>
-                            </div>
-                            <div class="view_detail_block pb-3">
-                                <a href="#" class="view_detail">
-                                    View details
-                                </a>
-                                <a href="viewdetail.html" class="price_card price_bg5">
-                                    £ 150*
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 filter_box filter class11">
-                        <div class="single-district card8">
-                            <div class="card_img mb-3">
-                                <img src="{{ asset('wa/packages/assets/img/card-cover.png') }}">
-                            </div>
-                            <div class="card_block_info pl-3 pr-3">
-                                <div class="card_info">
-                                    <p>Joahna Paul</p>
-                                    <p>GCSC final Math Booster</p>
-                                </div>
-                                <div class="card_details">
-                                    <div class="seat_block pr-3">
-                                        <p>No Of Seats</p>
-                                        <p>32</p>
-                                    </div>
-                                    <div class="border_div pl-3 "></div>
-                                    <div class="date_block">
-                                        <p>No Of Seats</p>
-                                        <p>32</p>
-                                    </div>
-                                </div>
-                                <div class="class_section">
-                                    <div class="class_type">class type</div>
-                                    <div><span class="online">online</span><span class="dot"></span></div>
-
-                                </div>
-                            </div>
-                            <div class="view_detail_block pb-3">
-                                <a href="#" class="view_detail">
-                                    View details
-                                </a>
-                                <a href="viewdetail.html" class="price_card price_bg6">
-                                    £ 150*
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3 filter_box filter class11">
-                        <div class="single-district card6">
-                            <div class="card_img mb-3">
-                                <img src="{{ asset('wa/packages/assets/img/card-cover.png')}}">
-                            </div>
-                            <div class="card_block_info pl-3 pr-3">
-                                <div class="card_info">
-                                    <p>Joahna Paul</p>
-                                    <p>GCSC final Math Booster</p>
-                                </div>
-                                <div class="card_details">
-                                    <div class="seat_block pr-3">
-                                        <p>No Of Seats</p>
-                                        <p>32</p>
-                                    </div>
-                                    <div class="border_div pl-3 "></div>
-                                    <div class="date_block">
-                                        <p>No Of Seats</p>
-                                        <p>32</p>
-                                    </div>
-                                </div>
-                                <div class="class_section">
-                                    <div class="class_type">class type</div>
-                                    <div><span class="online">online</span><span class="dot"></span></div>
-
-                                </div>
-                            </div>
-                            <div class="view_detail_block pb-3">
-                                <a href="#" class="view_detail">
-                                    View details
-                                </a>
-                                <a href="viewdetail.html" class="price_card price_bg7">
-                                    £ 150*
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 filter_box filter class11">
-                        <div class="single-district card7">
-                            <div class="card_img mb-3">
-                                <img src="{{ asset('wa/packages/assets/img/card-cover.png')}}">
-                            </div>
-                            <div class="card_block_info pl-3 pr-3">
-                                <div class="card_info">
-                                    <p>Joahna Paul</p>
-                                    <p>GCSC final Math Booster</p>
-                                </div>
-                                <div class="card_details">
-                                    <div class="seat_block pr-3">
-                                        <p>No Of Seats</p>
-                                        <p>32</p>
-                                    </div>
-                                    <div class="border_div pl-3 "></div>
-                                    <div class="date_block">
-                                        <p>No Of Seats</p>
-                                        <p>32</p>
-                                    </div>
-                                </div>
-                                <div class="class_section">
-                                    <div class="class_type">class type</div>
-                                    <div><span class="online">online</span><span class="dot"></span></div>
-
-                                </div>
-                            </div>
-                            <div class="view_detail_block pb-3">
-                                <a href="#" class="view_detail">
-                                    View details
-                                </a>
-                                <a href="viewdetail.html" class="price_card price_bg8">
-                                    £ 150*
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
-                 <div class="row mt-4">
+                <table>
+                 <div  class="row mt-4">
                     @php $i=1 @endphp
                     @foreach($batches as $batch)
                      <div style="cursor:pointer;" onClick="(function(){
                         window.location.href = '/student-details/{{ $batch->id }}';
                     })();return false;" class="col-md-3 filter_box filter {{ $batch->classmaster->name == 'Year 1' ? 'class9' : ($batch->classmaster->name == 'Year 2' ? 'class10' : 'class11') }}">
-                            <div class="single-district card{{ $i }}">
+                            <div  class="single-district card{{ $i }}">
                             <div class="card_img mb-3">
                                 @if($batch->subject->name == 'English')
                                   <img style="width:100%;" src="{{ asset('frontend/assets/English/English.jpg') }}" alt="">
@@ -385,9 +86,14 @@
                     </div>
                     @php $i++ @endphp
                     @endforeach
-
+                    <td colspan="3"></td>                               
+                </table>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div style="margin-top: 2rem; float:right;  border-color: coral;">{{ $batches->links() }}</div>
+                    </div>
                 </div>
-
+                </div>
 
             </div>
         </div>
@@ -397,10 +103,13 @@
 
 @endsection
 
-
 @section('js')
+
 <script>
     document.FIX_HEADER_TOP = 35;
-  </script>
+</script>
+
   <script src="{{ asset('wa/coustom.js') }}"></script>
+  
+
 @endsection

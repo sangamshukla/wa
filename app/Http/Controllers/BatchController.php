@@ -256,7 +256,12 @@ class BatchController extends Controller
         }
         $product = Batch::find($request->classId);
         $cart = session()->get('cart');
-        // dd($product);
+        if (!$request->session_id) {
+            $s = $product->batchSession->where('start_date_time', '>=', \Carbon\Carbon::today())->pluck('id');
+            $s = $s->toArray();
+            $request->request->add(['session_id'=> $s]);
+        }
+        // dd($request->all());
         // if cart is empty then this the first product
         if (!$cart) {
             $cart = [
@@ -268,11 +273,20 @@ class BatchController extends Controller
             ];
             session()->put('cart', $cart);
         }
+        $totalSessions = 1;
+        $totalPrice = 0;
+        // dd(session('cart'));
+        foreach (session('cart') as $keys => $sess) {
+            $totalSessions = count($sess['session_id']);
+            
+            $bps = Batch::find($keys)->batch_price_per_session;
+            $totalPrice = $totalPrice + ($totalSessions*$bps);
+        }
         if (isset($cart[$request->classId])) {
             // $cart[$request->classId]['quantity']++;
             // session()->put('cart', $cart);
             $relatedBatches = Batch::whereIn('id', array_keys(session()->get('cart')))->get();
-            return view('class.buy_now', compact('relatedBatches'));
+            return view('class.buy_now', compact('relatedBatches', 'totalPrice'));
         }
         // if item not exist in cart then add to cart with quantity = 1
         $cart[$request->classId] = [
@@ -283,6 +297,6 @@ class BatchController extends Controller
         ];
         session()->put('cart', $cart);
         $relatedBatches = Batch::whereIn('id', array_keys(session()->get('cart')))->get();
-        return view('class.buy_now', compact('relatedBatches'));
+        return view('class.buy_now', compact('relatedBatches', 'totalPrice'));
     }
 }

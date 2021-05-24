@@ -6,6 +6,7 @@ use App\Http\Controllers\BatchController;
 use App\Http\Controllers\FooterContentController;
 use App\Http\Controllers\FullCalenderController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HomeWorkController;
 use App\Http\Controllers\PackagesDetailsController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
@@ -15,6 +16,7 @@ use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\TeacherDashboardController;
 use App\Http\Controllers\ZoomController;
 use App\Models\Batch;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -30,7 +32,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $batches = Batch::latest()->take(8)->get();
+    $batches = Batch::whereHas('batchSession', function ($query) {
+        $query->whereDate('start_date_time', '>=', Carbon::today());
+    })->latest()->take(8)->get();
     return view('welcome', compact('batches'));
 });
 
@@ -129,3 +133,6 @@ Route::get('teacher-calander/{id}', [TeacherCalanderController::class, 'index'])
 Route::post('teacher-calander/{id}', [TeacherCalanderController::class, 'sessions']);
 Route::get('fullcalender', [FullCalenderController::class, 'index']);
 Route::post('fullcalenderAjax', [FullCalenderController::class, 'ajax']);
+// start session[home work module]
+Route::get('start-session/{id}', [HomeWorkController::class, 'startSession']);
+Route::post('start-session/{id}', [HomeWorkController::class, 'saveStartSession']);

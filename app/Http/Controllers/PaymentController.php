@@ -16,6 +16,17 @@ class PaymentController extends Controller
     {
         // $totcart = Batch::count();
         $product = Batch::find($batchId);
+        $sessions = $product->batchSession->where('start_date_time', '>=', \Carbon\Carbon::today())->pluck('id');
+        $sessionId = '';
+        foreach ($sessions as $s) {
+            $sessionId .= ','.$s;
+        }
+        if (request('session_id')) {
+            $sessionId = ltrim(request('session_id'), ',');
+        } else {
+            $sessionId = ltrim($sessionId, ',');
+        }
+       
         $cart = session()->get('cart');
         // if cart is empty then this the first product
 
@@ -23,7 +34,8 @@ class PaymentController extends Controller
             $cart = [
                 $batchId => [
                     "product_id" => $product->id, "quantity" => 1,
-                    'price' => $product->batch_price_per_session
+                    'price' => $product->batch_price_per_session,
+                    'session_id'=>explode(',', $sessionId)
                 ]
             ];
             session()->put('cart', $cart);
@@ -40,7 +52,8 @@ class PaymentController extends Controller
         $cart[$batchId] = [
             "product_id" => $product->id,
             "quantity" => 1,
-            'price' => $product->batch_price_per_session
+            'price' => $product->batch_price_per_session,
+            'session_id'=>explode(',', $sessionId)
         ];
         session()->put('cart', $cart);
 

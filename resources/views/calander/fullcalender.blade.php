@@ -10,6 +10,7 @@
 white-space: pre-wrap;
 overflow: hidden;
 color: white;
+/* background-color:white; */
 }
 </style>
 @endsection
@@ -36,7 +37,8 @@ var calendar = $('#calendar').fullCalendar({
                     header: {
                         left: 'prev,next today',
                         center: 'title',
-                        right: 'month,agendaWeek,agendaDay'
+                        // right: 'month,agendaWeek,agendaDay'
+                        right: 'agendaDay,agendaWeek,month'
                     },
                     // end here
                     events: SITEURL + "/fullcalender",

@@ -4,10 +4,6 @@
 @endsection
     <!-- cart icon -->
  @section('carticon')
-{{-- <img src="{{ asset('wa/assets/img/cart.svg')}}"> --}}
- {{-- <a href="{{ url('buy-now')}}"><img src="{{ asset('wa/assets/img/cart.svg')}}"></a> --}}
-{{-- 
- <span class="cart_no">{{ count(session()->get('cart') ?? []) }}</span> --}}
  @endsection
 @section('content')  
 <section class="math_booster">
@@ -51,7 +47,8 @@
                             <div class="border_left pl-3 "></div>
                             <div class="subject_detail pr-3">
                                 <p>No Of Sessions</p>
-                                <p class="blue_cr">{{ $batch->batchSession->count() }}</p>
+                                <p class="blue_cr">{{ $batch->batchSession->where('start_date_time', '>=', \Carbon\Carbon::today() )->count() }}</p>
+        
                             </div>
                             <div class="border_left pl-3 "></div>
                             <div class="subject_detail pr-3">
@@ -60,20 +57,18 @@
                             </div>
                         </div>
                         
-                       <div class="d-flex flex-sm-row flex-column mt-3"><p class="doler_text">£ {{ $batch->batch_price_per_session }}</p><div class="buy_cta m-3">
-                            <a href="{{ route('cart.add', $batch->id) }}" class="btn btn_block text-capitalize add_cart_section my-2 my-sm-0">Add to Cart</a>
-                            {{-- <button class="btn btn_block text-capitalize add_cart_section my-2 my-sm-0" type="button">Add to Cart</button> --}}
-                            {{-- <form method="POST" action="{{ route('buy.now') }}"> --}}
-                                {{-- @csrf --}}
-                                {{-- <input type="hidden"  name="batch_id" value="{{ $batch->id }}"> --}}
-                                {{-- before button --}}
-                                {{-- <button class="btn btn_block text-capitalize buy_now_cta my-2 my-sm-0" id="buyNow">Buy Now</button><br><br> --}}
-                                {{-- href="{{ route('buy.now') }}?classId={{ $batch->id }}" --}}
+                       <div class="d-flex flex-sm-row flex-column mt-3"><p class="doler_text">£ <span id="pricec">{{ $batch->sell_each_session == 1 ? 0 : $batch->batch_price_per_session }}</span></p><div class="buy_cta m-3">
+                           {{-- href="{{ route('cart.add', $batch->id) }}" --}}
+                        <a id="addToCart"  class="btn btn_block text-capitalize add_cart_section my-2 my-sm-0">Add to Cart</a>            
                                 <a href="#" id="buyNow"><button class="btn btn_block text-capitalize my-2 my-sm-0" type="button"
                                     id="register">Buy Now</button></a><br><br>
-                                                    
+                                                
                                 {{-- for success msg --}}
                                 @include('_form.success')
+                               
+                                <div class="alert alert-danger" id="showErrorMessage">
+                                    Please Select At least 1 Session
+                                </div>
                                 {{-- @if (session('status'))
                                 <div class="alert alert-success">
                                     {{ session('status') }}
@@ -98,8 +93,12 @@
                             <div class="card_date">Topic</div>
                             <div class="card_date">Date</div>
                             <div class="card_time">Time</div>
+                            @if($batch->sell_each_session == 1)
+                            <div class="card_time">Action</div>
+                            @endif
                             
                         </div>
+                        <?php $i=1; ?>
                         @foreach($batch->batchSession as $session)
                         {{-- session start date --}}
                         @if($session->start_date_time >= \Carbon\Carbon::today())
@@ -115,29 +114,36 @@
                                 <div class="session_time"><?php echo $Session = date('H:i A', strtotime( $session->start_date_time )); ?></div>
                                 {{-- <div class="session_time"><input type="checkbox" style="width:40px;" class="form-control" name="session_id[]" value="{{ $session->id }}" /></div> --}}
                                 {{-- <div><input type="checkbox" style="width:40px;" class="form-control" name="session_id[]" value="{{ $session->id }}" /></div> --}}
+                                @if($batch->sell_each_session == 1)
                                 <div class="session_date">
                                     <div class="check_form">
                                       <div class="form-group">
-                                        <input name="session_id[]" value="{{ $session->id }}"  type="checkbox" id="html">
-                                        <label for="html" style="background: none;
+                                        <input name="session_id[]" onchange="markChecked()" value="{{ $session->id }}"  type="checkbox" id="html<?php echo $i; ?>">
+                                        <label for="html<?php echo $i; ?>" style="background: none;
                                         border: none;"></label>
                                       </div>
                                     </div>
                                 </div>
+                                @endif
                             </div>
-                        @endif    
+                        @endif  
+                        <?php $i++; ?>
                         @endforeach
 
                     </div>
                     <div class="right_section mt-5">
                         <p class="learn_heading">What You Will Learn</p>
+                        
                         @foreach($batch->batchSession as $session)
+                        @if($session->start_date_time >= \Carbon\Carbon::today())
                           <div class="card-link-block">
-                           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's. Ipsum has been the industry's. 
+                           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's. Ipsum has been the industry's. {{$session->name > 1 ? $session->name : $session->name }}
                         </div>
+                        @endif
                     @endforeach
                      
                         
+                    {{-- <button class="btn btn_block text-capitalize my-2 my-sm-0" type="button" id="login"><a href="{{ url('/home') }}">Welcome {!! strlen(auth()->user()->name) > 6 ? auth()->user()->name : auth()->user()->name.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' !!}</a></button> --}}
 
                     </div>
                 </div>
@@ -199,7 +205,7 @@
                                         </a>
                                         <a href="{{ url('/student-details', $batch->id)}}" class="price_card price_bg{{ $i }}">
                                             {{-- £ 150* --}}
-                                            &pound; {{ $batch->batch_price_per_session }} 
+                                            &pound; {{ $batch->batch_price_per_session }}
                                         </a>
                                     </div>
                                 </div>
@@ -227,10 +233,44 @@
     <script src="{{ asset('wa/viewdetails.js') }}"></script>
     <script>
         $(document).ready(function(){
-            $("#buyNow").click(function(){        
-                $("#buynowform").submit(); // Submit the form
+            $('#showErrorMessage').hide();
+            $("#buyNow").click(function(){   
+                var checked = $("input[name='session_id[]']:checked").length;
+                if(checked <= 0){
+                    $('#showErrorMessage').show();
+                }else{
+                  $("#buynowform").submit(); // Submit the form
+                }
             });
+
+            $("#addToCart").click(function(){
+                var checked = $("input[name='session_id[]']:checked").length;
+                if(checked <= 0){
+                    $('#showErrorMessage').show();
+                }else{
+                    $('#showErrorMessage').hide();
+                    var checked = '';
+                    $('input[name="session_id[]"]:checked').each(function() {
+                    checked += ','+this.value;
+                    });
+                    window.location.href = "/add-to-cart/{{ $batch->id }}/?session_id="+checked
+                }
+            });
+            
         });
+        function markChecked()
+        {
+            var checked = $("input[name='session_id[]']:checked").length;
+            if(checked <= 0){
+                $('#showErrorMessage').show();
+            }else{
+                $('#showErrorMessage').hide();
+            }
+            var p = {{ $batch->batch_price_per_session }}
+            var price = p * checked;
+            $('#pricec').html(price);
+        }
+        // pricec
     </script>
 @endsection
       

@@ -28,12 +28,12 @@ class FullCalenderController extends Controller
             $data->transform(function ($d) {
                 $d->allDay = true;
                 if ($d->start == Carbon::today()->format('Y-m-d')) {
-                    $d->backgroundColor = 'green';
+                    $d->backgroundColor = '#53BC9B';
                 } elseif ((int) str_replace('-', '', $d->start) > (int) str_replace('-', '', date('Y-m-d'))) {
-                    $d->backgroundColor = '#3888d8';
+                    $d->backgroundColor = '#286871';
                 } else {
                     // $d->backgroundColor = '#e83e8c';
-                    $d->backgroundColor = 'red';
+                    $d->backgroundColor = '#F08080';
                 }
                 // if($d->start >)
                 return $d;

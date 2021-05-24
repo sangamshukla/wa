@@ -225,7 +225,7 @@
                             </div>
                         </div>
                         <div class="tab-pane fade p-3" id="three" role="tabpanel" aria-labelledby="three-tab">
-                            <div id="accordion">
+                            <div id="accordion" >
                                 <div class="card mb-3">
                                     <div class="card-header" id="headingThree">
                                         @foreach($batches as $batch)
@@ -261,7 +261,6 @@
                                                         <img src="{{ asset('wa/dashboard/sessionlist/img/chevron.svg') }}" alt="arrow" title="arrow">
                                                     </button>
                                                 </div>
-                                                {{-- <p class="date_text">Feb 04, 2021- Feb 21,20201</p> --}}
                                                 <p class="date_text" style="margin-top: -9px;
                                                         margin-left: 81px;">{{ $batch->batch_start_date->format('d M, Y H:i A') }}</p>
                                             </h5>
@@ -300,7 +299,7 @@
                 </div> 
             </div>
         </div>
-        
+        {{-- <td colspan="3">{{ $batch->links() }}</td> --}}
         <div class="col-xl-4 col-lg-4 mb-4 mt-4">
             <div class="card shadow mb-4 mt-5">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -578,6 +577,8 @@
 <link rel="stylesheet" href="{{ asset('wa/dashboard/sessionlist/css/student-admin.css') }}">
 
 <link rel="stylesheet" href="{{ asset('wa/dashboard/sessionlist/css/session.css') }}">
+<script src="//code.jquery.com/jquery-3.5.1.js"></script>
+<script src="//cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 
 <script src="{{ asset('wa/dashboard/sessionlist/vendor/jquery/jquery.min.js')}}"></script>
 <!--<script src="/wa/dashboard/sessionlist/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>-->
@@ -591,3 +592,10 @@
 <!-- Page level custom scripts -->
 <script src="{{ asset('wa/dashboard/sessionlist/js/demo/chart-area-demo.js')}}"></script>
 <script src="{{ asset('wa/dashboard/sessionlist/js/demo/chart-pie-demo.js')}}"></script>
+<script>
+    $(document).ready(function() {
+    $('#example').DataTable( {
+        "pagingType": "full_numbers"
+    } );
+} );
+</script>

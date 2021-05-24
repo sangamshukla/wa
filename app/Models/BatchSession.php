@@ -19,4 +19,9 @@ class BatchSession extends Model
     {
         return  $this->hasMany(BatchTopic::class, 'batch_session_id');
     }
+
+    public function batch()
+    {
+        return $this->belongsTo(Batch::class, 'batch_id');
+    }
 }

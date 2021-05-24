@@ -71,7 +71,8 @@
                     </button>
                     @endguest
                     @auth
-                    <button class="btn btn_block text-capitalize my-2 my-sm-0" type="button" id="login"><a href="{{ url('/home') }}">Welcome {{ auth()->user()->name }}</a></button>
+                    {{-- !! for html exit  --}}
+                    <button class="btn btn_block text-capitalize my-2 my-sm-0" type="button" id="login"><a href="{{ url('/home') }}">Welcome {!! strlen(auth()->user()->name) > 6 ? auth()->user()->name : auth()->user()->name.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' !!}</a></button>
                     {{-- <button class="btn btn_block text-capitalize my-2 my-sm-0" type="button" id="login"><a href="{{ url('/home') }}">Welcome {{ Str::afterLast( 'name')auth()->user()->name}}</a></button> --}}
 
                     @endauth

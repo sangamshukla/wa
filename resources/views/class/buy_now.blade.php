@@ -107,7 +107,7 @@
                 <div>
                   <div class="cource_detail_section">
                     <div>Course cost</div>
-                    <div>£ {{ $relatedBatches->sum('batch_price_per_session') }}</div>
+                    <div>£ {{ $totalPrice ?? 0 }}</div>
                   </div>
                   <div class="cource_detail_section"> 
                     <div>Tax </div>
@@ -121,7 +121,7 @@
                 <hr class="border_bottom" />
                 <div class="total_amount_block">
                   <div class="total">Total</div>
-                  <div>£ {{$relatedBatches->sum('batch_price_per_session')}}</div>
+                  <div>£ {{ $totalPrice ?? 0}}</div>
                 </div>
                 <div class="form-group term_pera mt-3">
                   <label class="container-checkbox">
