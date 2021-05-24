@@ -18,7 +18,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
-class BatchController extends Controller
+class BatchControllerOld extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -231,14 +231,15 @@ class BatchController extends Controller
 
     public function buyNow(Request $request)
     {
-        if (!$request->classId) {
-            $relatedBatches = Batch::whereIn('id', array_keys(session()->get('cart') ?? []))->get();
-            return view('class.buy_now', compact('relatedBatches'));
-        }
+        dd('here');
+        // if (!$request->classId) {
+        //     $relatedBatches = Batch::whereIn('id', array_keys(session()->get('cart') ?? []))->get();
+        //     return view('class.buy_now', compact('relatedBatches'));
+        // }
         $product = Batch::find($request->classId);
         $cart = session()->get('cart');
         // if cart is empty then this the first product
-
+        // dd('here');
         if (!$cart) {
             $cart = [
                 $request->classId => [

@@ -251,8 +251,15 @@ class BatchController extends Controller
     public function buyNow(Request $request)
     {
         if (!$request->classId) {
+            $totalPrice = 0;
             $relatedBatches = Batch::whereIn('id', array_keys(session()->get('cart') ?? []))->get();
-            return view('class.buy_now', compact('relatedBatches'));
+            foreach (session('cart') as $keys => $sess) {
+                $totalSessions = count($sess['session_id']);
+                
+                $bps = Batch::find($keys)->batch_price_per_session;
+                $totalPrice = $totalPrice + ($totalSessions*$bps);
+            }
+            return view('class.buy_now', compact('relatedBatches', 'totalPrice'));
         }
         $product = Batch::find($request->classId);
         $cart = session()->get('cart');

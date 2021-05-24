@@ -56,8 +56,14 @@
                                 <p class="color_og">{{ $batch->batch_start_date->format('d M, Y') }}</p>
                             </div>
                         </div>
-                        
-                       <div class="d-flex flex-sm-row flex-column mt-3"><p class="doler_text">£ <span id="pricec">{{ $batch->sell_each_session == 1 ? 0 : $batch->batch_price_per_session }}</span></p><div class="buy_cta m-3">
+                        @php $i=0; @endphp
+                        @foreach($batch->batchSession as $session)
+                        {{-- session start date --}}
+                        @if($session->start_date_time >= \Carbon\Carbon::today())
+                            @php $i++; @endphp
+                        @endif
+                        @endforeach
+                       <div class="d-flex flex-sm-row flex-column mt-3"><p class="doler_text">£ <span id="pricec">{{ $batch->sell_each_session == 1 ? 0 : ($batch->batch_price_per_session * $i) }}</span></p><div class="buy_cta m-3">
                            {{-- href="{{ route('cart.add', $batch->id) }}" --}}
                         <a id="addToCart"  class="btn btn_block text-capitalize add_cart_section my-2 my-sm-0">Add to Cart</a>            
                                 <a href="#" id="buyNow"><button class="btn btn_block text-capitalize my-2 my-sm-0" type="button"
@@ -124,6 +130,16 @@
                                       </div>
                                     </div>
                                 </div>
+                                @else
+                                <div class="session_date" style="display: none">
+                                    <div class="check_form">
+                                      <div class="form-group">
+                                        <input checked name="session_id[]" onchange="markChecked()" value="{{ $session->id }}"  type="checkbox" id="html<?php echo $i; ?>">
+                                        <label for="html<?php echo $i; ?>" style="background: none;
+                                        border: none;"></label>
+                                      </div>
+                                    </div>
+                                </div>
                                 @endif
                             </div>
                         @endif  
@@ -156,7 +172,7 @@
                             <div style="cursor:pointer;" onClick="(function(){
                                 window.location.href = '/student-details/{{ $relatedBatch->id }}';
                             })();return false;" class="swiper-slide card">
-                                <div class="single-district card{{ $i }} slid_card">
+                                <div class="single-district card{{ $i }} slid_card"> 
                                     <div class="card_img mb-3">
                                         @if($relatedBatch->subject->name == 'English')
                                             <img style="width:100%;" src="{{ asset('frontend/assets/English/English.jpg') }}" alt="">
@@ -229,19 +245,34 @@
 </section>
 @endsection
 @section('js')
+ @php
+ $cart = session()->get('cart');
+ @endphp
+@if(isset($cart[$batch->id]))
+<script>
+ $("#buyNow").click(function(){   
+    window.location.href="/buy-now";
+ });
+</script>
+@else
+<script>
+    $("#buyNow").click(function(){   
+       var checked = $("input[name='session_id[]']:checked").length;
+       if(checked <= 0){
+           $('#showErrorMessage').show();
+       }else{
+           $("#buynowform").submit(); // Submit the form
+       }
+   });
+   </script>
+@endif
 
     <script src="{{ asset('wa/viewdetails.js') }}"></script>
+    @if($batch->sell_each_session)
     <script>
         $(document).ready(function(){
             $('#showErrorMessage').hide();
-            $("#buyNow").click(function(){   
-                var checked = $("input[name='session_id[]']:checked").length;
-                if(checked <= 0){
-                    $('#showErrorMessage').show();
-                }else{
-                  $("#buynowform").submit(); // Submit the form
-                }
-            });
+           
 
             $("#addToCart").click(function(){
                 var checked = $("input[name='session_id[]']:checked").length;
@@ -272,5 +303,25 @@
         }
         // pricec
     </script>
+    @else
+    <script>
+        $(document).ready(function(){
+            $('#showErrorMessage').hide();
+            $("#addToCart").click(function(){
+               
+                    $('#showErrorMessage').hide();
+                    var checked = '';
+                    $('input[name="session_id[]"]:checked').each(function() {
+                    checked += ','+this.value;
+                    });
+                    window.location.href = "/add-to-cart/{{ $batch->id }}/?session_id="+checked
+            });
+            
+        });
+        // pricec
+    </script>
+
+    @endif
+   
 @endsection
       
