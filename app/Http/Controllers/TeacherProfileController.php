@@ -36,7 +36,7 @@ class TeacherProfileController extends Controller
         $languages = LanguageMaser::all();
         $expertiseData = TeacherExpertise::where('user_id', $id)->get();
         // dd($expertiseData);
-        // dd($teacher_experiences);
+        // dd($images);
         // return redirect('teacher-profile', compact('teacher_experiences'));
         return view('teacher.profile', compact('users', 'images', "teacher_experiences", "classes", "languages", 'expertiseData'));
     }
@@ -94,10 +94,10 @@ class TeacherProfileController extends Controller
         $id = $request->id;
         TeacherProfile::updateOrCreate(
             [
-                'id' => $id,
+                // 'id' => $id,
+                'user_id' => $user_id,
             ],
             [
-                'user_id' => $user_id,
                 'gender' => $request->gender,
                 'about' => $request->about,
                 'address' => $request->address,

@@ -16,7 +16,7 @@ class TeacherDashboardController extends Controller
     public function index()
     {
         $batches = Batch::whereCreatedBy(auth()->user()->id)->orWhere('name', auth()->id())->latest()->get();
-        $batches = Batch::whereCreatedBy(auth()->user()->id)->orWhere('name', auth()->id())->get();
+        // $batches = Batch::whereCreatedBy(auth()->user()->id)->orWhere('name', auth()->id())->get();
         $startweek = strtotime(Carbon::now()->startOfWeek());
         $endweek = strtotime(Carbon::now()->endOfWeek());
         $id = auth()->user()->id;

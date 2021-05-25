@@ -34,11 +34,11 @@
                                 <div class="card mb-3">
                                     <div class="card-header" id="heading">
                                     @if(count($today)== 0)
-                                        <h6 style = "text-align:center; color:green;">No sessions for today <h6>                        
+                                        <h6 style = "text-align:center; color:green;">No sessions for today <h6>
                                     @endif
                                         </div>
                                     @foreach($today as $batch)
-                            
+
                                     <div class="card-header" id="headingOne">
                                         <h5 class="mb-0">
                                             <div class="d-flex justify-content-around">
@@ -187,9 +187,9 @@
                                                 </div>
                                                 <p class="date_text" style="margin-top: -9px;
                                                       margin-left: 81px;">{{ $batch->batch_start_date->format('d M, Y H:i A') }}</p>
-                                        
+
                                             </h5>
-                                                
+
                                         </div>
                                         <div id="collapse{{$batch->id}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                                             <div class="card-body">
@@ -253,7 +253,7 @@
                                                     </div>
                                                     <div class="border-left first_left_border"></div>
                                                     <div>
-                                                            <a style="text-decoration:none; font-size:15px; color: #0EA47E;" href="{{ url('zoom', $batch->id)  }}">join now</a></p>                               
+                                                            <a style="text-decoration:none; font-size:15px; color: #0EA47E;" href="{{ url('zoom', $batch->id)  }}">join now</a></p>
                                                     </div>
                                                     <div class="border-left second_left_border"></div>
 
@@ -268,7 +268,7 @@
 
                                         <div id="collapse{{$session->id}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                                             <div class="card-body">
-                
+
                                                 <table class="table">
                                                     <tr>
                                                         <td>Class</td>
@@ -294,9 +294,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div> 
-                    </div>   
-                </div> 
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         {{-- <td colspan="3">{{ $batch->links() }}</td> --}}
@@ -467,7 +467,7 @@
                                 <table class="table">
                             <tr>
                                 <th>
-                                Date & Time: 
+                                Date & Time:
                                 </th>
                                 <th>
                                     Topics
@@ -482,7 +482,7 @@
                                         {{ $session->name }} - {{ $t->topic->name }}
                                     </td>
                                  @endforeach
-                                
+
                             </tr>
                                 <!--  <td>-->
                                 <!--<p> </p>   -->
@@ -500,11 +500,11 @@
                                 <!--</tr>-->
                                 </table>
                             </div>
-                            @endforeach 
+                            @endforeach
                     </div>
                     </div>
-                    
-            
+
+
 
                             {{-- for retest --}}
                      {{-- <div class="card p-1 chat_card chat_card_background2">
@@ -538,12 +538,12 @@
                     </div>
                     <div class="text-right"><a class="send_msg" href="">Send Message</a></div>
                 </div> --}}
-                
+
                 {{-- forretest --}}
-                
-           
+
+
             <div class="card shadow mb-4">
-    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
         <h6 class="m-0 font-weight-bold buy_card_section">You would like to buy</h6>
     </div>
 
@@ -572,7 +572,7 @@
 <!-- Content Row -->
 <!-- /.container-fluid -->
 
-</div>
+
 <!-- End of Main Content -->
 <link rel="stylesheet" href="{{ asset('wa/dashboard/sessionlist/css/student-admin.css') }}">
 

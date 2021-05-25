@@ -114,7 +114,7 @@
                                             <div class="form-group session_info">
                                                 <label for="textarea">About</label>
                                                 <textarea rows="5" class="form-control" id="about"
-                                                            placeholder="Write something about yourself" name="about" value="{{$image->about}}"></textarea>
+                                                            placeholder="Write something about yourself" name="about" value="{{$image->about}}">{{$image->about}}</textarea>
                                             </div>
                                             <div class="form-group session_info">
                                                 <label for="text">Address</label>
@@ -167,8 +167,8 @@
                                             <img src="{{asset('wa/assets/img/ajax-loader.gif')}}" alt=""/>
                                             <p><b>Please wait...</b></p>
                                         </div>
+                                        <p>ID Proof</p>
                                         <div class="id_proof border-dotted">
-                                                <p>ID Proof</p>
                                                 <form role="form" enctype="multipart/form-data" id="profile_idphoto">
                                                     @csrf
                                                     <img src="{{asset('wa/teacherdashboard/img/Frame 69623.svg')}}" width="65" height="65" id="before-id"/>
@@ -179,6 +179,7 @@
                                                                 height="20">Upload</button>
                                                     </div>
                                                 </form>
+                                            </div>
                                                 <span class="text-primary" id="id-input-success"></span>
                                                 <span class="text-danger" id="id-input-error"></span>
                                                 <div style="display: none;" id="profile_id_loader">
@@ -186,7 +187,6 @@
                                                 <p><b>Please wait...</b></p>
                                                 </div>
                                                 <p>The format of image should be JPG, PNG or PDF and size should not exeed 300KB</p>
-                                            </div>
 
 
 
@@ -1032,6 +1032,7 @@
                             let formData = new FormData(this);
                             $('#image-input-error').text('');
                             $('#profile_pic_loader').show();
+                            $('upload_btn').attr("disabled", true);
                             $.ajax({
                                 "_token": "{{ csrf_token() }}",
                                 type:'POST',
