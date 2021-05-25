@@ -23,6 +23,8 @@ class HomeWorkController extends Controller
         
         $students = User::whereIn('id', $studentsList->unique())->get();
 
+        // $pdfFilesAll =
+
         return view('homework.start-session', compact('session', 'students'));
     }
     public function saveStartSession(Request $request)

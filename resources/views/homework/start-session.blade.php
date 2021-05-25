@@ -310,38 +310,7 @@
 
                         <div>
                           <ul class="list_pdf">
-                            @foreach($students as $session)
-                            <li>
-                              <span class="pdf_list_no">1.</span>
-                              {{-- <span>{{$session->subtopic_name}}-</span> --}}
-                              <span><img src="{{ asset('wa/dashboard/homework/img/pdf.svg')}}" /></span>
-                            </li>
-                            <li>
-                              <span class="pdf_list_no">1.</span>
-                              <span>Lorem ipsum dolor sit amet-</span>
-                              <span><img src="{{ asset('wa/dashboard/homework/img/pdf.svg')}}" /></span>
-                            </li>
-                            <li>
-                              <span class="pdf_list_no">1.</span>
-                              <span>Lorem ipsum dolor sit amet-</span>
-                              <span><img src="{{ asset('wa/dashboard/homework/img/pdf.svg')}}" /></span>
-                            </li>
-                            <li>
-                              <span class="pdf_list_no">1.</span>
-                              <span>Lorem ipsum dolor sit amet-</span>
-                              <span><img src="{{ asset('wa/dashboard/homework/img/pdf.svg')}}" /></span>
-                            </li>
-                            <li>
-                              <span class="pdf_list_no">1.</span>
-                              <span>Lorem ipsum dolor sit amet-</span>
-                              <span><img src="{{ asset('wa/dashboard/homework/img/pdf.svg')}}" /></span>
-                            </li>
-                            <li>
-                              <span class="pdf_list_no">1.</span>
-                              <span>Lorem ipsum dolor sit amet-</span>
-                              <span><img src="{{ asset('wa/dashboard/homework/img/pdf.svg')}}" /></span>
-                            </li>
-                            @endforeach
+                            @include('homework._pdf_list')
                           </ul>
                           <hr />
                           <div class="card">
