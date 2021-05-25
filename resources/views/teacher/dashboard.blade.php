@@ -275,7 +275,7 @@
                             <div class="col-12">
                               <div class="table_detail">
                                 <table>
-                                  <tbody>
+                                  <tbody class="class-calender-block">
                                       @php
                                           $addHour=0;
                                           $start_time="08:00";

@@ -666,17 +666,156 @@ form.month_week_block {
 .edit_img {
     width: 30px;
 }
+/* teacher profile section5 css end */
 
-.dt_calander {
+
+/* calander css start */
+
+.dt_calander.profile_calander {
     display: block;
     border: 2px solid #c5c5c5;
     background: #ffffff;
     box-shadow: 0px 0px 4px rgb(0 0 0 / 25%);
     border-radius: 8px;
-    height: 600px;
-}
-
-/* teacher profile section5 css end */
+    width: 100%;
+  }
+  .dt_calander.profile_calander td {
+    width: 12.5%;
+    }
+  
+  .day_block p {
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 16px;
+    letter-spacing: 0.75px;
+    color: #049DC5;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+  
+  .day_block.date_p p {
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 10px;
+    line-height: 16px;
+    letter-spacing: 0.75px;
+    color: #999999;
+  }
+  
+  .day_block.date_p p.active {
+    border: 1px solid #1D7DEA;
+    background-color: #1D7DEA;
+    border-radius: 50%;
+    padding: 3px 5px;
+    color: #fff;
+  }
+  
+  .active_time {
+    display: inline-block;
+    text-align: center;
+    font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 19px;
+      align-items: center;
+      color: #333333;
+  }
+  .background_td{
+    background: #CDFFF2;
+  }
+  .dt_calander.profile_calander .day_block {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 10px;
+  }
+  
+  .dt_calander.profile_calander .table_detail table {
+    border: 0.8px solid #999999;
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 7px;
+    line-height: 14px;
+    align-items: center;
+    letter-spacing: 0.75px;
+    color: #999999;
+    width:100%;
+  }
+  
+  .dt_calander.profile_calander .table_detail tr {
+    border-bottom: 0.8px solid #999999;
+  }
+  
+  .dt_calander.profile_calander .table_detail td {
+    border-left: 0.8px solid #999999;
+    padding: 26px 5px 26px 5px;
+    text-align: center;
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 16px;
+    letter-spacing: 0.75px;
+    color: #999999;
+  }
+  .minuit{
+    color: #049DC5;
+      font-family: Nunito;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 18px;
+      line-height: 16px;
+      letter-spacing: 0.75px;
+      margin-top: 10px;
+      margin-bottom: 5px;
+  }
+  
+  .dt_calander.profile_calander .table_detail td:nth-child(1) {
+    border-left: 0px solid #999999;
+  }
+  
+  .dt_calander.profile_calandertd .time_td {
+    width: 80px;
+  }
+  
+  .dt_calander.profile_calander .table_detail {
+    padding: 0px 10px;
+  }
+  
+  .dt_calander.profile_calander .table_detail tbody {
+    height: 500px;
+  }
+  .add_task.view_text {
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 130%;
+    color: #999999;
+    text-align: right;
+  }
+  .other_session_text {
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 130%;
+    color: #333333;
+  }
+  
+  .month_text {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 23px;
+    margin-top: -15px;
+    color: #1D6771;
+  }
 
 @media only screen and (max-width: 768px) {
     .list_announce {
