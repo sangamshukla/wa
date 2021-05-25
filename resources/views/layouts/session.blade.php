@@ -33,6 +33,9 @@
   </head>
 
   <body id="page-top">
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+      @csrf
+  </form>
     <!-- Page Wrapper -->
     <div id="wrapper">
      

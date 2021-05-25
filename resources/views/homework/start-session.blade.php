@@ -150,7 +150,7 @@
                     </div>
                       @endforeach
                       <hr />
-                      <div class="card">
+                      {{-- <div class="card">
                         <p class="tile_card_comment">Comment</p>
                         <div class="card-body">
                           <div class="form-group">
@@ -170,7 +170,7 @@
                       <div class="d-flex mt-4">
                         <div class="slt_point">Select Points</div>
                         <div class="slt_dropdown">
-                          {{-- <select class="form-control">
+                          <select class="form-control">
                             <optgroup label="Swedish Cars">
                               <option value="volvo">Volvo</option>
                               <option value="saab">Saab</option>
@@ -179,11 +179,11 @@
                               <option value="mercedes">Mercedes</option>
                               <option value="audi">Audi</option>
                             </optgroup>
-                          </select> --}}
+                          </select> 
                           <input class="form-control" type="number" name="points">
                         </div>
                       </div>
-                      <hr />
+                      <hr /> --}}
                       <div>
                         <div class="share_block">
                           <label class="container">
@@ -199,9 +199,9 @@
                             >
                           </label>
                         </div>
-                        <div>
+                        {{-- <div>
                           <button class="btn share_cta">Share</button>
-                        </div>
+                        </div> --}}
                       </div>
                     </div>
                   </div>
@@ -356,6 +356,16 @@
                               </div>
                             </div>
                           </div>
+                          <select class="form-control">
+                            <optgroup label="Swedish Cars">
+                              <option value="volvo">Volvo</option>
+                              <option value="saab">Saab</option>
+                            </optgroup>
+                            <optgroup label="German Cars">
+                              <option value="mercedes">Mercedes</option>
+                              <option value="audi">Audi</option>
+                            </optgroup>
+                          </select> 
                           <hr />
                           <div>
                             <div class="share_block">

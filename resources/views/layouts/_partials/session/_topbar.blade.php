@@ -109,7 +109,7 @@ class="
         />
       </div>
       <div class="mr-2 d-none d-lg-inline text-gray-600 small">
-        Douglas McGee
+        {{ auth()->user()->name }}
       </div>
     </a>
     <!-- Dropdown - User Information -->
@@ -136,7 +136,7 @@ class="
       <div class="dropdown-divider"></div>
       <a
         class="dropdown-item"
-        href="#"
+        href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"
         data-toggle="modal"
         data-target="#logoutModal"
       >
