@@ -73,7 +73,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/student-dashboard', [HomeController::class, 'studentDashboard']);
     Route::get('/session-list', [HomeController::class, 'sessionList']);
-    Route::get('zoom/{id}', [HomeController::class , 'zoom']);
+    Route::get('zoom/{id}', [HomeController::class, 'zoom']);
 
     // Teacher Controller
     Route::get('add-teacher', [TeacherController::class, 'create'])->name('add-teacher');
@@ -93,6 +93,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('edit-classes/{id}', [BatchController::class, 'edit'])->name('edit-class');
     Route::post('edit-classes/{id}', [BatchController::class, 'update'])->name('update-class');
     Route::get('show-classes/{id}', [BatchController::class, 'show'])->name('show-class');
+
     Route::get('destroy-classes/{id}', [BatchController::class, 'destroy'])->name('destroy-class');
     Route::get('student', [BatchController::class, 'student'])->name('student');
     Route::get('available-courses', [BatchController::class, 'availableCourses'])->name('available-courses');
@@ -130,7 +131,7 @@ Route::post('teacher-experience-edit', [TeacherProfileController::class, 'storeE
 Route::post('get-subject', [TeacherProfileController::class, 'getSubject'])->name('get-subject')->middleware('auth');
 Route::post('teacher-expertise', [TeacherProfileController::class, 'storeExpertise'])->name('teacher-expertise')->middleware('auth');
 Route::post('teacher-expertise-data', [TeacherProfileController::class, 'storeExpertiseData'])->name('teacher-expertise-data')->middleware('auth');
-Route::post('modal-data', [TeacherProfileController::class, 'modalData'])->name('modal-data')->middleware('auth');
+Route::get('modal-data', [TeacherProfileController::class, 'modalData'])->name('modal-data')->middleware('auth');
 Route::post('price_info', [TeacherProfileController::class, 'storePrice'])->name('price_info')->middleware('auth');
 
 // Route::get('teacher-experience', [TeacherProfileController::class, 'showExperience'])->name('teacher-experience-show')->middleware('auth');

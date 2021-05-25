@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\ClassMaster;
+use App\Models\ClassSettings;
 use App\Models\Subject;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;

@@ -7,11 +7,13 @@
     <div class="col-xl-8 col-lg-7 text-center">
         <img src="{{asset('wa/dashboard/img/banner.svg')}}" class="session_img mt-4">
         <p class="mt-5 session_buy_subheading">There are no Sessions available</p>
-        <p class="session_buy_pera"> You have to buy a cource to start the activity here</p>
+        <p class="session_buy_pera"> You have to buy a course to start the activity here</p>
         <div>
 
             {{-- <button class="btn session_buycta ">Buy now</button> --}}
-            <button class="btn session_buycta btn btn_block text-capitalize my-2 my-sm-0"><a href="{{route('packages.details')}}" style="color: #fff">Buy now</button></a>
+            {{-- <button class="btn session_buycta btn btn_block text-capitalize my-2 my-sm-0"> --}}
+                <a href="{{route('packages.details')}}" class="btn btn_block bg-primary text-white text-capitalize px-3 py-2 my-2 my-sm-0">Buy now</a>
+            {{-- </button> --}}
         </div>
     </div>
     <div class="col-xl-4 col-lg-5">
@@ -22,16 +24,16 @@
             <p class="class_section"><span>class:</span><span>{{ auth()->user()->student->classmaster->name }}</span></p>
             <a href="#" class="profile"><span>view Profile</span></a>
            </div>
-           <div class="border_bottom_dotted"></div>
+           {{-- <div class="border_bottom_dotted"></div> --}}
            <div class="row">
-               <div class="col-md-6 col-xs-16">
+                {{-- <div class="col-md-6 col-xs-16">
                 <p class="wallet_heading">Wallet balance</p>
                    <a href="#" class="balance"><p><span>+</span><span>Add Balance</span></p></a>
                </div>
                <div class="col-md-6 col-xs-16">
 
                 <p class="wallet_balance"><span>Wallet balance:</span><strong>&nbsp;£ 1500</strong></p>
-                </div>
+                </div> --}}
            </div>
         </div>
          <!-- Announcements -->
