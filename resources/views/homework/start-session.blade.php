@@ -126,6 +126,7 @@
                       <div><p class="batch_name">{{ $session->batch->classSettings->name }}</p></div>
                       <hr />
                       <div class="title_session">Students</div>
+                      @php $i=1; @endphp
                       @foreach ($students as $student)
                       <div
                       class="
@@ -137,7 +138,7 @@
                         mb-3
                       "
                     >
-                      <div><p class="sr_no">1.</p></div>
+                      <div><p class="sr_no">{{ $i }}.</p></div>
                       <div>
                         <p class="card_pera">{{ $student->name }}</p>
                       </div>
@@ -148,7 +149,10 @@
                         </p>
                       </div> --}}
                     </div>
+
+                     @php $i++; @endphp
                       @endforeach
+
                       <hr />
                       {{-- <div class="card">
                         <p class="tile_card_comment">Comment</p>
@@ -199,9 +203,9 @@
                             >
                           </label>
                         </div>
-                        {{-- <div>
+                        <div>
                           <button class="btn share_cta">Share</button>
-                        </div> --}}
+                        </div>
                       </div>
                     </div>
                   </div>

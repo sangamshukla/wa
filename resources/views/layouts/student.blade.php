@@ -26,7 +26,7 @@
       />
     <!-- Custom styles for this template-->
 
- <script src="/wa/dashboard/vendor/jquery/jquery.min.js"></script>
+  <script src="/wa/dashboard/vendor/jquery/jquery.min.js"></script>
     @yield('session.css')
     @yield('style')
 
@@ -72,7 +72,7 @@
     @yield('js')
  @yield('scripts')
  <script src="/wa/dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
- <script src="{{asset('wa/dashboard/vendor/jquery/jquery.min.js')}}"></script>
+ {{-- <script src="{{asset('wa/dashboard/vendor/jquery/jquery.min.js')}}"></script> --}}
  <script src="{{asset('wa/dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
  <!-- Core plugin JavaScript-->
  <script src="{{asset('wa/dashboard/vendor/jquery-easing/jquery.easing.min.js')}}"></script>

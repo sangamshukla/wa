@@ -23,7 +23,7 @@
 <link href="{{asset('wa/dashboard/css/session.css')}}" rel="stylesheet">
 @endsection
 @section('js')
-<script src="{{ asset('wa/dashboard/sessionlist/vendor/jquery/jquery.min.js')}}"></script>
+{{-- <script src="{{ asset('wa/dashboard/sessionlist/vendor/jquery/jquery.min.js')}}"></script> --}}
 <!--<script src="/wa/dashboard/sessionlist/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>-->
 <!-- Core plugin JavaScript-->
 <!--<script src="/wa/dashboard/sessionlist/vendor/jquery-easing/jquery.easing.min.js"></script>-->
