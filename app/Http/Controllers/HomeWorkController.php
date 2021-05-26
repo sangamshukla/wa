@@ -57,7 +57,7 @@ class HomeWorkController extends Controller
                 'pdf_path' => $path,
                 'sub_topic_id' => $session->singleTopic->topic_id
             ]);
-            return response()->json("Success");
+            return response()->json(['filename'=>$filename]);
         } else {
             return 'please choose file';
         }

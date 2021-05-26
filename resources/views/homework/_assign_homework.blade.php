@@ -182,11 +182,11 @@
               <form enctype="multipart/form-data" id="upload_pdf">
                   @csrf
                   <label>
-                      <input type="file" name="pdf" id="profile_upload" style="cursor: pointer;">
+                      <input type="file" onChange="$(this).closest('form').submit();" name="pdf" id="profile_upload" style="cursor: pointer;">
                   </label>
-                  <div>
+                  {{-- <div>
                       <button class="upload_btn" type="submit">Upload</button>
-                  </div>
+                  </div> --}}
                   <span class="text-danger" id="image-input-error"></span>
                   <span class="text-primary" id="image-input-success"></span>
                   {{-- <p>Upload Image</p> --}}
@@ -202,15 +202,7 @@
           <div>
             <ul class="list_pdf">
               {{-- pdfsss --}}
-              @foreach ($pdfFilesAll as $pdf)
-              <li>
-                <span class="pdf_list_no">1.</span>
-                <span>{{ $pdf->topic->name }}</span>
-                <span>
-                  
-                  <a href="{{ url($pdf->pdf_path) }}"><img src="{{ asset('wa/dashboard/homework/img/pdf.svg')}}" /></span></a>
-              </li>
-              @endforeach
+              <div id="listOfFiles"></div>
               
             </ul>
             <hr />

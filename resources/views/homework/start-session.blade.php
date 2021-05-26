@@ -135,6 +135,7 @@ $('#saveAsssignHomework').on('click', function(){
 });
 
 // upload PDF
+  var fileList = [];
   $('#upload_pdf').submit(function(e) {
       e.preventDefault();
       let formData = new FormData(this);
@@ -151,9 +152,16 @@ $('#saveAsssignHomework').on('click', function(){
           success: (xhr, response) => {
               $('#profile_pic_loader').hide();
               if (response) {
+              fileList.push(xhr.filename);
+              $("#listOfFiles").html("");
+              var list="";
+              for(let z=0; z < fileList.length; z++)
+              {
+                list += "<div style='background:#BCFFEE; width:30%;'><p>"+fileList[z]+"</p></div>";
+              }
+              $("#listOfFiles").html(list);
               this.reset();
-              $('#image-input-success').text("Uploaded Succcessfully");
-
+                //  $('#image-input-success').text("Uploaded Succcessfully");
               }
           },
           error: (xhr, status, error)=>{
