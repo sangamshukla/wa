@@ -604,7 +604,7 @@
                                     <div
                                         class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
                                     >
-                                    <div id="datepickerCelander" class="dt_calander">
+                                    <div id="datepickerCelander" class="dt_calander profile_calander">
                                         <div class="row">
                                         <div class="col-3"></div>
                                         <div class="col-9">

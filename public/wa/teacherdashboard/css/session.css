@@ -288,6 +288,7 @@ tbody tr {
     height: 300px;
 }
 
+
 .day_block p {
     font-family: Nunito;
     font-style: normal;
@@ -355,16 +356,16 @@ tbody tr {
 }
 
 .dt_calander .table_detail td {
-    border-left: 0.8px solid #999999;
-    padding: 26px 5px 26px 5px;
-    text-align: center;
-    font-family: Nunito;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 16px;
-    letter-spacing: 0.75px;
-    color: #999999;
+        border-left: 0.8px solid #999999;
+        padding: 7px 10px;
+        text-align: center;
+        font-family: Nunito;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 16px;
+        letter-spacing: 0.75px;
+        color: #999999;
 }
 .minuit {
     color: #049dc5;
@@ -389,10 +390,12 @@ tbody tr {
 .dt_calander .table_detail {
     padding: 0px 10px;
 }
-
-.dt_calander .table_detail tbody {
-    height: 500px;
+tbody.class-calender-block {
+    height: 200px;
 }
+/* .dt_calander .table_detail tbody {
+    height: 500px;
+} */
 .add_task.view_text {
     font-family: Nunito;
     font-style: normal;
