@@ -101,14 +101,16 @@
 
           <div>
             <ul class="list_pdf">
+              @php $i=1; @endphp
               @foreach ($pdfFilesAll as $pdf)
               <li>
-                <span class="pdf_list_no">1.</span>
+                <span class="pdf_list_no">{{ $i }}.</span>
                 <span>{{ $pdf->topic->name }}</span>
                 <span>
                     <input type="radio" id="pdf" name="pdf" value="{{ $pdf->id }}"  />
                   <a href="{{ url($pdf->pdf_path) }}"><img src="{{ asset('wa/dashboard/homework/img/pdf.svg')}}" /></span></a>
               </li>
+              @php $i++; @endphp
               @endforeach
             </ul>
             <hr />
@@ -127,7 +129,7 @@
                   ></textarea>
                 </div>
                 <div class="form-group">
-                    <input type="number" id="points" placeholder="Points"/>
+                    <input type="number" style="width:30%" class="form-control"  id="points" placeholder="Points"/>
                 </div>
               </div>
             </div>
@@ -219,11 +221,14 @@
                   >
                   <textarea
                     class="form-control"
-                    id="comment_message"
+                    id="pdfMessage"
                     rows="3"
                     placeholder="Add your comment"
                   ></textarea>
                 </div>
+                <div class="form-group">
+                  <input type="number" style="width:30%" class="form-control" id="pointsPDF" placeholder="Points"/>
+              </div>
               </div>
             </div>
             <hr />
@@ -261,7 +266,7 @@
                   data-toggle="modal"
                   data-target="#exampleModal"
                 >
-                  Launch demo modal
+                 Students List
                 </button>
 
                 <!-- Modal -->
@@ -346,17 +351,17 @@
                         </button>
                         <button
                           type="button"
-                          class="save_change_btn"
+                          class="btn share_cta" style="width:120px;"
                         >
-                          Save changes
+                          Save
                         </button>
                       </div>
                     </div>
                   </div>
                 </div>
-                  <button class="btn share_cta">
-                  Share
-                </button>  
+                  <button class="btn share_cta" id="saveUploadPDFHomeWork">
+                    Share
+                  </button>  
                  {{-- <button class="btn share_cta" id="saveAsssignHomework">
                   Share
                 </button>  --}}

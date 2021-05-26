@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class AssignedHomeWork extends Model
 {
+    const UPLOAD_PDF="UPLOAD_PDF";
+    const CHOOSE_PDF="CHOOSE_PDF";
+    const ADD_QUESTION="ADD_QUESTION";
+
     use HasFactory;
     protected $fillable = [
         'session_id',

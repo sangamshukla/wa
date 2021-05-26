@@ -141,7 +141,7 @@
 @section('scripts')
 
 <script type="text/javascript">
-// share homework
+// share homework By Choosing The File
 $('#saveAsssignHomework').on('click', function(){
      
       $.ajax({
@@ -152,7 +152,7 @@ $('#saveAsssignHomework').on('click', function(){
             comment: $('#message').val(),
             session_id: "{{ $session->id }}",
             points: $('#points').val(),
-            type_of_homework:"",
+            type_of_homework:"CHOOSE_PDF",
             assigned_content: $('#pdf').val()
           }),
           contentType: false,
@@ -170,6 +170,7 @@ $('#saveAsssignHomework').on('click', function(){
 
 // upload PDF
   var fileList = [];
+  var fileIDs = [];
   $('#upload_pdf').submit(function(e) {
       e.preventDefault();
       let formData = new FormData(this);
@@ -187,6 +188,7 @@ $('#saveAsssignHomework').on('click', function(){
               $('#profile_pic_loader').hide();
               if (response) {
               fileList.push(xhr.filename);
+              fileIDs.push(xhr.fileId);
               $("#listOfFiles").html("");
               var list="";
               for(let z=0; z < fileList.length; z++)
@@ -208,5 +210,34 @@ $('#saveAsssignHomework').on('click', function(){
           }
       });
   });
+
+
+// saveUploadPDFHomeWork
+
+$('#saveUploadPDFHomeWork').on('click', function(){
+     
+     $.ajax({
+         "_token": "{{ csrf_token() }}",
+         type:'POST',
+         url: "{{ url('assign-homework') }}",
+         data: JSON.stringify({
+           comment: $('#pdfMessage').val(),
+           session_id: "{{ $session->id }}",
+           points: $('#pointsPDF').val(),
+           type_of_homework:"UPLOAD_PDF",
+           assigned_content: fileIDs
+         }),
+         contentType: false,
+         processData: false,
+         success: (xhr, response) => {
+           //  alert("Homework Assigned Successfully");
+           $("#success_message_div").html("Homework for {{ $session->name }} has been assigned successfully.");
+            $('#demoModal').modal('show');
+         },
+         error: (xhr, status, error)=>{
+            alert("Please Choose PDF File");
+         }
+     });
+});
 </script>
 @endsection

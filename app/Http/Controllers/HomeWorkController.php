@@ -52,12 +52,12 @@ class HomeWorkController extends Controller
             $filename = $request->pdf->getClientOriginalName();
             $path = $request->file('pdf')->store('public/pdfs', ['disk'=>'public_uploads']);
             $session = BatchSession::find($id);
-            ResourceMaster::create([
+            $rm = ResourceMaster::create([
                 'pdf_name' => $filename,
                 'pdf_path' => $path,
                 'sub_topic_id' => $session->singleTopic->topic_id
             ]);
-            return response()->json(['filename'=>$filename]);
+            return response()->json(['filename'=>$filename, 'fileId'=>$rm->id]);
         } else {
             return 'please choose file';
         }
@@ -75,12 +75,24 @@ class HomeWorkController extends Controller
         });
         
         $students = User::whereIn('id', $studentsList->unique())->get();
+        $homeworkContent = $content->assigned_content;
+
+        if ($content->type_of_homework == 'UPLOAD_PDF') {
+            $homeworkContent = implode(",", $content->assigned_content);
+        }
+        if ($content->type_of_homework == 'CHOOSE_PDF') {
+            $homeworkContent = $content->assigned_content;
+        }
+        if ($content->type_of_homework == 'ADD_QUESTION') {
+            $homeworkContent = $content->assigned_content;
+        }
+
         $assignedHomework =  AssignedHomeWork::create([
             'session_id' => $content->session_id,
             'comment' => $content->comment,
             'points' => $content->points,
-            'type_of_homework'=>'PDF',
-            'assigned_content' => $content->assigned_content // resource_master id
+            'type_of_homework'=>$content->type_of_homework,
+            'assigned_content' => $homeworkContent // resource_master id
         ]);
 
         foreach ($students as $student) {
