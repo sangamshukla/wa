@@ -109,7 +109,7 @@
                 @php $i=1; @endphp
                 @foreach($pdf->topic->subtopics as $sub)
                 <span style="margin-left:30px;">
-                       <input type="radio" id="pdf" name="pdf" value="{{ $pdf->id }}"  />
+                       <input type="radio" id="pdf" name="choosePDFS" value="{{ $pdf->id }}"  />
 
                       <span style="width:300px;" >{{$i}} {{ $sub->sub_topic_name }}</span>
                          <a href="{{ url('uploads/'.$pdf->pdf_path) }}"><img src="{{ asset('wa/dashboard/homework/img/pdf.svg')}}" />
@@ -122,6 +122,8 @@
              
               @endforeach
             </ul>
+            <p id="choose_pdf_tree" class="text-danger"></p>
+          
             <hr />
             <div class="card">
               <p class="tile_card_comment">Comment</p>
@@ -137,8 +139,9 @@
                     placeholder="Add your comment"
                   ></textarea>
                 </div>
+                <p id="comment_pdf_tree" class="text-danger"></p>
                 <div class="form-group">
-                    <input type="number" style="width:30%" class="form-control"  id="points" placeholder="Points"/>
+                    <input type="number" value="10" style="width:30%" class="form-control"  id="points" placeholder="Points"/>
                 </div>
               </div>
             </div>

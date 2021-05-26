@@ -144,7 +144,18 @@
 // share homework By Choosing The File
 $('#saveAsssignHomework').on('click', function(){
       $("#saveAsssignHomework").html("Assigning...");
-      $.ajax({
+      var choosePdf = $("input[name='choosePDFS']:checked").val();;
+      if(!choosePdf)
+      {
+       $('#choose_pdf_tree').html("Please Select PDF First.")
+       $("#saveAsssignHomework").html("Share");
+      }else{
+        var chosenChoosePDF = $('#message').val();
+        if(!chosenChoosePDF){
+          $('#comment_pdf_tree').html("Comment is required.")
+          $("#saveAsssignHomework").html("Share");
+        }else {
+          $.ajax({
           "_token": "{{ csrf_token() }}",
           type:'POST',
           url: "{{ url('assign-homework') }}",
@@ -168,6 +179,9 @@ $('#saveAsssignHomework').on('click', function(){
              $("#saveAsssignHomework").html("Share");
           }
       });
+        }
+      }
+      
 });
 
 // upload PDF
@@ -238,7 +252,6 @@ $('#saveUploadPDFHomeWork').on('click', function(){
             $("#saveUploadPDFHomeWork").html("Share");
          },
          error: (xhr, status, error)=>{
-            
             $("#saveUploadPDFHomeWork").html("Share");
          }
      });
