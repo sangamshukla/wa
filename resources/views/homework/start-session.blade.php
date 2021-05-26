@@ -102,7 +102,39 @@
     <!-- subject card Row -->
     <!-- subject card Row -->
   </div>
+{{-- popup --}}
+<div
+  class="modal fade"
+  id="demoModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="demoModalLabel"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog"
+    role="document"
+  >
+    <div class="modal-content">
+      <div
+        class="
+          modal-body
+          table_modal_body
+        "
+      >
+      <div class="text-center">
+        <div class="ol-img"><img src="img/Ok Icon1.svg" width="40" height="40"></div>
+        <div><p class="title_modal_header">Homework Assigned Successful</p></div>
+        <div><p class="title_modal_pera" id="success_message_div">Homework for session 2 has been Assigned Successfully.</p></div>
+        <button type="btn" class="ok_cta" onclick="$('#demoModal').modal('hide');" > Ok, Got It!</button>
+      </div>
+      </div>
+    
+    </div>
+  </div>
+</div>
 
+{{-- /popup --}}
 @endsection
 
 {{-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> --}}
@@ -126,7 +158,9 @@ $('#saveAsssignHomework').on('click', function(){
           contentType: false,
           processData: false,
           success: (xhr, response) => {
-             alert("Homework Assigned Successfully");
+            //  alert("Homework Assigned Successfully");
+            $("#success_message_div").html("Homework for {{ $session->name }} has been assigned successfully.");
+             $('#demoModal').modal('show');
           },
           error: (xhr, status, error)=>{
              alert("Please Choose PDF File");
