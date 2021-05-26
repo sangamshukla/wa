@@ -80,7 +80,7 @@ class HomeWorkController extends Controller
             'comment' => $content->comment,
             'points' => $content->points,
             'type_of_homework'=>'PDF',
-            'assigned_content' => $content->assigned_content
+            'assigned_content' => $content->assigned_content // resource_master id
         ]);
 
         foreach ($students as $student) {
