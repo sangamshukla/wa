@@ -167,7 +167,7 @@
           id="tabhome2"
           class="container tab-pane fade"
         >
-          <div class="file_upload">
+          <div class="file_upload" style="padding-left:0px;">
             {{-- file upload --}}
             {{-- <label class="file">
               <input
@@ -182,8 +182,12 @@
               <form enctype="multipart/form-data" id="upload_pdf">
                   @csrf
                   <label>
-                      <input type="file" onChange="$(this).closest('form').submit();" name="pdf" id="profile_upload" style="cursor: pointer;">
+                      <input type="file" onChange="$(this).closest('form').submit();" 
+                        accept="application/pdf"  
+                        name="pdf" id="profile_upload" style="cursor: pointer;">
                   </label>
+                  <span class="text-muted">(You can upload *pdf files only.)</span>
+                <br/>
                   {{-- <div>
                       <button class="upload_btn" type="submit">Upload</button>
                   </div> --}}
@@ -305,12 +309,13 @@
                           <thead>
                             <tr>
                               <th scope="col">#</th>
-                              <th scope="col">First</th>
-                              <th scope="col">Last</th>
-                              <th scope="col">Handle</th>
+                              <th scope="col">Student Name</th>
+                              <th scope="col">year</th>
+                              <th scope="col">Session Name</th>
                             </tr>
                           </thead>
                           <tbody>
+                            @foreach ($students as $student)
                             <tr>
                               <th scope="row">
                                 <label class="container">
@@ -323,49 +328,18 @@
                                   ></span>
                                 </label>
                               </th>
-                              <td>Mark</td>
-                              <td>Otto</td>
-                              <td>@mdo</td>
+                              <td>{{ $student->name }}</td>
+                              <td>{{  $session->batch->classmaster->name }}</td>
+                              <td>{{ $session->name }}</td>
                             </tr>
-                            <tr>
-                              <th scope="row">
-                                <label class="container">
-                                  <input
-                                    type="checkbox"
-                                    checked="checked"
-                                  />
-                                  <span
-                                    class="checkmark"
-                                  ></span>
-                                </label>
-                              </th>
-                              <td>Jacob</td>
-                              <td>Thornton</td>
-                              <td>@fat</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">
-                                <label class="container">
-                                  <input
-                                    type="checkbox"
-                                    checked="checked"
-                                  />
-                                  <span
-                                    class="checkmark"
-                                  ></span>
-                                </label>
-                              </th>
-                              <td colspan="2">
-                                Larry the Bird
-                              </td>
-                              <td>@twitter</td>
-                            </tr>
+                           @php $i++; @endphp
+                            @endforeach
                           </tbody>
                         </table>
                       </div>
                       <div class="modal-footer">
                         <button
-                          class="save_btn"
+                          class="btn btn-secondary"
                           data-dismiss="modal"
                         >
                           Close
@@ -380,9 +354,12 @@
                     </div>
                   </div>
                 </div>
-                <button class="btn share_cta">
+                  <button class="btn share_cta">
                   Share
-                </button>
+                </button>  
+                 {{-- <button class="btn share_cta" id="saveAsssignHomework">
+                  Share
+                </button>  --}}
               </div>
             </div>
           </div>

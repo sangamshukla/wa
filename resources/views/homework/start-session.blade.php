@@ -123,10 +123,10 @@
         "
       >
       <div class="text-center">
-        <div class="ol-img"><img src="img/Ok Icon1.svg" width="40" height="40"></div>
+        <div class="ol-img"><img src="{{ asset('wa/teacherdashboard/img/Ok Icon1.svg')}}" width="40" height="40"></div>
         <div><p class="title_modal_header">Homework Assigned Successful</p></div>
         <div><p class="title_modal_pera" id="success_message_div">Homework for session 2 has been Assigned Successfully.</p></div>
-        <button type="btn" class="ok_cta" onclick="$('#demoModal').modal('hide');" > Ok, Got It!</button>
+        <button type="btn" class="btn share_cta" style="width:120px;" onclick="$('#demoModal').modal('hide');" > Ok, Got It!</button>
       </div>
       </div>
     
@@ -191,7 +191,7 @@ $('#saveAsssignHomework').on('click', function(){
               var list="";
               for(let z=0; z < fileList.length; z++)
               {
-                list += "<div style='background:#BCFFEE; width:30%;'><p>"+fileList[z]+"</p></div>";
+                list += "<div style='background: #BCFFEE;width: 30%;border-radius: 7px;padding-left: 19px;'><p>"+fileList[z]+"</p></div>";
               }
               $("#listOfFiles").html(list);
               this.reset();
@@ -203,7 +203,7 @@ $('#saveAsssignHomework').on('click', function(){
                 $('#profile_pic_loader').hide();
               this.reset();
               var err=JSON.parse(xhr.responseText);
-                  $('#image-input-error').text(err.message + err.errors.profile_photo_input[0]);
+                $('#image-input-error').text("Please Upload PDF File Only");
               }
           }
       });

@@ -1,3 +1,9 @@
+/* for pop up */
+.ol-img img {
+    width: 70px;
+    height: 70px;
+    margin: 20px;
+}
 .subject_card {
     font-family: Roboto;
     font-style: normal;
