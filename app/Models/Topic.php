@@ -9,4 +9,10 @@ class Topic extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+
+    public function subtopics()
+    {
+        return $this->hasMany(SubTopic::class, 'topic_id');
+    }
 }

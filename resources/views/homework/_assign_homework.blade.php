@@ -101,16 +101,25 @@
 
           <div>
             <ul class="list_pdf">
-              @php $i=1; @endphp
               @foreach ($pdfFilesAll as $pdf)
               <li>
-                <span class="pdf_list_no">{{ $i }}.</span>
-                <span>{{ $pdf->topic->name }}</span>
-                <span>
-                    <input type="radio" id="pdf" name="pdf" value="{{ $pdf->id }}"  />
-                  <a href="{{ url($pdf->pdf_path) }}"><img src="{{ asset('wa/dashboard/homework/img/pdf.svg')}}" /></span></a>
+                {{-- <span class="pdf_list_no">{{ $i }}.</span> --}}
+                <span><i class="fas fa-folder-open"></i> {{ $pdf->topic->name }}</span>
+                <br/>
+                @php $i=1; @endphp
+                @foreach($pdf->topic->subtopics as $sub)
+                <span style="margin-left:30px;">
+                       <input type="radio" id="pdf" name="pdf" value="{{ $pdf->id }}"  />
+
+                      <span style="width:300px;" >{{$i}} {{ $sub->sub_topic_name }}</span>
+                         <a href="{{ url('uploads/'.$pdf->pdf_path) }}"><img src="{{ asset('wa/dashboard/homework/img/pdf.svg')}}" />
+                       <br/>
+                    
+                </span></a>
+                @php $i++; @endphp
+                @endforeach
               </li>
-              @php $i++; @endphp
+             
               @endforeach
             </ul>
             <hr />
@@ -188,7 +197,7 @@
                         accept="application/pdf"  
                         name="pdf" id="profile_upload" style="cursor: pointer;">
                   </label>
-                  <span class="text-muted">(You can upload *pdf files only.)</span>
+                  <span class="text-muted">(You can upload *pdf files only, maximum file size is 10MB.)</span>
                 <br/>
                   {{-- <div>
                       <button class="upload_btn" type="submit">Upload</button>

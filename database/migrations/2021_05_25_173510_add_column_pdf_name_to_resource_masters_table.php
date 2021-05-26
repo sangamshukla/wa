@@ -13,9 +13,9 @@ class AddColumnPdfNameToResourceMastersTable extends Migration
      */
     public function up()
     {
-        Schema::table('resource_masters', function (Blueprint $table) {
-            $table->string('pdf_name')->nullable();
-        });
+        // Schema::table('resource_masters', function (Blueprint $table) {
+        //     $table->string('pdf_name')->nullable();
+        // });
     }
 
     /**
