@@ -143,7 +143,7 @@
 <script type="text/javascript">
 // share homework By Choosing The File
 $('#saveAsssignHomework').on('click', function(){
-     
+      $("#saveAsssignHomework").html("Assigning...");
       $.ajax({
           "_token": "{{ csrf_token() }}",
           type:'POST',
@@ -161,9 +161,11 @@ $('#saveAsssignHomework').on('click', function(){
             //  alert("Homework Assigned Successfully");
             $("#success_message_div").html("Homework for {{ $session->name }} has been assigned successfully.");
              $('#demoModal').modal('show');
+             $("#saveAsssignHomework").html("Share");
           },
           error: (xhr, status, error)=>{
-             alert("Please Choose PDF File");
+            //  alert("Please Choose PDF File");
+             $("#saveAsssignHomework").html("Share");
           }
       });
 });
@@ -215,7 +217,7 @@ $('#saveAsssignHomework').on('click', function(){
 // saveUploadPDFHomeWork
 
 $('#saveUploadPDFHomeWork').on('click', function(){
-     
+  $("#saveUploadPDFHomeWork").html("Assigning...");
      $.ajax({
          "_token": "{{ csrf_token() }}",
          type:'POST',
@@ -233,9 +235,11 @@ $('#saveUploadPDFHomeWork').on('click', function(){
            //  alert("Homework Assigned Successfully");
            $("#success_message_div").html("Homework for {{ $session->name }} has been assigned successfully.");
             $('#demoModal').modal('show');
+            $("#saveUploadPDFHomeWork").html("Share");
          },
          error: (xhr, status, error)=>{
-            alert("Please Choose PDF File");
+            
+            $("#saveUploadPDFHomeWork").html("Share");
          }
      });
 });
