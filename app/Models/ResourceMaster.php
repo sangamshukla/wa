@@ -11,5 +11,12 @@ class ResourceMaster extends Model
     protected $fillable = [
         'pdf_path',
         'sub_topic_id',
+        'pdf_name'
     ];
+
+
+    public function topic()
+    {
+        return $this->belongsTo(Topic::class, 'sub_topic_id');
+    }
 }

@@ -14,7 +14,7 @@
 
     <!-- Custom fonts for this template-->
     <link
-      href="vendor/fontawesome-free/css/all.min.css"
+      href="{{ asset('wa/dashboard/homework/vendor/fontawesome-free/css/all.min.css') }}"
       rel="stylesheet"
       type="text/css"
     />
@@ -40,7 +40,9 @@
     <div id="wrapper">
      
       <!-- Sidebar -->  
-        @include('layouts._partials.session._sidebar')
+
+         @include('teacher.sidebar')
+        {{-- @include('layouts._partials.session._sidebar') --}}
       <!-- End of Sidebar -->
 
       <!-- Content Wrapper -->
@@ -48,6 +50,8 @@
         <!-- Main Content -->
         <div id="content">
           <!-- Topbar -->
+
+          {{-- @include('teacher.topnav') --}}
             @include('layouts._partials.session._topbar')
           <!-- End of Topbar -->
           <!-- Begin Page Content -->
@@ -71,6 +75,7 @@
     <!-- End of Page Wrapper -->
     <!-- Bootstrap core JavaScript-->
     <script src="{{ asset('wa/dashboard/homework/vendor/jquery/jquery.min.js') }}"></script>
+    @yield('scripts')
     <script src="{{ asset('wa/dashboard/homework/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <!-- Core plugin JavaScript-->
     <script src="{{ asset('wa/dashboard/homework/vendor/jquery-easing/jquery.easing.min.js')}}"></script>

@@ -152,3 +152,6 @@ Route::post('fullcalenderAjax', [FullCalenderController::class, 'ajax']);
 // start session[home work module]
 Route::get('start-session/{id}', [HomeWorkController::class, 'startSession']);
 Route::post('start-session/{id}', [HomeWorkController::class, 'saveStartSession']);
+
+Route::post('/upload-pdf/{id}', [HomeWorkController::class, 'uploadPDF']);
+Route::post('/assign-homework', [HomeWorkController::class, 'assignHomeWork']);
