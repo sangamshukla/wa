@@ -28,7 +28,7 @@
      <div>
       <!-- Button trigger modal -->
       <p class="joined" data-toggle="modal" data-target="#exampleModal">
-        08 Joined
+        {{ $students->count() }} Joined
       </p>
       <!-- Modal -->
       <div

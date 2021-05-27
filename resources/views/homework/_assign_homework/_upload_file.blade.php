@@ -13,11 +13,11 @@
       <form enctype="multipart/form-data" id="upload_pdf">
           @csrf
           <label>
-              <input type="file" onChange="$(this).closest('form').submit();" 
+              <input class="btn btn-primary" style="background-color: #1D6771 !important"  type="file" onChange="$(this).closest('form').submit();" 
                 accept="application/pdf"  
                 name="pdf" id="profile_upload" style="cursor: pointer;">
           </label>
-          <span class="text-muted"><p style="color: red;" (You can upload *pdf files only, maximum file size is 10MB).></p></span>
+          <span class="text-muted"><p >(You can upload *pdf files only, maximum file size is 10MB).</p></span>
         <br/>
           {{-- <div>
               <button class="upload_btn" type="submit">Upload</button>
@@ -59,32 +59,30 @@
     </div>
     <div style="color:#1D6771;"class="form-group">           
       <th >Points</th>
-    <input type="number" style="width:38%;" class="form-control"  id="points" placeholder="Points"/>  
+    <input type="number" style="width:38%;" class="form-control"  id="pointsPDF" placeholder="Points"/>  
    </div> 
     <hr />
     <div>
       <div class="share_block">
-        <label class="container">
+        <label class="container" data-toggle="modal" data-target="#exampleModal">
           <input
             type="checkbox"
-            checked="checked"
           />
-          <span class="checkmark"></span>
+          <span class="checkmark" ></span>
           <span class="add_text"
-            >Select to All</span
+            >Assign To All Students</span
           >
         </label>
-        <label class="container">
+        <label class="container"  data-toggle="modal" data-target="#exampleModal">
           <input
             type="checkbox"
-            checked="checked"
           />
           <span
             class="checkmark"
-            data-toggle="modal"
+            
           ></span>
           <span class="add_text"
-            >Selected Students</span
+            >Assign To Selected Students</span
           >
         </label>
       </div>

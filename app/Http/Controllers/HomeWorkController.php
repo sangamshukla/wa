@@ -67,6 +67,13 @@ class HomeWorkController extends Controller
     {
         $content = json_decode($request->getContent());
         $session = BatchSession::find($content->session_id);
+
+        $checkHomeWorkIsAlreadyAssigned = AssignedHomeWork::where('session_id', $content->session_id)->exists();
+        
+        if ($checkHomeWorkIsAlreadyAssigned) {
+            return response()->json(['data'=> 'Homework is already assigned for this session'], 400);
+        }
+
         $studentsList = collect([]);
         $batches = OrderItems::with('orderPayment')->where('batch_id', $session->batch_id)->get();
 

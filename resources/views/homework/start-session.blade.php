@@ -84,13 +84,14 @@
               </div>
             </div>
             
-            <div class="col-lg-8 border_block_box">
+            <div class="col-lg-8 border_block_box" style="padding-bottom: 15px;">
               <div class="tab-content">
                 <div class="d-flex justify-content-between mt-4"></div>
                 @include('homework._start_session')
                 @include('homework._assign_homework')
                 @include('homework._archieve')
                 @include('homework._feedback')
+                <p class="text-danger" id="already_assigned"></p>
               </div>
             </div>
            
@@ -133,7 +134,6 @@
     </div>
   </div>
 </div>
-
 {{-- /popup --}}
 @endsection
 
@@ -173,9 +173,12 @@ $('#saveAsssignHomework').on('click', function(){
             $("#success_message_div").html("Homework for {{ $session->name }} has been assigned successfully.");
              $('#demoModal').modal('show');
              $("#saveAsssignHomework").html("Share");
+             $('#message').val("");
+             $('#points').val("")
           },
           error: (xhr, status, error)=>{
             //  alert("Please Choose PDF File");
+             $("#already_assigned").html(xhr.responseJSON.data);
              $("#saveAsssignHomework").html("Share");
           }
       });
@@ -229,7 +232,6 @@ $('#saveAsssignHomework').on('click', function(){
 
   function removeOne()
   {
-    console.log('here');
     fileList.pop();
     list="";
     for(let z=0; z < fileList.length; z++)
@@ -262,8 +264,14 @@ $('#saveUploadPDFHomeWork').on('click', function(){
            $("#success_message_div").html("Homework for {{ $session->name }} has been assigned successfully.");
             $('#demoModal').modal('show');
             $("#saveUploadPDFHomeWork").html("Share");
+            $('#pdfMessage').val("");
+            $('#pointsPDF').val("");
+            fileList = [];
+            removeOne();
          },
          error: (xhr, status, error)=>{
+            // console.log(xhr);
+            $("#already_assigned").html(xhr.responseJSON.data);
             $("#saveUploadPDFHomeWork").html("Share");
          }
      });
