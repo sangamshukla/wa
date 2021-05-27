@@ -1,0 +1,22 @@
+<ul class="list_pdf">
+            @foreach ($pdfFilesAll as $pdf)
+            <li>
+              {{-- <span class="pdf_list_no">{{ $i }}.</span> --}}
+              <span><i class="fas fa-folder-open"></i> {{ $pdf->topic->name }}</span>
+              <br/>
+              @php $i=1; @endphp
+              @foreach($pdf->topic->subtopics as $sub)
+              <span style="margin-left:30px;">
+                     <input type="radio" id="pdf" name="choosePDFS" value="{{ $pdf->id }}"  />
+
+                    <span style="width:300px;" >{{$i}} {{ $sub->sub_topic_name }}</span>
+                       <a href="{{ url('uploads/'.$pdf->pdf_path) }}"><img src="{{ asset('wa/dashboard/homework/img/pdf.svg')}}" />
+                     <br/>
+                  
+              </span></a>
+              @php $i++; @endphp
+              @endforeach
+            </li>
+           
+            @endforeach
+          </ul>

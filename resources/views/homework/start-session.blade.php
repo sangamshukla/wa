@@ -209,7 +209,7 @@ $('#saveAsssignHomework').on('click', function(){
               var list="";
               for(let z=0; z < fileList.length; z++)
               {
-                list += "<div style='background: #BCFFEE;width: 30%;border-radius: 7px;padding-left: 19px;'><p>"+fileList[z]+"</p></div>";
+                list += "<div style='background: #BCFFEE;width: 30%;border-radius: 7px;padding-left: 19px;'><p>"+fileList[z]+" <span onClick='removeOne()' style='float:right; margin-right:-10%; '><i class='fa fa-times'></i><span></p></div>";
               }
               $("#listOfFiles").html(list);
               this.reset();
@@ -226,6 +226,18 @@ $('#saveAsssignHomework').on('click', function(){
           }
       });
   });
+
+  function removeOne()
+  {
+    console.log('here');
+    fileList.pop();
+    list="";
+    for(let z=0; z < fileList.length; z++)
+    {
+      list += "<div style='background: #BCFFEE;width: 30%;border-radius: 7px;padding-left: 19px;'><p>"+fileList[z]+" <span onClick='removeOne()' style='float:right; margin-right:-10%; '><i class='fa fa-times'></i><span></p></div>";
+    }
+    $("#listOfFiles").html(list);
+  }
 
 
 // saveUploadPDFHomeWork
