@@ -1,9 +1,4 @@
-/* for pop up */
-.ol-img img {
-    width: 70px;
-    height: 70px;
-    margin: 20px;
-}
+
 .subject_card {
     font-family: Roboto;
     font-style: normal;
@@ -1212,6 +1207,7 @@ button.save_change_btn {
     color: #ffffff;
     height: 40px;
 }
+
 
 span.add_text {
     font-family: Roboto;

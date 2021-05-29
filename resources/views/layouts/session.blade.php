@@ -30,6 +30,9 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('wa/dashboard/homework/css/student-admin.css') }}" rel="stylesheet" />
     <link href="{{ asset('wa/dashboard/homework/css/session.css') }}" rel="stylesheet" />
+
+ <!--date time picker[duedate] -->
+<link rel="stylesheet" href="{{asset('assets/css/datepicker/jquery.datetimepicker.min.css')}}" />
   </head>
 
   <body id="page-top">
@@ -51,8 +54,8 @@
         <div id="content">
           <!-- Topbar -->
 
-          {{-- @include('teacher.topnav') --}}
-            @include('layouts._partials.session._topbar')
+          @include('teacher.topnav')
+            {{-- @include('layouts._partials.session._topbar') --}}
           <!-- End of Topbar -->
           <!-- Begin Page Content -->
           @yield('content')
@@ -81,5 +84,6 @@
     <script src="{{ asset('wa/dashboard/homework/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('wa/dashboard/homework/js/student.js')}}"></script>
+    
   </body>
 </html>

@@ -33,7 +33,7 @@
                         {{-- <img src="{{ asset('wa/assets/img/card-cover.png') }}"> --}}
                     </div>
                     <div class="left_block">
-                         <a href="http://pariharz.com/testing/public/teacher-calander/<?php echo $batch->assignteacher->id; ?>">
+                         <a href="http://pariharz.com/teacher-calander/<?php echo $batch->assignteacher->id; ?>">
                         <p class="name_section">{{ Str::ucfirst($batch->assignteacher->name) }} &nbsp;&nbsp;&nbsp;&nbsp;
                         {{ $batch->status != 1 ? 'Location : '.$batch->location : '' }}
                         </p></a>
@@ -219,7 +219,7 @@
                                         <a href="#" class="view_detail">
                                             View details
                                         </a>
-                                        <a href="{{ url('/testing/public/student-details', $batch->id)}}" class="price_card price_bg{{ $i }}">
+                                        <a href="{{ url('/student-details', $batch->id)}}" class="price_card price_bg{{ $i }}">
                                             {{-- £ 150* --}}
                                             &pound; {{ $batch->batch_price_per_session }}
                                         </a>

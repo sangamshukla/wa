@@ -160,7 +160,7 @@
                             <div class="starttime_block">
                               <p class="sub_subject">Start</p>
                               <p class="green_text">
-                                <a target="_blank" href="{{ $batch->zoom->meeting_start_url ?? '' }}" class="green_text">Start Sessions</a>
+                                <a target="_blank" href="{{ url('start-session', $session->id) }}" class="green_text">Start Sessions</a>
                               </p>
                             </div>
                             <div class="class_block">

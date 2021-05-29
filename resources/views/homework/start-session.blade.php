@@ -84,13 +84,15 @@
               </div>
             </div>
             
-            <div class="col-lg-8 border_block_box">
+            <div class="col-lg-8 border_block_box" style="padding-bottom: 15px;">
               <div class="tab-content">
                 <div class="d-flex justify-content-between mt-4"></div>
                 @include('homework._start_session')
                 @include('homework._assign_homework')
                 @include('homework._archieve')
                 @include('homework._feedback')
+
+                <p class="text-danger" id="already_assigned"></p>
               </div>
             </div>
            
@@ -133,13 +135,16 @@
     </div>
   </div>
 </div>
-
 {{-- /popup --}}
 @endsection
 
 {{-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> --}}
 @section('scripts')
-
+ {{-- ck basic editor --}}
+ <script src="//cdn.ckeditor.com/4.16.1/basic/ckeditor.js"></script>
+{{-- datepicker [duedate link] --}}
+<script src="{{asset('assets/js/datepicker/jquery.datetimepicker.full.min.js')}}"></script>
+{{-- end --}}
 <script type="text/javascript">
 // share homework By Choosing The File
 $('#saveAsssignHomework').on('click', function(){
@@ -163,6 +168,7 @@ $('#saveAsssignHomework').on('click', function(){
             comment: $('#message').val(),
             session_id: "{{ $session->id }}",
             points: $('#points').val(),
+            due_date: $('#dueDatePdf').val(),
             type_of_homework:"CHOOSE_PDF",
             assigned_content: $('#pdf').val()
           }),
@@ -173,9 +179,13 @@ $('#saveAsssignHomework').on('click', function(){
             $("#success_message_div").html("Homework for {{ $session->name }} has been assigned successfully.");
              $('#demoModal').modal('show');
              $("#saveAsssignHomework").html("Share");
+             $('#message').val("");
+             $('#points').val("");
+             $('#dueDatePdf').val("")
           },
           error: (xhr, status, error)=>{
             //  alert("Please Choose PDF File");
+             $("#already_assigned").html(xhr.responseJSON.data);
              $("#saveAsssignHomework").html("Share");
           }
       });
@@ -209,7 +219,7 @@ $('#saveAsssignHomework').on('click', function(){
               var list="";
               for(let z=0; z < fileList.length; z++)
               {
-                list += "<div style='background: #BCFFEE;width: 30%;border-radius: 7px;padding-left: 19px;'><p>"+fileList[z]+"</p></div>";
+                list += "<div style='background: #BCFFEE;width: 30%;border-radius: 7px;padding-left: 19px;'><p>"+fileList[z]+" <span onClick='removeOne()' style='float:right; margin-right:-10%; '><i class='fa fa-times'></i><span></p></div>";
               }
               $("#listOfFiles").html(list);
               this.reset();
@@ -227,6 +237,17 @@ $('#saveAsssignHomework').on('click', function(){
       });
   });
 
+  function removeOne()
+  {
+    fileList.pop();
+    list="";
+    for(let z=0; z < fileList.length; z++)
+    {
+      list += "<div style='background: #BCFFEE;width: 30%;border-radius: 7px;padding-left: 19px;'><p>"+fileList[z]+" <span onClick='removeOne()' style='float:right; margin-right:-10%; '><i class='fa fa-times'></i><span></p></div>";
+    }
+    $("#listOfFiles").html(list);
+  }
+
 
 // saveUploadPDFHomeWork
 
@@ -240,6 +261,7 @@ $('#saveUploadPDFHomeWork').on('click', function(){
            comment: $('#pdfMessage').val(),
            session_id: "{{ $session->id }}",
            points: $('#pointsPDF').val(),
+           due_date: $('#dueDateUploadFile').val(),
            type_of_homework:"UPLOAD_PDF",
            assigned_content: fileIDs
          }),
@@ -250,11 +272,85 @@ $('#saveUploadPDFHomeWork').on('click', function(){
            $("#success_message_div").html("Homework for {{ $session->name }} has been assigned successfully.");
             $('#demoModal').modal('show');
             $("#saveUploadPDFHomeWork").html("Share");
+            $('#pdfMessage').val("");
+            $('#pointsPDF').val("");
+            $('#dueDateUploadFile').val("");
+            fileList = [];
+            removeOne();
          },
          error: (xhr, status, error)=>{
-            $("#saveUploadPDFHomeWork").html("Share");
+            // console.log(xhr);
+            $("#already_assigned").html(xhr.responseJSON.data);
+            $("#saveAddQuestionHomeWork").html("Share");
          }
      });
 });
+// Add Question
+// add Question HomeWork
+
+$('#saveAddQuestionHomeWork').on('click', function(){
+  $("#saveAddQuestionHomeWork").html("Assigning...");
+     $.ajax({
+         "_token": "{{ csrf_token() }}",
+         type:'POST',
+         url: "{{ url('assign-homework') }}",
+         data: JSON.stringify({
+           comment: $('#messageAddQuestion').val(),
+           session_id: "{{ $session->id }}",
+           points: $('#pointsAddQuestion').val(),
+           due_date: $('#dueDateAddQuestion').val(),
+           type_of_homework:"Add_Question",
+           assigned_content: CKEDITOR.instances.editor_add_question.getData()
+         }),
+         contentType: false,
+         processData: false,
+         success: (xhr, response) => {
+           //  alert("Homework Assigned Successfully");
+           $("#success_message_div").html("Homework for {{ $session->name }} has been assigned successfully.");
+            $('#demoModal').modal('show');
+            $("#saveAddQuestionHomeWork").html("Share");
+            $("#editor_add_question").val("");
+            $('#messageAddQuestion').val("");
+            $('#pointsAddQuestion').val("");
+            $('#dueDateAddQuestion').val("");
+         },
+         error: (xhr, status, error)=>{
+            // console.log(xhr);
+            $("#already_assigned").html(xhr.responseJSON.data);
+            $("#saveAddQuestionHomeWork").html("Share");
+         }
+     });
+});
+
+// Add Question End
+// date time picker duedate upload file
+$('document').ready(function () {
+    $('#dueDateUploadFile').datetimepicker({
+        formatDate: 'Y/m/d',
+        minDate: '-1970/01/01',//yesterday is minimum date(for today use 0 or -1970/01/01)
+    });
+})
+// duedate pdf
+$('document').ready(function () {
+    $('#dueDatePdf').datetimepicker({
+        formatDate: 'Y/m/d',
+        minDate: '-1970/01/01',//yesterday is minimum date(for today use 0 or -1970/01/01)
+    });
+})
+// end duedate
+
+// add question 
+$('document').ready(function () {
+    $('#dueDateAddQuestion').datetimepicker({
+        formatDate: 'Y/m/d',
+        minDate: '-1970/01/01',//yesterday is minimum date(for today use 0 or -1970/01/01)
+    });
+})
+// end add question duedate
 </script>
+{{-- ck editor --}}
+<script>
+  CKEDITOR.replace( 'editor_add_question' );
+</script>
+
 @endsection

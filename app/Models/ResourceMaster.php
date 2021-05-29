@@ -11,7 +11,8 @@ class ResourceMaster extends Model
     protected $fillable = [
         'pdf_path',
         'sub_topic_id',
-        'pdf_name'
+        'pdf_name',
+        'is_active'
     ];
 
 

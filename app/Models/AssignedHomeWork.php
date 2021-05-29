@@ -17,7 +17,8 @@ class AssignedHomeWork extends Model
         'comment',
         'points',
         'type_of_homework',
-        'assigned_content'
+        'assigned_content',
+        'due_date',
     ];
     public function studentlist()
     {
