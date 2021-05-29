@@ -91,6 +91,7 @@
                 @include('homework._assign_homework')
                 @include('homework._archieve')
                 @include('homework._feedback')
+
                 <p class="text-danger" id="already_assigned"></p>
               </div>
             </div>
@@ -139,6 +140,8 @@
 
 {{-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> --}}
 @section('scripts')
+ {{-- ck basic editor --}}
+ <script src="//cdn.ckeditor.com/4.16.1/basic/ckeditor.js"></script>
 {{-- datepicker [duedate link] --}}
 <script src="{{asset('assets/js/datepicker/jquery.datetimepicker.full.min.js')}}"></script>
 {{-- end --}}
@@ -164,8 +167,8 @@ $('#saveAsssignHomework').on('click', function(){
           data: JSON.stringify({
             comment: $('#message').val(),
             session_id: "{{ $session->id }}",
-            // due_date: $('#due_date_uploadfile').val(),
             points: $('#points').val(),
+            due_date: $('#dueDatePdf').val(),
             type_of_homework:"CHOOSE_PDF",
             assigned_content: $('#pdf').val()
           }),
@@ -177,7 +180,8 @@ $('#saveAsssignHomework').on('click', function(){
              $('#demoModal').modal('show');
              $("#saveAsssignHomework").html("Share");
              $('#message').val("");
-             $('#points').val("")
+             $('#points').val("");
+             $('#dueDatePdf').val("")
           },
           error: (xhr, status, error)=>{
             //  alert("Please Choose PDF File");
@@ -277,20 +281,79 @@ $('#saveUploadPDFHomeWork').on('click', function(){
          error: (xhr, status, error)=>{
             // console.log(xhr);
             $("#already_assigned").html(xhr.responseJSON.data);
-            $("#saveUploadPDFHomeWork").html("Share");
+            $("#saveAddQuestionHomeWork").html("Share");
+         }
+     });
+});
+// Add Question
+// saveUploadPDFHomeWork
+
+$('#saveAddQuestionHomeWork').on('click', function(){
+  $("#saveAddQuestionHomeWork").html("Assigning...");
+     $.ajax({
+         "_token": "{{ csrf_token() }}",
+         type:'POST',
+         url: "{{ url('assign-homework') }}",
+         data: JSON.stringify({
+          editor_add_question: $('#editor_add_question').val(),
+           comment: $('#messageAddQuestion').val(),
+           session_id: "{{ $session->id }}",
+           points: $('#pointsAddQuestion').val(),
+           due_date: $('#dueDateAddQuestion').val(),
+           type_of_homework:"Add_Question",
+           assigned_content: fileIDs
+         }),
+         contentType: false,
+         processData: false,
+         success: (xhr, response) => {
+           //  alert("Homework Assigned Successfully");
+           $("#success_message_div").html("Homework for {{ $session->name }} has been assigned successfully.");
+            $('#demoModal').modal('show');
+            $("#saveAddQuestionHomeWork").html("Share");
+            $("#editor_add_question").val("");
+            $('#messageAddQuestion').val("");
+            $('#pointsAddQuestion').val("");
+            $('#dueDateAddQuestion').val("");
+            fileList = [];
+            removeOne();
+         },
+         error: (xhr, status, error)=>{
+            // console.log(xhr);
+            $("#already_assigned").html(xhr.responseJSON.data);
+            $("#saveAddQuestionHomeWork").html("Share");
          }
      });
 });
 
-// date time picker
+// Add Question End
+// date time picker duedate upload file
 $('document').ready(function () {
     $('#dueDateUploadFile').datetimepicker({
         formatDate: 'Y/m/d',
         minDate: '-1970/01/01',//yesterday is minimum date(for today use 0 or -1970/01/01)
     });
-    // Location
+})
+// duedate pdf
+$('document').ready(function () {
+    $('#dueDatePdf').datetimepicker({
+        formatDate: 'Y/m/d',
+        minDate: '-1970/01/01',//yesterday is minimum date(for today use 0 or -1970/01/01)
+    });
 })
 // end duedate
+
+// add question 
+$('document').ready(function () {
+    $('#dueDateAddQuestion').datetimepicker({
+        formatDate: 'Y/m/d',
+        minDate: '-1970/01/01',//yesterday is minimum date(for today use 0 or -1970/01/01)
+    });
+})
+// end add question duedate
+</script>
+{{-- ck editor --}}
+<script>
+  CKEDITOR.replace( 'editor_add_question' );
 </script>
 
 @endsection

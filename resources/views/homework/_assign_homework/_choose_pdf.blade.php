@@ -59,14 +59,10 @@
             <th >Points</th>
           <input type="number" style="width:38%;" class="form-control"  id="points" placeholder="Points"/>  
          </div>
-          {{-- <table>
-            <tr>
-              <th>points</th>
-              <td>
-                <input type="number" style="width:38%;" class="form-control"  id="points" placeholder="Points"/> </td>
-            </tr>
-          </table> --}}
-          
+       
+           {{-- date --}}
+          Due Date:<input type="text" name="due_date" id="dueDatePdf" placeholder="Due Date">
+          {{-- date --}}
           <hr />
           <div>
             <div class="share_block">

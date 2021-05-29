@@ -62,7 +62,7 @@
     <input type="number" style="width:38%;" class="form-control"  id="pointsPDF" placeholder="Points"/>  
    </div> 
     {{-- date --}}
-      Date:<input type="text" name="due_date" id="dueDateUploadFile">
+      Due Date:<input type="text" name="due_date" id="dueDateUploadFile" placeholder="Due Date">
       {{-- date --}}
  
     <hr />

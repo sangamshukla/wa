@@ -18,6 +18,7 @@ class AssignedHomeWork extends Model
         'points',
         'type_of_homework',
         'assigned_content',
-        'due_date'
+        'due_date',
+        'editor_add_question'
     ];
 }

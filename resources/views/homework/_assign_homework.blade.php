@@ -209,17 +209,60 @@
           </div>
         </div>
       </div>
+      {{-- Add Question --}}
       <div
         id="tabhome3"
         class="container tab-pane fade"
       >
         <br />
-        <h3>Menu 2</h3>
-        <p>
-          Sed ut perspiciatis unde omnis iste natus
-          error sit voluptatem accusantium doloremque
-          laudantium, totam rem aperiam.
-        </p>
+        <h3></h3>
+        <textarea name="editor_add_question" id="editor_add_question"></textarea>
+        <div>
+          <ul class="list_pdf">
+            
+            <div id="listOfFiles"></div>
+            
+          </ul>
+          <hr>
+          <div class="card" style="width: 100%;">
+            <p class="tile_card_comment">Comment</p>
+            <div class="card-body">
+              <div class="form-group">
+                <label class="sr-only" for="message">post</label>
+                <textarea class="form-control" id="messageAddQuestion" rows="3" placeholder="Add your comment"></textarea>
+              </div>
+            </div>
+          </div>
+          <div style="color:#1D6771;" class="form-group">           
+            Points
+          <input type="number" style="width:38%;" class="form-control" id="pointsAddQuestion" placeholder="Points">  
+         </div> 
+          
+            Due Date:<input type="text" name="due_date" id="dueDateAddQuestion" placeholder="Due Date">
+            
+       
+          <hr>
+          <div>
+            <div class="share_block">
+              <label class="container" data-toggle="modal" data-target="#exampleModal">
+                <input type="checkbox">
+                <span class="checkmark"></span>
+                <span class="add_text">Assign To All Students</span>
+              </label>
+              <label class="container" data-toggle="modal" data-target="#exampleModal">
+                <input type="checkbox">
+                <span class="checkmark"></span>
+                <span class="add_text">Assign To Selected Students</span>
+              </label>
+            </div>
+            <div>
+            <button class="btn share_cta" id="saveAddQuestionHomeWork">
+              Share
+            </button>
+            </div> 
+           </div>
+            </div>
+        {{-- end add question --}}
       </div>
     </div>
   </div>
