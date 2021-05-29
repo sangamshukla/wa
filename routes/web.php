@@ -7,6 +7,7 @@ use App\Http\Controllers\FooterContentController;
 use App\Http\Controllers\FullCalenderController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HomeWorkController;
+use App\Http\Controllers\HomeWorkStudentController;
 use App\Http\Controllers\PackagesDetailsController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
@@ -71,7 +72,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/teacher-new-dashboard', [HomeController::class, 'teacherDashboard']);
     Route::get('/operation-dashboard', [HomeController::class, 'operationDashboard']);
 
-    Route::get('/student-dashboard', [HomeController::class, 'studentDashboard']);
+    Route::get('/student-dashboard', [HomeController::class, 'studentDashboard'])->name('student-dashboard');
     Route::get('/session-list', [HomeController::class, 'sessionList']);
     Route::get('zoom/{id}', [HomeController::class, 'zoom']);
 
@@ -143,6 +144,14 @@ Route::get('/teacher-new-dashboard', [TeacherDashboardController::class, 'index'
 //live session
 Route::get('/live-session-detail', [LiveSessionController::class, 'livesessiondetail'])->name('live-session-detail');
 Route::get('/live-session', [LiveSessionController::class, 'livesession'])->name('live-session');
+
+
+
+/*Student Homework Module*/
+Route::get('home-work/{id}', [HomeWorkStudentController::class, 'index'])->name('home-work')->middleware('auth');
+Route::get('submit-home-work/{id}', [HomeWorkStudentController::class, 'submitHomework'])->name('submit-home-work')->middleware('auth');
+/*End home work module*/
+
 
 // Teacher Calander routes.
 Route::get('teacher-calander/{id}', [TeacherCalanderController::class, 'index'])->name('teacher-calander');

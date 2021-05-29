@@ -12,4 +12,12 @@ class AssignedHomeWorkStudent extends Model
         'assigned_homework_id',
         'student_id'
     ];
+    public function homeWork()
+    {
+        return $this->belongsTo(AssignedHomeWork::class, 'assigned_homework_id');
+    }
+    public function session()
+    {
+        return $this->belongsTo(BatchSession::class, 'session_id');
+    }
 }

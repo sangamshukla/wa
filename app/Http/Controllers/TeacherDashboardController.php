@@ -35,6 +35,11 @@ class TeacherDashboardController extends Controller
         $images = TeacherProfile::where('user_id', $id)->select('teacher_profile_photo')->get();
         $days_in_month = cal_days_in_month(CAL_GREGORIAN, date('m'), date('Y'));
         $session_yes = 1;
-        return view('teacher.dashboard', compact('startweek', 'endweek', 'days_in_month', 'session_yes', 'session_data', 'images', 'users', 'batches'));
+        if (auth()->user()->role == "teacher") {
+
+            return view('teacher.dashboard', compact('startweek', 'endweek', 'days_in_month', 'session_yes', 'session_data', 'images', 'users', 'batches'));
+        } else {
+            return redirect(route('student-dashboard'));
+        }
     }
 }

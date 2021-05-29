@@ -1,6 +1,6 @@
-@extends('layouts.student')
+@extends('layouts.student_dashboard')
 
-@section('content')
+@section('student-content')
 <!-- Page Heading -->
 @php
     foreach($status as $st)

@@ -109,7 +109,15 @@
                                             {{-- <p class="date_text">{{ $batch->batch_start_date->format('d M, Y') }}</p> --}}
 
                                             <p class="date_text" style="margin-top: -9px;
-                                                margin-left: 81px;">{{ $batch->batch_start_date->format('d M, Y H:i A') }}</p>
+                                                margin-left: 81px;">
+                                                @foreach ($batch->batchSession as $session)
+                                                @if (\Carbon\Carbon::parse($session->start_date_time)->format('d')==\Carbon\Carbon::now()->format('d'))
+
+                                                {{ $session->start_date_time->format('d M, Y H:i A') }}
+                                                @endif
+                                                @endforeach
+                                            </p>
+
                                         </h5>
                                     </div>
                                     <div id="collapse{{$batch->id}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
@@ -125,13 +133,17 @@
                                                     <td>Teacher</td>
                                                     <td>{{ $batch->teacher->name }}</td>
                                                 </tr>
-
                                                 <tr>
+
                                                     <td>Topics</td>
-                                                    <td> @foreach($session->topics as $t)
-                                                        {{ $session->name }} - {{ $t->topic->name }}
+                                                    <td>
+                                                        {{-- @foreach($session->topics as $t)
+                                                        {{ $session->name }} - {{ $t->topic->name }} --}}
                                                     </td>
-                                                    @endforeach
+                                                {{-- @endforeach --}}
+                                                </tr>
+                                                <tr>
+                                                    <td><a href="{{route('home-work', ['id'=>$session->id])}}">View Homework</a></td>
                                                 </tr>
                                                 @endif
                                                 @endforeach
@@ -207,10 +219,10 @@
 
                                                     <tr>
                                                         <td>Topics</td>
-                                                        <td> @foreach($session->topics as $t)
+                                                        {{-- <td> @foreach($session->topics as $t)
                                                             {{ $session->name }} - {{ $t->topic->name }}
                                                         </td>
-                                                        @endforeach
+                                                        @endforeach --}}
                                                     </tr>
 
                                                     @endif
@@ -281,10 +293,10 @@
 
                                                     <tr>
                                                         <td>Topics</td>
-                                                        <td> @foreach($session->topics as $t)
+                                                        {{-- <td> @foreach($session->topics as $t)
                                                             {{ $session->name }} - {{ $t->topic->name }}
                                                         </td>
-                                                        @endforeach
+                                                        @endforeach --}}
                                                     </tr>
                                                 </table>
                                             </div>
@@ -453,15 +465,15 @@
                                 <!--<p> Date & Time: </p>   -->
                                 <!--  </td> -->
                                 <!--  <td>-->
-                                <!--     {{ $batch->batch_start_date->format('d M, Y H:i A') }} -->
+                                {{-- <!--     {{ $batch->batch_start_date->format('d M, Y H:i A') }} --> --}}
                                 <!--  </td>-->
                                 <!--</tr>-->
                                 <!--<tr>-->
                                 <!--    <td>Topics</td>-->
-                                <!--    <td> @foreach($session->topics as $t)-->
-                                <!--        {{ $session->name }} - {{ $t->topic->name }}-->
+                                {{-- <!--    <td> @foreach($session->topics as $t)--> --}}
+                                {{-- <!--        {{ $session->name }} - {{ $t->topic->name }}--> --}}
                                 <!--    </td>-->
-                                <!--    @endforeach-->
+                                {{-- <!--    @endforeach--> --}}
                                 <!--</tr>-->
                                 <!--</table>-->
                                 <table class="table">
@@ -477,26 +489,26 @@
                                 <td>
                                     {{ $batch->batch_start_date->format('d M, Y H:i A') }}
                                 </td>
-                                <td>
+                                {{-- <td>
                                      @foreach($session->topics as $t)
                                         {{ $session->name }} - {{ $t->topic->name }}
                                     </td>
-                                 @endforeach
+                                 @endforeach --}}
 
                             </tr>
                                 <!--  <td>-->
                                 <!--<p> </p>   -->
                                 <!--  </td> -->
                                 <!--  <td>-->
-                                <!--     {{ $batch->batch_start_date->format('d M, Y H:i A') }} -->
+                                {{-- <!--     {{ $batch->batch_start_date->format('d M, Y H:i A') }} --> --}}
                                 <!--  </td>-->
                                 <!--</tr>-->
                                 <!--<tr>-->
                                 <!--    <td>Topics</td>-->
-                                <!--    <td> @foreach($session->topics as $t)-->
-                                <!--        {{ $session->name }} - {{ $t->topic->name }}-->
+                                {{-- <!--    <td> @foreach($session->topics as $t)--> --}}
+                                {{-- <!--        {{ $session->name }} - {{ $t->topic->name }}--> --}}
                                 <!--    </td>-->
-                                <!--    @endforeach-->
+                                {{-- <!--    @endforeach--> --}}
                                 <!--</tr>-->
                                 </table>
                             </div>
