@@ -21,7 +21,6 @@ class CreateAssignedHomeWorksTable extends Migration
             $table->string('type_of_homework')->nullable();
             $table->string('assigned_content')->nullable();
             $table->date('due_date')->nullable();
-            $table->string('editor_add_question')->nullable();
             $table->timestamps();
         });
     }

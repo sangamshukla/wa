@@ -286,7 +286,7 @@ $('#saveUploadPDFHomeWork').on('click', function(){
      });
 });
 // Add Question
-// saveUploadPDFHomeWork
+// add Question HomeWork
 
 $('#saveAddQuestionHomeWork').on('click', function(){
   $("#saveAddQuestionHomeWork").html("Assigning...");
@@ -295,13 +295,12 @@ $('#saveAddQuestionHomeWork').on('click', function(){
          type:'POST',
          url: "{{ url('assign-homework') }}",
          data: JSON.stringify({
-          editor_add_question: $('#editor_add_question').val(),
            comment: $('#messageAddQuestion').val(),
            session_id: "{{ $session->id }}",
            points: $('#pointsAddQuestion').val(),
            due_date: $('#dueDateAddQuestion').val(),
            type_of_homework:"Add_Question",
-           assigned_content: fileIDs
+           assigned_content: CKEDITOR.instances.editor_add_question.getData()
          }),
          contentType: false,
          processData: false,
@@ -314,8 +313,6 @@ $('#saveAddQuestionHomeWork').on('click', function(){
             $('#messageAddQuestion').val("");
             $('#pointsAddQuestion').val("");
             $('#dueDateAddQuestion').val("");
-            fileList = [];
-            removeOne();
          },
          error: (xhr, status, error)=>{
             // console.log(xhr);

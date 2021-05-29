@@ -19,6 +19,5 @@ class AssignedHomeWork extends Model
         'type_of_homework',
         'assigned_content',
         'due_date',
-        'editor_add_question'
     ];
 }

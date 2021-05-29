@@ -102,10 +102,9 @@ class HomeWorkController extends Controller
             'session_id' => $content->session_id,
             'comment' => $content->comment,
             'points' => $content->points,
-            'due_date' => $content->due_date,
+            'due_date' => $content->due_date ?? '',
             'type_of_homework'=>$content->type_of_homework,
             'assigned_content' => $homeworkContent, // resource_master id
-            'editor_add_question' => $content->editor_add_question,
         ]);
 
         foreach ($students as $student) {
