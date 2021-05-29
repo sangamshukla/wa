@@ -42,8 +42,8 @@
                             // alert(difference);
                             if (difference > 0) {
                                 const parts = {
-                                    // d: Math.floor(difference / (1000 * 60 * 60 * 24)),
-                                    // h: Math.floor((difference / (1000 * 60 * 60)) % 24),
+                                    d: Math.floor(difference / (1000 * 60 * 60 * 24)),
+                                    h: Math.floor((difference / (1000 * 60 * 60)) % 24),
                                     m: Math.floor((difference / 1000 / 60) % 60),
                                     s: Math.floor((difference / 1000) % 60),
                                 };

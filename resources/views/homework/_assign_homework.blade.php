@@ -104,7 +104,7 @@
                 </tbody>
               </table>
             </div>
-            <div class="modal-footer">
+            {{-- <div class="modal-footer">
               <button
                 class="btn btn-secondary"
                 data-dismiss="modal"
@@ -117,7 +117,7 @@
               >
                 Save
               </button>
-            </div>
+            </div> --}}
           </div>
         </div>
       </div>

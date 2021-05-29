@@ -17,6 +17,7 @@ class CreateResourceMastersTable extends Migration
             $table->id();
             $table->string('pdf_path')->nullable();
             $table->integer('sub_topic_id')->nullable();
+            $table->integer('is_active')->default("0");
             $table->timestamps();
         });
     }

@@ -51,8 +51,8 @@
         <div id="content">
           <!-- Topbar -->
 
-          {{-- @include('teacher.topnav') --}}
-            @include('layouts._partials.session._topbar')
+          @include('teacher.topnav')
+            {{-- @include('layouts._partials.session._topbar') --}}
           <!-- End of Topbar -->
           <!-- Begin Page Content -->
           @yield('content')

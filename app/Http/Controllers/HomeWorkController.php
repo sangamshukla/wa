@@ -8,6 +8,7 @@ use App\Models\BatchSession;
 use App\Models\Order;
 use App\Models\OrderItems;
 use App\Models\ResourceMaster;
+use App\Models\TeacherProfile;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -25,9 +26,11 @@ class HomeWorkController extends Controller
         
         $students = User::whereIn('id', $studentsList->unique())->get();
 
-        $pdfFilesAll = ResourceMaster::where('sub_topic_id', $session->singleTopic->topic_id)->get();
+        $pdfFilesAll = ResourceMaster::where('sub_topic_id', $session->singleTopic->topic_id)
+            ->where('is_active', 1)->get();
+        $images = TeacherProfile::where('user_id', $id)->select('teacher_profile_photo')->get();
         // dd($pdfFilesAll);
-        return view('homework.start-session', compact('session', 'students', 'pdfFilesAll'));
+        return view('homework.start-session', compact('session', 'students', 'pdfFilesAll', 'images'));
     }
     public function saveStartSession(Request $request)
     {
@@ -55,7 +58,8 @@ class HomeWorkController extends Controller
             $rm = ResourceMaster::create([
                 'pdf_name' => $filename,
                 'pdf_path' => $path,
-                'sub_topic_id' => $session->singleTopic->topic_id
+                'sub_topic_id' => $session->singleTopic->topic_id,
+                'is_active' => 0
             ]);
             return response()->json(['filename'=>$filename, 'fileId'=>$rm->id]);
         } else {
@@ -98,6 +102,7 @@ class HomeWorkController extends Controller
             'session_id' => $content->session_id,
             'comment' => $content->comment,
             'points' => $content->points,
+            'due_date' => $content->due_date,
             'type_of_homework'=>$content->type_of_homework,
             'assigned_content' => $homeworkContent // resource_master id
         ]);

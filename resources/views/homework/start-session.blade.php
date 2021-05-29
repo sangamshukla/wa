@@ -162,6 +162,7 @@ $('#saveAsssignHomework').on('click', function(){
           data: JSON.stringify({
             comment: $('#message').val(),
             session_id: "{{ $session->id }}",
+            // due_date: $('#due_date_uploadfile').val(),
             points: $('#points').val(),
             type_of_homework:"CHOOSE_PDF",
             assigned_content: $('#pdf').val()
@@ -254,6 +255,7 @@ $('#saveUploadPDFHomeWork').on('click', function(){
            comment: $('#pdfMessage').val(),
            session_id: "{{ $session->id }}",
            points: $('#pointsPDF').val(),
+           due_date: $('#dueDateUploadFile').val(),
            type_of_homework:"UPLOAD_PDF",
            assigned_content: fileIDs
          }),
@@ -266,6 +268,7 @@ $('#saveUploadPDFHomeWork').on('click', function(){
             $("#saveUploadPDFHomeWork").html("Share");
             $('#pdfMessage').val("");
             $('#pointsPDF').val("");
+            $('#dueDateUploadFile').val("");
             fileList = [];
             removeOne();
          },

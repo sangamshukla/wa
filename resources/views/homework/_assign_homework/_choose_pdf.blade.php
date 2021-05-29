@@ -70,24 +70,24 @@
           <hr />
           <div>
             <div class="share_block">
-              <label class="container">
+              <label  data-toggle="modal" data-target="#exampleModal" class="container">
                 <input
                   type="checkbox"
-                  checked="checked"
+                  {{-- checked="checked" --}}
                 />
                 <span class="checkmark"></span>
                 <span class="add_text"
-                  >Select to All</span
+                  >Assign To All Students</span
                 >
               </label>
-              <label class="container">
+              <label  data-toggle="modal" data-target="#exampleModal" class="container">
                 <input
                   type="checkbox"
-                  checked="checked"
+                  {{-- checked="checked" --}}
                 />
                 <span class="checkmark"></span>
                 <span class="add_text"
-                  >Selected Students</span
+                  >Assign To Selected Students</span
                 >
               </label>
             </div>

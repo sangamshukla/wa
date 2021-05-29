@@ -41,7 +41,7 @@
       
     </ul>
     <hr />
-    <div class="card">
+    <div class="card" style="width: 100%;">
       <p class="tile_card_comment">Comment</p>
       <div class="card-body">
         <div class="form-group">
@@ -61,6 +61,11 @@
       <th >Points</th>
     <input type="number" style="width:38%;" class="form-control"  id="pointsPDF" placeholder="Points"/>  
    </div> 
+   {{-- date --}}
+       {{-- </div>  --}}
+      Date:<input type="date" name="due_date" id="dueDateUploadFile">
+       {{-- </div>  --}}
+    {{-- date --}}
     <hr />
     <div>
       <div class="share_block">
