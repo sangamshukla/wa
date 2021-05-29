@@ -139,7 +139,9 @@
 
 {{-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> --}}
 @section('scripts')
-
+{{-- datepicker [duedate link] --}}
+<script src="{{asset('assets/js/datepicker/jquery.datetimepicker.full.min.js')}}"></script>
+{{-- end --}}
 <script type="text/javascript">
 // share homework By Choosing The File
 $('#saveAsssignHomework').on('click', function(){
@@ -279,5 +281,16 @@ $('#saveUploadPDFHomeWork').on('click', function(){
          }
      });
 });
+
+// date time picker
+$('document').ready(function () {
+    $('#dueDateUploadFile').datetimepicker({
+        formatDate: 'Y/m/d',
+        minDate: '-1970/01/01',//yesterday is minimum date(for today use 0 or -1970/01/01)
+    });
+    // Location
+})
+// end duedate
 </script>
+
 @endsection

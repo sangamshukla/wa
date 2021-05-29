@@ -30,6 +30,9 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('wa/dashboard/homework/css/student-admin.css') }}" rel="stylesheet" />
     <link href="{{ asset('wa/dashboard/homework/css/session.css') }}" rel="stylesheet" />
+
+ <!--date time picker[duedate] -->
+<link rel="stylesheet" href="{{asset('assets/css/datepicker/jquery.datetimepicker.min.css')}}" />
   </head>
 
   <body id="page-top">
