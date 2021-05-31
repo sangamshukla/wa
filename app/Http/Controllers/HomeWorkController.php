@@ -54,14 +54,8 @@ class HomeWorkController extends Controller
         if ($request->hasFile('pdf')) {
             $filename = $request->pdf->getClientOriginalName();
             $path = $request->file('pdf')->store('public/pdfs', ['disk'=>'public_uploads']);
-            $session = BatchSession::find($id);
-            $rm = ResourceMaster::create([
-                'pdf_name' => $filename,
-                'pdf_path' => $path,
-                'sub_topic_id' => $session->singleTopic->topic_id,
-                'is_active' => 0
-            ]);
-            return response()->json(['filename'=>$filename, 'fileId'=>$rm->id]);
+           
+            return response()->json(['filename'=>$filename, 'fileId'=>$path]);
         } else {
             return 'please choose file';
         }
