@@ -68,9 +68,9 @@ class HomeWorkController extends Controller
 
         $checkHomeWorkIsAlreadyAssigned = AssignedHomeWork::where('session_id', $content->session_id)->exists();
         
-        if ($checkHomeWorkIsAlreadyAssigned) {
-            return response()->json(['data'=> 'Homework is already assigned for this session'], 400);
-        }
+        // if ($checkHomeWorkIsAlreadyAssigned) {
+        //     return response()->json(['data'=> 'Homework is already assigned for this session'], 400);
+        // }
 
         $studentsList = collect([]);
         $batches = OrderItems::with('orderPayment')->where('batch_id', $session->batch_id)->get();
@@ -78,8 +78,9 @@ class HomeWorkController extends Controller
         $batches->transform(function ($batch) use ($studentsList) {
             $studentsList->push($batch->orderPayment->student_id);
         });
-        
-        $students = User::whereIn('id', $studentsList->unique())->get();
+        // // if(isset($cont))
+        // foreach()
+        $students = User::whereIn('id', $content->choosePdfSelectStudent)->get();
         $homeworkContent = $content->assigned_content;
 
         if ($content->type_of_homework == 'UPLOAD_PDF') {

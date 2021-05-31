@@ -88,7 +88,11 @@
                       <label class="container">
                         <input
                           type="checkbox"
-                          checked="checked"
+                          class="choosePdfSelectStudent"
+                          {{-- checked="checked" --}}
+                          name="choosePdfSelectStudent[]"
+                          value="{{ $student->id }}"
+                         
                         />
                         <span
                           class="checkmark"
@@ -102,6 +106,7 @@
                  @php $i++; @endphp
                   @endforeach
                 </tbody>
+               
               </table>
             </div>
             {{-- <div class="modal-footer">

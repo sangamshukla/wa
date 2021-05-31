@@ -149,7 +149,7 @@
 // share homework By Choosing The File
 $('#saveAsssignHomework').on('click', function(){
       $("#saveAsssignHomework").html("Assigning...");
-      var choosePdf = $("input[name='choosePDFS']:checked").val();;
+      var choosePdf = $("input[name='choosePDFS']:checked").val();
       if(!choosePdf)
       {
        $('#choose_pdf_tree').html("Please Select PDF First.")
@@ -265,6 +265,10 @@ $('#saveAsssignHomework').on('click', function(){
 
 $('#saveUploadPDFHomeWork').on('click', function(){
   $("#saveUploadPDFHomeWork").html("Assigning...");
+  // get checked inputs values
+  //  var selectedStudents = $("input[name='choosePdfSelectStudent[]']:checked").val();
+  //  var selectedStudents = $("input[name='choosePdfSelectStudent[]']:checked").val();
+    var selectedStudents = $('.choosePdfSelectStudent:checked').map(function() {return this.value;}).get();
      $.ajax({
          "_token": "{{ csrf_token() }}",
          type:'POST',
@@ -275,7 +279,8 @@ $('#saveUploadPDFHomeWork').on('click', function(){
            points: $('#pointsPDF').val(),
            due_date: $('#dueDateUploadFile').val(),
            type_of_homework:"UPLOAD_PDF",
-           assigned_content: fileIDs
+           assigned_content: fileIDs,
+           choosePdfSelectStudent:selectedStudents
          }),
          contentType: false,
          processData: false,
