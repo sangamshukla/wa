@@ -233,13 +233,16 @@
               </div>
             </div>
           </div>
-          <div style="color:#1D6771;" class="form-group">           
-            Points
-          <input type="number" style="width:38%;" class="form-control" id="pointsAddQuestion" placeholder="Points">  
+          <div class="row mt-2">
+            <div style="color:#1D6771;"class="form-group col-md-6">           
+              <span>Points</span>
+          <input type="number" style="width:78%;" class="form-control" id="pointsAddQuestion" placeholder="Points">  
          </div> 
-          
-            Due Date:<input type="text" name="due_date" id="dueDateAddQuestion" placeholder="Due Date">
-            
+          <div style="color:#1D6771;" style="float:right;" class="form-group col-md-6">           
+            <span style="float: left; margin-left: 22%;">Due Date:</span>
+            <input type="text" style="width:78%; float: right" class="form-control" name="due_date" id="dueDateAddQuestion" placeholder="Due Date">
+          </div>
+        </div>
        
           <hr>
           <div>

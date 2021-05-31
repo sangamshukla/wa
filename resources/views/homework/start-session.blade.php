@@ -203,7 +203,15 @@ $('#saveAsssignHomework').on('click', function(){
       $('#image-input-error').text('');
       $('#profile_pic_loader').show();
       $('upload_btn').attr("disabled", true);
-      $.ajax({
+      // upload only 1 pdf start
+      if(fileIDs.length > 0)
+      {
+        $("#show_error_meessage_for_file").html("You Can Upload Only 1 PDF.");
+        $('#profile_pic_loader').hide();
+        this.reset();
+      }else {
+        // upload only 1 pdf end
+        $.ajax({
           "_token": "{{ csrf_token() }}",
           type:'POST',
           url: "{{url('upload-pdf')}}/{{$session->id}}",
@@ -235,6 +243,10 @@ $('#saveAsssignHomework').on('click', function(){
               }
           }
       });
+      // upload 1 pdf start
+      }
+      // upload 1 pdf end
+     
   });
 
   function removeOne()

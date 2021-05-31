@@ -29,6 +29,7 @@
           <img src="{{asset('wa/assets/img/ajax-loader.gif')}}" alt="">
           <p><b>Please wait...</b></p>
           </div>
+          <p class="text-danger" id="show_error_meessage_for_file"></p>
       </form>
   </div>
     {{-- /file upload --}}
@@ -57,13 +58,16 @@
         </div>
       </div>
     </div>
-    <div style="color:#1D6771;"class="form-group">           
-      <th >Points</th>
-    <input type="number" style="width:38%;" class="form-control"  id="pointsPDF" placeholder="Points"/>  
-   </div> 
-    {{-- date --}}
-      Due Date:<input type="text" name="due_date" id="dueDateUploadFile" placeholder="Due Date">
-      {{-- date --}}
+    <div class="row mt-2">
+      <div style="color:#1D6771;"class="form-group col-md-6">           
+        <span>Points</span>
+      <input type="number" style="width:38%;" class="form-control"  id="pointsPDF" placeholder="Points"/>  
+    </div> 
+    <div style="color:#1D6771;" style="float:right;" class="form-group col-md-6">           
+      <span style="float: left; margin-left: 22%;">Due Date:</span>
+        <input type="text" class="form-control" style="width:78%; float: right"  name="due_date" id="dueDateUploadFile" placeholder="Due Date">
+      </div>
+    </div>
  
     <hr />
     <div>
