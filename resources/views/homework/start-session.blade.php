@@ -318,6 +318,7 @@ $('#saveAddQuestionHomeWork').on('click', function(){
            due_date: $('#dueDateAddQuestion').val(),
            type_of_homework:"Add_Question",
            assigned_content: CKEDITOR.instances.editor_add_question.getData()
+           chooseUploadPdfSelectStudent:selectedStudents
          }),
          contentType: false,
          processData: false,

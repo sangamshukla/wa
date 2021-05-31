@@ -2352,3 +2352,132 @@ form.month_week_block {
     width: 100%;
   }
 }
+/* archive css start */
+
+.session_data_block.archive {
+  background: #FFF9DE;
+  border: 1px solid #FFF9DE;
+}
+
+a.nav-link.home_work_tab {
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #111111;
+  border: 0px;
+}
+
+a.nav-link.home_work_tab.active {
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 20px;
+  align-items: center;
+  color: #1D6771;
+  border-bottom: 2px solid #1D6771;
+}
+
+span.float-right {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate( 45deg);
+  -webkit-transform: rotate( 45deg);
+}
+.accordian_card_display{
+  justify-content: space-between;
+  display: flex;
+}
+.accordian_card_display>div:nth-child(1){
+  font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    color: #666666;
+}
+.accordian_card_display>div:nth-child(2){
+  font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    color: #666666;
+    border-right: 2px solid #E6E6E6;
+    padding-right: 30px;
+}
+.accordian_card_display>div:nth-child(3){
+  font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 150%;
+    color: #666666;
+    border-right: 2px solid #E6E6E6;
+    padding-right: 30px;
+}
+.accordian_card_display>div:nth-child(4){
+  font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 150%;
+    color: #666666;
+    border-right: 2px solid #E6E6E6;
+    padding-right: 30px;
+}
+.accordian_card_display>div:nth-child(5){
+  font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 150%;
+    text-decoration-line: underline;
+    color: #1D6771;
+
+    padding-right: 30px;
+}
+.accordian_card_display>div:nth-child(6){
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+  align-items: center;
+  text-align: center;
+  color: #1D6771;
+ 
+    padding-right: 30px;
+}
+.archiv_block{
+  display: flex;
+  justify-content: space-between;
+}
+.accordian_card_inner_block>div{
+  display: inline-block;
+  padding: 10px 80px;
+}
+.inner_nameblock {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 150%;
+  color: #333333;
+}
+.inner_reminder_block a{
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 150%;
+  color: #1D6771;
+}
+/* archive css end */
