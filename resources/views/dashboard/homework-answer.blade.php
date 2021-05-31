@@ -19,7 +19,7 @@
 
 #pdf-main-container {
 	width: 400px;
-	margin: 20px auto;
+	margin: 0px auto;
 }
 
 #pdf-loader {
@@ -37,7 +37,8 @@
 
 #pdf-meta {
 	overflow: hidden;
-	margin: 0 0 20px 0;
+	margin-left: 0px;
+    margin-right: 10px;
 }
 
 #pdf-buttons {
@@ -59,6 +60,8 @@
 #pdf-canvas {
 	border: 1px solid rgba(0,0,0,0.2);
 	box-sizing: border-box;
+    /* min-width: 600px; */
+    width: 400px;
 }
 
 #page-loader {
@@ -142,7 +145,7 @@
                                     </li>
                                     <li class="nav-item">
                                       <a class="nav-link tab_title side_nav inner_nav " data-toggle="tab"
-                                        href="#tabhome2">Upload File</a>
+                                        href="#tabhome2" id="load-homework">Upload File</a>
                                     </li>
                                     <li class="nav-item">
                                       <a class="nav-link tab_title side_nav inner_nav" data-toggle="tab" href="#tabhome3">
@@ -257,12 +260,7 @@
                                 <div id="tabhome2" class="container tab-pane ">
                                   <div class="row">
                                     <div class="col-6">
-                                      <div class="card">
-                                          <p>{{$homework->homeworkName->pdf_path}}</p>
-                                        {{-- <img src="{{asset('wa/dashboard/img/ans-img.png')}}" class="ans_img"> --}}
-                                            {{-- pdf section start --}}
-                                            <button id="show-pdf-button">Show PDF</button>
-
+                                      {{-- <div class="card"> --}}
                                                 <div id="pdf-main-container">
                                                     <div id="pdf-loader">Loading document ...</div>
                                                     <div id="pdf-contents">
@@ -271,23 +269,34 @@
                                                                 <button id="pdf-prev">Previous</button>
                                                                 <button id="pdf-next">Next</button>
                                                             </div>
-                                                            <div id="page-count-container">Page <div id="pdf-current-page"></div> of <div id="pdf-total-pages"></div></div>
+                                                            <div id="page-count-container">
+                                                                Page
+                                                                <div id="pdf-current-page"></div> of <div id="pdf-total-pages"></div></div>
                                                         </div>
-                                                        <canvas id="pdf-canvas" width="400"></canvas>
+                                                        <canvas id="pdf-canvas" width="500px"></canvas>
                                                         <div id="page-loader">Loading page ...</div>
                                                     </div>
                                                 </div>
                                             {{-- pdf section end --}}
-                                      </div>
+                                      {{-- </div> --}}
                                     </div>
                                     <div class="col-6">
                                       <div class="card">
                                         <p class="tile_card_comment">Teachers Message</p>
                                         <div class="file_upload">
-                                          <label class="file">
-                                            <input type="file" id="file" aria-label="example.pdf">
-                                            <span class="file-custom"></span>
-                                          </label>
+                                            <form id="homeworksubmit">
+                                                @csrf
+                                                <label class="file">
+                                                    <input type="file" id="file_upload_input"  style="opacity: 1 !important" name="homeworkfiles[]" multiple="multiple">
+                                                 </label>
+                                                 <input type="hidden" name="homework_id" value="{{$homework->id}}">
+                                                 {{-- <span class="file-custom"></span> --}}
+                                              <button>Submit</button>
+                                            </form>
+                                            <div id="divid">
+                                                <ul id="changed">
+                                                </ul>
+                                            </div>
                                         </div>
                                       </div>
                                     </div>
@@ -308,7 +317,7 @@
                                         <p class="tile_card_comment">Teachers Message</p>
                                         <div class="file_upload">
                                           <label class="file">
-                                            <input type="file" id="file" aria-label="example.pdf">
+                                            <input type="file" id="file" aria-label="example.pdf" name="uploadfile">
                                             <span class="file-custom"></span>
                                           </label>
                                         </div>
@@ -487,9 +496,10 @@
                 }
 
                 // click on "Show PDF" buuton
-                document.querySelector("#show-pdf-button").addEventListener('click', function() {
-                    this.style.display = 'none';
-                    showPDF("{{asset()}}");
+                document.querySelector("#load-homework").addEventListener('click', function() {
+                    // this.style.display = 'none';
+                    // showPDF("{{asset('uploads')}}"+"/"+"{{$homework->pdf_path}}");
+                    showPDF("{{asset('uploads')}}"+"/"+"{{$homework->assigned_content}}");
                 });
 
                 // click on the "Previous" page button
@@ -503,5 +513,51 @@
                     if(_CURRENT_PAGE != _TOTAL_PAGES)
                         showPage(++_CURRENT_PAGE);
                 });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script>
+                //   $('#file_upload_div').change(function(e){
+                //       var files=[];
+
+                //       var filename=$('input[type=file]')[0].files[0].name;
+                //       const [file]=file_upload.files;
+                //       if(file)
+                //       {
+                //       $('#divid').append('<img src="'+URL.createObjectURL(file)+'" '+'width="100" height="100" style="border-radius:20px; padding:5px;"/>');
+                //       }
+                //     //   $('#changed').append('<li>'+filename+'</li>');
+                //    });
+            $('#homeworksubmit').submit(function(e){
+                // e.preventDefault();
+                // var element=document.getElementById("file_upload_div");
+                var homework_id="{{$homework->id}}";
+                // var files=[];
+                // for (var i = 0; i < element.files.length; i++) {
+                //   files.push(element.files[i].name);
+                //     }
+                var formData = new FormData($(this)[0]);
+                    $.ajax({
+                        type:"POST",
+                        url:"{{route('upload-homework')}}",
+                        '_token': '{{ csrf_token() }}',
+                        data: formData,
+                        // homework_id:homework_id,
+                        async: false,
+                        cache: false,
+                        contentType: false,
+                        enctype: 'multipart/form-data',
+                        processData: false,
+
+                        success:function(response){
+                            // alert("success");
+                            console.log(response)
+                        },
+                        error:function(error){
+                            alert("error");
+                            console.log(error.responseText.message);
+                        }
+                    });
+                    return false;
+            });
         </script>
 @endsection

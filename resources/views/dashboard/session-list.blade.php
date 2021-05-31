@@ -137,13 +137,12 @@
 
                                                     <td>Topics</td>
                                                     <td>
-                                                        {{-- @foreach($session->topics as $t)
-                                                        {{ $session->name }} - {{ $t->topic->name }} --}}
+                                                        {{$session->topics->topic->name}}
                                                     </td>
-                                                {{-- @endforeach --}}
+
                                                 </tr>
                                                 <tr>
-                                                    <td><a href="{{route('home-work', ['id'=>$session->id])}}">View Homework</a></td>
+                                                    <td colspan="2"><a href="{{route('home-work', ['id'=>$session->id])}}">View Homework</a></td>
                                                 </tr>
                                                 @endif
                                                 @endforeach
@@ -223,6 +222,7 @@
                                                             {{ $session->name }} - {{ $t->topic->name }}
                                                         </td>
                                                         @endforeach --}}
+                                                        <td>{{$session->topics->topic->name}}</td>
                                                     </tr>
 
                                                     @endif
@@ -261,10 +261,12 @@
 
                                                     </div>
                                                     <div>
+                                                        <p class="subject_card">Subject</p>
                                                         <p style="font-size:15px;" class="card_subject_title1">{{$batch->subject->name}}</p>
                                                     </div>
                                                     <div class="border-left first_left_border"></div>
                                                     <div>
+                                                        <p class="subject_card">Join Now</p>
                                                             <a style="text-decoration:none; font-size:15px; color: #0EA47E;" href="{{ url('zoom', $batch->id)  }}">join now</a></p>
                                                     </div>
                                                     <div class="border-left second_left_border"></div>
@@ -297,6 +299,7 @@
                                                             {{ $session->name }} - {{ $t->topic->name }}
                                                         </td>
                                                         @endforeach --}}
+                                                        <td>{{$session->name}}-{{$session->topics->topic->name}}</td>
                                                     </tr>
                                                 </table>
                                             </div>
@@ -494,6 +497,7 @@
                                         {{ $session->name }} - {{ $t->topic->name }}
                                     </td>
                                  @endforeach --}}
+                                 <td>{{$session->topics->topic->name}}</td>
 
                             </tr>
                                 <!--  <td>-->

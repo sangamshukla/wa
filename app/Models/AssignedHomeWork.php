@@ -24,6 +24,10 @@ class AssignedHomeWork extends Model
     {
         return $this->hasMany(AssignedHomeWorkStudent::class, 'assigned_homework_id');
     }
+    public function homeworkstatus()
+    {
+        return $this->hasMany(AssignedHomeWorkAnswer::class, 'assigned_home_work_id');
+    }
     public function homeworkName()
     {
         return $this->belongsTo(ResourceMaster::class, 'assigned_content');

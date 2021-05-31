@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\AssignedHomeWork;
+use App\Models\AssignedHomeWorkAnswer;
+use App\Models\AssignedHomeWorkAnswerMap;
 use App\Models\AssignedHomeWorkStudent;
 use App\Models\Batch;
 use App\Models\BatchSession;
@@ -19,14 +21,7 @@ class HomeWorkStudentController extends Controller
         $user_id = auth()->user()->id;
         $sessionDetails = BatchSession::where('id', $id)->get();
         $batches = Batch::all();
-        // $homeworks = DB::table('assigned_home_work_students AS ahws')
-        //     ->join('assigned_home_works AS ahw', 'ahws.assigned_homework_id', '=', 'ahw.id')
-        //     ->where('student_id', $user_id)
-        //     ->where('session_id', $id)
-        //     ->get();
         $homeworks = AssignedHomeWork::where('session_id', $id)->get();
-        // dd($homeworks);
-
         return view('dashboard.homework', compact('sessionDetails', 'homeworks'));
     }
     public function sessionDetail()
@@ -62,7 +57,32 @@ class HomeWorkStudentController extends Controller
     public function submitHomework(Request $request, $id)
     {
         $homeworks = AssignedHomeWork::where('id', $id)->get();
-        // dd($homeworks);  
+        // dd($homeworks);
         return view('dashboard.homework-answer', compact('homeworks'));
+    }
+    public function uploadHomework(Request $request)
+    {
+        // $request->validate([
+        //     'homeworkFile' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        // ]);
+        // dd($request->homeworkfiles);
+        $homework_id = $request->homework_id;
+        $content_types = AssignedHomeWork::where('id', $homework_id)->select('type_of_homework')->get();
+        foreach ($content_types as $content_type) {
+            AssignedHomeWorkAnswer::create([
+                'assigned_home_work_id' => $homework_id,
+                'content_type' => $content_type->type_of_homework,
+                'answered_content' => 'PDF',
+                'student_id' => auth()->user()->id
+            ]);
+        }
+        foreach ($request->homeworkfiles as $homeworkfile) {
+            $homework_filename = $homeworkfile->getClientOriginalName();
+            AssignedHomeWorkAnswerMap::create([
+                'assigned_home_work_id' => $homework_id,
+                'home_work_image_path' => $homework_filename
+            ]);
+            $homeworkfile->storeAs('homeworks', $homework_filename, 'public');;
+        }
     }
 }

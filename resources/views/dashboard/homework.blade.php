@@ -127,13 +127,7 @@
 
                             <div class="row">
                               <div class="col-xl-12 col-sm-12 p-1">
-                                {{-- {{$homework->homeWork->homeworkName->topic->name}} --}}
-                                {{-- {{$homework->session->name}}- --}}
-                                {{-- {{$homework->session->singleTopic->topic->name}} --}}
-                                {{-- {{$homework->session->singleTopic->topic->name}} --}}
-                                {{-- {{$homework->homeWork->homeworkName->subTopic->subtopic_name}} --}}
                                 <a href="{{route('submit-home-work', ['id'=>$homework->id])}}">
-                                    {{-- {{$homework->homeWorkName->subTopic->topic->name}} --}}
                                     {{$homework->session->name}}-{{$homework->session->topics->topic->name}}
                                 </a>
                               </div>
@@ -158,8 +152,19 @@
                       <div class="col-xl-6 col-sm-12">
                         <div class="card p-3 mb-3">
                           <div clas="card_body card_border p-5">
-                            <p class="assien_title">Submitted</p>
+                            <p class="assien_title">Due Date</p>
                             <div class="row">
+                              <div class="col-xl-6 col-sm-6 p-1">
+                                {{$homework->due_date}}
+                              </div>
+                              {{-- <div class="col-xl-6 col-sm-6 p-1 text-right">
+                                <i
+                                  class="fa fa-download"
+                                  aria-hidden="true"
+                                ></i>
+                              </div> --}}
+                            </div>
+                            {{-- <div class="row">
                               <div class="col-xl-6 col-sm-6 p-1">
                                 Home Work1
                               </div>
@@ -169,18 +174,7 @@
                                   aria-hidden="true"
                                 ></i>
                               </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-xl-6 col-sm-6 p-1">
-                                Home Work1
-                              </div>
-                              <div class="col-xl-6 col-sm-6 p-1 text-right">
-                                <i
-                                  class="fa fa-download"
-                                  aria-hidden="true"
-                                ></i>
-                              </div>
-                            </div>
+                            </div> --}}
                           </div>
                         </div>
                       </div>
@@ -190,7 +184,11 @@
                             <p class="assien_title">Points</p>
                             <div class="row">
                               <div class="col-xl-12 col-sm-12 px-1 mx-2">
-                                {{$homework->points}}
+                                  @forelse ($homeworks as $homework)
+                                      {{$homework->points}}
+                                  @empty
+                                      No homework assigned.
+                                  @endforelse
                               </div>
                               {{-- <div class="col-xl-6 col-sm-6 p-1 text-right">
                                 <i
@@ -213,22 +211,38 @@
                           </div>
                         </div>
                       </div>
-                      <div class="col-xl-6 col-sm-12">
+                      {{-- <div class="col-xl-6 col-sm-12">
                         <div class="card p-3 mb-3">
                           <div clas="card_body card_border p-5">
-                            <p class="assien_title">Topic</p>
+                             <p class="assien_title">Submission Status</p>
                             <div class="row">
-                              <div class="col-xl-6 col-sm-6 p-1">
-                               {{$homework->session->topics->topic->name}}
-                              </div>
-                              <div class="col-xl-6 col-sm-6 p-1 text-right">
+                                @forelse ($homeworks as $homework)
+                                <div class="col-xl-6 col-sm-6 p-1">
+                                    @foreach ($homework->homeworkstatus as $homeworkstatus)
+                                        @if ($homeworkstatus->is_submitted==1 && $homeworkstatus->student_id==auth()->user()->id)
+                                            <p>submitted</p>
+                                            @else
+                                            {{-- <p>not submitted</p>
+                                        @endif
+                                        {{-- {{$homeworkstatus->is_submitted}}
+                                        {{$homeworkstatus->student_id}}
+                                    @endforeach
+                                </div>
+
+                                @empty
+                                <div class="col-xl-6 col-sm-6 p-1">
+                                    Sumission Status Not Found
+                                </div>
+
+                                @endforelse
+                              {{-- <div class="col-xl-6 col-sm-6 p-1 text-right">
                                 <i
                                   class="fa fa-download"
                                   aria-hidden="true"
                                 ></i>
                               </div>
                             </div>
-                            <div class="row">
+                            {{-- <div class="row">
                               <div class="col-xl-6 col-sm-6 p-1">
                                 Home Work1
                               </div>
@@ -241,7 +255,7 @@
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </div> --}}
                     </div>
                     <!-- upload file section -->
                     <div class="row">

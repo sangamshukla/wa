@@ -150,6 +150,7 @@ Route::get('/live-session', [LiveSessionController::class, 'livesession'])->name
 /*Student Homework Module*/
 Route::get('home-work/{id}', [HomeWorkStudentController::class, 'index'])->name('home-work')->middleware('auth');
 Route::get('submit-home-work/{id}', [HomeWorkStudentController::class, 'submitHomework'])->name('submit-home-work')->middleware('auth');
+Route::post('upload-homework', [HomeWorkStudentController::class, 'uploadHomework'])->name('upload-homework')->middleware('auth');
 /*End home work module*/
 
 
