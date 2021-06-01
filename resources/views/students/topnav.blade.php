@@ -1,4 +1,4 @@
-          <!-- Topbar -->
+ <!-- Topbar -->
           <nav
             class="navbar navbar-expand navbar-light topbar mb-4 static-top shadow"
           >
@@ -10,11 +10,12 @@
               <i class="fa fa-bars"></i>
             </button>
             <!-- Topbar Search -->
-            <div class="dashboard_title">My Dashboard</div>
-            <form class="d-none d-sm-inline-block form-inline navbar-search">
+            <form
+              class="d-none d-sm-inline-block form-inline mr-auto ml-lg-5 ml-md-3 my-2 my-md-0 mw-100 navbar-search"
+            >
               <div class="d-flex">
                 <div class="input-group">
-                  <select class="form-control border-0 nav_border_line">
+                  <select class="form-control border-0">
                     <optgroup>
                       <option value="volvo">all</option>
                       <option value="saab">all1</option>
@@ -28,15 +29,15 @@
                     aria-describedby="basic-addon2"
                   />
                   <div class="input-group-append">
-                    <button class="btn btn-primary search_cta" type="button">
+                    <button class="btn btn-primary" type="button">
                       <i class="fas fa-search fa-sm"></i>
                     </button>
                   </div>
                 </div>
               </div>
             </form>
-            <ul class="navbar-nav">
-              <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+            <ul class="navbar-nav ml-auto">
+              <!-- Nav Item - Search Dropdown (Visible Only sm) -->
               <li class="nav-item dropdown no-arrow d-sm-none">
                 <a
                   class="nav-link dropdown-toggle"
@@ -74,6 +75,7 @@
               </li>
 
               <div class="topbar-divider d-none d-sm-block"></div>
+
               <!-- Nav Item - User Information -->
               <li class="nav-item dropdown no-arrow">
                 <a
@@ -85,25 +87,20 @@
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  <div class="text-center">
-                      @forelse ($images  as $image)
-                        <img class="img-profile rounded-circle" src="{{asset('storage/images/'.$image->teacher_profile_photo)}}"/>
-                      @empty
-                      
-                          <img class="img-profile rounded-circle" src="{{asset('wa/teacherdashboard/img/undraw_profile.svg')}}"/>
-                      @endforelse
-
-                  </div>
-                  <div class="mr-2 d-none d-lg-inline text-gray-600 small">
-                    {{auth()->user()->name}}
-                  </div>
+                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"
+                    >{{auth()->user()->name}}</span
+                  >
+                  <img
+                    class="img-profile rounded-circle"
+                    src="{{asset('wa/dashboard/img/undraw_profile.svg')}}"
+                  />
                 </a>
                 <!-- Dropdown - User Information -->
                 <div
                   class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                   aria-labelledby="userDropdown"
                 >
-                  <a class="dropdown-item" href="{{route('teacher-profile')}}">
+                  <a class="dropdown-item" href="#">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     Profile
                   </a>
