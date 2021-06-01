@@ -307,6 +307,8 @@ $('#saveUploadPDFHomeWork').on('click', function(){
 
 $('#saveAddQuestionHomeWork').on('click', function(){
   $("#saveAddQuestionHomeWork").html("Assigning...");
+
+  var addQuestionStudents = $('.choosePdfSelectStudent:checked').map(function() {return this.value;}).get();
      $.ajax({
          "_token": "{{ csrf_token() }}",
          type:'POST',
@@ -317,7 +319,8 @@ $('#saveAddQuestionHomeWork').on('click', function(){
            points: $('#pointsAddQuestion').val(),
            due_date: $('#dueDateAddQuestion').val(),
            type_of_homework:"Add_Question",
-           assigned_content: CKEDITOR.instances.editor_add_question.getData()
+           assigned_content: CKEDITOR.instances.editor_add_question.getData(),
+           choosePdfSelectStudent:addQuestionStudents
          }),
          contentType: false,
          processData: false,

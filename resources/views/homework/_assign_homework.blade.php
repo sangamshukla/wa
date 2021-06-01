@@ -88,6 +88,8 @@
                       <label class="container">
                         <input
                           type="checkbox"
+                          value="{{ $student->id }}"
+                          class="choosePdfSelectStudent"
                           checked="checked"
                         />
                         <span
