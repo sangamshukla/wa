@@ -29,7 +29,7 @@
           <img src="{{asset('wa/assets/img/ajax-loader.gif')}}" alt="">
           <p><b>Please wait...</b></p>
           </div>
-          <p class="text-danger" id="show_error_meessage_for_file"></p>
+             <p class="text-danger" id="show_error_meessage_for_file"></p>
       </form>
   </div>
     {{-- /file upload --}}

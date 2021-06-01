@@ -149,7 +149,7 @@
 // share homework By Choosing The File
 $('#saveAsssignHomework').on('click', function(){
       $("#saveAsssignHomework").html("Assigning...");
-      var choosePdf = $("input[name='choosePDFS']:checked").val();
+      var choosePdf = $("input[name='choosePDFS']:checked").val();;
       if(!choosePdf)
       {
        $('#choose_pdf_tree').html("Please Select PDF First.")
@@ -243,7 +243,7 @@ $('#saveAsssignHomework').on('click', function(){
               }
           }
       });
-      // upload 1 pdf start
+          // upload 1 pdf start
       }
       // upload 1 pdf end
      
@@ -318,7 +318,6 @@ $('#saveAddQuestionHomeWork').on('click', function(){
            due_date: $('#dueDateAddQuestion').val(),
            type_of_homework:"Add_Question",
            assigned_content: CKEDITOR.instances.editor_add_question.getData()
-           chooseUploadPdfSelectStudent:selectedStudents
          }),
          contentType: false,
          processData: false,
