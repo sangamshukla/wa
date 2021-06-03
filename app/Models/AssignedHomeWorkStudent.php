@@ -14,7 +14,7 @@ class AssignedHomeWorkStudent extends Model
     ];
     public function homeWork()
     {
-        return $this->belongsTo(AssignedHomeWork::class, 'assigned_homework_id');
+        return $this->belongsTo(AssignedHomeWork::class, 'id');
     }
     public function session()
     {

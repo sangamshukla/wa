@@ -1,11 +1,7 @@
 @extends('layouts.main')
-
 @section('css')
     <link rel="stylesheet" href="{{ asset('wa/welcome.css') }}">
-
 @endsection
-
-
 @section('content')
   <!-- card-tab section  -->
   <section class="card_package">
@@ -31,16 +27,16 @@
                             <div  class="single-district card{{ $i }}">
                             <div class="card_img mb-3">
                                 @if($batch->subject->name == 'English')
-                                  <img style="width:100%;" src="{{ asset('frontend/assets/English/English.jpg') }}" alt="">
+                                  <img style="width:100%; border-radius:10px;" src="{{ asset('frontend/assets/English/English.jpg') }}" alt="">
                                 @endif
                                 @if($batch->subject->name == 'Maths')
-                                    <img  style="width:100%;" src="{{ asset('frontend/assets/Maths/Math.jpg') }}" alt="">
+                                    <img  style="width:100%; border-radius:10px;" src="{{ asset('frontend/assets/Maths/Math.jpg') }}" alt="">
                                 @endif
                                 @if($batch->subject->name == 'Physics')
-                                    <img  style="width:100%;" src="{{ asset('frontend/assets/Physics/Physics.jpg') }}" alt="">
+                                    <img  style="width:100% border-radius:10px;;" src="{{ asset('frontend/assets/Physics/Physics.jpg') }}" alt="">
                                 @endif
                                 @if($batch->subject->name == 'Chemistry')
-                                    <img style="width:100%;" src="{{ asset('frontend/assets/card-cover.png') }}" alt="">
+                                    <img style="width:100%; border-radius:10px;" src="{{ asset('frontend/assets/card-cover.png') }}" alt="">
                                 @endif
                                 {{-- <img src="{{ asset('wa/assets/img/card-cover.png') }}"> --}}
                             </div>
@@ -86,7 +82,7 @@
                     </div>
                     @php $i++ @endphp
                     @endforeach
-                    <td colspan="3"></td>                               
+                    <td colspan="3"></td>
                 </table>
                 <div class="row">
                     <div class="col-md-12">
@@ -110,6 +106,6 @@
 </script>
 
   <script src="{{ asset('wa/coustom.js') }}"></script>
-  
+
 
 @endsection

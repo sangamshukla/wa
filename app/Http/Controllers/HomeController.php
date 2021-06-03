@@ -123,6 +123,21 @@ class HomeController extends Controller
             $three = Batch::whereIn('id', $couseBatches)->latest()->take(3)->get();
             // $twos = Batch::whereIn('id', $couseBatches)->paginate(3);
 
+
+            $totals = Batch::whereHas('batchSession', function ($query) {
+                $query->whereDate('start_date_time', '>=', Carbon::today());
+            })->count();
+            $totalprice = Batch::whereHas('batchSession', function ($query) {
+                $query->whereDate('start_date_time', '>=', Carbon::today());
+            })->count();
+            $totnoofseats = Batch::whereHas('batchSession', function ($query) {
+                $query->whereDate('start_date_time', '>=', Carbon::today());
+            })->count();
+
+            $batches = Batch::whereHas('batchSession', function ($query) {
+                $query->whereDate('start_date_time', '>=', Carbon::today());
+            })->latest()->paginate(8);
+
             return view('dashboard.student', compact(
                 'students',
                 'batches',
@@ -131,7 +146,8 @@ class HomeController extends Controller
                 'courses',
                 'status',
                 'twos',
-                'three'
+                'three',
+                'batches'
             ));
         }
     }

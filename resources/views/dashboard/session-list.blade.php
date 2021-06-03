@@ -67,7 +67,7 @@
                                                     {{-- <div id="app"></div> --}}
 
                                                     <p class="card_subject_title2">
-                                                        <a style="text-decoration:none; font-size:15px; color: #0EA47E;" href="{{ url('zoom', $batch->id)  }}">join now</a></p>
+                                                        <a style="text-decoration:none; font-size:15px; color: #0EA47E;" href="{{ url('zoom', $batch->id)  }}">Join now</a></p>
                                                         <script>
                                                             window.onload = (event) => {
 
@@ -187,7 +187,7 @@
                                                     <div>
                                                         <p class="subject_card">Join Now</p>
 
-                                                        <a style="text-decoration:none; font-size:15px; color: #0EA47E;" href="{{ url('zoom', $batch->id)  }}">join now</a></p>
+                                                        <p><a style="text-decoration:none; font-size:15px; color: #0EA47E;" href="{{ url('zoom', $batch->id)  }}">join now</a></p>
 
                                                     </div>
                                                     <div class="border-left second_left_border"></div>
@@ -267,7 +267,9 @@
                                                     <div class="border-left first_left_border"></div>
                                                     <div>
                                                         <p class="subject_card">Join Now</p>
-                                                            <a style="text-decoration:none; font-size:15px; color: #0EA47E;" href="{{ url('zoom', $batch->id)  }}">join now</a></p>
+                                                            {{-- <a style="text-decoration:none; font-size:15px; color: #0EA47E;" class="card_subject_title1" href="{{ url('zoom', $batch->id)  }}">Join now</a> --}}
+                                                            <p class="card_subject_title2">
+                                                        <a style="text-decoration:none; font-size:15px; color: #0EA47E;" href="{{ url('zoom', $batch->id)  }}">Join now</a></p>
                                                     </div>
                                                     <div class="border-left second_left_border"></div>
 
@@ -275,8 +277,9 @@
                                                         <img src="{{ asset('wa/dashboard/sessionlist/img/chevron.svg') }}" alt="arrow" title="arrow">
                                                     </button>
                                                 </div>
-                                                <p class="date_text" style="margin-top: -9px;
-                                                        margin-left: 81px;">{{ $batch->batch_start_date->format('d M, Y H:i A') }}</p>
+                                                <div class="mt-3 ml-4">
+                                                    <p class="date_text">{{ $batch->batch_start_date->format('d M, h:i A') }}</p>
+                                                </div>
                                             </h5>
                                         </div>
 
@@ -413,9 +416,9 @@
         <div class="col-xl-4 col-lg-4 mb-4 ">
             <div class="profile_details card py-4 px-4 text-center thirdbox">
                 <div class="profile">
-                    <div class="profile_icon"><img src='/wa/dashboard/sessionlist/img/user.png'></div>
+                    <div class="profile_icon"><img src="{{asset('wa/dashboard/sessionlist/img/user.png')}}"></div>
                     <p class="name mb-1">{{ auth()->user()->name }}</p>
-                    <p class="class_section"><span>Year:</span><span>{{ $batch->name }}</span></p>
+                    <p class="class_section"><span>Year:</span><span></span></p>
                     <a href="#" class="profile"><span>view Profile</span></a>
                 </div>
             </div>
