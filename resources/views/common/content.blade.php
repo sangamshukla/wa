@@ -34,6 +34,7 @@
                     <div class="img-container">
                         <svg class="person-study" width="709" height="497" viewbox="0 0 709 497" fill="none"
                             xmlns="http://www.w3.org/2000/svg"
+                
                             xmlns:xlink="http://www.w3.org/1999/xlink">
                             <rect x="72" y="22" width="564" height="451.2" fill="url(#pattern0)"/>
                             <path class="bluelarge"

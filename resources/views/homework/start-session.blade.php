@@ -91,6 +91,7 @@
                 @include('homework._assign_homework')
                 @include('homework._archieve')
                 @include('homework._feedback')
+                {{-- @include('homework._homework_details') --}}
 
                 <p class="text-danger" id="already_assigned"></p>
               </div>

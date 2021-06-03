@@ -16,7 +16,22 @@ class HomeWorkController extends Controller
 {
     public function startSession($id)
     {
-        $session = BatchSession::find($id);
+        $session = BatchSession::where('id', $id)->first();
+      
+        $allSessions = BatchSession::where('batch_id', $session->batch_id)->get();
+        // dd($allSessions);
+        $listOfSessions = collect([]);
+        $allSessions->transform(function ($singleSession) use ($listOfSessions) {
+            $batches = OrderItems::with('orderPayment')->where('batch_id', $singleSession->batch_id)->get();
+            $studenList = collect([]);
+            $batches->transform(function ($batch) use ($studenList) {
+                $studenList->push($batch->orderPayment->student_id);
+            });
+            $singleSession->students =  User::whereIn('id', $studenList->unique())->get();
+            
+            return $singleSession;
+        });
+        
         $studentsList = collect([]);
         $batches = OrderItems::with('orderPayment')->where('batch_id', $session->batch_id)->get();
 
@@ -30,7 +45,7 @@ class HomeWorkController extends Controller
             ->where('is_active', 1)->get();
         $images = TeacherProfile::where('user_id', $id)->select('teacher_profile_photo')->get();
         // dd($pdfFilesAll);
-        return view('homework.start-session', compact('session', 'students', 'pdfFilesAll', 'images'));
+        return view('homework.start-session', compact('allSessions', 'session', 'students', 'pdfFilesAll', 'images'));
     }
     public function saveStartSession(Request $request)
     {
@@ -109,5 +124,9 @@ class HomeWorkController extends Controller
             ]);
         }
         return response()->json("Success");
+    }
+    public function viewhomeworkdetails()
+    {
+        return view('homework._homework_details');
     }
 }
