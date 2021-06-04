@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\DB;
 
 class TeacherDashboardController extends Controller
 {
-
     public function index()
     {
         $batches = Batch::whereCreatedBy(auth()->user()->id)->orWhere('name', auth()->id())->latest()->get();
@@ -36,7 +35,6 @@ class TeacherDashboardController extends Controller
         $days_in_month = cal_days_in_month(CAL_GREGORIAN, date('m'), date('Y'));
         $session_yes = 1;
         if (auth()->user()->role == "teacher") {
-
             return view('teacher.dashboard', compact('startweek', 'endweek', 'days_in_month', 'session_yes', 'session_data', 'images', 'users', 'batches'));
         } else {
             return redirect(route('student-dashboard'));

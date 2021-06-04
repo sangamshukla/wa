@@ -2352,6 +2352,8 @@ form.month_week_block {
     width: 100%;
   }
 }
+
+/*  */
 /* archive css start */
 
 .session_data_block.archive {
@@ -2391,60 +2393,66 @@ span.float-right {
   transform: rotate( 45deg);
   -webkit-transform: rotate( 45deg);
 }
-.accordian_card_display{
+
+.accordian_card_display {
   justify-content: space-between;
   display: flex;
 }
-.accordian_card_display>div:nth-child(1){
-  font-family: Roboto;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 150%;
-    color: #666666;
-}
-.accordian_card_display>div:nth-child(2){
-  font-family: Roboto;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 150%;
-    color: #666666;
-    border-right: 2px solid #E6E6E6;
-    padding-right: 30px;
-}
-.accordian_card_display>div:nth-child(3){
-  font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 150%;
-    color: #666666;
-    border-right: 2px solid #E6E6E6;
-    padding-right: 30px;
-}
-.accordian_card_display>div:nth-child(4){
-  font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 150%;
-    color: #666666;
-    border-right: 2px solid #E6E6E6;
-    padding-right: 30px;
-}
-.accordian_card_display>div:nth-child(5){
-  font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 150%;
-    text-decoration-line: underline;
-    color: #1D6771;
 
-    padding-right: 30px;
+.accordian_card_display>div:nth-child(1) {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #666666;
 }
-.accordian_card_display>div:nth-child(6){
+
+.accordian_card_display>div:nth-child(2) {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #666666;
+  border-right: 2px solid #E6E6E6;
+  padding-right: 30px;
+}
+
+.accordian_card_display>div:nth-child(3) {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 150%;
+  color: #666666;
+  border-right: 2px solid #E6E6E6;
+  padding-right: 30px;
+}
+
+.accordian_card_display>div:nth-child(4) {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 150%;
+  color: #666666;
+  border-right: 2px solid #E6E6E6;
+  padding-right: 30px;
+}
+
+.accordian_card_display>div:nth-child(5) {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 150%;
+  text-decoration-line: underline;
+  color: #1D6771;
+  padding-right: 30px;
+}
+
+.accordian_card_display>div:nth-child(6) {
   font-family: Roboto;
   font-style: normal;
   font-weight: bold;
@@ -2453,17 +2461,19 @@ span.float-right {
   align-items: center;
   text-align: center;
   color: #1D6771;
- 
-    padding-right: 30px;
+  padding-right: 30px;
 }
-.archiv_block{
+
+.archiv_block {
   display: flex;
   justify-content: space-between;
 }
-.accordian_card_inner_block>div{
+
+.accordian_card_inner_block>div {
   display: inline-block;
   padding: 10px 80px;
 }
+
 .inner_nameblock {
   font-family: Roboto;
   font-style: normal;
@@ -2472,7 +2482,8 @@ span.float-right {
   line-height: 150%;
   color: #333333;
 }
-.inner_reminder_block a{
+
+.inner_reminder_block a {
   font-family: Roboto;
   font-style: normal;
   font-weight: bold;
@@ -2480,4 +2491,307 @@ span.float-right {
   line-height: 150%;
   color: #1D6771;
 }
+
 /* archive css end */
+
+/* session-homework css start */
+
+.yellow_border {
+  border: 4px solid #FFF9DE;
+}
+
+.session_homework {
+  padding: 20px;
+}
+
+.session_homework p {
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 27px;
+  color: #333333;
+}
+
+.session_homework span {
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+  color: #333333;
+}
+
+.yellow_background {
+  background: #FFF9DE;
+  border-bottom: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  height: 62px;
+}
+.yellow_background>div{
+  padding-right: 40px;
+}
+button.btn.disapprove_cta {
+  background: #FFFFFF;
+  border: 1px solid #FA4A4A;
+  border-radius: 4px;
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+  align-items: center;
+  text-align: center;
+  color: #FA4A4A;
+  width: 100px;
+  height: 44px;
+}
+button.btn.approve_cta {
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+  align-items: center;
+  text-align: center;
+  color: #3BEC1E;
+  background: #FFFFFF;
+  border: 1px solid #3BEC1E;
+  border-radius: 4px;
+  width: 100px;
+  height: 44px;
+}
+.rating_block span{
+  font-family: Nunito;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 150%;
+    text-align: center;
+    color: #333333;
+    display: table-cell;
+}
+button.btn.add_mark_cta{
+  font-family: Nunito;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    align-items: center;
+    text-align: center;
+    color: #3BEC1E;
+    background: #FFFFFF;
+    border: 1px solid #3BEC1E;
+    border-radius: 4px;
+    width: 100px;
+    height: 44px;
+}
+.point_block span{
+  font-family: Nunito;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 150%;
+    color: #333333;
+}
+.pointer_no {
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 17px;
+  line-height: 16px;
+  color: #1D6771;
+}
+.pointer_no span:nth-child(1){
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 17px;
+  line-height: 16px;
+  color: #1D6771;
+ border-bottom: 2px solid #1d6771; 
+}
+.img-subject {
+  width: auto;
+  height: auto;
+}
+
+.border-section {
+  border: 2px solid #E4E4E4;
+  height: 400px;
+  overflow: auto;
+}
+
+/* rating css start */
+
+:root {
+  --star-size: 20px;
+  --star-color: #fff;
+  --star-background: #fc0;
+}
+
+.Stars {
+  --percent: calc(var(--rating) / 5 * 100%);
+  display: inline-block;
+  font-size: var(--star-size);
+  font-family: Times;
+  line-height: 1;
+}
+
+.Stars:before {
+  content: '★★★★★';
+  letter-spacing: 3px;
+  background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* rating css end */
+
+/* slidercss */
+
+.swiper-container {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.swiper-wrapper.wide .swiper-slide {
+  max-height: 391px;
+  overflow-y: scroll;
+  display: inline-grid;
+  padding: 0 10px;
+}
+
+.swiper-container {
+  width: 100%;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.swiper-slide {
+  background-size: cover;
+  background-position: center;
+}
+
+.mySwiper2 {
+  height: 100%;
+  width: 100%;
+}
+
+.mySwiper {
+  height: 20%;
+  box-sizing: border-box;
+  padding: 10px 0;
+}
+
+.mySwiper .swiper-slide {
+  width: 25%;
+  height: 100%;
+  opacity: 0.4;
+  border: 1px solid;
+  padding: 20px;
+}
+
+.mySwiper .swiper-slide-thumb-active {
+  opacity: 1;
+}
+
+.swiper-slide img {
+  display: block;
+  object-fit: cover;
+}
+
+.swiper-button-next, .swiper-button-prev {
+  display: none;
+}
+.pagination_div{
+  display: flex;
+    justify-content: space-between;
+    background: #E4E4E4;
+    height: 40px;
+    border: 1px solid #E4E4E4;
+}
+.pagination_div a {
+  text-decoration: none;
+  padding: 0px 6px;
+  font-size: 28px;
+  line-height: 17px;
+}
+
+.pagination_div a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.pagination_div .previous {
+  background-color: #f1f1f1;
+  color: black;
+}
+
+.pagination_div .next {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.pagination_div .round {
+  border-radius: 50%;
+  width: 20px;
+    height: 20px;
+    margin-top: 11px;
+}
+.pagination_block {
+  display: flex;
+  padding: 0px 20px;
+}
+.pagination_block>p>span{
+  font-family: Nunito;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 22px;
+color: #333333;
+}
+.pagination_block>p{
+  margin-top: 8px;
+  padding: 0px 10px;
+}
+.img_name{
+  font-family: Nunito;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 22px;
+    color: #333333;
+    padding: 0px 20px;
+    margin-top: 10px;
+}
+/* session-homework css end */

@@ -33,16 +33,16 @@
                               " class="swiper-container mySwiper2 swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events">
                               <div class="swiper-wrapper wide" id="swiper-wrapper-3a6d7925d786a9ae" aria-live="polite" style="transform: translate3d(0px, 0px, 0px);">
                                 <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 4" style="width: 844px; margin-right: 30px;">
-                                  <img src="img/math-aa.png" class="">
+                                  <img src="{{asset('wa/teacherdashboard/img/math-aa.png')}}" class="">
                                 </div>
                                 <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 4" style="width: 844px; margin-right: 30px;">
-                                  <img src="img/math-aa.png" class="">
+                                  <img src="{{asset('wa/teacherdashboard/img/math-aa.png')}}" class="">
                                 </div>
                                 <div class="swiper-slide" role="group" aria-label="3 / 4" style="width: 844px; margin-right: 30px;">
-                                  <img src="img/math-aa.png" class="">
+                                  <img src="{{asset('wa/teacherdashboard/img/math-aa.png')}}" class="">
                                 </div>
                                 <div class="swiper-slide" role="group" aria-label="4 / 4" style="width: 844px; margin-right: 30px;">
-                                  <img src="img/math-aa.png" class="">
+                                  <img src="{{asset('wa/teacherdashboard/img/math-aa.png')}}" class="">
                                 </div>
                               </div>
                             <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
@@ -50,16 +50,16 @@
                           <div thumbsslider="" class="swiper-container mySwiper swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events swiper-container-free-mode swiper-container-thumbs">
                             <div class="swiper-wrapper" id="swiper-wrapper-92d9f35765923b45" aria-live="polite" style="transform: translate3d(0px, 0px, 0px);">
                               <div class="swiper-slide swiper-slide-visible swiper-slide-active swiper-slide-thumb-active" role="group" aria-label="1 / 4" style="width: 204.5px; margin-right: 10px;">
-                                <img src="img/math-aa.png" class="">
+                                <img src="{{asset('wa/teacherdashboard/img/math-aa.png')}}" class="">
                               </div>
                               <div class="swiper-slide swiper-slide-visible swiper-slide-next" role="group" aria-label="2 / 4" style="width: 204.5px; margin-right: 10px;">
-                                <img src="img/math-aa.png" class="">
+                                <img src="{{asset('wa/teacherdashboard/img/math-aa.png')}}" class="">
                               </div>
                               <div class="swiper-slide swiper-slide-visible" role="group" aria-label="3 / 4" style="width: 204.5px; margin-right: 10px;">
-                                <img src="img/math-aa.png" class="">
+                                <img src="{{asset('wa/teacherdashboard/img/math-aa.png')}}" class="">
                               </div>
                               <div class="swiper-slide swiper-slide-visible" role="group" aria-label="4 / 4" style="width: 204.5px; margin-right: 10px;">
-                                <img src="img/math-aa.png" class="">
+                                <img src="{{asset('wa/teacherdashboard/img/math-aa.png')}}" class="">
                               </div>
                               <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-3a6d7925d786a9ae" aria-disabled="false"></div>
                               <div class="swiper-button-prev swiper-button-disabled" tabindex="-1" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-3a6d7925d786a9ae" aria-disabled="true"></div>
@@ -78,7 +78,7 @@
                             </div>
                           </div>
                           <div class="border-section second-border-section">
-                            <div> <img src="img/math-aa.png" class="img-subject"></div>
+                            <div> <img src="{{asset('wa/teacherdashboard/img/math-aa.png')}}" class="img-subject"></div>
                            
                           </div>
                         </div>
@@ -117,4 +117,47 @@
     </div>
     <!-- Content Row -->
   </div>
+  
   @endsection
+  {{-- js for homework details --}}
+  @section('scripts')
+  <link
+  rel="stylesheet"
+  href="https://unpkg.com/swiper/swiper-bundle.min.css"
+/>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- Initialize Swiper -->
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        spaceBetween: 10,
+        slidesPerView: 4,
+        freeMode: true,
+        watchSlidesVisibility: true,
+        watchSlidesProgress: true,
+     
+      });
+      var swiper2 = new Swiper(".mySwiper2", {
+        spaceBetween: 10,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        thumbs: {
+          swiper: swiper,
+        },
+        breakpoints: {
+     
+     320: { /* when window >= 767px - webflow tablet */
+       slidesPerView: 1,
+       spaceBetween: 30,
+       slidesOffsetBefore: 0,
+      
+     },
+     
+   },
+      });
+      
+    </script>
+    {{-- end homework details --}}
+    @endsection
+  

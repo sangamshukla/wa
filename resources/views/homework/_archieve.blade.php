@@ -73,8 +73,9 @@
                       @foreach($session->students as $student)
                       <div class="accordian_card_inner_block">
                         <div class="inner_nameblock">{{ $student->name}} </div>
-                        <div class="inner_check_block"><img src="{{ asset('wa/teacherdashboard/img/inactive-check.svg')}}"></div>
+                        <div class="inner_check_block"><img src="{{ $student->is_homework_assigned ?  asset('wa/teacherdashboard/img/active-check.svg') :  asset('wa/teacherdashboard/img/inactive-check.svg') }}"></div>
                         <div class="inner_reminder_block"><a href="#">Send Reminder</a></div>
+                        <a href="{{ url('view-homework-details')}}">view homeworkde</a>
                       </div>
                       @endforeach
                     </div>

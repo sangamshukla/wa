@@ -44,6 +44,17 @@ body {
 .dropdown-menu a {
   color: #fff;
 }
+img.desktop-hidden {
+  display: block;
+  /* height: 30px; */
+  /* width: 40px; */
+}
+img.mobile-hidden {
+display: none;
+/* display: block; */
+height: 30px;
+width: 40px;
+}
 .cart_image_block{
   margin-top: 18px;
   text-decoration:none; 
@@ -1197,6 +1208,13 @@ input:focus + label {
   right: 0;
 }
 @media only screen and (max-width: 768px) {
+  img.desktop-hidden {
+    display: none;
+}
+ img.mobile-hidden {
+  display: block;
+}
+
   .cart_img_block
   {
     /* color: #fff !important; */

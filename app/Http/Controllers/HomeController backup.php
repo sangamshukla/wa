@@ -95,7 +95,8 @@ class HomeController extends Controller
         } elseif (auth()->user()->role === 'student') {
             $student = Student::where('user_id', auth()->user()->id)->first();
             // dd($student);
-            $students = Batch::where('class_master_id', $student->class_master_id)->latest()->take(8)->get();
+            $students = Batch::where('class_master_id', $student->class_master_id)
+                    ->whereDate('batch_end_date', '>=', Carbon::today())->latest()->take(8)->get();
             // buy now || orders table
             // if(Orders::where('user_id', auth()->user()->id)->exists()){
             // return redirect('/session-list');

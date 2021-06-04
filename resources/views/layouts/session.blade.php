@@ -84,6 +84,6 @@
     <script src="{{ asset('wa/dashboard/homework/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('wa/dashboard/homework/js/student.js')}}"></script>
-    
+       
   </body>
 </html>

@@ -155,7 +155,7 @@
                             <p class="assien_title">Due Date</p>
                             <div class="row">
                               <div class="col-xl-6 col-sm-6 p-1">
-                                {{$homework->due_date}}
+                                {{-- {{$homework->due_date}} --}}
                               </div>
                               {{-- <div class="col-xl-6 col-sm-6 p-1 text-right">
                                 <i

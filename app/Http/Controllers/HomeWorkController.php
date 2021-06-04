@@ -28,6 +28,15 @@ class HomeWorkController extends Controller
                 $studenList->push($batch->orderPayment->student_id);
             });
             $singleSession->students =  User::whereIn('id', $studenList->unique())->get();
+            $assignedHW = AssignedHomeWork::where('session_id', $singleSession->id)->first();
+            $singleSession->students->transform(function ($student) use ($assignedHW) {
+                $student->is_homework_assigned = AssignedHomeWorkStudent::
+                where('assigned_homework_id', $assignedHW->id ?? null)
+                ->where('student_id', $student->id)->exists();
+
+                return $student;
+            });
+            
             
             return $singleSession;
         });

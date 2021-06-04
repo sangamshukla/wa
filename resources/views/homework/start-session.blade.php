@@ -161,6 +161,7 @@ $('#saveAsssignHomework').on('click', function(){
           $('#comment_pdf_tree').html("Comment is required.")
           $("#saveAsssignHomework").html("Share");
         }else {
+          var selectedStudents = $('.choosePdfSelectStudent:checked').map(function() {return this.value;}).get();
           $.ajax({
           "_token": "{{ csrf_token() }}",
           type:'POST',
@@ -171,7 +172,8 @@ $('#saveAsssignHomework').on('click', function(){
             points: $('#points').val(),
             due_date: $('#dueDatePdf').val(),
             type_of_homework:"CHOOSE_PDF",
-            assigned_content: $('#pdf').val()
+            assigned_content: $('#pdf').val(),
+            choosePdfSelectStudent:selectedStudents
           }),
           contentType: false,
           processData: false,
