@@ -50,6 +50,7 @@ body {
 }
 
 /* add this class to cart */
+
 img.desktop-hidden {
     display: block;
     color: red;
@@ -1699,6 +1700,12 @@ button.pay_now.btn.mobilw_show {
 }
 /* buy now css end */
 @media only screen and (max-width: 768px) {
+    img.desktop-hidden {
+        display: none;
+    }
+    img.mobile-hidden {
+        display: block;
+    }
     .cart_image_block {
         margin-top: 18px;
         width: 28px;

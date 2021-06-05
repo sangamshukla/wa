@@ -58,12 +58,12 @@
                     <a class="card-link text-dark" data-toggle="collapse" href="#collapse{{ $session->id }}"><span class="float-right"></span>
                       <!-- <h6>Collapsible Group Item #1</h6> -->
                       <div class="accordian_card_display">
-                        <div>1.</div>
+                        <div>{{ $loop->index + 1 }}.</div>
                         <div>{{ $session->name }}</div>
                         <div>{{ $session->start_date_time->format('d/m/y')}}</div>
                         <div>{{ $session->batch->classmaster->name}}</div>
                         <div>{{ $session->students->count() }} Students</div>
-                        <div>02 Submission</div>
+                        <div>{{ $session->submission_count }} Submission</div>
                       </div>
                     </a>
                   </div>
@@ -74,10 +74,16 @@
                       <div class="accordian_card_inner_block">
                         <div class="inner_nameblock">{{ $student->name}} </div>
                         <div class="inner_check_block"><img src="{{ $student->is_homework_assigned ?  asset('wa/teacherdashboard/img/active-check.svg') :  asset('wa/teacherdashboard/img/inactive-check.svg') }}"></div>
-                        <div class="inner_reminder_block"><a href="#">Send Reminder</a></div>
-                        <a href="{{ url('view-homework-details')}}">view homeworkde</a>
+                        <div class="inner_reminder_block">
+                          @if($student->is_submitted)
+                            <a href="{{ url('view-homework-details', $student->homeworkId) }}">View Submission</a>
+                          @else
+                            <a href="#">Send Reminder</a>
+                          @endif
+                        </div>
                       </div>
                       @endforeach
+                      <div class="alert alert-warning"><a href="#">View Homework Details</a></div>
                     </div>
                   </div>
                 </div>
