@@ -150,17 +150,6 @@
                           <div clas="card_body card_border p-5">
                             <p class="assien_title">Due Date</p>
                             <div class="row">
-<<<<<<< HEAD
-                              <div class="col-xl-6 col-sm-6 p-1">
-                                {{-- {{$homework->due_date}} --}}
-                              </div>
-                              {{-- <div class="col-xl-6 col-sm-6 p-1 text-right">
-                                <i
-                                  class="fa fa-download"
-                                  aria-hidden="true"
-                                ></i>
-                              </div> --}}
-=======
                                 @forelse ($homeworks as $homework)
 
                                 <div class="col-xl-6 col-sm-6 p-1">
@@ -178,7 +167,6 @@
                                     No due date
                                 </div>
                                 @endforelse
->>>>>>> c391131e265c9f22d9cd41b0fa49c56b441be77d
                             </div>
                             {{-- <div class="row">
                               <div class="col-xl-6 col-sm-6 p-1">
