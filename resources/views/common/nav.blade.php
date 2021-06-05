@@ -27,11 +27,13 @@
 
                 {{-- @guest --}}
                 <div class="login_block row ">
-                    <div class="col-2 ">
+                    <div class="col-2 cart-icon">
                     <a href="{{ url('buy-now')}}">
-                        <span style="color: rgb(236, 234, 234);">{{ count(session()->get('cart') ?? []) }}</span>
-                        <img class="mobile-hidden" src="{{asset('wa/assets/img/wacartdesktop.png')}}" width="22" height="22">
-                        <img class="desktop-hidden" src="{{asset('wa/assets/img/cartmobile.png')}}" width="22" height="22">
+                        {{-- <span style="color: rgb(236, 234, 234);">{{ count(session()->get('cart') ?? []) }}</span> --}}
+
+                        <span style="color: red">{{ count(session()->get('cart') ?? []) }}</span>
+                        <img class="mobile-hidden" src="{{asset('wa/assets/img/cartmobile.png')}}" width="22" height="22">
+                        <img class="desktop-hidden" src="{{asset('wa/assets/img/wacartdesktop.png')}}" width="22" height="22">
                      
                     </a>
                     </div>

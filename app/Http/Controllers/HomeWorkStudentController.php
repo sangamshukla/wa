@@ -21,7 +21,14 @@ class HomeWorkStudentController extends Controller
         $user_id = auth()->user()->id;
         $sessionDetails = BatchSession::where('id', $id)->get();
         $batches = Batch::all();
-        $homeworks = AssignedHomeWork::where('session_id', $id)->get();
+        // $homeworks = AssignedHomeWork::where('session_id', $id)->get();
+        $homeworks = DB::table('assigned_home_works AS ahw')
+            ->join('assigned_home_work_students AS ahws', 'ahw.id', '=', 'ahws.assigned_homework_id')
+            ->join('batch_session AS bs', 'ahw.session_id', '=', 'bs.id')
+            ->where('ahw.session_id', $id)
+            ->where('ahws.student_id', $user_id)
+            ->get();
+        // dd($homeworks->session_id);
         return view('dashboard.homework', compact('sessionDetails', 'homeworks'));
     }
     public function sessionDetail()
@@ -56,6 +63,7 @@ class HomeWorkStudentController extends Controller
     }
     public function submitHomework(Request $request, $id)
     {
+        // dd($id);
         $homeworks = AssignedHomeWork::where('id', $id)->get();
         // dd($homeworks);
         return view('dashboard.homework-answer', compact('homeworks'));
@@ -82,7 +90,7 @@ class HomeWorkStudentController extends Controller
                 'assigned_home_work_id' => $homework_id,
                 'home_work_image_path' => $homework_filename
             ]);
-            $homeworkfile->storeAs('homeworks', $homework_filename, 'public');;
+            $homeworkfile->storeAs('homeworks', $homework_filename, 'public');
         }
     }
 }

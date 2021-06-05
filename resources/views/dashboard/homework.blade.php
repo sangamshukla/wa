@@ -127,21 +127,17 @@
 
                             <div class="row">
                               <div class="col-xl-12 col-sm-12 p-1">
-                                <a href="{{route('submit-home-work', ['id'=>$homework->id])}}">
-                                    {{$homework->session->name}}-{{$homework->session->topics->topic->name}}
+                                <a href="{{route('submit-home-work', ['id'=>$homework->assigned_homework_id])}}">
+                                    {{-- {{$homework->session->name}}-{{$homework->session->topics->topic->name}} --}}
+                                   {{-- <p>{{$homework}}</p> --}}
+                                   {{$homework->name}}
                                 </a>
                               </div>
-                              {{-- <div class="col-xl-3 col-sm-3 p-1 text-right">
-                                <i
-                                  class="fa fa-download"
-                                  aria-hidden="true"
-                                ></i>
-                              </div> --}}
                             </div>
                             @empty
 
                             <div class="row">
-                              <div class="col-xl-6 col-sm-6 p-1">
+                              <div class="col-xl-12 col-sm-6 p-1">
                                 No Homework assigned to you
                               </div>
                             </div>
@@ -154,6 +150,7 @@
                           <div clas="card_body card_border p-5">
                             <p class="assien_title">Due Date</p>
                             <div class="row">
+<<<<<<< HEAD
                               <div class="col-xl-6 col-sm-6 p-1">
                                 {{-- {{$homework->due_date}} --}}
                               </div>
@@ -163,6 +160,25 @@
                                   aria-hidden="true"
                                 ></i>
                               </div> --}}
+=======
+                                @forelse ($homeworks as $homework)
+
+                                <div class="col-xl-6 col-sm-6 p-1">
+                                  {{$homework->due_date}}
+                                </div>
+                                {{-- <div class="col-xl-6 col-sm-6 p-1 text-right">
+                                    <i
+                                    class="fa fa-download"
+                                    aria-hidden="true"
+                                    ></i>
+                                </div> --}}
+                                @empty
+
+                                <div class="col-xl-6 col-sm-6 p-1">
+                                    No due date
+                                </div>
+                                @endforelse
+>>>>>>> c391131e265c9f22d9cd41b0fa49c56b441be77d
                             </div>
                             {{-- <div class="row">
                               <div class="col-xl-6 col-sm-6 p-1">
@@ -183,13 +199,15 @@
                           <div clas="card_body card_border p-5">
                             <p class="assien_title">Points</p>
                             <div class="row">
-                              <div class="col-xl-12 col-sm-12 px-1 mx-2">
-                                  @forelse ($homeworks as $homework)
+                                @forelse ($homeworks as $homework)
+                                    <div class="col-xl-12 col-sm-12 px-1 mx-2">
                                       {{$homework->points}}
-                                  @empty
+                                    </div>
+                                    @empty
+                                    <div class="col-xl-12 col-sm-12 px-1 mx-2">
                                       No homework assigned.
+                                    </div>
                                   @endforelse
-                              </div>
                               {{-- <div class="col-xl-6 col-sm-6 p-1 text-right">
                                 <i
                                   class="fa fa-download"
@@ -197,7 +215,7 @@
                                 ></i>
                               </div> --}}
                             </div>
-                            <div class="row">
+                            {{-- <div class="row"> --}}
                               {{-- <div class="col-xl-6 col-sm-6 p-1">
                                 Home Work1
                               </div> --}}
@@ -207,7 +225,7 @@
                                   aria-hidden="true"
                                 ></i>
                               </div> --}}
-                            </div>
+                            {{-- </div> --}}
                           </div>
                         </div>
                       </div>

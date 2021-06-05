@@ -287,12 +287,15 @@
                                             <form id="homeworksubmit">
                                                 @csrf
                                                 <label class="file">
-                                                    <input type="file" id="file_upload_input"  style="opacity: 1 !important" name="homeworkfiles[]" multiple="multiple">
+                                                    <input type="file" id="file_upload_input"  style="opacity: 1 !important" name="homeworkfiles[]" multiple="multiple" required>
                                                  </label>
                                                  <input type="hidden" name="homework_id" value="{{$homework->id}}">
                                                  {{-- <span class="file-custom"></span> --}}
-                                              <button>Submit</button>
+                                              <button id="input-submit">Submit</button>
                                             </form>
+                                                <div class="alert alert-primary" role="alert" hidden>
+                                                    Your homework has been submitted
+                                                </div>
                                             <div id="divid">
                                                 <ul id="changed">
                                                 </ul>
@@ -391,7 +394,7 @@
                     <p class="modal_pera">
                       Your Query was Submitted to the Alice Morgan.
                     </p>
-                    <button class="ok_button mt-3 mb-3">ok, Got it!</button>
+                    <button class="ok_button mt-3 mb-3" data-dismiss="modal" id="close">ok, Got it!</button>
                   </div>
                 </div>
               </div>
@@ -399,6 +402,11 @@
             </div>
           </div>
         </div>
+        <script>
+            $(function () {
+                $('#myModal').hide();
+                });
+        </script>
 
               <script>
                             var _PDF_DOC,
@@ -528,6 +536,7 @@
                 //     //   $('#changed').append('<li>'+filename+'</li>');
                 //    });
             $('#homeworksubmit').submit(function(e){
+                $("#input-submit").attr('disabled', true);
                 // e.preventDefault();
                 // var element=document.getElementById("file_upload_div");
                 var homework_id="{{$homework->id}}";
@@ -547,10 +556,11 @@
                         contentType: false,
                         enctype: 'multipart/form-data',
                         processData: false,
-
                         success:function(response){
-                            // alert("success");
-                            console.log(response)
+                            $('.alert').removeAttr('hidden');
+                            $('#input-submit').text('submitting...');
+                            $('#input-submit').text('Submitted');
+                            $(".alert").fadeOut(8000);
                         },
                         error:function(error){
                             alert("error");
