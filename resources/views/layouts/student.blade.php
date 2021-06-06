@@ -79,4 +79,4 @@
  <!-- Custom scripts for all pages-->
  <script src="{{asset('wa/dashboard/js/student.js')}}"></script>
 </body>
-
+</html>
