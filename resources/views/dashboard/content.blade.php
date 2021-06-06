@@ -5,73 +5,6 @@
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800 session_heading">My Session</h1>
 
-<<<<<<< HEAD
-                <p class="wallet_balance"><span>Wallet balance:</span><strong>&nbsp;£ 1500</strong></p>
-                </div> --}}
-           </div>
-        </div>
-         <!-- Announcements -->
-        <div class="card shadow mb-4">
-            <div
-                class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold announce">Announcements</h6>
-                <a href="#" class=" close close_card"><span>X</span></a>
-
-            </div>
-            <div class="card-body">
-
-                <div class="mt-4">
-                    <p class="mr-2 list_announce">
-                        <span>https://www.w3schools.com/cssref</span>
-                        <span>go</span>
-                    </p>
-                    <p class="mr-2 list_announce">
-                        <span>https://www.w3schools.com/cssref</span>
-                        <span>go</span>
-                    </p>
-                    <p class="mr-2 list_announce">
-                        <span>https://www.w3schools.com/cssref</span>
-                        <span>go</span>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Content Row -->
-
-<!-- subject card Row -->
-<section style="background:#fff; padding: 20px;">
-    <div class="row">
-        <div class="col-lg-12 mb-4">
-            <div class="card mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold cource_class_tile">Other Available Cources for Class <span>{{ auth()->user()->student->classmaster->name }}</span></span></h6>
-                </div>
-            </div>
-            <div class="row">
-                @php $i = 1; @endphp
-                @foreach($students as $student)
-                <div style="cursor:pointer;" onClick="(function(){
-                    window.location.href = '/student-details/{{ $student->id }}';
-                     })();return false;" class="col-lg-3 mb-4">
-                    <div class="card subject{{ $i }}">
-                        <div class="subject_img_block">
-                            {{-- <img src="/wa/dashboard/img/card-cover.png" class="subject_img"> --}}
-                            @if($student->subject->name == 'English')
-                            <img src="{{ asset('frontend/assets/English/English.jpg') }}" alt="">
-                          @endif
-                          @if($student->subject->name == 'Maths')
-                                    {{-- <img src="{{ asset('frontend/assets/Maths/Maths.jpg') }}" alt=""> --}}
-                                    <img src="{{ asset('frontend/assets/Maths/Math.jpg') }}" alt="">
-                                @endif
-                                @if($student->subject->name == 'Physics')
-                                    <img src="{{ asset('frontend/assets/Physics/Physics.jpg') }}" alt="">
-                                @endif
-                                @if($student->subject->name == 'Chemistry')
-                                    <img src="{{ asset('frontend/assets/card-cover.png') }}" alt="">
-                                @endif
-=======
                     </div>
                     <!-- image block -->
                     <div class="row">
@@ -82,7 +15,6 @@
                             <div>
                                 <button class="btn session_buycta ">Buy now</button>
                             </div>
->>>>>>> c391131e265c9f22d9cd41b0fa49c56b441be77d
                         </div>
                         <div class="col-xl-4 col-lg-5">
                             <div class="profile_details card py-4 px-4 text-center">

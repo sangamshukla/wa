@@ -15,7 +15,7 @@ class CreateAssignedHomeWorkAnswerMapsTable extends Migration
     {
         Schema::create('assigned_home_work_answer_maps', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('assigned_home_work_id')->constrained('assigned_home_works');
+            $table->foreignId('_id')->constrained('assigned_home_work_students');
             $table->string('home_work_image_path');
             $table->timestamps();
         });

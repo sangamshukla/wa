@@ -376,6 +376,21 @@
           <!-- ./Tabs -->
 
         </div>
+            @switch($homework->type_of_homework)
+                @case('UPLOAD_PDF')
+                    $pdfpath={{asset('uploads')}}"+"/"+"{{$homework->assigned_content}};
+                    @break
+                @case('CHOOSE_PDF')
+                    echo "it's chosen pdf";
+                    @break
+                @case('ADD_QUESTION')
+                    echo "it's ADDED QUESTIO pdf";
+                    @break
+                @default
+
+            @endswitch
+
+
     @endforeach
         <!-- End of Main Content -->
         <!-- Modal pop-up start -->
@@ -392,7 +407,7 @@
                       Query Submitted Successfully
                     </p>
                     <p class="modal_pera">
-                      Your Query was Submitted to the Alice Morgan.
+                      Your answer was Submitted to the Alice Morgan.
                     </p>
                     <button class="ok_button mt-3 mb-3" data-dismiss="modal" id="close">ok, Got it!</button>
                   </div>
@@ -402,6 +417,7 @@
             </div>
           </div>
         </div>
+
         <script>
             $(function () {
                 $('#myModal').hide();
@@ -507,7 +523,8 @@
                 document.querySelector("#load-homework").addEventListener('click', function() {
                     // this.style.display = 'none';
                     // showPDF("{{asset('uploads')}}"+"/"+"{{$homework->pdf_path}}");
-                    showPDF("{{asset('uploads')}}"+"/"+"{{$homework->assigned_content}}");
+                    // showPDF("{{asset('uploads')}}"+"/"+"{{$homework->assigned_content}}");
+                    showPDF("{{$pdfpath}}");
                 });
 
                 // click on the "Previous" page button

@@ -16,6 +16,8 @@ class CreateAssignedHomeWorkStudentsTable extends Migration
         Schema::create('assigned_home_work_students', function (Blueprint $table) {
             $table->id();
             $table->integer('assigned_homework_id')->nullable();
+            $table->string('pdf_details');
+            $table->string('type_of_homework')->nullable();
             $table->integer('student_id')->nullable();
             $table->timestamps();
         });
