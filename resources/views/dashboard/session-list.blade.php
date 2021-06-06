@@ -224,6 +224,9 @@
                                                         @endforeach --}}
                                                         <td>{{$session->topics->topic->name}}</td>
                                                     </tr>
+                                                    <tr>
+                                                        <td colspan="2"><a href="{{route('home-work', ['id'=>$session->id])}}">View Homework</a></td>
+                                                    </tr>
 
                                                     @endif
                                                     @endforeach
@@ -303,6 +306,9 @@
                                                         </td>
                                                         @endforeach --}}
                                                         <td>{{$session->name}}-{{$session->topics->topic->name}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2"><a href="{{route('home-work', ['id'=>$session->id])}}">View Homework</a></td>
                                                     </tr>
                                                 </table>
                                             </div>

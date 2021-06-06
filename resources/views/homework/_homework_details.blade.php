@@ -33,9 +33,12 @@
                               " class="swiper-container mySwiper2 swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events">
                               <div class="swiper-wrapper wide" id="swiper-wrapper-3a6d7925d786a9ae" aria-live="polite" style="transform: translate3d(0px, 0px, 0px);">
                                 <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 4" style="width: 844px; margin-right: 30px;">
-                                  <img src="{{asset('wa/teacherdashboard/img/math-aa.png')}}" class="">
+                                  {{-- <img src="{{asset('wa/teacherdashboard/img/math-aa.png')}}" class=""> --}}
+                                  <object data="{{ asset("uploads/".$assignedHomework->assigned_content) }}" type="application/pdf" width="600" height="400">
+                                    alt : <a href="pdf_file_name.pdf">PDF TITLE</a>
+                                 </object>
                                 </div>
-                                <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 4" style="width: 844px; margin-right: 30px;">
+                                {{-- <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 4" style="width: 844px; margin-right: 30px;">
                                   <img src="{{asset('wa/teacherdashboard/img/math-aa.png')}}" class="">
                                 </div>
                                 <div class="swiper-slide" role="group" aria-label="3 / 4" style="width: 844px; margin-right: 30px;">
@@ -43,7 +46,7 @@
                                 </div>
                                 <div class="swiper-slide" role="group" aria-label="4 / 4" style="width: 844px; margin-right: 30px;">
                                   <img src="{{asset('wa/teacherdashboard/img/math-aa.png')}}" class="">
-                                </div>
+                                </div> --}}
                               </div>
                             <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
                           </div>
@@ -52,7 +55,7 @@
                               <div class="swiper-slide swiper-slide-visible swiper-slide-active swiper-slide-thumb-active" role="group" aria-label="1 / 4" style="width: 204.5px; margin-right: 10px;">
                                 <img src="{{asset('wa/teacherdashboard/img/math-aa.png')}}" class="">
                               </div>
-                              <div class="swiper-slide swiper-slide-visible swiper-slide-next" role="group" aria-label="2 / 4" style="width: 204.5px; margin-right: 10px;">
+                              {{-- <div class="swiper-slide swiper-slide-visible swiper-slide-next" role="group" aria-label="2 / 4" style="width: 204.5px; margin-right: 10px;">
                                 <img src="{{asset('wa/teacherdashboard/img/math-aa.png')}}" class="">
                               </div>
                               <div class="swiper-slide swiper-slide-visible" role="group" aria-label="3 / 4" style="width: 204.5px; margin-right: 10px;">
@@ -62,7 +65,7 @@
                                 <img src="{{asset('wa/teacherdashboard/img/math-aa.png')}}" class="">
                               </div>
                               <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-3a6d7925d786a9ae" aria-disabled="false"></div>
-                              <div class="swiper-button-prev swiper-button-disabled" tabindex="-1" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-3a6d7925d786a9ae" aria-disabled="true"></div>
+                              <div class="swiper-button-prev swiper-button-disabled" tabindex="-1" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-3a6d7925d786a9ae" aria-disabled="true"></div> --}}
 
                             </div>
                           <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
@@ -78,7 +81,14 @@
                             </div>
                           </div>
                           <div class="border-section second-border-section">
-                            <div> <img src="{{asset('wa/teacherdashboard/img/math-aa.png')}}" class="img-subject"></div>
+                            <div> 
+                              <object data="{{ asset("storage/homeworks/".$homeworkContent->home_work_image_path) }}" type="application/pdf" width="600" height="400">
+                                alt : <a href="pdf_file_name.pdf">PDF TITLE</a>
+                             </object>
+                                {{-- <img src="{{asset('wa/teacherdashboard/img/math-aa.png')}}" class="img-subject"> --}}
+
+
+                            </div>
                            
                           </div>
                         </div>

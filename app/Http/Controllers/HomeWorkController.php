@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\AssignedHomeWork;
+use App\Models\AssignedHomeWorkAnswer;
+use App\Models\AssignedHomeWorkAnswerMap;
 use App\Models\AssignedHomeWorkStudent;
 use App\Models\BatchSession;
 use App\Models\Order;
@@ -29,10 +31,22 @@ class HomeWorkController extends Controller
             });
             $singleSession->students =  User::whereIn('id', $studenList->unique())->get();
             $assignedHW = AssignedHomeWork::where('session_id', $singleSession->id)->first();
+            $singleSession->submission_count = AssignedHomeWorkAnswer::
+            where('assigned_home_work_id', $assignedHW->id ?? null)->where('is_submitted', '1')->count();
             $singleSession->students->transform(function ($student) use ($assignedHW) {
-                $student->is_homework_assigned = AssignedHomeWorkStudent::
-                where('assigned_homework_id', $assignedHW->id ?? null)
-                ->where('student_id', $student->id)->exists();
+                $student->is_homework_assigned = AssignedHomeWorkAnswer::
+                where('assigned_home_work_id', $assignedHW->id ?? null)
+                ->where('student_id', $student->id)->where('is_submitted', '1')->exists();
+                $submitted = AssignedHomeWorkAnswer::
+                where('assigned_home_work_id', $assignedHW->id ?? null)
+                ->where('student_id', $student->id)->where('is_submitted', '1')->exists();
+                $student->is_submitted = $submitted;
+                $student->homeworkId = false;
+                if ($submitted) {
+                    $student->homeworkId = AssignedHomeWorkAnswer::
+                    where('assigned_home_work_id', $assignedHW->id ?? null)
+                    ->where('student_id', $student->id)->where('is_submitted', '1')->first()->id;
+                }
 
                 return $student;
             });
@@ -92,9 +106,9 @@ class HomeWorkController extends Controller
 
         $checkHomeWorkIsAlreadyAssigned = AssignedHomeWork::where('session_id', $content->session_id)->exists();
         
-        // if ($checkHomeWorkIsAlreadyAssigned) {
-        //     return response()->json(['data'=> 'Homework is already assigned for this session'], 400);
-        // }
+        if ($checkHomeWorkIsAlreadyAssigned) {
+            return response()->json(['data'=> 'Homework is already assigned for this session'], 400);
+        }
 
         $studentsList = collect([]);
         $batches = OrderItems::with('orderPayment')->where('batch_id', $session->batch_id)->get();
@@ -134,8 +148,17 @@ class HomeWorkController extends Controller
         }
         return response()->json("Success");
     }
-    public function viewhomeworkdetails()
+    public function viewhomeworkdetails($id)
     {
-        return view('homework._homework_details');
+        $submittedHomework = AssignedHomeWorkStudent::find($id);
+        // dd($submittedHomework);
+        $homeworkContent = AssignedHomeWorkAnswerMap::where(
+            'assigned_home_work_id',
+            $submittedHomework->assigned_homework_id
+        )->first();
+
+        $assignedHomework = AssignedHomeWork::find($submittedHomework->assigned_homework_id);
+
+        return view('homework._homework_details', compact('submittedHomework', 'homeworkContent', 'assignedHomework'));
     }
 }
