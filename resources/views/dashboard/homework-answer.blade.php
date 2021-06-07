@@ -286,10 +286,15 @@
                                         <div class="file_upload">
                                             <form id="homeworksubmit">
                                                 @csrf
+                                                @php
+                                                    foreach($homework->studentlist as $hs)
+                                                    $map_id=$hs->id;
+                                                @endphp
                                                 <label class="file">
                                                     <input type="file" id="file_upload_input"  style="opacity: 1 !important" name="homeworkfiles[]" multiple="multiple" required>
                                                  </label>
                                                  <input type="hidden" name="homework_id" value="{{$homework->id}}">
+                                                 <input type="hidden" name="map_id" value="{{$map_id}}">
                                                  {{-- <span class="file-custom"></span> --}}
                                               <button id="input-submit">Submit</button>
                                             </form>
@@ -376,6 +381,22 @@
           <!-- ./Tabs -->
 
         </div>
+
+        @php
+            switch($homework->type_of_homework){
+                case "UPLOAD_PDF":
+                    $pdfpath=asset('uploads')."/".$homework->assigned_content;
+                    break;
+                    case "CHOOSE_PDF":
+                    $pdfpath=asset('uploads/public/pdfs')."/".$homework->homeworkName->pdf_path;
+                    break;
+                    case "ADD_QUESTION":
+                    $pdfpath="www.tango.com";
+                    break;
+
+            }
+        @endphp
+
     @endforeach
         <!-- End of Main Content -->
         <!-- Modal pop-up start -->
@@ -392,7 +413,7 @@
                       Query Submitted Successfully
                     </p>
                     <p class="modal_pera">
-                      Your Query was Submitted to the Alice Morgan.
+                      Your answer was Submitted to the Alice Morgan.
                     </p>
                     <button class="ok_button mt-3 mb-3" data-dismiss="modal" id="close">ok, Got it!</button>
                   </div>
@@ -402,6 +423,7 @@
             </div>
           </div>
         </div>
+
         <script>
             $(function () {
                 $('#myModal').hide();
@@ -507,7 +529,8 @@
                 document.querySelector("#load-homework").addEventListener('click', function() {
                     // this.style.display = 'none';
                     // showPDF("{{asset('uploads')}}"+"/"+"{{$homework->pdf_path}}");
-                    showPDF("{{asset('uploads')}}"+"/"+"{{$homework->assigned_content}}");
+                    // showPDF("{{asset('uploads')}}"+"/"+"{{$homework->assigned_content}}");
+                    showPDF("{{$pdfpath}}");
                 });
 
                 // click on the "Previous" page button

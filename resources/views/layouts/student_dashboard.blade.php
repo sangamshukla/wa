@@ -42,8 +42,10 @@
         <!-- Main Content -->
         <div id="content">
             @include('students.topnav')
-            @yield('student-content')
+            @yield('student-content')c
         </div>
+        </div>
+    </div>
         <!-- Footer -->
         <footer class="sticky-footer">
           <div class="container-fluid text-center">
@@ -52,6 +54,7 @@
             </div>
           </div>
         </footer>
+
         <!-- End of Footer -->
       </div>
       <!-- End of Content Wrapper -->

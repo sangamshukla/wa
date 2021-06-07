@@ -28,7 +28,7 @@ class HomeWorkStudentController extends Controller
             ->where('ahw.session_id', $id)
             ->where('ahws.student_id', $user_id)
             ->get();
-        // dd($homeworks->session_id);
+        // dd($homeworks);
         return view('dashboard.homework', compact('sessionDetails', 'homeworks'));
     }
     public function sessionDetail()
@@ -63,9 +63,7 @@ class HomeWorkStudentController extends Controller
     }
     public function submitHomework(Request $request, $id)
     {
-        // dd($id);
         $homeworks = AssignedHomeWork::where('id', $id)->get();
-        // dd($homeworks);
         return view('dashboard.homework-answer', compact('homeworks'));
     }
     public function uploadHomework(Request $request)
@@ -75,6 +73,7 @@ class HomeWorkStudentController extends Controller
         // ]);
         // dd($request->homeworkfiles);
         $homework_id = $request->homework_id;
+        $map_id =  $request->map_id;
         $content_types = AssignedHomeWork::where('id', $homework_id)->select('type_of_homework')->get();
         foreach ($content_types as $content_type) {
             AssignedHomeWorkAnswer::create([
@@ -88,7 +87,8 @@ class HomeWorkStudentController extends Controller
             $homework_filename = $homeworkfile->getClientOriginalName();
             AssignedHomeWorkAnswerMap::create([
                 'assigned_home_work_id' => $homework_id,
-                'home_work_image_path' => $homework_filename
+                'assigned_home_work_student_id' =>  $map_id,
+                'image_path' => $homework_filename
             ]);
             $homeworkfile->storeAs('homeworks', $homework_filename, 'public');
         }
