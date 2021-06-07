@@ -17,6 +17,7 @@ class CreateHomeWorkAnswerMapsTable extends Migration
         Schema::create('home_work_answer_maps', function (Blueprint $table) {
             $table->id();
             $table->foreignId(AssignedHomeWork::class);
+            $table->foreignId(AssignedHomeWorkStudent::class);
             $table->string('image_path');
             $table->timestamps();
         });

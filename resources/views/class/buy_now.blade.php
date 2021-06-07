@@ -30,7 +30,7 @@
                   <div  class="card_cart_div">
                     <a href="{{ route('cart.remove', $relatedBatch->id) }}" class="close"></a>
                       <div style="cursor:pointer;" onClick="(function(){
-                        window.location.href = '/testing/public/student-details/{{ $relatedBatch->id }}';
+                        window.location.href = '/student-details/{{ $relatedBatch->id }}';
                         })();return false;" class="single-district card{{ $i }}">
                         {{-- @php $i =1 @endphp --}}
                           <div class="card_img mb-3">
