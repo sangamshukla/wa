@@ -286,10 +286,15 @@
                                         <div class="file_upload">
                                             <form id="homeworksubmit">
                                                 @csrf
+                                                @php
+                                                    foreach($homework->studentlist as $hs)
+                                                    $map_id=$hs->id;
+                                                @endphp
                                                 <label class="file">
                                                     <input type="file" id="file_upload_input"  style="opacity: 1 !important" name="homeworkfiles[]" multiple="multiple" required>
                                                  </label>
                                                  <input type="hidden" name="homework_id" value="{{$homework->id}}">
+                                                 <input type="hidden" name="map_id" value="{{$map_id}}">
                                                  {{-- <span class="file-custom"></span> --}}
                                               <button id="input-submit">Submit</button>
                                             </form>
@@ -376,20 +381,21 @@
           <!-- ./Tabs -->
 
         </div>
-            @switch($homework->type_of_homework)
-                @case('UPLOAD_PDF')
-                    $pdfpath={{asset('uploads')}}"+"/"+"{{$homework->assigned_content}};
-                    @break
-                @case('CHOOSE_PDF')
-                    echo "it's chosen pdf";
-                    @break
-                @case('ADD_QUESTION')
-                    echo "it's ADDED QUESTIO pdf";
-                    @break
-                @default
 
-            @endswitch
+        @php
+            switch($homework->type_of_homework){
+                case "UPLOAD_PDF":
+                    $pdfpath=asset('uploads')."/".$homework->assigned_content;
+                    break;
+                    case "CHOOSE_PDF":
+                    $pdfpath=asset('uploads/public/pdfs')."/".$homework->homeworkName->pdf_path;
+                    break;
+                    case "ADD_QUESTION":
+                    $pdfpath="www.tango.com";
+                    break;
 
+            }
+        @endphp
 
     @endforeach
         <!-- End of Main Content -->

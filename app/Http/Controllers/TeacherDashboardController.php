@@ -37,7 +37,7 @@ class TeacherDashboardController extends Controller
         if (auth()->user()->role == "teacher") {
             return view('teacher.dashboard', compact('startweek', 'endweek', 'days_in_month', 'session_yes', 'session_data', 'images', 'users', 'batches'));
         } else {
-            return redirect(route('student-dashboard'));
+            return redirect('student-dashboard');
         }
     }
 }

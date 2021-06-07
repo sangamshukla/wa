@@ -193,6 +193,7 @@
                               <p class="sub_subject">Class Name</p>
                               <p class="subject">{{ $batch->classSettings->name }}</p>
                               <p class="sub_subject">Session & topic</p>
+                                {{$session}}
                                 {{-- @foreach($session->topics as $t)
                                   {{ $session->name.'-'.$t->topic->name.',' }}
                                 @endforeach --}}
