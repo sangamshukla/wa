@@ -4,7 +4,7 @@
     @endsection
     @section('student-content')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.2.228/pdf.min.js"></script>
-
+    <script src="//cdn.ckeditor.com/4.16.1/basic/ckeditor.js"></script>
     <style type="text/css">
 
 #show-pdf-button {
@@ -286,10 +286,11 @@
                                         <div class="file_upload">
                                             <form id="homeworksubmit">
                                                 @csrf
-                                                @php
-                                                    foreach($homework->studentlist as $hs)
-                                                    $map_id=$hs->id;
-                                                @endphp
+                                                @forelse ($homework->studentlist as $hs)
+                                                    {{$map_id=$hs->id}}
+                                                    @empty
+                                                    {{$map_id=NULL}}
+                                                @endforelse
                                                 <label class="file">
                                                     <input type="file" id="file_upload_input"  style="opacity: 1 !important" name="homeworkfiles[]" multiple="multiple" required>
                                                  </label>
@@ -297,6 +298,7 @@
                                                  <input type="hidden" name="map_id" value="{{$map_id}}">
                                                  {{-- <span class="file-custom"></span> --}}
                                               <button id="input-submit">Submit</button>
+                                              <img src="{{asset('wa/assets/img/loader3.gif')}}" alt="" width="40", height="40" id="process-loader" hidden>
                                             </form>
                                                 <div class="alert alert-primary" role="alert" hidden>
                                                     Your homework has been submitted
@@ -318,17 +320,23 @@
                                         {{-- <p>{{$homework}}</p> --}}
                                         <img src="{{asset('wa/dashboard/img/ans-img.png')}}" class="ans_img">
 
+
                                       </div>
                                     </div>
                                     <div class="col-6">
                                       <div class="card">
-                                        <p class="tile_card_comment">Teachers Message</p>
+                                        {{-- <p class="tile_card_comment">Teachers Message</p>
                                         <div class="file_upload">
                                           <label class="file">
                                             <input type="file" id="file" aria-label="example.pdf" name="uploadfile">
                                             <span class="file-custom"></span>
                                           </label>
-                                        </div>
+                                        </div> --}}
+                                                        <textarea name="student_answer"></textarea>
+                                      <script>
+                                              CKEDITOR.replace( 'student_answer' );
+                                      </script>
+
                                       </div>
                                     </div>
                                   </div>
@@ -559,7 +567,8 @@
                 //     //   $('#changed').append('<li>'+filename+'</li>');
                 //    });
             $('#homeworksubmit').submit(function(e){
-                $("#input-submit").attr('disabled', true);
+                // $("#input-submit").attr('disabled', true);
+                $('#process-loader').attr('hidden', false);
                 // e.preventDefault();
                 // var element=document.getElementById("file_upload_div");
                 var homework_id="{{$homework->id}}";
@@ -580,13 +589,15 @@
                         enctype: 'multipart/form-data',
                         processData: false,
                         success:function(response){
+                          $('#process-loader').attr('hidden', true);
                             $('.alert').removeAttr('hidden');
                             $('#input-submit').text('submitting...');
                             $('#input-submit').text('Submitted');
                             $(".alert").fadeOut(8000);
                         },
                         error:function(error){
-                            alert("error");
+                          $('#process-loader').attr('hidden', true);
+                            alert(error.responseText.message);
                             console.log(error.responseText.message);
                         }
                     });
