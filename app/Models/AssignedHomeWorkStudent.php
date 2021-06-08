@@ -8,10 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class AssignedHomeWorkStudent extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'assigned_homework_id',
-        'student_id'
-    ];
+    protected $table= "assigned_homework_students";
+    protected $guarded = [];
+
     public function homeWork()
     {
         return $this->belongsTo(AssignedHomeWork::class, 'id');

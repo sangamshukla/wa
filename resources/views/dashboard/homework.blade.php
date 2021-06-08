@@ -127,7 +127,7 @@
 
                             <div class="row">
                               <div class="col-xl-12 col-sm-12 p-1">
-                                <a href="{{route('submit-home-work', ['id'=>$homework->assigned_homework_id])}}">
+                                <a href="{{route('submit-home-work', ['id'=>$homework->assigned_home_work_id])}}">
                                     {{-- {{$homework->session->name}}-{{$homework->session->topics->topic->name}} --}}
                                    {{-- <p>{{$homework}}</p> --}}
                                    {{$homework->name}}

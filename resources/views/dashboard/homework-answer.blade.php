@@ -287,6 +287,7 @@
                                             <form id="homeworksubmit">
                                                 @csrf
                                                 @php
+                                                  // dd($homework);
                                                     foreach($homework->studentlist as $hs)
                                                     $map_id=$hs->id;
                                                 @endphp

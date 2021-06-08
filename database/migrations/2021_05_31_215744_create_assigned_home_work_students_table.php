@@ -13,12 +13,17 @@ class CreateAssignedHomeWorkStudentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('assigned_home_work_students', function (Blueprint $table) {
+        Schema::create('assigned_homework_students', function (Blueprint $table) {
             $table->id();
-            $table->integer('assigned_homework_id')->nullable();
-            $table->string('pdf_details');
+            $table->foreignId('assigned_home_work_id')->contrained('assigned_home_works')->nullable();
             $table->string('type_of_homework')->nullable();
             $table->integer('student_id')->nullable();
+            $table->boolean('is_approved')->nullable();
+            $table->string('teacher_remark')->nullable();
+            $table->string('assigned_content')->nullable();
+            $table->string('given_marks')->nullable();
+            $table->string('star_rating')->nullable();
+            $table->mediumText('comment_for_student')->nullable();
             $table->timestamps();
         });
     }
