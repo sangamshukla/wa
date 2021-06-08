@@ -31,6 +31,7 @@ class HomeWorkController extends Controller
             });
             $singleSession->students =  User::whereIn('id', $studenList->unique())->get();
             $assignedHW = AssignedHomeWork::where('session_id', $singleSession->id)->first();
+            $singleSession->hw = $assignedHW;
             $singleSession->submission_count = AssignedHomeWorkAnswer::
             where('assigned_home_work_id', $assignedHW->id ?? null)->where('is_submitted', '1')->count();
             $singleSession->students->transform(function ($student) use ($assignedHW) {
@@ -55,6 +56,7 @@ class HomeWorkController extends Controller
             return $singleSession;
         });
         
+        // dd($allSessions);
         $studentsList = collect([]);
         $batches = OrderItems::with('orderPayment')->where('batch_id', $session->batch_id)->get();
 
@@ -106,9 +108,9 @@ class HomeWorkController extends Controller
 
         $checkHomeWorkIsAlreadyAssigned = AssignedHomeWork::where('session_id', $content->session_id)->exists();
         
-        if ($checkHomeWorkIsAlreadyAssigned) {
-            return response()->json(['data'=> 'Homework is already assigned for this session'], 400);
-        }
+        // if ($checkHomeWorkIsAlreadyAssigned) {
+        //     return response()->json(['data'=> 'Homework is already assigned for this session'], 400);
+        // }
 
         $studentsList = collect([]);
         $batches = OrderItems::with('orderPayment')->where('batch_id', $session->batch_id)->get();
@@ -142,22 +144,30 @@ class HomeWorkController extends Controller
 
         foreach ($students as $student) {
             AssignedHomeWorkStudent::create([
-                'assigned_homework_id' => $assignedHomework->id,
-                'student_id' => $student->id
+                'assigned_home_work_id' => $assignedHomework->id,
+                'student_id' => $student->id,
+                'type_of_homework'=>$content->type_of_homework,
             ]);
         }
         return response()->json("Success");
     }
+
     public function viewhomeworkdetails($id)
     {
-        $submittedHomework = AssignedHomeWorkStudent::find($id);
-        // dd($submittedHomework);
+        $submittedHomework = AssignedHomeWorkAnswer::find($id);
+        $student = AssignedHomeWorkStudent::where('student_id', $submittedHomework->student_id)
+            ->where('assigned_home_work_id', $submittedHomework->assigned_home_work_id)->first();
+        // dd($student);
         $homeworkContent = AssignedHomeWorkAnswerMap::where(
             'assigned_home_work_id',
-            $submittedHomework->assigned_homework_id
-        )->first();
+            $submittedHomework->assigned_home_work_id
+        )->where('assigned_home_work_student_id', $student->id)->first();
 
-        $assignedHomework = AssignedHomeWork::find($submittedHomework->assigned_homework_id);
+        // dd($homeworkContent);
+        // $assignedHomework = AssignedHomeWork::find($submittedHomework->assigned_homework_id);
+    
+
+        $assignedHomework = AssignedHomeWork::find($submittedHomework->assigned_home_work_id);
 
         return view('homework._homework_details', compact('submittedHomework', 'homeworkContent', 'assignedHomework'));
     }

@@ -23,7 +23,7 @@ class HomeWorkStudentController extends Controller
         $batches = Batch::all();
         // $homeworks = AssignedHomeWork::where('session_id', $id)->get();
         $homeworks = DB::table('assigned_home_works AS ahw')
-            ->join('assigned_home_work_students AS ahws', 'ahw.id', '=', 'ahws.assigned_homework_id')
+            ->join('assigned_homework_students AS ahws', 'ahw.id', '=', 'ahws.assigned_home_work_id')
             ->join('batch_session AS bs', 'ahw.session_id', '=', 'bs.id')
             ->where('ahw.session_id', $id)
             ->where('ahws.student_id', $user_id)

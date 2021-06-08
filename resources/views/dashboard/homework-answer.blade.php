@@ -286,11 +286,19 @@
                                         <div class="file_upload">
                                             <form id="homeworksubmit">
                                                 @csrf
+<<<<<<< HEAD
                                                 @forelse ($homework->studentlist as $hs)
                                                     {{$map_id=$hs->id}}
                                                     @empty
                                                     {{$map_id=NULL}}
                                                 @endforelse
+=======
+                                                @php
+                                                  // dd($homework);
+                                                    foreach($homework->studentlist as $hs)
+                                                    $map_id=$hs->id;
+                                                @endphp
+>>>>>>> aa2321f2e5ba151120dbfd6dfc705b978d9e96c8
                                                 <label class="file">
                                                     <input type="file" id="file_upload_input"  style="opacity: 1 !important" name="homeworkfiles[]" multiple="multiple" required>
                                                  </label>

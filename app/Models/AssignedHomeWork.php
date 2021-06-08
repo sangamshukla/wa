@@ -22,7 +22,7 @@ class AssignedHomeWork extends Model
     ];
     public function studentlist()
     {
-        return $this->hasMany(AssignedHomeWorkStudent::class, 'assigned_homework_id');
+        return $this->hasMany(AssignedHomeWorkStudent::class, 'assigned_home_work_id');
     }
     public function homeworkstatus()
     {

@@ -34,8 +34,8 @@
                               <div class="swiper-wrapper wide" id="swiper-wrapper-3a6d7925d786a9ae" aria-live="polite" style="transform: translate3d(0px, 0px, 0px);">
                                 <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 4" style="width: 844px; margin-right: 30px;">
                                   {{-- <img src="{{asset('wa/teacherdashboard/img/math-aa.png')}}" class=""> --}}
-                                  <object data="{{ asset("uploads/".$assignedHomework->assigned_content) }}" type="application/pdf" width="600" height="400">
-                                    alt : <a href="pdf_file_name.pdf">PDF TITLE</a>
+                                    <embed src="{{ url("uploads/".$assignedHomework->assigned_content) }}#toolbar=0"  width="600" height="400" />
+                                    {{-- alt : <a href="pdf_file_name.pdf">PDF TITLE</a> --}}
                                  </object>
                                 </div>
                                 {{-- <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 4" style="width: 844px; margin-right: 30px;">
@@ -72,24 +72,20 @@
                         </div>
                         <div class="col-lg-6">
                           <div class="pagination_div">
-                            <p class="img_name">Image 1.png</p>
+                            <p class="img_name">{{ $homeworkContent->image_path }}</p>
                            
                             <div class="pagination_block">
                               <a href="#" class="previous round">‹</a>
-                              <p><span>1<span><span>/</span><span>15</span></span></span></p>
+                              <p><span>1<span><span>/</span><span>1</span></span></span></p>
                               <a href="#" class="next round">›</a>
                             </div>
                           </div>
                           <div class="border-section second-border-section">
                             <div> 
-                              <object data="{{ asset("storage/homeworks/".$homeworkContent->home_work_image_path) }}" type="application/pdf" width="600" height="400">
-                                alt : <a href="pdf_file_name.pdf">PDF TITLE</a>
-                             </object>
+                              <embed src="{{ url("storage/homeworks/".$homeworkContent->image_path) }}#toolbar=0" type="application/pdf" width="600" height="400" />
+                                {{-- alt : <a href="pdf_file_name.pdf">PDF TITLE</a> --}}
                                 {{-- <img src="{{asset('wa/teacherdashboard/img/math-aa.png')}}" class="img-subject"> --}}
-
-
                             </div>
-                           
                           </div>
                         </div>
                       </div>
@@ -103,7 +99,7 @@
                       </div>
                       <div class="rating_block">
                         <span>Rate the Answer</span>
-                        <div class="Stars" style="--rating: 2.3" aria-label="Rating of this product is 2.3 out of 5."></div>
+                        <div class="Stars" style="--rating: 2.5" aria-label="Rating of this product is 2.3 out of 5."></div>
                       </div>
                       <div class="add_mark">
                         <button class="btn add_mark_cta">Add Remark</button>

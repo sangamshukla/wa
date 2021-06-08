@@ -78,7 +78,13 @@
                           @if($student->is_submitted)
                             <a href="{{ url('view-homework-details', $student->homeworkId) }}">View Submission</a>
                           @else
-                            <a href="#">Send Reminder</a>
+                            @if($session->hw)
+                              @if(strtotime($session->hw->due_date) < strtotime(date("Y-m-d")))
+                                <span class="text-danger">Overdue Date</span>
+                              @else
+                              <a href="#">Send Reminder</a>
+                              @endif
+                            @endif
                           @endif
                         </div>
                       </div>
