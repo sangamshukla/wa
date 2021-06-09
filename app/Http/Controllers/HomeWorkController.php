@@ -42,6 +42,9 @@ class HomeWorkController extends Controller
                 where('assigned_home_work_id', $assignedHW->id ?? null)
                 ->where('student_id', $student->id)->where('is_submitted', '1')->exists();
                 $student->is_submitted = $submitted;
+                $student->homeworks = AssignedHomeWorkStudent::
+                where('assigned_home_work_id', $assignedHW->id ?? null)
+                ->where('student_id', $student->id)->first();
                 $student->homeworkId = false;
                 if ($submitted) {
                     $student->homeworkId = AssignedHomeWorkAnswer::
@@ -133,8 +136,8 @@ class HomeWorkController extends Controller
             $homeworkContent = $content->assigned_content;
         }
 
-        $assignedHomework =  AssignedHomeWork::create([
-            'session_id' => $content->session_id,
+        $assignedHomework =  AssignedHomeWork::updateOrCreate([
+            'session_id' => $content->session_id], [
             'comment' => $content->comment,
             'points' => $content->points,
             'due_date' => $content->due_date ?? '',
@@ -147,6 +150,7 @@ class HomeWorkController extends Controller
                 'assigned_home_work_id' => $assignedHomework->id,
                 'student_id' => $student->id,
                 'type_of_homework'=>$content->type_of_homework,
+                'assigned_content' => $homeworkContent,
             ]);
         }
         return response()->json("Success");

@@ -53,6 +53,7 @@
               <div id="accordion">
                 {{-- for loop for all sessions in current batch --}}
                 @foreach ($allSessions as $session )   
+              
                 <div class="card mb-3">
                   <div class="card-header">
                     <a class="card-link text-dark" data-toggle="collapse" href="#collapse{{ $session->id }}"><span class="float-right"></span>
@@ -72,6 +73,7 @@
                       {{-- session -> students --}}
                       @foreach($session->students as $student)
                       <div class="accordian_card_inner_block">
+                       
                         <div class="inner_nameblock">{{ $student->name}} </div>
                         <div class="inner_check_block"><img src="{{ $student->is_homework_assigned ?  asset('wa/teacherdashboard/img/active-check.svg') :  asset('wa/teacherdashboard/img/inactive-check.svg') }}"></div>
                         <div class="inner_reminder_block">
@@ -86,6 +88,15 @@
                               @endif
                             @endif
                           @endif
+                        </div>
+                        <div>
+                          <span>
+                            @if($student->homeworks)
+                            <a href="{{ asset("uploads/".$student->homeworks->assigned_content) }}">View Homework</a>
+                            @else
+                            <span>Homework Not Assigned</span>
+                            @endif
+                          <span> 
                         </div>
                       </div>
                       @endforeach
