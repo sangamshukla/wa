@@ -165,7 +165,7 @@
                                                 $pdfpath=asset('uploads')."/".$homework->assigned_content;
                                                 break;
                                                 case "CHOOSE_PDF":
-                                                $pdfpath=asset('uploads')."/".$homework->homework_Name->pdf_path;
+                                                $pdfpath=asset('uploads/public/pdfs')."/".$homework->homework_Name->pdf_path;
                                                 break;
                                                 case "ADD_QUESTION":
                                                 $pdfpath="www.tango.com";
@@ -186,7 +186,90 @@
                                         </div>
                                       </div>
                                     </div>
-
+                                    <div class="d-flex justify-content-between pdf_block mt-5">
+                                      <div>
+                                        <span class="pdf_list_no">1.</span>
+                                        <span>Lorem ipsum dolor sit
+                                          amet-</span>
+                                      </div>
+                                      <div></div>
+                                        <div>
+                                          <span class="border-left"></span>
+                                          <span class="pdf_block" data-toggle="modal" data-target="#pdfModal"><img src="{{asset('wa/dashboard/img/pdf.svg')}}"></span>
+                                          <span class="border-left"></span>
+                                          <span class="pdf_block" data-toggle="modal" data-target="#pdfModal"><img src="{{asset('wa/dashboard/img/download.png')}}"></span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between pdf_block mt-2">
+                                      <div>
+                                        <span class="pdf_list_no">1.</span>
+                                        <span>Lorem ipsum dolor sit
+                                          amet-</span>
+                                      </div>
+                                      <div></div>
+                                        <div>
+                                          <span class="border-left"></span>
+                                          <span class="pdf_block" data-toggle="modal" data-target="#pdfModal"><img src="{{asset('wa/dashboard/img/pdf.svg')}}"></span>
+                                          <span class="border-left"></span>
+                                          <span class="pdf_block" data-toggle="modal" data-target="#pdfModal"><img src="{{asset('wa/dashboard/img/download.png')}}"></span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between pdf_block mt-2">
+                                      <div>
+                                        <span class="pdf_list_no">1.</span>
+                                        <span>Lorem ipsum dolor sit
+                                          amet-</span>
+                                      </div>
+                                      <div></div>
+                                        <div>
+                                          <span class="border-left"></span>
+                                          <span class="pdf_block" data-toggle="modal" data-target="#pdfModal"><img src="{{asset('wa/dashboard/img/pdf.svg')}}"></span>
+                                          <span class="border-left"></span>
+                                          <span class="pdf_block" data-toggle="modal" data-target="#pdfModal"><img src="{{asset('wa/dashboard/img/download.png')}}"></span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between pdf_block mt-2">
+                                      <div>
+                                        <span class="pdf_list_no">1.</span>
+                                        <span>Lorem ipsum dolor sit
+                                          amet-</span>
+                                      </div>
+                                      <div></div>
+                                        <div>
+                                          <span class="border-left"></span>
+                                          <span class="pdf_block" data-toggle="modal" data-target="#pdfModal"><img src="{{asset('wa/dashboard/img/pdf.svg')}}"></span>
+                                          <span class="border-left"></span>
+                                          <span class="pdf_block" data-toggle="modal" data-target="#pdfModal"><img src="{{asset('wa/dashboard/img/download.png')}}"></span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between pdf_block mt-2">
+                                      <div>
+                                        <span class="pdf_list_no">1.</span>
+                                        <span>Lorem ipsum dolor sit
+                                          amet-</span>
+                                      </div>
+                                      <div></div>
+                                        <div>
+                                          <span class="border-left"></span>
+                                          <span class="pdf_block" data-toggle="modal" data-target="#pdfModal"><img src="{{asset('wa/dashboard/img/pdf.svg')}}"></span>
+                                          <span class="border-left"></span>
+                                          <span class="pdf_block" data-toggle="modal" data-target="#pdfModal"><img src="{{asset('wa/dashboard/img/download.png')}}"></span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between pdf_block mt-2">
+                                      <div>
+                                        <span class="pdf_list_no">1.</span>
+                                        <span>Lorem ipsum dolor sit
+                                          amet-</span>
+                                      </div>
+                                      <div></div>
+                                        <div>
+                                          <span class="border-left"></span>
+                                          <span class="pdf_block" data-toggle="modal" data-target="#pdfModal"><img src="{{asset('wa/dashboard/img/pdf.svg')}}"></span>
+                                          <span class="border-left"></span>
+                                          <span class="pdf_block" data-toggle="modal" data-target="#pdfModal"><img src="{{asset('wa/dashboard/img/download.png')}}"></span>
+                                        </div>
+                                    </div>
                                     <hr>
                                 </div>
                                 <div id="tabhome2" class="container tab-pane ">
@@ -203,14 +286,13 @@
                                         <div class="file_upload">
                                             <form id="homeworksubmit">
                                                 @csrf
-                                                @php
-                                               $map_id=$homework->id
-                                               @endphp
+                                               {{$map_id=$homework->id}}
                                                 <label class="file">
                                                     <input type="file" id="file_upload_input"  style="opacity: 1 !important" name="homeworkfiles[]" multiple="multiple" required>
                                                  </label>
                                                  <input type="hidden" name="homework_id" value="{{$homework->homeWork->id}}">
                                                  <input type="hidden" name="map_id" value="{{$map_id}}">
+                                                 <input type="hidden" name="map_id" value="1">
                                                  {{-- <span class="file-custom"></span> --}}
                                               <button id="input-submit">Submit</button>
                                               <img src="{{asset('wa/assets/img/loader3.gif')}}" alt="" width="40", height="40" id="process-loader" hidden>
@@ -304,7 +386,7 @@
           </section>
           <!-- ./Tabs -->
         </div>
-
+    @endforeach
         <!-- End of Main Content -->
         <!-- Modal pop-up start -->
         <!-- The Modal -->
@@ -434,7 +516,10 @@
 
                 // click on "Show PDF" buuton
                 document.querySelector("#load-homework").addEventListener('click', function() {
-
+                    // this.style.display = 'none';
+                    // showPDF("{{asset('uploads')}}"+"/"+"{{$homework->pdf_path}}");
+                    // showPDF("{{asset('uploads')}}"+"/"+"{{$homework->assigned_content}}");
+                    showPDF("{{$pdfpath}}");
 
                 });
 
@@ -528,5 +613,4 @@
                 });
             });
         </script>
-@endforeach
 @endsection

@@ -77,8 +77,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/teacher-new-dashboard', [HomeController::class, 'teacherDashboard']);
     Route::get('/operation-dashboard', [HomeController::class, 'operationDashboard']);
 
-    // Route::get('/student-dashboard', [HomeController::class, 'studentDashboard'])->name('student-dashboard');
-    Route::get('/student-dashboard', [HomeController::class, 'newStudentDashboard'])->name('student-dashboard');
+    Route::get('/student-dashboard', [HomeController::class, 'studentDashboard'])->name('student-dashboard');
+    // Route::get('/student-dashboard', [HomeController::class, 'newStudentDashboard'])->name('student-dashboard');
     Route::get('/session-list', [HomeController::class, 'sessionList']);
     Route::get('zoom/{id}', [HomeController::class, 'zoom']);
 

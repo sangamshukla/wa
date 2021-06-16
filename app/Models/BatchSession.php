@@ -27,6 +27,6 @@ class BatchSession extends Model
 
     public function batch()
     {
-        return $this->belongsTo(Batch::class, 'id');
+        return $this->belongsTo(Batch::class, 'batch_id');
     }
 }

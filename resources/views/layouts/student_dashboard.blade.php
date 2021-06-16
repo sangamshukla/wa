@@ -45,7 +45,7 @@
                 @yield('student-content')c
             </div>
         </div>
-
+    </div>
         <!-- Footer -->
         <footer class="sticky-footer">
           <div class="container-fluid text-center">
@@ -56,7 +56,6 @@
         </footer>
 
         <!-- End of Footer -->
-    </div>
       <!-- End of Content Wrapper -->
 
     <!-- End of Page Wrapper -->

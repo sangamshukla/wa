@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class AssignedHomeWorkStudent extends Model
 {
     use HasFactory;
-    // protected $table = "assigned_homework_students";
+    protected $table = "assigned_home_work_students";
     protected $guarded = [];
 
     public function homeWork()

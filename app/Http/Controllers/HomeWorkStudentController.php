@@ -24,13 +24,13 @@ class HomeWorkStudentController extends Controller
         // dd($user_id);
         // $homeworks = AssignedHomeWork::where('session_id', $id)->get();
         $homeworks = DB::table('assigned_home_works AS ahw')
-            ->join('assigned_homework_students AS ahws', 'ahw.id', '=', 'ahws.assigned_home_work_id')
+            ->join('assigned_home_work_students AS ahws', 'ahw.id', '=', 'ahws.assigned_home_work_id')
             ->join('batch_session AS bs', 'ahw.session_id', '=', 'bs.id')
             ->where('ahw.session_id', $id)
             ->where('ahws.student_id', $user_id)
             ->get();
 
-        // dd($homeworks);
+
         return view('dashboard.homework', compact('sessionDetails', 'homeworks'));
     }
     public function sessionDetail()

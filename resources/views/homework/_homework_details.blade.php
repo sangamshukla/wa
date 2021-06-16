@@ -52,20 +52,20 @@
                           </div>
                           <div thumbsslider="" class="swiper-container mySwiper swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events swiper-container-free-mode swiper-container-thumbs">
                             <div class="swiper-wrapper" id="swiper-wrapper-92d9f35765923b45" aria-live="polite" style="transform: translate3d(0px, 0px, 0px);">
-                              
+
                               @if($multiple)
-                              
+
                               @foreach($homeworkContent as $hwcontent)
                               <div class="swiper-slide swiper-slide-visible swiper-slide-next" role="group" aria-label="{{ $loop->iteration }} / {{ $loop->count }}" style="width: 204.5px; margin-right: 10px;">
                                 <img src="{{ url("storage/homeworks".$assignedHomework->id."/".$hwcontent->image_path) }}#toolbar=0" class="">
                                 </div>
-                              
+
                               @endforeach
                               @else
                               <div class="swiper-slide swiper-slide-visible swiper-slide-active swiper-slide-thumb-active" role="group" aria-label="1 / 4" style="width: 204.5px; margin-right: 10px;">
                                 <img src="{{asset('wa/teacherdashboard/img/math-aa.png')}}" class="">
                               </div>
-                              
+
                               @endif
                               {{-- <div class="swiper-slide swiper-slide-visible swiper-slide-next" role="group" aria-label="2 / 4" style="width: 204.5px; margin-right: 10px;">
                                 <img src="{{asset('wa/teacherdashboard/img/math-aa.png')}}" class="">
@@ -85,7 +85,7 @@
                         <div class="col-lg-6">
                           <div class="pagination_div">
                             <p class="img_name">{{ $student->image_path }}</p>
-                           
+
                             <div class="pagination_block">
                               <a href="#" class="previous round">‹</a>
                               <p><span>1<span><span>/</span><span>1</span></span></span></p>
@@ -93,14 +93,14 @@
                             </div>
                           </div>
                           <div class="border-section second-border-section">
-                            <div> 
+                            <div>
                             @if($multiple)
                                  <embed src="{{ url("storage/homeworks".$assignedHomework->id."/".$homeworkContent->first()->image_path) }}#toolbar=0" type="application/pdf" width="600" height="400" />
                             @else
                                  <embed src="{{ url("storage/homeworks".$assignedHomework->id."/".$homeworkContent->image_path) }}#toolbar=0" type="application/pdf" width="600" height="400" />
-                            
+
                             @endif
-                             
+
                                 {{-- alt : <a href="pdf_file_name.pdf">PDF TITLE</a> --}}
                                 {{-- <img src="{{asset('wa/teacherdashboard/img/math-aa.png')}}" class="img-subject"> --}}
                             </div>
@@ -143,7 +143,7 @@
     </div>
     <!-- Content Row -->
   </div>
-  
+
   @endsection
   {{-- js for homework details --}}
   @section('scripts')
@@ -190,7 +190,7 @@
         freeMode: true,
         watchSlidesVisibility: true,
         watchSlidesProgress: true,
-     
+
       });
       var swiper2 = new Swiper(".mySwiper2", {
         spaceBetween: 10,
@@ -202,18 +202,17 @@
           swiper: swiper,
         },
         breakpoints: {
-     
+
      320: { /* when window >= 767px - webflow tablet */
        slidesPerView: 1,
        spaceBetween: 30,
        slidesOffsetBefore: 0,
-      
+
      },
-     
+
    },
       });
-      
+
     </script>
     {{-- end homework details --}}
     @endsection
-  
