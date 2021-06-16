@@ -161,18 +161,34 @@ class HomeWorkController extends Controller
         $submittedHomework = AssignedHomeWorkAnswer::find($id);
         $student = AssignedHomeWorkStudent::where('student_id', $submittedHomework->student_id)
             ->where('assigned_home_work_id', $submittedHomework->assigned_home_work_id)->first();
-        // dd($student);
         $homeworkContent = AssignedHomeWorkAnswerMap::where(
             'assigned_home_work_id',
             $submittedHomework->assigned_home_work_id
-        )->where('assigned_home_work_student_id', $student->id)->first();
-
-        // dd($homeworkContent);
+        )->where('assigned_home_work_student_id', $student->id)->get();
+        $multiple  = true;
         // $assignedHomework = AssignedHomeWork::find($submittedHomework->assigned_homework_id);
+        // dd($homeworkContent);
+        if(count($homeworkContent) <= 1){
+             $homeworkContent = AssignedHomeWorkAnswerMap::where(
+            'assigned_home_work_id',
+            $submittedHomework->assigned_home_work_id
+        )->where('assigned_home_work_student_id', $student->id)->first();
+           
+            
+            $multiple = false;
+        }
     
-
         $assignedHomework = AssignedHomeWork::find($submittedHomework->assigned_home_work_id);
 
-        return view('homework._homework_details', compact('submittedHomework', 'homeworkContent', 'assignedHomework'));
+        return view('homework._homework_details', compact('submittedHomework', 'homeworkContent', 'assignedHomework', 'student', 'multiple'));
+    }
+
+    public function assignPoints(Request $request)
+    {
+        $content = json_decode($request->getContent());
+        AssignedHomeWorkStudent::find($content->id)->update([
+            'given_marks' => $content->points
+        ]);
+        return response()->json("Success");
     }
 }

@@ -296,7 +296,6 @@ $('#saveUploadPDFHomeWork').on('click', function(){
             $('#pointsPDF').val("");
             $('#dueDateUploadFile').val("");
             fileList = [];
-            fileIDs = [];
             removeOne();
          },
          error: (xhr, status, error)=>{

@@ -30,7 +30,7 @@
             </div>
             <div>
               <p class="start_date">Starts in</p>
-              <a id="{{ $session->batch->id }}" href="{{ $session->batch->zoom->meeting_join_url ?? ''  }}">Start Now</a>
+              <a id="{{ $session->batch->id }}">Start Now</a>
             <script>
                 window.onload = (event) => {
             
@@ -39,7 +39,9 @@
                         setInterval(function() {
                             let difference = new Date("{{ $session->start_date_time->format('Y-m-d H:i:s') }}") - new Date();
                             let remaining = "Join Now";
-                            // alert(difference);
+                            let starttime = new Date("{{ $session->start_date_time->format('Y-m-d H:i:s') }}");
+                            let endTime = new Date("{{ $session->start_date_time->addMinutes($session->batch->duration_per_session)->format('Y-m-d H:i:s') }}");
+                            let currentTime = new Date();
                             if (difference > 0) {
                                 const parts = {
                                     d: Math.floor(difference / (1000 * 60 * 60 * 24)),
@@ -50,8 +52,15 @@
                                 remaining = Object.keys(parts).map(part => {
                                       return `${parts[part]} ${part}`;
                                 }).join(" ");
+                               document.getElementById("{{ $session->batch->id }}").innerHTML = remaining;
+                            } else if (endTime > currentTime) {
+                              document.getElementById("{{ $session->batch->id }}").href = "{{ $session->batch->zoom->meeting_join_url ?? ''  }}";
+                            }else {
+                                document.getElementById("{{ $session->batch->id }}").innerHTML = "Session Time Over";
                             }
-                            document.getElementById("{{ $session->batch->id }}").innerHTML = remaining;
+                            
+                            
+                            
                         }, 1000);
                     }
                     timer();
