@@ -57,7 +57,7 @@
 
                               @foreach($homeworkContent as $hwcontent)
                               <div class="swiper-slide swiper-slide-visible swiper-slide-next" role="group" aria-label="{{ $loop->iteration }} / {{ $loop->count }}" style="width: 204.5px; margin-right: 10px;">
-                                <img src="{{ url("storage/homeworks".$assignedHomework->id."/".$hwcontent->image_path) }}#toolbar=0" class="">
+                                <img src="{{ url("storage/homeworks/".$hwcontent->image_path) }}#toolbar=0" class="">
                                 </div>
 
                               @endforeach
@@ -95,10 +95,15 @@
                           <div class="border-section second-border-section">
                             <div>
                             @if($multiple)
-                                 <embed src="{{ url("storage/homeworks".$assignedHomework->id."/".$homeworkContent->first()->image_path) }}#toolbar=0" type="application/pdf" width="600" height="400" />
+                                 <embed src="{{ url("storage/homeworks/".$homeworkContent->first()->image_path) }}#toolbar=0" type="application/pdf" width="600" height="400" />
                             @else
+<<<<<<< HEAD
                                  <embed src="{{ url("storage/homeworks".$assignedHomework->id."/".$homeworkContent->image_path) }}#toolbar=0" type="application/pdf" width="600" height="400" />
 
+=======
+                                 <embed src="{{ url("storage/homeworks/".$homeworkContent->image_path) }}#toolbar=0" type="application/pdf" width="600" height="400" />
+                            
+>>>>>>> 69492d482ec5f3285b551a4b01e4d269b617cd13
                             @endif
 
                                 {{-- alt : <a href="pdf_file_name.pdf">PDF TITLE</a> --}}
