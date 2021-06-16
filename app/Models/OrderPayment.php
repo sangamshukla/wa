@@ -16,4 +16,8 @@ class OrderPayment extends Model
     {
         return $this->hasMany(OrderItems::class, 'order_id');
     }
+    public function ordered_session()
+    {
+        return $this->hasMany(OrderSessionMap::class, 'order_id');
+    }
 }

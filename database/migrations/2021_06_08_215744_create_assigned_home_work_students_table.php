@@ -13,9 +13,9 @@ class CreateAssignedHomeWorkStudentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('assigned_homework_students', function (Blueprint $table) {
+        Schema::create('assigned_home_work_students', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('assigned_homework_id')->contrained('assigned_home_works')->nullable();
+            $table->foreignId('assigned_home_work_id')->contrained('assigned_home_works')->nullable();
             $table->string('type_of_homework')->nullable();
             $table->integer('student_id')->nullable();
             $table->boolean('is_approved')->nullable();

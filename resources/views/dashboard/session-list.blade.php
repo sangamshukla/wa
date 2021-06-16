@@ -159,7 +159,7 @@
                                     <div class="card-header" id="headingTwo">
                                         @if(count($tomorrow)== 0)
                                         <h6 style = "text-align:center; color:green;">No sessions for tomorrow <h6>
-                                    @endif
+                                      @endif
                                         @foreach($tomorrow as $batch)
                                         <div class="card-header" id="headingOne">
                                             <h5 class="mb-0">
@@ -281,7 +281,7 @@
                                                     </button>
                                                 </div>
                                                 <div class="mt-3 ml-4">
-                                                    <p class="date_text">{{ $batch->batch_start_date->format('d M, h:i A') }}</p>
+                                                    <p class="date_text">{{ $session->start_date_time->format('d M, Y H:i A') }}</p>
                                                 </div>
                                             </h5>
                                         </div>

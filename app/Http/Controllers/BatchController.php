@@ -27,7 +27,7 @@ class BatchController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
+
 
     public function index()
     {
@@ -134,7 +134,7 @@ class BatchController extends Controller
             $topicname = Topic::find($request->topic_id['Session-' . $name]);
             Event::create([
                 'batch_id' => $batch->id,
-                'title' => $d.''.$batch->classSettings->name.' '.$session_name.' '.$topicname->name.'',
+                'title' => $d . '' . $batch->classSettings->name . ' ' . $session_name . ' ' . $topicname->name . '',
                 'start' => Carbon::parse($d)->format('Y-m-d'),
                 'end' => Carbon::parse($d)->format('Y-m-d'),
             ]);
@@ -223,13 +223,15 @@ class BatchController extends Controller
 
     public function studentDetails(Request $request, $id)
     {
+        // dd($id);
         $batch = Batch::find($id);
+//    dd($batch);
         // get all batches of the same class
-        $allBatches =Batch::where('class_master_id', $batch->class_master_id)
+        $allBatches = Batch::where('class_master_id', $batch->class_master_id)
             ->where('id', '!=', $id)
             // session end date
-        ->whereDate('batch_end_date', '>=', Carbon::today())
-        ->get();
+            ->whereDate('batch_end_date', '>=', Carbon::today())
+            ->get();
         return view('class.student_details', compact('batch', 'allBatches'));
     }
     public function availableCourses(Request $request)
@@ -251,13 +253,13 @@ class BatchController extends Controller
     public function buyNow(Request $request)
     {
         if (!$request->classId) {
-            $totalPrice = 0;
+            $totalPrice = 0;    
             $relatedBatches = Batch::whereIn('id', array_keys(session()->get('cart') ?? []))->get();
             foreach (session('cart') as $keys => $sess) {
                 $totalSessions = count($sess['session_id']);
-                
+
                 $bps = Batch::find($keys)->batch_price_per_session;
-                $totalPrice = $totalPrice + ($totalSessions*$bps);
+                $totalPrice = $totalPrice + ($totalSessions * $bps);
             }
             return view('class.buy_now', compact('relatedBatches', 'totalPrice'));
         }
@@ -266,7 +268,7 @@ class BatchController extends Controller
         if (!$request->session_id) {
             $s = $product->batchSession->where('start_date_time', '>=', \Carbon\Carbon::today())->pluck('id');
             $s = $s->toArray();
-            $request->request->add(['session_id'=> $s]);
+            $request->request->add(['session_id' => $s]);
         }
         // dd($request->all());
         // if cart is empty then this the first product
@@ -275,7 +277,7 @@ class BatchController extends Controller
                 $request->classId => [
                     "product_id" => $product->id, "quantity" => 1,
                     'price' => $product->batch_price_per_session,
-                    'session_id'=>$request->session_id
+                    'session_id' => $request->session_id
                 ]
             ];
             session()->put('cart', $cart);
@@ -285,9 +287,9 @@ class BatchController extends Controller
         // dd(session('cart'));
         foreach (session('cart') as $keys => $sess) {
             $totalSessions = count($sess['session_id']);
-            
+
             $bps = Batch::find($keys)->batch_price_per_session;
-            $totalPrice = $totalPrice + ($totalSessions*$bps);
+            $totalPrice = $totalPrice + ($totalSessions * $bps);
         }
         if (isset($cart[$request->classId])) {
             // $cart[$request->classId]['quantity']++;
@@ -299,7 +301,7 @@ class BatchController extends Controller
         $cart[$request->classId] = [
             "product_id" => $product->id,
             "quantity" => 1,
-            'session_id'=>$request->session_id,
+            'session_id' => $request->session_id,
             'price' => $product->batch_price_per_session
         ];
         session()->put('cart', $cart);

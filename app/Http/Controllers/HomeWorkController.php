@@ -19,7 +19,7 @@ class HomeWorkController extends Controller
     public function startSession($id)
     {
         $session = BatchSession::where('id', $id)->first();
-      
+
         $allSessions = BatchSession::where('batch_id', $session->batch_id)->get();
         // dd($allSessions);
         $listOfSessions = collect([]);
@@ -32,30 +32,28 @@ class HomeWorkController extends Controller
             $singleSession->students =  User::whereIn('id', $studenList->unique())->get();
             $assignedHW = AssignedHomeWork::where('session_id', $singleSession->id)->first();
             $singleSession->hw = $assignedHW;
-            $singleSession->submission_count = AssignedHomeWorkAnswer::
-            where('assigned_home_work_id', $assignedHW->id ?? null)->where('is_submitted', '1')->count();
+            $singleSession->submission_count = AssignedHomeWorkAnswer::where('assigned_home_work_id', $assignedHW->id ?? null)->where('is_submitted', '1')->count();
             $singleSession->students->transform(function ($student) use ($assignedHW) {
-                $student->is_homework_assigned = AssignedHomeWorkAnswer::
-                where('assigned_home_work_id', $assignedHW->id ?? null)
-                ->where('student_id', $student->id)->where('is_submitted', '1')->exists();
-                $submitted = AssignedHomeWorkAnswer::
-                where('assigned_home_work_id', $assignedHW->id ?? null)
-                ->where('student_id', $student->id)->where('is_submitted', '1')->exists();
+                $student->is_homework_assigned = AssignedHomeWorkAnswer::where('assigned_home_work_id', $assignedHW->id ?? null)
+                    ->where('student_id', $student->id)->where('is_submitted', '1')->exists();
+                $submitted = AssignedHomeWorkAnswer::where('assigned_home_work_id', $assignedHW->id ?? null)
+                    ->where('student_id', $student->id)->where('is_submitted', '1')->exists();
                 $student->is_submitted = $submitted;
+                $student->homeworks = AssignedHomeWorkStudent::where('assigned_home_work_id', $assignedHW->id ?? null)
+                    ->where('student_id', $student->id)->first();
                 $student->homeworkId = false;
                 if ($submitted) {
-                    $student->homeworkId = AssignedHomeWorkAnswer::
-                    where('assigned_home_work_id', $assignedHW->id ?? null)
-                    ->where('student_id', $student->id)->where('is_submitted', '1')->first()->id;
+                    $student->homeworkId = AssignedHomeWorkAnswer::where('assigned_home_work_id', $assignedHW->id ?? null)
+                        ->where('student_id', $student->id)->where('is_submitted', '1')->first()->id;
                 }
 
                 return $student;
             });
-            
-            
+
+
             return $singleSession;
         });
-        
+
         // dd($allSessions);
         $studentsList = collect([]);
         $batches = OrderItems::with('orderPayment')->where('batch_id', $session->batch_id)->get();
@@ -63,7 +61,7 @@ class HomeWorkController extends Controller
         $batches->transform(function ($batch) use ($studentsList) {
             $studentsList->push($batch->orderPayment->student_id);
         });
-        
+
         $students = User::whereIn('id', $studentsList->unique())->get();
 
         $pdfFilesAll = ResourceMaster::where('sub_topic_id', $session->singleTopic->topic_id)
@@ -75,10 +73,10 @@ class HomeWorkController extends Controller
     public function saveStartSession(Request $request)
     {
         $session = AssignedHomeWork::Create([
-        'comment' => $request->comment,
-        'points' => $request->points,
-        'subtopic_name' => $request->subtopic_name,
-        'pdf_path' => $request->pdf_path,
+            'comment' => $request->comment,
+            'points' => $request->points,
+            'subtopic_name' => $request->subtopic_name,
+            'pdf_path' => $request->pdf_path,
         ]);
         if ($request->hasFile('pdf_path')) {
             $request->file('pdf_path')->store('uploadimg');
@@ -93,9 +91,9 @@ class HomeWorkController extends Controller
         ]);
         if ($request->hasFile('pdf')) {
             $filename = $request->pdf->getClientOriginalName();
-            $path = $request->file('pdf')->store('public/pdfs', ['disk'=>'public_uploads']);
-           
-            return response()->json(['filename'=>$filename, 'fileId'=>$path]);
+            $path = $request->file('pdf')->store('public/pdfs', ['disk' => 'public_uploads']);
+
+            return response()->json(['filename' => $filename, 'fileId' => $path]);
         } else {
             return 'please choose file';
         }
@@ -107,7 +105,7 @@ class HomeWorkController extends Controller
         $session = BatchSession::find($content->session_id);
 
         $checkHomeWorkIsAlreadyAssigned = AssignedHomeWork::where('session_id', $content->session_id)->exists();
-        
+
         // if ($checkHomeWorkIsAlreadyAssigned) {
         //     return response()->json(['data'=> 'Homework is already assigned for this session'], 400);
         // }
@@ -133,12 +131,13 @@ class HomeWorkController extends Controller
             $homeworkContent = $content->assigned_content;
         }
 
-        $assignedHomework =  AssignedHomeWork::create([
-            'session_id' => $content->session_id,
+        $assignedHomework =  AssignedHomeWork::updateOrCreate([
+            'session_id' => $content->session_id
+        ], [
             'comment' => $content->comment,
             'points' => $content->points,
             'due_date' => $content->due_date ?? '',
-            'type_of_homework'=>$content->type_of_homework,
+            'type_of_homework' => $content->type_of_homework,
             'assigned_content' => $homeworkContent, // resource_master id
         ]);
 
@@ -146,7 +145,8 @@ class HomeWorkController extends Controller
             AssignedHomeWorkStudent::create([
                 'assigned_home_work_id' => $assignedHomework->id,
                 'student_id' => $student->id,
-                'type_of_homework'=>$content->type_of_homework,
+                'type_of_homework' => $content->type_of_homework,
+                'assigned_content' => $homeworkContent,
             ]);
         }
         return response()->json("Success");
@@ -165,7 +165,7 @@ class HomeWorkController extends Controller
 
         // dd($homeworkContent);
         // $assignedHomework = AssignedHomeWork::find($submittedHomework->assigned_homework_id);
-    
+
 
         $assignedHomework = AssignedHomeWork::find($submittedHomework->assigned_home_work_id);
 

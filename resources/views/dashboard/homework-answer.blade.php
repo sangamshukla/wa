@@ -82,7 +82,7 @@
           <div class="d-flex justify-content-start p-3 mb-2">
             <div class="img pr-2"><img src="{{asset('wa/dashboard/img/chevron (2).svg')}}" /></div>
             <h1 class="h3 mb-0 text-gray-800 session_heading_subject">
-                {{$homework->session->batch->classsettings->name}}
+                {{$homework->homeWork->session->batch->classSettings->name}}
             </h1>
           </div>
           <!-- Tabs -->
@@ -115,19 +115,20 @@
                               <div>
                                 <p class="session_title">Session Date</p>
                                 <p class="session_date">
-                                    {{\Carbon\Carbon::parse($homework->session->start_date_time)->format('d-M-Y')}}</p>
+                                    {{\Carbon\Carbon::parse($homework->homeWork->session->start_date_time)->format('d-M-Y')}}</p>
                               </div>
                               <div>
                                 <p class="session_title">Session Time</p>
-                                <p class="session_date">{{\Carbon\Carbon::parse($homework->session->start_date_time)->format('h:i')}} - {{\Carbon\Carbon::parse($homework->session->start_date_time)->addMinutes($homework->session->batch->duration_per_session)->format('h:i')}}</p>
+                                {{-- {{$homework->homeWork->session->start_date_time}} --}}
+                                <p class="session_date">{{\Carbon\Carbon::parse($homework->homeWork->session->start_date_time)->format('h:i')}} - {{\Carbon\Carbon::parse($homework->homeWork->session->start_date_time)->addMinutes($homework->homeWork->session->batch->duration_per_session)->format('h:i')}}</p>
                               </div>
                               <div>
                                 <p class="session_title">Teachers Name</p>
-                                <p class="session_date">{{$homework->session->batch->assignteacher->name}}</p>
+                                <p class="session_date">{{$homework->homeWork->session->batch->assignteacher->name}}</p>
                               </div>
                               <div>
                                 <p class="session_title">Class</p>
-                                <p class="session_date">{{$homework->session->batch->classmaster->name}}</p>
+                                <p class="session_date">{{$homework->homeWork->session->batch->classmaster->name}}</p>
                               </div>
                             </div>
                           </div>
@@ -158,6 +159,20 @@
                               </div>
                               <hr class="space_border">
                               <!-- Tab panes -->
+                                    @php
+                                        switch($homework->type_of_homework){
+                                            case "UPLOAD_PDF":
+                                                $pdfpath=asset('uploads')."/".$homework->assigned_content;
+                                                break;
+                                                case "CHOOSE_PDF":
+                                                $pdfpath=asset('uploads')."/".$homework->homework_Name->pdf_path;
+                                                break;
+                                                case "ADD_QUESTION":
+                                                $pdfpath="www.tango.com";
+                                                break;
+
+                                        }
+                                    @endphp
                               <div class="tab-content">
                                 <div id="tabhome1" class="container tab-pane active show">
                                     <div class="card">
@@ -166,143 +181,35 @@
                                         <div class="form-group">
                                           <label class="sr-only" for="message">post</label>
                                           <textarea class="form-control comment_block" id="message" rows="3"
-                                            placeholder="" disabled>{{$homework->comment}}
+                                            placeholder="" disabled>{{$homework->homeWork->comment}}
                                         </textarea>
                                         </div>
                                       </div>
                                     </div>
-                                    <div class="d-flex justify-content-between pdf_block mt-5">
-                                      <div>
-                                        <span class="pdf_list_no">1.</span>
-                                        <span>Lorem ipsum dolor sit
-                                          amet-</span>
-                                      </div>
-                                      <div></div>
-                                        <div>
-                                          <span class="border-left"></span>
-                                          <span class="pdf_block" data-toggle="modal" data-target="#pdfModal"><img src="{{asset('wa/dashboard/img/pdf.svg')}}"></span>
-                                          <span class="border-left"></span>
-                                          <span class="pdf_block" data-toggle="modal" data-target="#pdfModal"><img src="{{asset('wa/dashboard/img/download.png')}}"></span>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-between pdf_block mt-2">
-                                      <div>
-                                        <span class="pdf_list_no">1.</span>
-                                        <span>Lorem ipsum dolor sit
-                                          amet-</span>
-                                      </div>
-                                      <div></div>
-                                        <div>
-                                          <span class="border-left"></span>
-                                          <span class="pdf_block" data-toggle="modal" data-target="#pdfModal"><img src="{{asset('wa/dashboard/img/pdf.svg')}}"></span>
-                                          <span class="border-left"></span>
-                                          <span class="pdf_block" data-toggle="modal" data-target="#pdfModal"><img src="{{asset('wa/dashboard/img/download.png')}}"></span>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-between pdf_block mt-2">
-                                      <div>
-                                        <span class="pdf_list_no">1.</span>
-                                        <span>Lorem ipsum dolor sit
-                                          amet-</span>
-                                      </div>
-                                      <div></div>
-                                        <div>
-                                          <span class="border-left"></span>
-                                          <span class="pdf_block" data-toggle="modal" data-target="#pdfModal"><img src="{{asset('wa/dashboard/img/pdf.svg')}}"></span>
-                                          <span class="border-left"></span>
-                                          <span class="pdf_block" data-toggle="modal" data-target="#pdfModal"><img src="{{asset('wa/dashboard/img/download.png')}}"></span>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-between pdf_block mt-2">
-                                      <div>
-                                        <span class="pdf_list_no">1.</span>
-                                        <span>Lorem ipsum dolor sit
-                                          amet-</span>
-                                      </div>
-                                      <div></div>
-                                        <div>
-                                          <span class="border-left"></span>
-                                          <span class="pdf_block" data-toggle="modal" data-target="#pdfModal"><img src="{{asset('wa/dashboard/img/pdf.svg')}}"></span>
-                                          <span class="border-left"></span>
-                                          <span class="pdf_block" data-toggle="modal" data-target="#pdfModal"><img src="{{asset('wa/dashboard/img/download.png')}}"></span>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-between pdf_block mt-2">
-                                      <div>
-                                        <span class="pdf_list_no">1.</span>
-                                        <span>Lorem ipsum dolor sit
-                                          amet-</span>
-                                      </div>
-                                      <div></div>
-                                        <div>
-                                          <span class="border-left"></span>
-                                          <span class="pdf_block" data-toggle="modal" data-target="#pdfModal"><img src="{{asset('wa/dashboard/img/pdf.svg')}}"></span>
-                                          <span class="border-left"></span>
-                                          <span class="pdf_block" data-toggle="modal" data-target="#pdfModal"><img src="{{asset('wa/dashboard/img/download.png')}}"></span>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-between pdf_block mt-2">
-                                      <div>
-                                        <span class="pdf_list_no">1.</span>
-                                        <span>Lorem ipsum dolor sit
-                                          amet-</span>
-                                      </div>
-                                      <div></div>
-                                        <div>
-                                          <span class="border-left"></span>
-                                          <span class="pdf_block" data-toggle="modal" data-target="#pdfModal"><img src="{{asset('wa/dashboard/img/pdf.svg')}}"></span>
-                                          <span class="border-left"></span>
-                                          <span class="pdf_block" data-toggle="modal" data-target="#pdfModal"><img src="{{asset('wa/dashboard/img/download.png')}}"></span>
-                                        </div>
-                                    </div>
+
                                     <hr>
                                 </div>
                                 <div id="tabhome2" class="container tab-pane ">
                                   <div class="row">
-                                    <div class="col-6">
-                                      {{-- <div class="card"> --}}
-                                                <div id="pdf-main-container">
-                                                    <div id="pdf-loader">Loading document ...</div>
-                                                    <div id="pdf-contents">
-                                                        <div id="pdf-meta">
-                                                            <div id="pdf-buttons">
-                                                                <button id="pdf-prev">Previous</button>
-                                                                <button id="pdf-next">Next</button>
-                                                            </div>
-                                                            <div id="page-count-container">
-                                                                Page
-                                                                <div id="pdf-current-page"></div> of <div id="pdf-total-pages"></div></div>
-                                                        </div>
-                                                        <canvas id="pdf-canvas" width="500px"></canvas>
-                                                        <div id="page-loader">Loading page ...</div>
-                                                    </div>
-                                                </div>
-                                            {{-- pdf section end --}}
-                                      {{-- </div> --}}
+                                    <div class="col-7">
+                                      <div class="card">
+                                        <object data="{{$pdfpath}}" type="application/pdf" width="100%" height="600px">
+                                        </object>
+                                      </div>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-5">
                                       <div class="card">
                                         <p class="tile_card_comment">Teachers Message</p>
                                         <div class="file_upload">
                                             <form id="homeworksubmit">
                                                 @csrf
-<<<<<<< HEAD
-                                                @forelse ($homework->studentlist as $hs)
-                                                    {{$map_id=$hs->id}}
-                                                    @empty
-                                                    {{$map_id=NULL}}
-                                                @endforelse
-=======
                                                 @php
-                                                  // dd($homework);
-                                                    foreach($homework->studentlist as $hs)
-                                                    $map_id=$hs->id;
-                                                @endphp
->>>>>>> aa2321f2e5ba151120dbfd6dfc705b978d9e96c8
+                                               $map_id=$homework->id
+                                               @endphp
                                                 <label class="file">
                                                     <input type="file" id="file_upload_input"  style="opacity: 1 !important" name="homeworkfiles[]" multiple="multiple" required>
                                                  </label>
-                                                 <input type="hidden" name="homework_id" value="{{$homework->id}}">
+                                                 <input type="hidden" name="homework_id" value="{{$homework->homeWork->id}}">
                                                  <input type="hidden" name="map_id" value="{{$map_id}}">
                                                  {{-- <span class="file-custom"></span> --}}
                                               <button id="input-submit">Submit</button>
@@ -311,10 +218,6 @@
                                                 <div class="alert alert-primary" role="alert" hidden>
                                                     Your homework has been submitted
                                                 </div>
-                                            <div id="divid">
-                                                <ul id="changed">
-                                                </ul>
-                                            </div>
                                         </div>
                                       </div>
                                     </div>
@@ -326,9 +229,9 @@
                                     <div class="col-6">
                                       <div class="card">
                                         {{-- <p>{{$homework}}</p> --}}
-                                        <img src="{{asset('wa/dashboard/img/ans-img.png')}}" class="ans_img">
-
-
+                                        {{-- <img src="{{asset('wa/dashboard/img/ans-img.png')}}" class="ans_img"> --}}
+                                        <object data="{{$pdfpath}}" type="application/pdf" width="100%" height="600px">
+                                        </object>
                                       </div>
                                     </div>
                                     <div class="col-6">
@@ -340,11 +243,17 @@
                                             <span class="file-custom"></span>
                                           </label>
                                         </div> --}}
-                                                        <textarea name="student_answer"></textarea>
-                                      <script>
+                                        <form>
+                                            <textarea name="student_answer" id="student_answer" width="100%" height="600px"></textarea>
+                                            <script>
                                               CKEDITOR.replace( 'student_answer' );
                                       </script>
-
+                                            <button id="submitcontent">Submit </button>
+                                            <img src="{{asset('wa/assets/img/loader3.gif')}}" alt="" width="40", height="40" id="process-loader1" hidden>
+                                        </form>
+                                        <div class="alert alert-success my-2 alert-dismissible fade show" role="alert" hidden>
+                                            Your answer has been submitted to your teacher.
+                                        </div>
                                       </div>
                                     </div>
                                   </div>
@@ -381,6 +290,7 @@
                     reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
                   </div>
                   <div class="tab-pane fade" id="nav-feedback" role="tabpanel" aria-labelledby="nav-about-tab">
+                      {{$homework->homeWork->id}}
                     Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim
                     occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor
                     anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur
@@ -389,31 +299,12 @@
                     reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
                   </div>
                 </div>
-
               </div>
             </div>
-
           </section>
           <!-- ./Tabs -->
-
         </div>
 
-        @php
-            switch($homework->type_of_homework){
-                case "UPLOAD_PDF":
-                    $pdfpath=asset('uploads')."/".$homework->assigned_content;
-                    break;
-                    case "CHOOSE_PDF":
-                    $pdfpath=asset('uploads/public/pdfs')."/".$homework->homeworkName->pdf_path;
-                    break;
-                    case "ADD_QUESTION":
-                    $pdfpath="www.tango.com";
-                    break;
-
-            }
-        @endphp
-
-    @endforeach
         <!-- End of Main Content -->
         <!-- Modal pop-up start -->
         <!-- The Modal -->
@@ -447,7 +338,7 @@
         </script>
 
               <script>
-                            var _PDF_DOC,
+                    var _PDF_DOC,
                     _CURRENT_PAGE,
                     _TOTAL_PAGES,
                     _PAGE_RENDERING_IN_PROGRESS = 0,
@@ -543,10 +434,8 @@
 
                 // click on "Show PDF" buuton
                 document.querySelector("#load-homework").addEventListener('click', function() {
-                    // this.style.display = 'none';
-                    // showPDF("{{asset('uploads')}}"+"/"+"{{$homework->pdf_path}}");
-                    // showPDF("{{asset('uploads')}}"+"/"+"{{$homework->assigned_content}}");
-                    showPDF("{{$pdfpath}}");
+
+
                 });
 
                 // click on the "Previous" page button
@@ -576,10 +465,10 @@
                 //    });
             $('#homeworksubmit').submit(function(e){
                 // $("#input-submit").attr('disabled', true);
-                $('#process-loader').attr('hidden', false);
+                $('#process-loader').removeAttr('hidden');
                 // e.preventDefault();
                 // var element=document.getElementById("file_upload_div");
-                var homework_id="{{$homework->id}}";
+                var homework_id="{{$homework->homeWork->id}}";
                 // var files=[];
                 // for (var i = 0; i < element.files.length; i++) {
                 //   files.push(element.files[i].name);
@@ -612,4 +501,32 @@
                     return false;
             });
         </script>
+        <script>
+            $('#submitcontent').click(function(e){
+                e.preventDefault();
+                $('#process-loader1').removeAttr('hidden');
+                var data=CKEDITOR.instances.student_answer.getData();
+                var homework_id='{{$homework->homeWork->id}}';
+                var map_id="{{$homework->id}}";
+                $.ajax({
+                    type:"POST",
+                    url:"{{route('upload-homework-text')}}",
+                    '_token':'{{ csrf_token() }}',
+                    data:{
+                        my_data:data,
+                        homework_id:homework_id,
+                        map_id:map_id
+                    },
+                    success:function(response){
+                    $('#process-loader1').attr('hidden', true);
+                        $('.alert').removeAttr('hidden')
+                        console.log(response);
+                    },
+                    error:function(error){
+                        console.log('error');
+                    }
+                });
+            });
+        </script>
+@endforeach
 @endsection

@@ -77,7 +77,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/teacher-new-dashboard', [HomeController::class, 'teacherDashboard']);
     Route::get('/operation-dashboard', [HomeController::class, 'operationDashboard']);
 
-    Route::get('/student-dashboard', [HomeController::class, 'studentDashboard'])->name('student-dashboard');
+    // Route::get('/student-dashboard', [HomeController::class, 'studentDashboard'])->name('student-dashboard');
+    Route::get('/student-dashboard', [HomeController::class, 'newStudentDashboard'])->name('student-dashboard');
     Route::get('/session-list', [HomeController::class, 'sessionList']);
     Route::get('zoom/{id}', [HomeController::class, 'zoom']);
 
@@ -143,6 +144,7 @@ Route::post('teacher-expertise-data', [TeacherProfileController::class, 'storeEx
 Route::get('home-work/{id}', [HomeWorkStudentController::class, 'index'])->name('home-work')->middleware('auth');
 Route::get('submit-home-work/{id}', [HomeWorkStudentController::class, 'submitHomework'])->name('submit-home-work')->middleware('auth');
 Route::post('upload-homework', [HomeWorkStudentController::class, 'uploadHomework'])->name('upload-homework')->middleware('auth');
+Route::post('upload-homework-text', [HomeWorkStudentController::class, 'uploadText'])->name('upload-homework-text')->middleware('auth');
 /*End home work module*/
 
 

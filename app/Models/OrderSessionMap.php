@@ -13,4 +13,12 @@ class OrderSessionMap extends Model
         'session_id',
         'order_id'
     ];
+    public function session()
+    {
+        return $this->belongsTo(BatchSession::class, 'session_id');
+    }
+    public function batch()
+    {
+        return $this->belongsTo(Batch::class, 'batch_id');
+    }
 }

@@ -58,9 +58,7 @@
       <tr>
         @foreach($batch->batchSession as $session)
         <th>Topic</th>
-        <td>@foreach($session->topics as $t)
-            {{ $t->topic->name }}                                       
-            @endforeach</td>
+        <td>{{$session->topics->topic->name}}</td>
       </tr>
       @endforeach
     </tbody>

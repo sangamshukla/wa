@@ -21,6 +21,7 @@ class HomeWorkStudentController extends Controller
         $user_id = auth()->user()->id;
         $sessionDetails = BatchSession::where('id', $id)->get();
         $batches = Batch::all();
+        // dd($user_id);
         // $homeworks = AssignedHomeWork::where('session_id', $id)->get();
         $homeworks = DB::table('assigned_home_works AS ahw')
             ->join('assigned_homework_students AS ahws', 'ahw.id', '=', 'ahws.assigned_home_work_id')
@@ -28,6 +29,7 @@ class HomeWorkStudentController extends Controller
             ->where('ahw.session_id', $id)
             ->where('ahws.student_id', $user_id)
             ->get();
+
         // dd($homeworks);
         return view('dashboard.homework', compact('sessionDetails', 'homeworks'));
     }
@@ -35,7 +37,6 @@ class HomeWorkStudentController extends Controller
     {
         $sessions = OrderPayment::join('order_items', 'order_payments.id', '=', 'order_items.order_payment_id')
             ->join('batches', 'order_items.batch_id', '=', 'batches.id')
-            // ->join()
             ->select('order_items.batch_id', 'order_payments.student_id', 'batches.name')
             ->get();
         foreach ($sessions as $session) {
@@ -63,8 +64,11 @@ class HomeWorkStudentController extends Controller
     }
     public function submitHomework(Request $request, $id)
     {
-        $homeworks = AssignedHomeWork::where('id', $id)->get();
+
+        $student_id = auth()->user()->id;
+        $homeworks = AssignedHomeWorkStudent::where('assigned_home_work_id', $id)->where('student_id', $student_id)->get();
         return view('dashboard.homework-answer', compact('homeworks'));
+        // $homeworks = AssignedHomeWork::where('id', $id)->get();
     }
     public function uploadHomework(Request $request)
     {
@@ -90,7 +94,21 @@ class HomeWorkStudentController extends Controller
                 'assigned_home_work_student_id' =>  $map_id,
                 'image_path' => $homework_filename
             ]);
-            $homeworkfile->storeAs('homeworks', $homework_filename, 'public');
+            $homeworkfile->storeAs('homeworks' . $request->homework_id, $homework_filename, 'public');
+        }
+    }
+    public function uploadText(Request $request)
+    {
+        $homework_id = $request->homework_id;
+        $my_data = $request->my_data;
+        $content_types = AssignedHomeWork::where('id', $homework_id)->select('type_of_homework')->get();
+        foreach ($content_types as $content_type) {
+            AssignedHomeWorkAnswer::create([
+                'assigned_home_work_id' => $homework_id,
+                'content_type' => $content_type->type_of_homework,
+                'answered_content' => $my_data,
+                'student_id' => auth()->user()->id
+            ]);
         }
     }
 }
