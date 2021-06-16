@@ -175,7 +175,11 @@ class HomeWorkController extends Controller
         }
 
         $assignedHomework = AssignedHomeWork::find($submittedHomework->assigned_home_work_id);
-
+        // dd($homeworkContent);
+        // dd($student);
+        // dd($submittedHomework);
+        // dd($multiple);
+        // dd($assignedHomework);
         return view('homework._homework_details', compact('submittedHomework', 'homeworkContent', 'assignedHomework', 'student', 'multiple'));
     }
 

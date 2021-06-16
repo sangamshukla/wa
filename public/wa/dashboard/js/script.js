@@ -1,13 +1,4 @@
-var pdf = new PDFAnnotate("pdf-container", "pdf.pdf", {
-  onPageUpdated(page, oldData, newData) {
-    console.log(page, oldData, newData);
-  },
-  ready() {
-    console.log("Plugin initialized successfully");
-  },
-  scale: 1.5,
-  pageImageCompression: "MEDIUM", // FAST, MEDIUM, SLOW(Helps to control the new PDF file size)
-});
+
 
 function changeActiveTool(event) {
     var element = $(event.target).hasClass("tool-button")

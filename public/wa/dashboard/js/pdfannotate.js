@@ -70,7 +70,7 @@ var PDFAnnotate = function(container_id, url, options = {}) {
 				fabricObj.on('object:added', function() {
 					var oldValue = Object.assign({}, inst.fabricObjectsData[index]);
 					inst.fabricObjectsData[index] = fabricObj.toJSON()
-					options.onPageUpdated(index + 1, oldValue, inst.fabricObjectsData[index]) 
+					options.onPageUpdated(index + 1, oldValue, inst.fabricObjectsData[index])
 				})
 			}
 	        fabricObj.setBackgroundImage(background, fabricObj.renderAll.bind(fabricObj));
@@ -190,7 +190,7 @@ PDFAnnotate.prototype.addImageToCanvas = function () {
 		}
 		document.getElementsByTagName('body')[0].appendChild(inputElement)
 		inputElement.click()
-	} 
+	}
 }
 
 PDFAnnotate.prototype.deleteSelectedObject = function () {
@@ -217,13 +217,13 @@ PDFAnnotate.prototype.savePdf = function (fileName) {
 		doc.addImage(
 			fabricObj.toDataURL({
 				format: 'png'
-			}), 
-			inst.pageImageCompression == "NONE" ? "PNG" : "JPEG", 
-			0, 
+			}),
+			inst.pageImageCompression == "NONE" ? "PNG" : "JPEG",
 			0,
-			doc.internal.pageSize.getWidth(), 
+			0,
+			doc.internal.pageSize.getWidth(),
 			doc.internal.pageSize.getHeight(),
-			`page-${index + 1}`, 
+			`page-${index + 1}`,
 			["FAST", "MEDIUM", "SLOW"].indexOf(inst.pageImageCompression) >= 0
 			? inst.pageImageCompression
 			: undefined
