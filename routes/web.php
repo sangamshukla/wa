@@ -168,6 +168,6 @@ Route::get('start-session/{id}', [HomeWorkController::class, 'startSession']);
 Route::post('start-session/{id}', [HomeWorkController::class, 'saveStartSession']);
 Route::get('view-homework-details/{id}', [HomeWorkController::class, 'viewhomeworkdetails']);
 
-
+Route::post("/assign-points", [HomeWorkController::class, 'assignPoints']);
 Route::post('/upload-pdf/{id}', [HomeWorkController::class, 'uploadPDF']);
 Route::post('/assign-homework', [HomeWorkController::class, 'assignHomeWork'])->name('assign-homework');

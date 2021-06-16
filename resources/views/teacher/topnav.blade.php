@@ -86,10 +86,9 @@
                   aria-expanded="false"
                 >
                   <div class="text-center">
-                      @forelse ($images  as $image)
+                      @forelse ($images ?? []  as $image)
                         <img class="img-profile rounded-circle" src="{{asset('storage/images/'.$image->teacher_profile_photo)}}"/>
                       @empty
-                      
                           <img class="img-profile rounded-circle" src="{{asset('wa/teacherdashboard/img/undraw_profile.svg')}}"/>
                       @endforelse
 

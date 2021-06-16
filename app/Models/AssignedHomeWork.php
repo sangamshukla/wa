@@ -20,6 +20,10 @@ class AssignedHomeWork extends Model
         'assigned_content',
         'due_date',
     ];
+    protected $casts = [
+        'due_date' => 'datetime'
+    ];
+    
     public function studentlist()
     {
         return $this->hasMany(AssignedHomeWorkStudent::class, 'assigned_home_work_id');

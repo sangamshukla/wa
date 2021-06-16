@@ -52,9 +52,21 @@
                           </div>
                           <div thumbsslider="" class="swiper-container mySwiper swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events swiper-container-free-mode swiper-container-thumbs">
                             <div class="swiper-wrapper" id="swiper-wrapper-92d9f35765923b45" aria-live="polite" style="transform: translate3d(0px, 0px, 0px);">
+                              
+                              @if($multiple)
+                              
+                              @foreach($homeworkContent as $hwcontent)
+                              <div class="swiper-slide swiper-slide-visible swiper-slide-next" role="group" aria-label="{{ $loop->iteration }} / {{ $loop->count }}" style="width: 204.5px; margin-right: 10px;">
+                                <img src="{{ url("storage/homeworks".$assignedHomework->id."/".$hwcontent->image_path) }}#toolbar=0" class="">
+                                </div>
+                              
+                              @endforeach
+                              @else
                               <div class="swiper-slide swiper-slide-visible swiper-slide-active swiper-slide-thumb-active" role="group" aria-label="1 / 4" style="width: 204.5px; margin-right: 10px;">
                                 <img src="{{asset('wa/teacherdashboard/img/math-aa.png')}}" class="">
                               </div>
+                              
+                              @endif
                               {{-- <div class="swiper-slide swiper-slide-visible swiper-slide-next" role="group" aria-label="2 / 4" style="width: 204.5px; margin-right: 10px;">
                                 <img src="{{asset('wa/teacherdashboard/img/math-aa.png')}}" class="">
                               </div>
@@ -72,7 +84,7 @@
                         </div>
                         <div class="col-lg-6">
                           <div class="pagination_div">
-                            <p class="img_name">{{ $homeworkContent->image_path }}</p>
+                            <p class="img_name">{{ $student->image_path }}</p>
                            
                             <div class="pagination_block">
                               <a href="#" class="previous round">‹</a>
@@ -82,21 +94,30 @@
                           </div>
                           <div class="border-section second-border-section">
                             <div> 
-                              <embed src="{{ url("storage/homeworks/".$homeworkContent->image_path) }}#toolbar=0" type="application/pdf" width="600" height="400" />
+                            @if($multiple)
+                                 <embed src="{{ url("storage/homeworks".$assignedHomework->id."/".$homeworkContent->first()->image_path) }}#toolbar=0" type="application/pdf" width="600" height="400" />
+                            @else
+                                 <embed src="{{ url("storage/homeworks".$assignedHomework->id."/".$homeworkContent->image_path) }}#toolbar=0" type="application/pdf" width="600" height="400" />
+                            
+                            @endif
+                             
                                 {{-- alt : <a href="pdf_file_name.pdf">PDF TITLE</a> --}}
                                 {{-- <img src="{{asset('wa/teacherdashboard/img/math-aa.png')}}" class="img-subject"> --}}
                             </div>
                           </div>
                         </div>
                       </div>
+                      <div id="success_message_div" class="alert alert-success">
+                        Points has been assigned successfully.
+                      </div>
                     </div>
                     <div class="card-header yellow_background">
-                      <div class="cta_block_box">
+                      {{-- <div class="cta_block_box">
                         <button class="btn disapprove_cta">
                           Disapprove
                         </button>
                         <button class="btn approve_cta">Approve</button>
-                      </div>
+                      </div> --}}
                       <div class="rating_block">
                         <span>Rate the Answer</span>
                         <div class="Stars" style="--rating: 2.5" aria-label="Rating of this product is 2.3 out of 5."></div>
@@ -107,9 +128,8 @@
                       <div class="point_block">
                         <span>Points</span>
                         <p class="pointer_no">
-                          <span>10</span>
-                          <span>/</span>
-                          <sapn>1p</sapn>
+                        <span><input id="savePoint" type="number" step="1"/></span>
+                        <span><input type="button" onclick="savePoint()" value="Update" /></span>
                         </p>
                       </div>
                     </div>
@@ -127,6 +147,36 @@
   @endsection
   {{-- js for homework details --}}
   @section('scripts')
+
+  <script>
+   $( document ).ready(function() {
+    $("#success_message_div").hide();
+    });
+    function savePoint() {
+        console.log("here");
+      $.ajax({
+         "_token": "{{ csrf_token() }}",
+         type:'POST',
+         url: "{{ url('assign-points') }}",
+         data: JSON.stringify({
+           points: $('#savePoint').val(),
+           id: {{ $student->id }}
+         }),
+         contentType: false,
+         processData: false,
+         success: (xhr, response) => {
+           //  alert("Homework Assigned Successfully");
+           $("#success_message_div").show();
+           setTimeout(() => {
+            $("#success_message_div").hide();
+           }, 3000);
+         },
+         error: (xhr, status, error)=>{
+            // console.log(xhr);
+         }
+     });
+    }
+  </script>
   <link
   rel="stylesheet"
   href="https://unpkg.com/swiper/swiper-bundle.min.css"

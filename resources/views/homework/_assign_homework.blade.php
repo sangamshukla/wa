@@ -88,9 +88,9 @@
                       <label class="container">
                         <input
                           type="checkbox"
+                          checked="checked"
                           value="{{ $student->id }}"
                           class="choosePdfSelectStudent"
-                          checked="checked"
                         />
                         <span
                           class="checkmark"
