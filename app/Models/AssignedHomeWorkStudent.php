@@ -8,15 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class AssignedHomeWorkStudent extends Model
 {
     use HasFactory;
-    protected $table= "assigned_homework_students";
+    protected $table = "assigned_home_work_students";
     protected $guarded = [];
 
     public function homeWork()
     {
-        return $this->belongsTo(AssignedHomeWork::class, 'id');
+        return $this->belongsTo(AssignedHomeWork::class, 'assigned_home_work_id');
     }
     public function session()
     {
         return $this->belongsTo(BatchSession::class, 'session_id');
+    }
+    public function homework_Name()
+    {
+        return $this->belongsTo(ResourceMaster::class, 'assigned_content');
     }
 }

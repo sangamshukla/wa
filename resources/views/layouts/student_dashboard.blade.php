@@ -37,13 +37,13 @@
     <div id="wrapper">
      @include('students.sidebar')
 
-      <!-- Content Wrapper -->
-      <div id="content-wrapper" class="d-flex flex-column">
-        <!-- Main Content -->
-        <div id="content">
-            @include('students.topnav')
-            @yield('student-content')c
-        </div>
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            <!-- Main Content -->
+            <div id="content">
+                @include('students.topnav')
+                @yield('student-content')c
+            </div>
         </div>
     </div>
         <!-- Footer -->
@@ -56,9 +56,8 @@
         </footer>
 
         <!-- End of Footer -->
-      </div>
       <!-- End of Content Wrapper -->
-    </div>
+
     <!-- End of Page Wrapper -->
     <!-- Bootstrap core JavaScript-->
     <script src="{{asset('wa/dashboard/vendor/jquery/jquery.min.js')}}"></script>

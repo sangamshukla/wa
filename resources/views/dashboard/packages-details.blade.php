@@ -67,7 +67,7 @@
                                     </div>
                                 </div>
                             <div class="view_detail_block pb-3">
-                                <a href="{{ url('/student-details', $batch->id)}}" class="view_detail">
+                                <a href="{{ url     ('/student-details', $batch->id)}}" class="view_detail">
                                     View details
                                 </a>
                                 {{-- @php $i = 1 @endphp --}}

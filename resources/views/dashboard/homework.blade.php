@@ -12,6 +12,7 @@
                 <div class="img pr-2"><a href="{{route('student-dashboard')}}"><img src="{{asset('wa/dashboard/img/chevron (2).svg')}}" /></a></div>
                 <h1 class="h3 mb-0 text-gray-800 session_heading_subject">
                     {{$session->batch->classSettings->name}}
+                    {{-- {{$session}} --}}
                 </h1>
             </div>
             <!-- image block -->

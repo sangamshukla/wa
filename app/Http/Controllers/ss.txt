@@ -1,0 +1,23 @@
+   $submittedHomework = AssignedHomeWorkAnswer::find($id);
+        $student = AssignedHomeWorkStudent::where('student_id', $submittedHomework->student_id)
+            ->where('assigned_home_work_id', $submittedHomework->assigned_home_work_id)->first();
+        $homeworkContent = AssignedHomeWorkAnswerMap::where(
+            'assigned_home_work_id',
+            $submittedHomework->assigned_home_work_id
+        )->where('assigned_home_work_student_id', $student->id)->get();
+        $multiple  = true;
+        // $assignedHomework = AssignedHomeWork::find($submittedHomework->assigned_homework_id);
+        dd($homeworkContent);
+        if(count($homeworkContent) <= 1){
+             $homeworkContent = AssignedHomeWorkAnswerMap::where(
+            'assigned_home_work_id',
+            $submittedHomework->assigned_home_work_id
+        )->where('assigned_home_work_student_id', $student->id)->first();
+
+
+            $multiple = false;
+        }
+
+        $assignedHomework = AssignedHomeWork::find($submittedHomework->assigned_home_work_id);
+
+        return view('homework._homework_details', compact('submittedHomework', 'homeworkContent', 'assignedHomework', 'student', 'multiple'));

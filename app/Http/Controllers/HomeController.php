@@ -6,6 +6,7 @@ use App\Models\Batch;
 use App\Models\BatchSession;
 use App\Models\OrderItems;
 use App\Models\OrderPayment;
+use App\Models\OrderSessionMap;
 use App\Models\Student;
 use App\Models\Transaction;
 use Carbon\Carbon;
@@ -171,5 +172,16 @@ class HomeController extends Controller
         $batch = Batch::find($id);
         // dd($batch);
         return view('dashboard.zoom', compact('batch'));
+    }
+    public function newStudentDashboard(Request $request)
+    {
+        $id = auth()->user()->id;
+        $status = DB::table('transactions')
+            ->join('order_payments', 'transactions.order_id', '=', 'order_payments.id')
+            ->select('transactions.*', 'order_payments.*')
+            ->where('order_payments.student_id', $id)
+            ->get();
+        $sessions = OrderPayment::where('student_id', $id)->get();
+        return view('dashboard.student', compact('status', 'sessions'));
     }
 }

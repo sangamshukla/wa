@@ -61,10 +61,11 @@
                             <div class="subject_practis">
                               <p class="sub_subject">Class Name</p>
                               <p class="subject">{{ $batch->classSettings->name }}</p>
-                              <p clascalas="sub_subject">Session & topic</p>
+                              <p class="sub_subject">{{$session->name}}-{{$session->topics->topic->name}}</p>
                                 {{-- @foreach($session->topics as $t)
                                   {{ $session->name.'-'.$t->topic->name.',' }}
                                 @endforeach --}}
+                                {{-- {{$session->name}}-{{$session->topics->topic->name}} --}}
                               <p class="time_pera">
                               </p>
                             </div>
@@ -109,10 +110,11 @@
                             <div class="subject_practis">
                               <p class="sub_subject">Class Name</p>
                               <p class="subject">{{ $batch->classSettings->name }}</p>
-                              <p class="sub_subject">Session & topic</p>
+                              <p class="sub_subject">{{$session->name}}-{{$session->topics->topic->name}}</p>
                                 {{-- @foreach($session->topics as $t)
                                   {{ $session->name.'-'.$t->topic->name.',' }}
                                 @endforeach --}}
+                                {{-- {{$session->name}}-{{$session->topics->topic->name}} --}}
                               <p class="time_pera">
                               </p>
                             </div>
@@ -150,10 +152,11 @@
                             <div class="subject_practis">
                               <p class="sub_subject">Class Name</p>
                               <p class="subject">{{ $batch->classSettings->name }}</p>
-                              <p class="sub_subject">Session & topic</p>
+                              <p class="sub_subject">{{$session->name}}-{{$session->topics->topic->name}}</p>
                                 {{-- @foreach($session->topics as $t)
                                   {{ $session->name.'-'.$t->topic->name.',' }}
                                 @endforeach --}}
+                                {{-- {{$session->name}}-{{$session->topics->topic->name}} --}}
                               <p class="time_pera">
                               </p>
                             </div>
@@ -192,8 +195,8 @@
                             <div class="subject_practis">
                               <p class="sub_subject">Class Name</p>
                               <p class="subject">{{ $batch->classSettings->name }}</p>
-                              <p class="sub_subject">Session & topic</p>
-                                {{$session}}
+                              <p class="sub_subject">{{$session->name}}-{{$session->topics->topic->name}}</p>
+                                {{-- {{$session->name}}-{{$session->topics->topic->name}} --}}
                                 {{-- @foreach($session->topics as $t)
                                   {{ $session->name.'-'.$t->topic->name.',' }}
                                 @endforeach --}}
