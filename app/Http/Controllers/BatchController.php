@@ -46,7 +46,6 @@ class BatchController extends Controller
      */
     public function create()
     {
-        // $i = 1;
         $assignteachers = User::all();
         $classes = ClassMaster::all();
         $subjects = Subject::all();
@@ -62,8 +61,6 @@ class BatchController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
-
         if (auth()->user()->role == 'admin') {
             $request->validate([
                 'class_settings_id' => 'required',
@@ -138,17 +135,11 @@ class BatchController extends Controller
                 'start' => Carbon::parse($d)->format('Y-m-d'),
                 'end' => Carbon::parse($d)->format('Y-m-d'),
             ]);
-
-
             $index++;
             $name++;
         }
-
         MakeZoomMeeting::dispatch($batch->id);
-
         return redirect(route('manage-class'))->with('status', 'Class Added Successfully');
-
-        //  return response()->json(['success'=>'Form is successfully submitted!']);
     }
 
     /**
@@ -172,7 +163,11 @@ class BatchController extends Controller
     public function edit($id)
     {
         $class = Batch::find($id);
-        return view('class.edit', compact('class'));
+        $assignteachers = User::all();
+        $classes = ClassMaster::all();
+        $subjects = Subject::all();
+        $classsettings = ClassSettings::all();
+        return view('class.edit', compact('class', 'classes', 'subjects', 'assignteachers', 'classsettings'));
     }
 
     /**
@@ -192,14 +187,48 @@ class BatchController extends Controller
                 'name' => $request->name,
                 'batch_price_per_session' => $request->batch_price_per_session,
                 'batch_start_date' => $request->batch_start_date,
+                'batch_end_date' => $request->batch_end_date,
                 'subject_id' => $request->subject_id,
                 'class_master_id' => $request->class_master_id,
-                // 'class_settings_id'=>$class,
+                // 'class_settings_id' => $class,
                 'duration_per_session' => $request->duration_per_sessions_id,
+                'no_of_seats' => $request->no_of_seats,
                 'teacher_available_status' => $request->teacher_available_status,
+                // 'book_now'=>$request->book_now,
+                'status' => $request->status,
+                'location' => $request->location,
+                'sell_each_session' => $request->sell_each_session,
                 'created_by' => auth()->user()->id
             ]
         );
+        $index = 0;
+        $name = 1;
+        foreach ($request->session_name as $session_name) {
+            $d = $request->session_start_date[$index];
+            $comment = $request->comment[$index];
+            $batchSession = BatchSession::create([
+                'batch_id' => $batch->id ?? '1',
+                'name' => $session_name,
+                'start_date_time' => $d,
+                'comment' => $comment
+            ]);
+            BatchTopic::create([
+                'batch_session_id' => $batchSession->id,
+                'topic_id' => $request->topic_id['Session-' . $name]
+            ]);
+
+            // make event
+            $topicname = Topic::find($request->topic_id['Session-' . $name]);
+            Event::create([
+                'batch_id' => $batch->id,
+                'title' => $d . '' . $batch->classSettings->name . ' ' . $session_name . ' ' . $topicname->name . '',
+                'start' => Carbon::parse($d)->format('Y-m-d'),
+                'end' => Carbon::parse($d)->format('Y-m-d'),
+            ]);
+            $index++;
+            $name++;
+        }
+        return redirect(route('manage-class'))->with('status', 'Class Updated Successfully');
     }
 
     /**
@@ -249,11 +278,12 @@ class BatchController extends Controller
         ]);
         return redirect('/student')->with('success', 'Class Booked Successfully');
     }
+    
 
     public function buyNow(Request $request)
     {
         if (!$request->classId) {
-            $totalPrice = 0;    
+            $totalPrice = 0;
             $relatedBatches = Batch::whereIn('id', array_keys(session()->get('cart') ?? []))->get();
             foreach (session('cart') as $keys => $sess) {
                 $totalSessions = count($sess['session_id']);

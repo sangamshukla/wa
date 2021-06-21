@@ -37,7 +37,7 @@
                     <div class="col">
                       <div class="form-group">
                         <label for="simpleinput">Name</label>
-                        <input type="text" id="name" name="name" placeholder="Name" value="{{ $teacher->User->name }}" class="form-control">
+                        <input type="text" id="name" name="name" placeholder="Name" value="{{ $class->User->name }}" class="form-control">
                       </div>
                     </div>
 

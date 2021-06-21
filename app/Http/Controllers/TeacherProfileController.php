@@ -164,7 +164,7 @@ class TeacherProfileController extends Controller
      */
     public function edit($id)
     {
-        dd($id);
+        // dd($id);
     }
 
     /**
@@ -209,8 +209,6 @@ class TeacherProfileController extends Controller
             );
             return redirect('teacher-profile');
         }
-
-
         //parameters are (path, filename, disk)
         else {
             return 'please choose file';
