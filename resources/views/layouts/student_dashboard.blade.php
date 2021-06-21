@@ -42,7 +42,7 @@
             <!-- Main Content -->
             <div id="content">
                 @include('students.topnav')
-                @yield('student-content')c
+                @yield('student-content')
             </div>
         </div>
     </div>

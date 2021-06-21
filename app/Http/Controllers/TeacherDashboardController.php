@@ -40,4 +40,26 @@ class TeacherDashboardController extends Controller
             return redirect('student-dashboard');
         }
     }
+    public function newindex()
+    {
+        $batches = Batch::whereCreatedBy(auth()->user()->id)->orWhere('name', auth()->id())->latest()->get();
+        // $batches = Batch::whereCreatedBy(auth()->user()->id)->orWhere('name', auth()->id())->get();
+        $id = auth()->user()->id;
+        $session_data = DB::table('batch_session')
+            ->join('batches', 'batch_session.batch_id', '=', 'batches.id')
+            ->join('users', 'batches.name', '=', 'users.id')
+            ->whereDate('batch_session.start_date_time', '>=', Carbon::today())
+            ->where('batches.name', '=', $id)
+            ->select('batch_session.*', 'batches.*')
+            ->get()
+            ->toArray();
+        // dd($session_data[4]);
+        $status = "active";
+        $id = auth()->user()->id;
+        $users = User::where('id', $id)->get();
+        $images = TeacherProfile::where('user_id', $id)->select('teacher_profile_photo')->get();
+
+        return view('teacher.dashboardnew', compact('session_data'));
+    }
+
 }

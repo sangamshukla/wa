@@ -53,7 +53,7 @@
 
         <!-- Nav Item - Tables -->
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="{{route('fullcalender')}}">
             <div class="nav_images"><img src="{{asset('wa/dashboard/img/calender.svg')}}" /></div>
             <br />
             <span>Calender</span></a
