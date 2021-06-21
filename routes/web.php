@@ -171,3 +171,6 @@ Route::get('view-homework-details/{id}', [HomeWorkController::class, 'viewhomewo
 Route::post("/assign-points", [HomeWorkController::class, 'assignPoints']);
 Route::post('/upload-pdf/{id}', [HomeWorkController::class, 'uploadPDF']);
 Route::post('/assign-homework', [HomeWorkController::class, 'assignHomeWork'])->name('assign-homework');
+//test route
+
+Route::get('new-teacher', [TeacherDashboardController::class, 'newindex']);

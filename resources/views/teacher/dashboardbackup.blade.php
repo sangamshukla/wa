@@ -254,66 +254,107 @@
                             <div class="col-3"  style="margin-left: -7px"><p class="month_text">{{\Carbon\Carbon::now()->format('M Y')}}</p></div>
                             <div class="col-9">
                               <div class="day_block date_p">
-                               <?php
-                                $today=\Carbon\Carbon::today()->format('d');
-                                $dates=[];
-
-                                for ($i=0; $i <7 ; $i++) {
-                                    array_push($dates, $today);
-                                    $today=$today+1;
-
-                                }
-                                $times=[];
-                                $start_time=\Carbon\Carbon::parse("08:00")->format('h:i');
-                                for ($i=0; $i < 25; $i++) {
-                                    array_push($times, $start_time);
-                                    $start_time=\Carbon\Carbon::parse($start_time)->addMinutes(30)->format("h:i");
-                                }
-                                echo "<table class=''>";
-                                    echo "<tr class='day_block date_p'>";
-                                        echo "<td></td>";
-                                    foreach ($dates as $date) {
-                                            echo "<th>";
-                                                ?>
-                                                <p id="currentDate">{{ $date }}</p>
-                                                <?php
-                                            echo "</th>";
+                                {{-- <p><img src="{{asset('wa/teacherdashboard/img/arrow-left.svg')}}"></p> --}}
+                                {{-- <p- class="active" id="today">{{\Carbon\Carbon::today()->format('d')}}</p> --}}
+                                @php
+                                        $today=\Carbon\Carbon::today()->format('d');
+                                            $dates=[];
+                                            for ($i=0; $i <7 ; $i++) {
+                                                array_push($dates, $today);
+                                                $today=$today+1;
                                             }
-                                        echo "</tr>";?>
-                                        <div class="row">
+                                            $times=[];
+                                        $start_time=\Carbon\Carbon::parse("08:00")->format('h:i');
+                                        for ($i=0; $i < 25; $i++) {
+                                            array_push($times, $start_time);
+                                            $start_time=\Carbon\Carbon::parse($start_time)->addMinutes(30)->format("h:i");
+                                        }
+                                @endphp
+                                @php
+                                    $date_info=array();
+                                @endphp
+                                @for ($i = 0; $i <= 6; $i++)
+                                <p id="currentDate">
+                                    @php
+                                        $date=Carbon\Carbon::today()->addDays($i)->format('d');
+                                        $date_info[]=$date;
+                                    @endphp
+                                    {{-- {{$date}} --}}
+                                    </p>
+                                @endfor
+                                {{-- @php --}}
+                                    {{-- // print_r($date_info) --}}
+                                {{-- // @endphp --}}
+                                {{-- <p><img src="{{asset('wa/teacherdashboard/img/arrow-right.svg')}}"></p> --}}
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
                             <div class="col-12">
                               <div class="table_detail">
-                                    <tbody class="class-calender-block">
-                                  <?php
-                                foreach ($times as $time){
-                                    echo "<tr>";
-                                        echo "<td colspan='2' class='time_td'>$time</td>";
-                                        foreach ($dates as $date) {
-                                            echo "<td>";
-                                            // echo "<strong>checking for $date....</strong><br>";
-                                            foreach ($session_data as $sessions) {
-                                                $sessions=(array)$sessions;
-                                                $session_date=\Carbon\Carbon::parse($sessions['start_date_time'])->format('d');
-                                                $session_time=\Carbon\Carbon::parse($sessions['start_date_time'])->format('h:i');
-                                                if($date==$session_date)
-                                                {
-                                                    if($time==$session_time)
+                                <table>
+                                  <tbody class="class-calender-block">
+                                      @php
+                                          $addHour=0;
+                                          $start_time="08:00";
+                                      @endphp
+                                      @for ($i = 0; $i < 25; $i++)
+                                      <tr>
+
+                                          <td colspan="2" style="font-weight: bold; font-size: 11px;" class="time_td">
+
+                                             @php
+                                            $new_start_time=Carbon\Carbon::parse($start_time)->addMinutes($addHour)->format('h:i');
+                                            $addHour=$addHour+30;
+                                            @endphp
+                                            {{$new_start_time}}
+                                        </td>
+                                          @for ($j = 0; $j < 7; $j++)
+                                        <td>
+                                            @if ($j<count($session_data))
+                                              @php
+                                                  $active_date=$session_data[$j];
+                                                    $s_date=\Carbon\Carbon::parse($active_date->start_date_time)->format('d');
+                                                    $s_time=strtotime(\Carbon\Carbon::parse($active_date->start_date_time)->format('h:i'));
+                                                      // print_r($s_date);
+                                                  //echo '<br>';
+                                                  // dd($active_date->start_date_time);
+                                                  $added_30_minutes= strtotime($new_start_time)+1799;
+                                                  // echo $date_info[$j];
+                                                  //echo $added_30_minutes;
+                                                @endphp
+
+                                              <?php
+
+                                                  if($s_date==$date_info[$j])
+                                                  {
+                                                      // echo ($s_time).'<br>';
+                                                    //  echo (strtotime($new_start_time)).'<br>';
+                                                    //   echo (strtotime($added_30_minutes)).'<br>';
+                                                    // echo true;
+                                                       if($s_time>=strtotime($new_start_time) && $s_time<=$added_30_minutes)
                                                     {
+                                                        // echo true;
                                                         ?>
                                                         <span class="active_time tooltip">
-                                                        <span class="time-block tooltiptext">Here is your class information</span>
-                                                        </span>
-                                                        <?php
-                                                    }
-                                                }
-                                            }
-                                        }
+                                                         <span class="time-block tooltiptext">{{$active_date->name}} at {{\Carbon\Carbon::parse($active_date->start_date_time)->format('h:i A')}}</span>
+                                                         </span>
+                                                    <?php
 
-                                }
-                                ?>
-                                </td>
-                                </tr>
-                                </tbody>
+                                                  }
+                                                }
+
+                                              ?>
+
+                                              @else
+                                              <span></span>
+                                              @endif
+
+                                            </td>
+                                              @endfor
+                                      </tr>
+                                      @endfor
+                                  </tbody>
                                 </table>
                               </div>
                             </div>
