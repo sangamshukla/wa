@@ -12,11 +12,11 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     const ADMIN = 'admin';
-    
+
     const TEACHER = 'teacher';
 
     const OPERATION = 'operation';
-    
+
     const STUDENT = 'student';
 
     /**
