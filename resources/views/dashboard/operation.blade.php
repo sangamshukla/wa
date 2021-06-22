@@ -1,108 +1,72 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"xx
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
 
-@section('content')
-<div class="content">
-    <!-- start page title -->
-    <div class="row">
-        <div class="col-12">
-            <div class="page-title-box">
-                <div class="page-title-right">
-                    <ol class="breadcrumb m-0">
-                    </ol>
+    <title>Teacher dashboard</title>
+
+    <!-- Custom fonts for this template-->
+    <link
+      href="{{asset('wa/teacherdashboard/vendor/fontawesome-free/css/all.min.css')}}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+      rel="stylesheet"
+    />
+    <link
+      href="http://fonts.googleapis.com/css?family=Roboto"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- Custom styles for this template-->
+    <link href="{{asset('wa/teacherdashboard/css/student-admin.css')}}" rel="stylesheet" />
+    <link href="{{asset('wa/teacherdashboard/css/topSidebar.css')}}" rel="stylesheet" />
+  </head>
+<body id="page-top">
+        <!-- Page Wrapper -->
+            <div id="wrapper">
+                @include('teacher.sidebar')
+                <!-- Content Wrapper -->
+                <div id="content-wrapper" class="d-flex flex-column">
+                    <!-- Main Content -->
+                    <div id="content">
+                        @include('teacher.topnav')
+                        <div class="container-fluid">
+                            @yield('content')
+                        </div>
+                    </div>
+                    <!-- Footer -->
+                    <footer class="sticky-footer">
+                        <div class="container my-auto">
+                            <div class="copyright text-center my-auto">
+                                <span>©Copyright 2021-2022 WA Academy. All Rights Reserved </span>
+                            </div>
+                        </div>
+                    </footer>
+                    <!-- End of Footer -->
                 </div>
-                {{-- <h4 class="page-title">Admin  {{ \Carbon\Carbon::now() }}</h4> --}}
-                <h4 class="page-title">Welcome {{ auth()->user()->name }} :  Happy {{ \Carbon\Carbon::now()->format('l') }}</h4>
-                {{-- <h4>{{ $user->name}}</h4> --}}
             </div>
-        </div>
-    </div>     
-    <!-- end page title --> 
+        <!-- End of Page Wrapper -->
 
-    <div class="row">
+    <!-- End of Content Wrapper -->
 
-        <div class="col-lg-6 col-xl-3">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row align-items-center">
-                        <div class="col-12">
-                            <h5 class="text-muted font-weight-normal mt-0 " title="Campaign Sent">Registered Students </h5>
-                            <h3 class="my-2 py-1">99</h3>
-                            <p class="mb-0 text-muted">
-                                <span class="text-success mr-2"><i class="mdi mdi-arrow-up-bold"></i> 3.27%</span>
-                            </p>
-                        </div>
-                        <div class="col-6">
-                            <div class="text-right">
-                                <div id="campaign-sent-chart" data-colors="#536de6"></div>
-                            </div>
-                        </div>
-                    </div> <!-- end row-->
-                </div> <!-- end card-body -->
-            </div> <!-- end card -->
-        </div> <!-- end col -->
+<!-- End of Page Wrapper -->
+<!-- Bootstrap core JavaScript-->
+<script src="{{asset('wa/teacherdashboard/vendor/jquery/jquery.min.js')}}"></script>
+<script src="{{asset('wa/teacherdashboard/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<!-- Core plugin JavaScript-->
+<script src="{{asset('wa/teacherdashboard/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+<!-- Custom scripts for all pages-->
+<script src="{{asset('wa/teacherdashboard/js/student.js')}}"></script>
 
-        <div class="col-lg-6 col-xl-3">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row align-items-center">
-                        <div class="col-6">
-                            <h5 class="text-muted font-weight-normal mt-0 text-truncate" title="New Leads">Teacher</h5>
-                            <h3 class="my-2 py-1">32</h3>
-                            <p class="mb-0 text-muted">
-                                <span class="text-danger mr-2"><i class="mdi mdi-arrow-down-bold"></i> 5.38%</span>
-                            </p>
-                        </div>
-                        <div class="col-6">
-                            <div class="text-right">
-                                <div id="new-leads-chart" data-colors="#10c469"></div>
-                            </div>
-                        </div>
-                    </div> <!-- end row-->
-                </div> <!-- end card-body -->
-            </div> <!-- end card -->
-        </div> <!-- end col -->
-
-        <div class="col-lg-6 col-xl-3">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row align-items-center">
-                        <div class="col-6">
-                            <h5 class="text-muted font-weight-normal mt-0 text-truncate" title="Deals">Total Batch</h5>
-                            <h3 class="my-2 py-1">86</h3>
-                            <p class="mb-0 text-muted">
-                                <span class="text-success mr-2"><i class="mdi mdi-arrow-up-bold"></i> 4.87%</span>
-                            </p>
-                        </div>
-                        <div class="col-6">
-                            <div class="text-right">
-                                <div id="deals-chart" data-colors="#536de6"></div>
-                            </div>
-                        </div>
-                    </div> <!-- end row-->
-                </div> <!-- end card-body -->
-            </div> <!-- end card -->
-        </div> <!-- end col -->
-
-        <div class="col-lg-6 col-xl-3">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row align-items-center">
-                        <div class="col-12">
-                            <h5 class="text-muted font-weight-normal mt-0" title="Booked Revenue">Total Product</h5>
-                            <h3 class="my-2 py-1">53</h3>
-                            <p class="mb-0 text-muted">
-                                <span class="text-success mr-2"><i class="mdi mdi-arrow-up-bold"></i> 11.7%</span>
-                            </p>
-                        </div>
-                        <div class="col-6">
-                            <div class="text-right">
-                                <div id="booked-revenue-chart" data-colors="#10c469"></div>
-                            </div>
-                        </div>
-                    </div> <!-- end row-->
-                </div> <!-- end card-body -->
-            </div> <!-- end card -->
-        </div> <!-- end col -->
-    </div>
-</div> <!-- End Content -->
-@endsection
+</body>
+</html>
