@@ -109,7 +109,7 @@
                     <div>Course cost</div>
                     <div>£ {{ $totalPrice ?? 0 }}</div>
                   </div>
-                  <div class="cource_detail_section"> 
+                  <div class="cource_detail_section">
                     <div>Tax </div>
                     <div>£  0</div>
                   </div>

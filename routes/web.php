@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeWorkController;
 use App\Http\Controllers\HomeWorkStudentController;
+use App\Http\Controllers\OperationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -93,24 +94,13 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 
-    // batch/class controller
-    Route::get('create-classes', [BatchController::class, 'create'])->name('class.create');
-    Route::post('create-classes', [BatchController::class, 'store'])->name('class.store');
-    Route::get('manage-classes', [BatchController::class, 'index'])->name('manage-class');
-    Route::get('edit-classes/{id}', [BatchController::class, 'edit'])->name('edit-class');
-    Route::post('edit-classes/{id}', [BatchController::class, 'update'])->name('update-class');
-    Route::get('show-classes/{id}', [BatchController::class, 'show'])->name('show-class');
-    Route::get('destroy-classes/{id}', [BatchController::class, 'destroy'])->name('destroy-class');
-    Route::get('student', [BatchController::class, 'student'])->name('student');
-    Route::get('available-courses', [BatchController::class, 'availableCourses'])->name('available-courses');
+
     // Route::get('/packages-details', [BatchController::class, 'packagesDetails'])->name('packages.details');
 
 
     Route::get('add-product', [TeacherController::class, 'store'])->name('add-product');
     Route::post('add-product', [TeacherController::class, 'store'])->name('add-product');
 });
-Route::get('buy-now', [BatchController::class, 'buyNow'])->name('buy.now');
-Route::post('buy-now', [BatchController::class, 'buyNow'])->name('buy.now');
 
 // Route::get('add-to-cart/{batchId}', [PaymentController::class, 'payment'])->name('cart.add');
 
@@ -170,11 +160,28 @@ Route::get('view-homework-details/{id}', [HomeWorkController::class, 'viewhomewo
 
 Route::post("/assign-points", [HomeWorkController::class, 'assignPoints']);
 Route::post('/upload-pdf/{id}', [HomeWorkController::class, 'uploadPDF']);
-Route::post('/assign-homework', [HomeWorkController::class, 'assignHomeWork'])->name('assign-homework');
 //test route
 
-Route::get('new-teacher', [TeacherDashboardController::class, 'newindex']);
 
-Route::group(['middleware' => ['auth', 'operation']], function () {
-    Route::get('/operation-dashboard', [HomeController::class, 'operationDashboard']);
+Route::post('/assign-homework', [HomeWorkController::class, 'assignHomeWork'])->name('assign-homework');
+
+Route::group(['middleware' => ['auth', 'teacher']], function () {
+    Route::get('new-teacher', [TeacherDashboardController::class, 'newindex']);
+    // batch/class controller
+    Route::get('create-classes', [BatchController::class, 'create'])->name('class.create');
+    Route::post('create-classes', [BatchController::class, 'store'])->name('class.store');
+    Route::get('manage-classes', [BatchController::class, 'index'])->name('manage-class');
+    Route::get('edit-classes/{id}', [BatchController::class, 'edit'])->name('edit-class');
+    Route::post('edit-classes/{id}', [BatchController::class, 'update'])->name('update-class');
+    Route::get('show-classes/{id}', [BatchController::class, 'show'])->name('show-class');
+    Route::get('destroy-classes/{id}', [BatchController::class, 'destroy'])->name('destroy-class');
+    Route::get('student', [BatchController::class, 'student'])->name('student');
+    Route::get('available-courses', [BatchController::class, 'availableCourses'])->name('available-courses');
 });
+Route::group(['middleware' => ['auth', 'student']], function () {
+    Route::get('buy-now', [BatchController::class, 'buyNow'])->name('buy.now');
+    Route::post('buy-now', [BatchController::class, 'buyNow'])->name('buy.now');
+});
+    Route::group(['middleware' => ['auth', 'operation']], function () {
+        Route::get('get-operation', [OperationController::class, 'index']);
+    });
