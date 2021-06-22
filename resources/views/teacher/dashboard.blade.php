@@ -196,10 +196,6 @@
                               <p class="sub_subject">Class Name</p>
                               <p class="subject">{{ $batch->classSettings->name }}</p>
                               <p class="sub_subject">{{$session->name}}-{{$session->topics->topic->name}}</p>
-                                {{-- {{$session->name}}-{{$session->topics->topic->name}} --}}
-                                {{-- @foreach($session->topics as $t)
-                                  {{ $session->name.'-'.$t->topic->name.',' }}
-                                @endforeach --}}
                               <p class="time_pera">
                               </p>
                             </div>
@@ -252,6 +248,8 @@
                           </div>
                           <div class="row pr-3 pl-3">
                             <div class="col-3"  style="margin-left: -7px"><p class="month_text">{{\Carbon\Carbon::now()->format('M Y')}}</p></div>
+                            <table class="table_detail">
+                                <tbody class="class-calender-block">
                             <div class="col-9">
                               <div class="day_block date_p">
                                <?php
@@ -262,28 +260,36 @@
                                     array_push($dates, $today);
                                     $today=$today+1;
 
-                                }
+                                    echo '<p id="currentDate">'. $dates[$i].'</p>';
+                                }?>
+                                <?php
                                 $times=[];
                                 $start_time=\Carbon\Carbon::parse("08:00")->format('h:i');
                                 for ($i=0; $i < 25; $i++) {
                                     array_push($times, $start_time);
                                     $start_time=\Carbon\Carbon::parse($start_time)->addMinutes(30)->format("h:i");
-                                }
-                                echo "<table class=''>";
+                                }?>
+                                </div>
+                            </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="">
+                                <?php
                                     echo "<tr class='day_block date_p'>";
-                                        echo "<td></td>";
+                                        echo "<th></th>";
+                                        echo "<th></th>";
                                     foreach ($dates as $date) {
-                                            echo "<th>";
+                                            echo "<th style='margin-left:-30px;'>";
                                                 ?>
-                                                <p id="currentDate">{{ $date }}</p>
+
                                                 <?php
                                             echo "</th>";
                                             }
                                         echo "</tr>";?>
                                         <div class="row">
-                            <div class="col-12">
-                              <div class="table_detail">
-                                    <tbody class="class-calender-block">
+                                            {{-- <tbody class=""> --}}
+                            {{-- <div class="col-12"> --}}
+                              {{-- <div class="table_detail"> --}}
                                   <?php
                                 foreach ($times as $time){
                                     echo "<tr>";
@@ -295,16 +301,24 @@
                                                 $sessions=(array)$sessions;
                                                 $session_date=\Carbon\Carbon::parse($sessions['start_date_time'])->format('d');
                                                 $session_time=\Carbon\Carbon::parse($sessions['start_date_time'])->format('h:i');
+                                                $time_plus_30=\Carbon\Carbon::parse($time)->addMinutes(30)->format('h:i');
                                                 if($date==$session_date)
                                                 {
                                                     if($time==$session_time)
                                                     {
                                                         ?>
                                                         <span class="active_time tooltip">
-                                                        <span class="time-block tooltiptext">Here is your class information</span>
+                                                            <span class="time-block tooltiptext">{{ $session->name }}</span>
                                                         </span>
                                                         <?php
                                                     }
+                                                        elseif ($session_time>$time && $time_plus_30>$session_time) {?>
+                                                        <span class="active_time tooltip">
+                                                            <span class="time-block tooltiptext">Here is your class information</span>
+                                                        </span>
+                                                        <?php
+                                                        }
+
                                                 }
                                             }
                                         }
@@ -313,7 +327,11 @@
                                 ?>
                                 </td>
                                 </tr>
-                                </tbody>
+                                {{-- </tbody> --}}
+                              {{-- </div> --}}
+                            {{-- </div> --}}
+                                        {{-- </div> --}}
+                                    </tbody>
                                 </table>
                               </div>
                             </div>
