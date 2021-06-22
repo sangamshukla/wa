@@ -94,6 +94,7 @@
 
                   </div>
                   <div class="mr-2 d-none d-lg-inline text-gray-600 small">
+                    
                     {{auth()->user()->name}}
                   </div>
                 </a>

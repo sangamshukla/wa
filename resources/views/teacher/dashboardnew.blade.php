@@ -34,12 +34,17 @@
                         $sessions=(array)$sessions;
                         $session_date=\Carbon\Carbon::parse($sessions['start_date_time'])->format('d');
                         $session_time=\Carbon\Carbon::parse($sessions['start_date_time'])->format('h:i');
+                        $time_plus_30=\Carbon\Carbon::parse($time)->addMinutes(30)->format('h:i');
+                        // echo $time_plus_30;
                         if($date==$session_date)
                         {
                             if($time==$session_time)
                             {
                                 echo "Class at $session_time<br>";
                                 // echo "<b>yes</b><br>";
+                            }
+                            elseif ($session_time>$time && $time_plus_30>$session_time) {
+                                echo "Class at $session_time<br>";
                             }
                         }
                     }

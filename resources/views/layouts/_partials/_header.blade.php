@@ -100,66 +100,7 @@
 
                 </div>
             </li>
-{{--
-            <li class="dropdown notification-list d-none d-sm-inline-block">
-                <a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                    <i class="dripicons-view-apps noti-icon"></i>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-lg p-0">
 
-                    <div class="p-2">
-                        <div class="row no-gutters">
-                            <div class="col">
-                                <a class="dropdown-icon-item" href="#">
-                                    <img src="assets/images/brands/slack.png" alt="slack">
-                                    <span>Slack</span>
-                                </a>
-                            </div>
-                            <div class="col">
-                                <a class="dropdown-icon-item" href="#">
-                                    <img src="assets/images/brands/github.png" alt="Github">
-                                    <span>GitHub</span>
-                                </a>
-                            </div>
-                            <div class="col">
-                                <a class="dropdown-icon-item" href="#">
-                                    <img src="assets/images/brands/dribbble.png" alt="dribbble">
-                                    <span>Dribbble</span>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="row no-gutters">
-                            <div class="col">
-                                <a class="dropdown-icon-item" href="#">
-                                    <img src="assets/images/brands/bitbucket.png" alt="bitbucket">
-                                    <span>Bitbucket</span>
-                                </a>
-                            </div>
-                            <div class="col">
-                                <a class="dropdown-icon-item" href="#">
-                                    <img src="assets/images/brands/dropbox.png" alt="dropbox">
-                                    <span>Dropbox</span>
-                                </a>
-                            </div>
-                            <div class="col">
-                                <a class="dropdown-icon-item" href="#">
-                                    <img src="assets/images/brands/g-suite.png" alt="G Suite">
-                                    <span>G Suite</span>
-                                </a>
-                            </div>
-
-                        </div>
-                    </div>
-
-                </div>
-            </li> --}}
-{{--
-            <li class="notification-list">
-                <a class="nav-link right-bar-toggle" href="javascript: void(0);">
-                    <i class="dripicons-gear noti-icon"></i>
-                </a>
-            </li> --}}
 
             <li class="dropdown notification-list">
                 <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown" id="topbar-userdrop" href="#" role="button" aria-haspopup="true"

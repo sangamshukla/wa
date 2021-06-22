@@ -75,7 +75,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin-show', [HomeController::class, 'adminshow']);
 
     Route::get('/teacher-new-dashboard', [HomeController::class, 'teacherDashboard']);
-    Route::get('/operation-dashboard', [HomeController::class, 'operationDashboard']);
+    // Route::get('/operation-dashboard', [HomeController::class, 'operationDashboard']);
 
     Route::get('/student-dashboard', [HomeController::class, 'studentDashboard'])->name('student-dashboard');
     // Route::get('/student-dashboard', [HomeController::class, 'newStudentDashboard'])->name('student-dashboard');
@@ -174,3 +174,7 @@ Route::post('/assign-homework', [HomeWorkController::class, 'assignHomeWork'])->
 //test route
 
 Route::get('new-teacher', [TeacherDashboardController::class, 'newindex']);
+
+Route::group(['middleware' => ['auth', 'operation']], function () {
+    Route::get('/operation-dashboard', [HomeController::class, 'operationDashboard']);
+});
