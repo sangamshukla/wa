@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeWorkController;
 use App\Http\Controllers\HomeWorkStudentController;
+use App\Http\Controllers\ManagementController;
 use App\Http\Controllers\OperationController;
 
 /*
@@ -184,4 +185,6 @@ Route::group(['middleware' => ['auth', 'student']], function () {
 });
     Route::group(['middleware' => ['auth', 'operation']], function () {
         Route::get('get-operation', [OperationController::class, 'index']);
+        Route::get('operation-dashboard', [OperationController::class, 'oprationDashboard']);
     });
+    Route::get('teacher-management', [OperationController::class, 'teacherManagement'])->name('teacher.management');

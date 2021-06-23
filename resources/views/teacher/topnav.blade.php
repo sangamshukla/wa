@@ -132,6 +132,10 @@
                   </a>
                 </div>
               </li>
+              
             </ul>
+
+            <div class="add_class"><a href="{{route('teacher.management')}}">Manage Classes</a></div>
           </nav>
+          
           <!-- End of Topbar -->

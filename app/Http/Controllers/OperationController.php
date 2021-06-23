@@ -10,4 +10,12 @@ class OperationController extends Controller
     {
         dd("this is operation");
     }
+    public function oprationDashboard()
+    {
+        return view('operation.dashboard');
+    }
+    public function teacherManagement()
+    {
+        return view('operation.teacher-management');
+    }
 }

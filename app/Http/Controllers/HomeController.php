@@ -73,18 +73,18 @@ class HomeController extends Controller
         }
     }
 
-    public function operationDashboard()
-    {
-        if (auth()->user()->role === 'admin') {
-            return redirect('/admin-dashboard');
-        } elseif (auth()->user()->role === 'teacher') {
-            return redirect('/teacher-dashboard');
-        } elseif (auth()->user()->role === 'operation') {
-            return view('dashboard.operation');
-        } elseif (auth()->user()->role === 'student') {
-            return redirect('/student-dashboard');
-        }
-    }
+    // public function operationDashboard()
+    // {
+    //     if (auth()->user()->role === 'admin') {
+    //         return redirect('/admin-dashboard');
+    //     } elseif (auth()->user()->role === 'teacher') {
+    //         return redirect('/teacher-dashboard');
+    //     } elseif (auth()->user()->role === 'operation') {
+    //         return view('dashboard.operation');
+    //     } elseif (auth()->user()->role === 'student') {
+    //         return redirect('/student-dashboard');
+    //     }
+    // }
 
     public function studentDashboard(Request $request)
     {
