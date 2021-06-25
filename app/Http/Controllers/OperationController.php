@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Teacher;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class OperationController extends Controller
@@ -20,8 +22,12 @@ class OperationController extends Controller
     }
     public function batchList()
     {
-        $data="Data here";
-        dd($data);
+        $data=User::where('role', 'teacher')->get();
+        // dd($data);
+        foreach($data as $data)
+        {
+            // dump($data->sessions);
+        }
         return view('operation.batchlist');
     }
 }
