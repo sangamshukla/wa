@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Teacher;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class OperationController extends Controller
@@ -24,10 +25,19 @@ class OperationController extends Controller
     {
         $data=User::where('role', 'teacher')->get();
         // dd($data);
-        foreach($data as $data)
-        {
-            // dump($data->sessions);
-        }
-        return view('operation.batchlist');
+        // foreach($data as $data)
+        // {
+        //     foreach($data->batches as $batches)
+        //     {
+        //         foreach($batches->batchSession as $sessions)
+        //         {
+        //             if($sessions->start_date_time<Carbon::now())
+        //             {
+        //                 echo $sessions;
+        //             }
+        //         }
+        //     }
+        // }
+        return view('operation.batchlist', compact(['data']));
     }
 }
