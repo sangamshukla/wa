@@ -38,7 +38,7 @@
           </div> --}}
         </div>
      
-        <button class="btn btn-primary" type="submit">Submit form</button>
+        <button style="margin-left:150px;"class="btn btn-primary" type="submit">Submit form</button>
       </form>
     {{-- form --}}
 
