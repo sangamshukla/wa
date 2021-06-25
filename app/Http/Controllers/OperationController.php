@@ -24,10 +24,13 @@ class OperationController extends Controller
     {
         $data=User::where('role', 'teacher')->get();
         // dd($data);
-        foreach($data as $data)
-        {
+        foreach ($data as $data) {
             // dump($data->sessions);
         }
         return view('operation.batchlist');
+    }
+    public function purchaseSession()
+    {
+        return view('operation.purchase-session');
     }
 }
