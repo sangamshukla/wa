@@ -10,9 +10,21 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>Teacher dashboard</title>
+    <title>Operation dashboard</title>
 
     <!-- Custom fonts for this template-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="{{ asset('wa/operationdashboard/css/style.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
     <link
       href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
@@ -38,8 +50,8 @@
 <body id="page-top">
         <!-- Page Wrapper -->
             <div id="wrapper">
-                @include('operation.sidebar')
                 <!-- Content Wrapper -->
+                @include('operation.sidebar')
                 <div id="content-wrapper" class="d-flex flex-column">
                     <!-- Main Content -->
                     <div id="content">
@@ -48,6 +60,7 @@
                             @yield('content')
                         </div>
                     </div>
+
                     <!-- Footer -->
                     <footer class="sticky-footer">
                         <div class="container my-auto">
@@ -74,6 +87,7 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
+<script src="{{ asset('wa/operationdashboard/js/coustom.js') }}"></script>
 
 <script>
   $(document).ready(function() {

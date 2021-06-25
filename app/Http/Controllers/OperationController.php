@@ -18,4 +18,10 @@ class OperationController extends Controller
     {
         return view('operation.teacher-management');
     }
+    public function batchList()
+    {
+        $data="Data here";
+        dd($data);
+        return view('operation.batchlist');
+    }
 }

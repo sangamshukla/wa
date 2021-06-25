@@ -186,5 +186,6 @@ Route::group(['middleware' => ['auth', 'student']], function () {
     Route::group(['middleware' => ['auth', 'operation']], function () {
         Route::get('get-operation', [OperationController::class, 'index']);
         Route::get('operation-dashboard', [OperationController::class, 'oprationDashboard']);
+        Route::get('batch-list', [OperationController::class, 'batchList']);
     });
     Route::get('teacher-management', [OperationController::class, 'teacherManagement'])->name('teacher.management');
