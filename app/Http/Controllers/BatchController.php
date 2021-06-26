@@ -179,6 +179,7 @@ class BatchController extends Controller
      */
     public function update(Request $request, Batch $batch)
     {
+        $batch = Batch::find($request->id);
         $class = Batch::updateOrCreate(
             [
                 'id' => $request->id
