@@ -9,6 +9,8 @@ use App\Models\OrderPayment;
 use App\Models\OrderSessionMap;
 use App\Models\OrderSessions;
 use App\Models\Transaction;
+use Carbon\Exceptions\InvalidFormatException;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
@@ -103,5 +105,63 @@ class PaymentController extends Controller
         ]);
         session()->put('cart', []);
         return view('payment.success');
+    }
+
+    /**
+     * Payment By Operation
+     * @param mixed $batchId
+     * @return void
+     * @throws InvalidFormatException
+     * @throws BindingResolutionException
+     */
+    public function operationPayment($batchId)
+    {
+        $product = Batch::find($batchId);
+        $sessions = $product->batchSession->where('start_date_time', '>=', \Carbon\Carbon::today())->pluck('id');
+        $sessionId = '';
+        foreach ($sessions as $s) {
+            $sessionId .= ','.$s;
+        }
+        if (request('session_id')) {
+            $sessionId = ltrim(request('session_id'), ',');
+        } else {
+            $sessionId = ltrim($sessionId, ',');
+        }
+        $cart = [
+            $batchId => [
+                "product_id" => $product->id, "quantity" => 1,
+                'price' => $product->batch_price_per_session,
+                'session_id'=>explode(',', $sessionId)
+            ]
+        ];
+        session()->put('cart', $cart);
+        $order = OrderPayment::create([
+            'student_id' => request('student_id'),
+            'order_amount' =>  Batch::whereIn('id', array_keys(session()->get('cart') ?? []))
+                ->sum('batch_price_per_session')
+        ]);
+
+        foreach (session()->get('cart') as $key => $cart) {
+            OrderItems::create([
+                'order_payment_id' => $order->id,
+                'no_of_items' => 1,
+                'batch_id' => $cart['product_id'],
+            ]);
+
+            foreach ($cart['session_id'] as $singleSession) {
+                OrderSessionMap::create([
+                    'batch_id' => $cart['product_id'],
+                    'session_id'=> $singleSession,
+                    'order_id' => $order->id
+                ]);
+            }
+        }
+        Transaction::create([
+            'order_id' => $order->id,
+            'payment_status' => 'yes'
+        ]);
+        session()->put('cart', []);
+        // redirect to success page
+        return redirect(route('teacher.management'))->with('status', 'Student Has Been Enroll Successfully!');
     }
 }

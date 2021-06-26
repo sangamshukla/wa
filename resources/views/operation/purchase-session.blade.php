@@ -1,16 +1,16 @@
 @extends('layouts.operation_dashboard');
 @section('content')
-<script>
-    $(document).ready(function () {
-      $('select').selectize({
-          sortField: 'text'
-      });
-  });
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
-
-</script>
+<script>
+//     $(document).ready(function () {
+//       $('select').selectize({
+//           sortField: 'text'
+//       });
+//   });
+  </script>
 <div style="margin-top:100px;" class="container-fluid ">
  <div class="row">
    <div class="col-4">
@@ -34,11 +34,12 @@
             <th scope="col">Sr. No.</th>
             <th scope="col">Session Name</th>
             <th scope="col">Select Session</th>
+            <th scope="col">Total Amount</th>
             <th scope="col">Available Seats</th>
           </tr>
         </thead>
         <tbody>
-          <form action="{{ route('sell-session') }}" method="post">
+          {{-- <form action="{{ route('sell-session') }}" method="post"> --}}
             @php
                 $i=1;
             @endphp
@@ -47,8 +48,9 @@
               <th scope="row">{{ $i }}</th>
               <td>{{ $session->name }}</td>
               <td>
-                  <input type="checkbox" name="session[]" id="sessions" value="{{ $session->id }}">
+                  <input type="checkbox" onchange="markChecked()" name="session[]" id="sessions" value="{{ $session->id }}">
               </td>
+              <td>  <span id="pricec"></span></td>
               <td>
                   9/3
               </td>
@@ -58,22 +60,61 @@
             @endphp
             @endforeach
             <tr>
-              <td colspan="3" class="text-center">
+              {{-- <td colspan="3" class="text-center">
                 Total Amount
-              </td>
-              <td colspan="3" class="text-center">
-                30
-              </td>
+              </td> --}}
+              {{-- <td colspan="3" class="text-center">
+                <span id="pricec"></span>
+              </td> --}}
             </tr>
                <tr>
                 <td colspan="4" class="text-center">
-                    <input type="submit" value="Submit" class="text-center btn btn-primary">
+                    <input type="submit" id="purchase_session" value="Submit" class="text-center btn btn-primary">
                 </td>
               </tr>
-            </form>
+            {{-- </form> --}}
             </tbody>
       </table>
 
     </div>
 
+@endsection
+@section('scripts')
+<script>
+function markChecked()
+{
+    var checked = $("input[name='session[]']:checked").length;
+    if(checked <= 0){
+        $('#showErrorMessage').show();
+    }else{
+        $('#showErrorMessage').hide();
+    }
+    var p = {{ $batch->batch_price_per_session }}
+    var price = p * checked;
+    $('#pricec').html(price);
+}
+// price
+</script>
+<script>
+      $(document).ready(function(){
+            $('#showErrorMessage').hide();
+
+
+            $("#purchase_session").click(function(){
+                var checked = $("input[name='session[]']:checked").length;
+                if(checked <= 0){
+                    $('#showErrorMessage').show();
+                }else{
+                    $('#showErrorMessage').hide();
+                    var checked = '';
+                    $('input[name="session[]"]:checked').each(function() {
+                    checked += ','+this.value;
+                    });
+                    var studentId = $('#select-state').val();
+                    window.location.href = "/operation-add-to-cart/{{ $batch->id }}/?session_id="+checked+"&student_id="+studentId
+                }
+            });
+
+        });
+    </script>
 @endsection

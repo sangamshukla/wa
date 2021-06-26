@@ -5,6 +5,7 @@
       href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
 <div style="margin-top: 110px;" class="container-fluid">
 <table id="example" style="width:100%" class="table table-bordered table-responsive w-100 d-block d-md-table">
+    
     <thead>
         <tr>
             <th>Sr No. </th>
@@ -13,7 +14,9 @@
             <th>Action</th>
         </tr>
     </thead>
-    <tbody>
+    @include('_form.success')
+
+    <tbody style="height: auto !important">
         @php
             $j=1;
         @endphp
@@ -38,14 +41,14 @@
                         @endif
                     @endforeach
 
-                    <form action="{{ route('batch-list') }}" method="post" >
+                    <form action="{{ route('batch-list') }}" method="post" style="margin:0;" >
                         @csrf
                         <input type="hidden" name="session_arr" value="{{ implode("/", $session_arr) }}">
                         <input type="submit" value="{{ $i }}">
                         {{-- <a href="{{ route('batch-list') }}">{{ $i }}</a> --}}
                     </form>
                 </td>
-                <td><button class="btn btn-info">View Detail</button></td>
+                <td><a href="{{ route('purchase-session', ['id'=>$session->batch ]) }}"><button class="btn btn-info">View Detail</button></td></a>
             </tr>
             @php
                 $j=$j+1;

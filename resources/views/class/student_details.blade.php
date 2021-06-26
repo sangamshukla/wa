@@ -304,7 +304,7 @@
             var price = p * checked;
             $('#pricec').html(price);
         }
-        // pricec
+        // price
     </script>
     @else
     <script>
