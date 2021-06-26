@@ -1,30 +1,26 @@
 @extends('layouts.operation_dashboard');
 @section('content')
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
-<script>
-//     $(document).ready(function () {
-//       $('select').selectize({
-//           sortField: 'text'
-//       });
-//   });
-  </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.3/js/standalone/selectize.js" integrity="sha512-pF+DNRwavWMukUv/LyzDyDMn8U2uvqYQdJN0Zvilr6DDo/56xPDZdDoyPDYZRSL4aOKO/FGKXTpzDyQJ8je8Qw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <div style="margin-top:100px;" class="container-fluid ">
  <div class="row">
    <div class="col-4">
+  </div>
 
-   </div>
    <div class="col-4">
-    <select id="select-state" placeholder="Select a student...">
-      <option value="">Select Student...</option>
-      @foreach ($students as $student)
-
-      <option value="{{ $student->id }}">{{ $student->name }}</option>
-      @endforeach
-    </select>
+    <label for="select-student">Select a Student</label>
+     <select id="select-student" class="demo-default" placeholder="Select a student...">
+        {{-- <option value="null">Select Student</option> --}}
+        @foreach ($students as $student)
+            <option value="{{ $student->id }}">{{ $student->name }}</option>
+        @endforeach
+      </select>
    </div>
+   <script class="show">
+    $("#select-student").selectize({
+      create: true,
+      sortField: "text",
+    });
+  </script>
    <div class="col-4"></div>
 </div>
 <div class="row">
