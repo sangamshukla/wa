@@ -5,13 +5,13 @@
       href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
 <div style="margin-top: 110px;" class="container-fluid">
 <table id="example" style="width:100%" class="table table-bordered table-responsive w-100 d-block d-md-table">
-    
+
     <thead>
         <tr>
-            <th>Sr No. </th>
-            <th>Teacher Name</th>
-            <th>Session Count</th>
-            <th>Action</th>
+            <th class="text-center">Sr No. </th>
+            <th class="text-center">Teacher Name</th>
+            <th class="text-center">Session Count</th>
+            <th class="text-center">Action</th>
         </tr>
     </thead>
     @include('_form.success')
@@ -23,9 +23,9 @@
         @foreach ($data as $data)
         {{-- {{ print_r($data) }} --}}
             <tr>
-                <td>{{ $j }}</td>
-                <td>{{ $data->name }}</td>
-                <td>@php
+                <td class="text-center">{{ $j }}</td>
+                <td class="text-center">{{ $data->name }}</td>
+                <td class="text-center">@php
                     $i=0;
                     $session_arr=[];
                 @endphp
@@ -46,9 +46,9 @@
                         <input type="hidden" name="session_arr" value="{{ implode("/", $session_arr) }}">
                         <input type="submit" value="{{ $i }}">
                         {{-- <a href="{{ route('batch-list') }}">{{ $i }}</a> --}}
-                    </form>
-                </td>
-                <td><a href="{{ route('purchase-session', ['id'=>$session->batch ]) }}"><button class="btn btn-info">View Detail</button></td></a>
+                    </td>
+                    <td class="text-center"><a href="{{ route('purchase-session', ['id'=>$session->batch ]) }}"><button class="btn btn-info">View Detail</button></td></a>
+                </form>
             </tr>
             @php
                 $j=$j+1;

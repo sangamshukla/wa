@@ -9,6 +9,7 @@ use App\Models\OrderPayment;
 use App\Models\OrderSessionMap;
 use App\Models\Student;
 use App\Models\Transaction;
+use App\Models\User;
 use Carbon\Carbon;
 // use GuzzleHttp\Psr7\Request;
 use Illuminate\Http\Request;
@@ -95,7 +96,7 @@ class HomeController extends Controller
         } elseif (auth()->user()->role === 'operation') {
             return redirect('/operation-dashboard');
         } elseif (auth()->user()->role === 'student') {
-            $student = Student::where('user_id', auth()->user()->id)->first();
+            $student = User::where('role', 'student')->where('id', auth()->user()->id)->first();
             // dd($student);
             $students = Batch::where('class_master_id', $student->class_master_id)->latest()->take(8)->get();
             // buy now || orders table

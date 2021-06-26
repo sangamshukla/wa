@@ -31,11 +31,11 @@
     <table style="margin: 90px;" class="table table-bordered table-responsive w-100 d-block d-md-table">
         <thead>
           <tr>
-            <th scope="col">Sr. No.</th>
-            <th scope="col">Session Name</th>
-            <th scope="col">Select Session</th>
-            <th scope="col">Total Amount</th>
-            <th scope="col">Available Seats</th>
+            <th scope="col" class="text-center">Sr. No.</th>
+            <th scope="col" class="text-center" colspan="2">Session Name</th>
+            <th scope="col" class="text-center">Available Seats</th>
+            <th scope="col" class="text-center">Select Session</th>
+            {{-- <th scope="col">Total Amount</th> --}}
           </tr>
         </thead>
         <tbody>
@@ -45,27 +45,27 @@
             @endphp
             @foreach ($sessions as $session)
             <tr>
-              <th scope="row">{{ $i }}</th>
-              <td>{{ $session->name }}</td>
-              <td>
+              <th scope="row" colspan="1" class="text-center">{{ $i }}</th>
+              <td class="text-center" colspan="2">{{ $session->name }}</td>
+              <td class="text-center">
+                  {{ $session->batch->no_of_seats }}/3
+              </td>
+              <td class="text-center">
                   <input type="checkbox" onchange="markChecked()" name="session[]" id="sessions" value="{{ $session->id }}">
               </td>
-              <td>  <span id="pricec"></span></td>
-              <td>
-                  9/3
-              </td>
+              {{-- <td>  <span id="pricec"></span></td> --}}
             </tr>
             @php
                 $i=$i+1;
             @endphp
             @endforeach
             <tr>
-              {{-- <td colspan="3" class="text-center">
+              <th scope="col" colspan="4" class="text-center">
                 Total Amount
-              </td> --}}
-              {{-- <td colspan="3" class="text-center">
+              </th>
+               <th colspan="1" class="text-center">
                 <span id="pricec"></span>
-              </td> --}}
+              </th>
             </tr>
                <tr>
                 <td colspan="4" class="text-center">
