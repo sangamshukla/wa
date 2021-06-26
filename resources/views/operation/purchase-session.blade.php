@@ -17,8 +17,8 @@
             <label for="validationServer02">Email: alka@gmail.com</label>&nbsp;	&nbsp; 	&nbsp;
 
             <label for="validationServer02">Year: Year1</label>
-            
-        </div> 
+
+        </div>
         {{-- <div class="col-md-4 mb-3">
             <label for="validationServer02">Email</label>
           </div>
@@ -37,7 +37,7 @@
             </div>
           </div> --}}
         </div>
-     
+
         <button style="margin-left:150px;"class="btn btn-primary" type="submit">Submit form</button>
       </form>
     {{-- form --}}
@@ -47,33 +47,37 @@
     <table style="margin: 100px;" class="table table-bordered table-responsive w-100 d-block d-md-table">
         <thead>
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th scope="col">Sr. No.</th>
+            <th scope="col">Session Name</th>
+            <th scope="col">Select Session</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-          </tr>
+            @php
+                $i=1;
+            @endphp
+             <form action="{{ route('sell-session') }}" method="post">
+            @foreach ($sessions as $session)
+            <tr>
+              <th scope="row">{{ $i }}</th>
+              <td>{{ $session->name }}</td>
+              <td>
+                  <input type="checkbox" name="session[]" id="sessions" value="{{ $session->id }}">
+              </td>
+            </tr>
+            @php
+                $i=$i+1;
+            @endphp
+            @endforeach
+            <tr>
+                <td colspan="3" class="text-center">
+                    <input type="submit" value="Submit" class="text-center btn btn-primary">
+                </td>
+            </form>
+            </tr>
         </tbody>
       </table>
+
     </div>
 {{-- </div> --}}
 

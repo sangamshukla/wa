@@ -24,15 +24,26 @@
                 <td>{{ $data->name }}</td>
                 <td>@php
                     $i=0;
+                    $session_arr=[];
                 @endphp
                     @foreach ($sessions as $session)
                         @if ($session->batch->teacher->name==$data->name)
                             @php
                                 $i=$i+1;
-                            @endphp
+                                @endphp
+                                {{-- {{ $session->id }} --}}
+                        @php
+                            array_push($session_arr,$session->id);
+                        @endphp
                         @endif
                     @endforeach
-                    <a href="{{ route('batch-list') }}">{{ $i }}</a>
+
+                    <form action="{{ route('batch-list') }}" method="post" >
+                        @csrf
+                        <input type="hidden" name="session_arr" value="{{ implode("/", $session_arr) }}">
+                        <input type="submit" value="{{ $i }}">
+                        {{-- <a href="{{ route('batch-list') }}">{{ $i }}</a> --}}
+                    </form>
                 </td>
                 <td><button class="btn btn-info">View Detail</button></td>
             </tr>

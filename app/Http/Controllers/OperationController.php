@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Batch;
 use App\Models\BatchSession;
 use App\Models\Teacher;
 use App\Models\User;
@@ -32,31 +33,25 @@ class OperationController extends Controller
         // dd($sessions);
         return view('operation.teacher-management', compact('data', 'sessions'));
     }
-    public function batchList()
+    public function batchListGet()
     {
-
-        // dd($data);
-        // foreach($data as $data)
-        // {
-        //     foreach($data->batches as $batches)
-        //     {
-        //         foreach($batches->batchSession as $sessions)
-        //         {
-        //             if($sessions->start_date_time<Carbon::now())
-        //             {
-        //                 echo $sessions;
-        //             }
-        //         }
-        //     }
-        // }
-        // return view('operation.batchlist');
-        // foreach ($data as $data) {
-        //     // dump($data->sessions);
-        // }
         return view('operation.batchlist');
     }
-    public function purchaseSession()
+    public function batchList(Request $request)
     {
-        return view('operation.purchase-session');
+        $sessions=explode("/", $request->session_arr);
+        $session=[];
+        foreach($sessions as $session_name)
+        {
+            $batch=BatchSession::where('id', $session_name)->get();
+            array_push($session, $batch);
+        }
+        return view('operation.batchlist', compact('session'));
     }
+    public function purchaseSession($id)
+    {
+        $sessions=BatchSession::where('batch_id', $id)->get();
+        return view('operation.purchase-session', compact('sessions'));
+    }
+
 }
