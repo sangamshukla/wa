@@ -41,8 +41,7 @@ class OperationController extends Controller
     {
         $sessions=explode("/", $request->session_arr);
         $session=[];
-        foreach($sessions as $session_name)
-        {
+        foreach ($sessions as $session_name) {
             $batch=BatchSession::where('id', $session_name)->get();
             array_push($session, $batch);
         }
@@ -53,5 +52,4 @@ class OperationController extends Controller
         $sessions=BatchSession::where('batch_id', $id)->get();
         return view('operation.purchase-session', compact('sessions'));
     }
-
 }
