@@ -49,7 +49,8 @@ class OperationController extends Controller
     }
     public function purchaseSession($id)
     {
+        $students=User::where('role', 'student')->get();
         $sessions=BatchSession::where('batch_id', $id)->get();
-        return view('operation.purchase-session', compact('sessions'));
+        return view('operation.purchase-session', compact('sessions', 'students'));
     }
 }
