@@ -96,7 +96,7 @@
 <script src="{{asset('wa/teacherdashboard/js/student.js')}}"></script>
 <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.3/css/selectize.default.min.css" integrity="sha512-H955AcCOE/fUjX4XWkN0FwjCYVV/zioSF6VpUKCcrGdR1Wa8paFWYixWYp85npbnx3i1kZCH4Rm4TRxut2+d5A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <script>
   $(document).ready(function() {
     $('#example').DataTable();
