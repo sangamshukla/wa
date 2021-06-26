@@ -37,11 +37,20 @@
                                             <div class="class_section">
                                                 <div class="class_type">class type</div>
                                                 <div>
+                                                    @if ($session->batch->status==1)
+
                                                     <span class="online">
-                                                        online
+                                                        Online
                                                     </span>
                                                     <span class="dot">
                                                         </span>
+                                                    @else
+                                                    <span class="online">
+                                                        Offlilne | {{ $session->batch->location?? "No location" }}
+                                                    </span>
+                                                    <span class="">
+                                                    </span>
+                                                    @endif
                                                     </div>
 
                                             </div>
