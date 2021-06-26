@@ -19,8 +19,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
     <link rel="stylesheet" href="{{ asset('wa/operationdashboard/css/style.css') }}">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -83,11 +83,20 @@
 <!-- Core plugin JavaScript-->
 <script src="{{asset('wa/operationdashboard/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
 <!-- Custom scripts for all pages-->
-<script src="{{asset('wa/operationdashboard/js/student.js')}}"></script>
+{{-- <script src="{{ asset('wa/operationdashboard/js/coustom.js') }}"></script> --}}
+{{-- <script src="{{asset('wa/operationdashboard/js/student.js')}}"></script> --}}
+@yield('scripts')
+<!-- End of Page Wrapper -->
+<!-- Bootstrap core JavaScript-->
+{{-- <script src="{{asset('wa/teacherdashboard/vendor/jquery/jquery.min.js')}}"></script> --}}
+<script src="{{asset('wa/teacherdashboard/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<!-- Core plugin JavaScript-->
+<script src="{{asset('wa/teacherdashboard/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+<!-- Custom scripts for all pages-->
+<script src="{{asset('wa/teacherdashboard/js/student.js')}}"></script>
 <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
-<script src="{{ asset('wa/operationdashboard/js/coustom.js') }}"></script>
-@yield('scripts')
+
 <script>
   $(document).ready(function() {
     $('#example').DataTable();

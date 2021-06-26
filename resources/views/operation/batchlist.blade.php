@@ -36,7 +36,13 @@
                                             </div>
                                             <div class="class_section">
                                                 <div class="class_type">class type</div>
-                                                <div><span class="online">online</span><span class="dot"></span></div>
+                                                <div>
+                                                    <span class="online">
+                                                        online
+                                                    </span>
+                                                    <span class="dot">
+                                                        </span>
+                                                    </div>
 
                                             </div>
                                         </div>
