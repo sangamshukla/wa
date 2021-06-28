@@ -114,8 +114,9 @@ class PaymentController extends Controller
      * @throws InvalidFormatException
      * @throws BindingResolutionException
      */
-    public function operationPayment($batchId)
+    public function operationPayment(Request $request, $batchId)
     {
+        // dd($request->paid_amount);
         $product = Batch::find($batchId);
         $sessions = $product->batchSession->where('start_date_time', '>=', \Carbon\Carbon::today())->pluck('id');
         $sessionId = '';
@@ -139,7 +140,7 @@ class PaymentController extends Controller
             'student_id' => request('student_id'),
             'order_amount' =>  Batch::whereIn('id', array_keys(session()->get('cart') ?? []))
                 ->sum('batch_price_per_session'),
-            'paid_amount'=>request('paid_amount')
+            'paid_amount'=>$request->paid_amount
         ]);
 
         foreach (session()->get('cart') as $key => $cart) {

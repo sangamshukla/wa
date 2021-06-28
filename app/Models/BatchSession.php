@@ -17,6 +17,7 @@ class BatchSession extends Model
 
     public function topics()
     {
+        // dd(topics);
         return  $this->belongsTo(BatchTopic::class, 'id');
     }
 

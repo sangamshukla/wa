@@ -26,7 +26,7 @@ $("#generate-session").on("click", function () {
             </select>
         </div>
         <div class="col-md-3">
-            <input type="text" name="comment[]"  class="form-control"  placeholder="comment">
+            <input type="text" name="comment[]" class="form-control" placeholder="comment">
         </div>
         <button class="btn btn-danger" onclick="$(this).closest(\'div\').remove();"><i style="  margin-left:3px;" class="material-icons">delete</i></button>
         <div class="col-md-1">
@@ -126,7 +126,7 @@ function addRow() {
             </select>
         </div>
         <div class="col-md-3">
-            <input type="text" name="comment[]" value="{{$comment->comment}}" class="form-control" placeholder="comment">
+            <input type="text" name="comment[]" class="form-control" placeholder="comment">
         </div>
         <button class="btn btn-danger" onclick="$(this).closest(\'div\').remove();"><i style="  margin-left:3px;" class="material-icons">delete</i></button>
         <div class="col-md-1">

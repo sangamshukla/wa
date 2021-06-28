@@ -3,8 +3,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.3/js/standalone/selectize.js" integrity="sha512-pF+DNRwavWMukUv/LyzDyDMn8U2uvqYQdJN0Zvilr6DDo/56xPDZdDoyPDYZRSL4aOKO/FGKXTpzDyQJ8je8Qw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <div style="margin-top:100px;" class="container-fluid ">
  <div class="row">
-   <div class="col-4">
-  </div>
+   <div class="col-4"></div>
 
    <div class="col-4">
     <label for="select-student">Select a Student</label>
@@ -22,6 +21,43 @@
     });
   </script>
    <div class="col-4"></div>
+</div>
+<div class="table">
+    <div class="row" style="margin: 20px 0px 0px 50px">
+        <div class="col-3 text-center border">
+            <h5>Batch Name</h5>
+        </div>
+        <div class="col-3 text-center border">
+            <h5>Teacher Name</h5>
+        </div>
+        <div class="col-1 text-center border">
+            <h5>Duration</h5>
+        </div>
+        <div class="col-3 text-center border">
+            <h5>Subject</h5>
+        </div>
+        <div class="col-1 text-center border">
+            <h5>Seat</h5>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-3 text-center border">
+            <h5>{{ $batch->classSettings->name}}</h5>
+        </div>
+        <div class="col-3 text-center border">
+            <h5>{{ $batch->assignteacher->name }}</h5>
+        </div>
+        <div class="col-1 text-center border">
+            <h5>{{ $batch->duration_per_session }}</h5>
+        </div>
+        <div class="col-3 text-center border">
+            <h5>{{ $batch->subject->name }}</h5>
+        </div>
+        <div class="col-1 text-center border">
+            <h5>{{ $batch->no_of_seats }}</h5>
+        </div>
+    </div>
 </div>
 <div class="row">
     <table style="margin: 90px;" class="table table-bordered table-responsive w-100 d-block d-md-table">
@@ -114,7 +150,7 @@ function markChecked()
                     checked += ','+this.value;
                     });
                     var studentId = $('#select-student').val();
-                    window.location.href = "/operation-add-to-cart/{{ $batch->id }}/?session_id="+checked+"&student_id="+studentId
+                    window.location.href = "/operation-add-to-cart/{{ $batch->id }}/?session_id="+checked+"&student_id="+studentId+"&paid_amount="+paid_amount
                 }
             });
 

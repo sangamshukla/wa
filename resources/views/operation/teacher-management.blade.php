@@ -21,7 +21,7 @@
             <th class="text-center">Session Count</th>
             <th class="text-center">Topic</th>
             <th class="text-center">Subject</th>
-            <th class="text-center">Start Time</th>
+            <th class="text-center">Start Date & Time</th>
             <th class="text-center">Action</th>
         </tr>
     </thead>
@@ -35,11 +35,15 @@
             <tr>
                 <td class="text-center">{{ $j }}</td>
                 <td class="text-center">{{ $data->name }}</td>
-                <td class="text-center">@php
+                    @php
                     $i=0;
                     $session_arr=[];
                 @endphp
-                    @forelse ($sessions as $session)
+                <td class="text-center">
+                {{-- <td>{{ implode(',',$sessions->pluck("start_date_time")->toArray()) }}</td> --}}
+                     @forelse ($sessions as $session)
+                     
+                      
                         @if ($session->batch->teacher->name==$data->name)
                             @php
                                 $i=$i+1;
@@ -48,8 +52,8 @@
                         @endif
                         @empty
                         {{ 'No sessions for today' }}
-                    @endforelse
-
+                    @endforelse 
+                    
                     <form action="{{ route('batch-list') }}" method="post" style="margin:0;" >
                         @csrf
                         <input type="hidden" name="session_arr" value="{{ implode("/", $session_arr) }}">
@@ -57,7 +61,9 @@
                     </td>
                     <td class="text-center">{{ $session->topics->topic->name }}</td>
                     <td class="text-center">{{ $session->batch->subject->name }}</td>
-                    <td class="text-center">{{ \Carbon\Carbon::parse($session->start_date_time)->format('h:i') }}</td>
+                    {{-- <td class="text-center">{{ \Carbon\Carbon::parse($session->start_date_time)->format('h:i') }}</td> --}}
+                    <td class="text-center">{{ \Carbon\Carbon::parse($session->start_date_time)->format('d-m-y h:i') }}</td>
+
                     <td class="text-center"><a href="{{ route('purchase-session', ['id'=>$session->batch??'null' ]) }}"><button class="btn btn-info">View Detail</button></td></a>
                 </form>
             </tr>
