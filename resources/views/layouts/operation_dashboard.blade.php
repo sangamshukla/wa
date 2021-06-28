@@ -46,6 +46,15 @@
     <!-- Custom styles for this template-->
     <link href="{{asset('wa/operationdashboard/css/student-admin.css')}}" rel="stylesheet" />
     <link href="{{asset('wa/operationdashboard/css/topSidebar.css')}}" rel="stylesheet" />
+    <style>
+.datatables_filter {
+    float: right !important;
+}
+.dataTables_paginate {
+    float: right !important;
+}
+
+</style>
   </head>
 <body id="page-top">
         <!-- Page Wrapper -->

@@ -22,7 +22,10 @@
     });
   </script>
    <div class="col-4"></div>
+   
 </div>
+
+<h5 style="text-align: center;">{{ $batch->classSettings->name .' | '. $batch->assignteacher->name .' | '. $batch->duration_per_session .' | '. $batch->subject->name . ' | '. $batch->no_of_seats  }}</h5>
 <div class="row">
     <table style="margin: 90px;" class="table table-bordered table-responsive w-100 d-block d-md-table">
         <thead>
