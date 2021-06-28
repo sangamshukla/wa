@@ -45,6 +45,7 @@ class OperationController extends Controller
             $batch=BatchSession::where('id', $session_name)->get();
             array_push($session, $batch);
         }
+        // dd($session);
         return view('operation.batchlist', compact('session'));
     }
     public function purchaseSession($id)
