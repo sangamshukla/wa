@@ -5,7 +5,6 @@
         <th>Student Name</th>
         <th>Amount</th>
         <th>Due Amount</th>
-        <th>Date</th>
       </tr>
     </thead>
     <tbody>
