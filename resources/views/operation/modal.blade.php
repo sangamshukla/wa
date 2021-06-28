@@ -1,25 +1,28 @@
 <table class="table table-bordered table-responsive w-100 d-block d-md-table">
     <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">Student Name</th>
-        <th scope="col">Amount</th>
-        <th scope="col">Due Amount</th>
-        <th scope="col">Date</th>
+        <th>#</th>
+        <th>Student Name</th>
+        <th>Amount</th>
+        <th>Due Amount</th>
+        <th>Date</th>
       </tr>
     </thead>
     <tbody>
         @php
-            // dd($studentList);
+            $i=1;
         @endphp
         @forelse ($studentList as $student)
 
         <tr>
-          <th scope="row">1</th>
+          <td>{{ $i }}</td>
           <td>{{ $student->name }}</td>
           <td>{{ $student->order_amount }}</td>
           <td>{{ $student->paid_amount }}</td>
         </tr>
+        @php
+            $i=$i+1;
+        @endphp
         @empty
         <tr>
             <td>No student </td>

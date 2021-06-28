@@ -41,20 +41,20 @@
         </div>
     </div>
 
-    <div class="row border" style="margin: 20px 0px 0px 50px">
-        <div class="col-3 text-center">
+    <div class="row" style="margin: 0px 0px 0px 50px">
+        <div class="col-3 text-center border">
             <h5>{{ $batch->classSettings->name}}</h5>
         </div>
-        <div class="col-3 text-center">
+        <div class="col-3 text-center border">
             <h5>{{ $batch->assignteacher->name }}</h5>
         </div>
-        <div class="col-1 text-center">
+        <div class="col-1 text-center border">
             <h5>{{ $batch->duration_per_session }}</h5>
         </div>
-        <div class="col-3 text-center">
+        <div class="col-3 text-center border">
             <h5>{{ $batch->subject->name }}</h5>
         </div>
-        <div class="col-1 text-center">
+        <div class="col-1 text-center border">
             <h5>{{ $batch->no_of_seats }}</h5>
         </div>
     </div>
