@@ -55,4 +55,9 @@ class OperationController extends Controller
         $batch = Batch::find($id);
         return view('operation.purchase-session', compact('sessions', 'students', 'batch'));
     }
+
+    public function studentPaidDetails()
+    {
+        // return view('operation.operation-paid-details');
+    }
 }
