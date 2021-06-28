@@ -29,7 +29,7 @@ class PaymentController extends Controller
         } else {
             $sessionId = ltrim($sessionId, ',');
         }
-       
+
         $cart = session()->get('cart');
         // if cart is empty then this the first product
 
@@ -138,7 +138,8 @@ class PaymentController extends Controller
         $order = OrderPayment::create([
             'student_id' => request('student_id'),
             'order_amount' =>  Batch::whereIn('id', array_keys(session()->get('cart') ?? []))
-                ->sum('batch_price_per_session')
+                ->sum('batch_price_per_session'),
+            'paid_amount'=>request('paid_amount')
         ]);
 
         foreach (session()->get('cart') as $key => $cart) {

@@ -48,7 +48,7 @@
                         <input type="submit" value="{{ $i }}">
                         {{-- <a href="{{ route('batch-list') }}">{{ $i }}</a> --}}
                     </td>
-                    <td class="text-center"><a href="{{ route('purchase-session', ['id'=>$session->batch ]) }}"><button class="btn btn-info">View Detail</button></td></a>
+                    <td class="text-center"><a href="{{ route('purchase-session', ['id'=>$session->batch??'null' ]) }}"><button class="btn btn-info">View Detail</button></td></a>
                 </form>
             </tr>
             @php
