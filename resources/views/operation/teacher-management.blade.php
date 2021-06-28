@@ -10,6 +10,8 @@
         <tr>
             <th class="text-center">Sr No. </th>
             <th class="text-center">Teacher Name</th>
+            <th class="text-center">Date & Time</th>
+            <th class="text-center">Topic</th>
             <th class="text-center">Session Count</th>
             <th class="text-center">Action</th>
         </tr>
@@ -25,6 +27,8 @@
             <tr>
                 <td class="text-center">{{ $j }}</td>
                 <td class="text-center">{{ $data->name }}</td>
+                
+                <td></td>
                 <td class="text-center">@php
                     $i=0;
                     $session_arr=[];
