@@ -99,13 +99,14 @@
               </div>
               <div class="modal-body">
              {{-- table --}}
-             <table class="table table-striped">
+             <table class="table table-bordered table-responsive w-100 d-block d-md-table">
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">First</th>
-                  <th scope="col">Last</th>
-                  <th scope="col">Handle</th>
+                  <th scope="col">Student Name</th>
+                  <th scope="col">Amount</th>
+                  <th scope="col">Due Amount</th>
+                  <th scope="col">Date</th>
                 </tr>
               </thead>
               <tbody>
@@ -114,19 +115,9 @@
                   <td>Mark</td>
                   <td>Otto</td>
                   <td>@mdo</td>
+                  <td></td>
                 </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Larry</td>
-                  <td>the Bird</td>
-                  <td>@twitter</td>
-                </tr>
+                
               </tbody>
             </table>
              {{-- end table --}}
