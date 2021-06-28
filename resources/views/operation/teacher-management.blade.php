@@ -33,17 +33,18 @@
                     $i=0;
                     $session_arr=[];
                 @endphp
-                    @foreach ($sessions as $session)
+                    @forelse ($sessions as $session)
                         @if ($session->batch->teacher->name==$data->name)
                             @php
                                 $i=$i+1;
                                 @endphp
-                                {{-- {{ $session->id }} --}}
                         @php
                             array_push($session_arr,$session->id);
                         @endphp
                         @endif
-                    @endforeach
+                        @empty
+                        {{ 'No sessions for today' }}
+                    @endforelse
 
                     <form action="{{ route('batch-list') }}" method="post" style="margin:0;" >
                         @csrf

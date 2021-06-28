@@ -63,6 +63,14 @@
                 <span id="pricec"></span>
               </th>
             </tr>
+            <tr>
+              <th scope="col" colspan="4" class="text-center">
+                Paid Amount
+              </th>
+               <th colspan="1" class="text-center">
+               <input type="number" name="paid_amount" id="" class="form-control">
+              </th>
+            </tr>
                <tr>
                 <td colspan="4" class="text-center">
                     <input type="submit" id="purchase_session" value="Submit" class="text-center btn btn-primary">
@@ -94,10 +102,9 @@ function markChecked()
 <script>
       $(document).ready(function(){
             $('#showErrorMessage').hide();
-
-
             $("#purchase_session").click(function(){
                 var checked = $("input[name='session[]']:checked").length;
+                var paid_amount=$("input[name='paid_amount']").val();
                 if(checked <= 0){
                     $('#showErrorMessage').show();
                 }else{
@@ -106,8 +113,8 @@ function markChecked()
                     $('input[name="session[]"]:checked').each(function() {
                     checked += ','+this.value;
                     });
-                    var studentId = $('#select-state').val();
-                    window.location.href = "/operation-add-to-cart/{{ $batch->id }}/?session_id="+checked+"&student_id="+studentId
+                    var studentId = $('#select-student').val();
+                    window.location.href = "/operation-add-to-cart/{{ $batch->id }}/?session_id="+checked+"&student_id="+studentId+"&paid_amount="+paid_amount
                 }
             });
 
