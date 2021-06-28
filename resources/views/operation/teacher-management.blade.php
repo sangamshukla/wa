@@ -11,6 +11,9 @@
             <th class="text-center">Sr No. </th>
             <th class="text-center">Teacher Name</th>
             <th class="text-center">Session Count</th>
+            <th class="text-center">Topic</th>
+            <th class="text-center">Subject</th>
+            <th class="text-center">Start Time</th>
             <th class="text-center">Action</th>
         </tr>
     </thead>
@@ -33,10 +36,8 @@
                         @if ($session->batch->teacher->name==$data->name)
                             @php
                                 $i=$i+1;
-                                @endphp
-                        @php
-                            array_push($session_arr,$session->id);
-                        @endphp
+                                array_push($session_arr,$session->id);
+                            @endphp
                         @endif
                         @empty
                         {{ 'No sessions for today' }}
@@ -46,8 +47,10 @@
                         @csrf
                         <input type="hidden" name="session_arr" value="{{ implode("/", $session_arr) }}">
                         <input type="submit" value="{{ $i }}">
-                        {{-- <a href="{{ route('batch-list') }}">{{ $i }}</a> --}}
                     </td>
+                    <td class="text-center">{{ $session->topics->topic->name }}</td>
+                    <td class="text-center">{{ $session->batch->subject->name }}</td>
+                    <td class="text-center">{{ \Carbon\Carbon::parse($session->start_date_time)->format('h:i') }}</td>
                     <td class="text-center"><a href="{{ route('purchase-session', ['id'=>$session->batch??'null' ]) }}"><button class="btn btn-info">View Detail</button></td></a>
                 </form>
             </tr>
