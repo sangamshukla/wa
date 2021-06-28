@@ -28,13 +28,17 @@
                 <td class="text-center">{{ $j }}</td>
                 <td class="text-center">{{ $data->name }}</td>
                 
-                <td></td>
-                <td class="text-center">@php
+                    @php
                     $i=0;
                     $session_arr=[];
                 @endphp
-                    @forelse ($sessions as $session)
+                <td>{{ implode(',',$sessions->pluck("start_date_time")->toArray()) }}</td>
+                    {{-- @forelse ($sessions as $session)
+                      
                         @if ($session->batch->teacher->name==$data->name)
+ 
+                        <td>{{ $session->start_date_time}}</td>
+                        <td>{{ $session->topics->topic->name}}</td> 
                             @php
                                 $i=$i+1;
                                 @endphp
@@ -44,16 +48,17 @@
                         @endif
                         @empty
                         {{ 'No sessions for today' }}
-                    @endforelse
-
+                    @endforelse --}}
+                    <td>
                     <form action="{{ route('batch-list') }}" method="post" style="margin:0;" >
                         @csrf
                         <input type="hidden" name="session_arr" value="{{ implode("/", $session_arr) }}">
                         <input type="submit" value="{{ $i }}">
                         {{-- <a href="{{ route('batch-list') }}">{{ $i }}</a> --}}
                     </td>
-                    <td class="text-center"><a href="{{ route('purchase-session', ['id'=>$session->batch ]) }}"><button class="btn btn-info">View Detail</button></td></a>
+                    <td class="text-center"><a href="{{ route('purchase-session', ['id'=>$sessions->first()->batch ]) }}"><button class="btn btn-info">View Detail</button></td></a>
                 </form>
+
             </tr>
             @php
                 $j=$j+1;
