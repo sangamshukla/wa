@@ -23,7 +23,7 @@
    <div class="col-4"></div>
 </div>
 <div class="table">
-    <div class="row" style="margin: 20px 0px 0px 50px">
+    <div class="row bg-light" style="margin: 20px 0px 0px 50px">
         <div class="col-3 text-center border">
             <h5>Batch Name</h5>
         </div>
@@ -41,20 +41,20 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-3 text-center border">
+    <div class="row border" style="margin: 20px 0px 0px 50px">
+        <div class="col-3 text-center">
             <h5>{{ $batch->classSettings->name}}</h5>
         </div>
-        <div class="col-3 text-center border">
+        <div class="col-3 text-center">
             <h5>{{ $batch->assignteacher->name }}</h5>
         </div>
-        <div class="col-1 text-center border">
+        <div class="col-1 text-center">
             <h5>{{ $batch->duration_per_session }}</h5>
         </div>
-        <div class="col-3 text-center border">
+        <div class="col-3 text-center">
             <h5>{{ $batch->subject->name }}</h5>
         </div>
-        <div class="col-1 text-center border">
+        <div class="col-1 text-center">
             <h5>{{ $batch->no_of_seats }}</h5>
         </div>
     </div>
@@ -66,7 +66,10 @@
             <th scope="col" class="text-center">Sr. No.</th>
             <th scope="col" class="text-center" colspan="2">Session Name</th>
             <th scope="col" class="text-center">Available Seats</th>
+            <th scope="col" class="text-center">Start Date & Time</th>
             <th scope="col" class="text-center">Select Session</th>
+            <th scope="col" class="text-center">Action</th>
+
             {{-- <th scope="col">Total Amount</th> --}}
           </tr>
         </thead>
@@ -82,11 +85,16 @@
               <td class="text-center">
                   {{ $session->batch->no_of_seats }}/3
               </td>
+              <td class="text-center" colspan="1">{{ $session->start_date_time}}</td>
               <td class="text-center">
                   <input type="checkbox" onchange="markChecked()" name="session[]" id="sessions" value="{{ $session->id }}">
               </td>
               {{-- <td>  <span id="pricec"></span></td> --}}
+              <td class="text-center"  colspan="1">
+                  <button data-toggle="modal" id="student-list" data-target="#exampleModalCenter" onclick="return getStudent({{ $session->id }});" class="btn btn-info">View Detail</button>
+                </td>
             </tr>
+            <input type="hidden" id="session_id" value="{{ $session->id }}">
             @php
                 $i=$i+1;
             @endphp
@@ -115,9 +123,27 @@
             {{-- </form> --}}
             </tbody>
       </table>
+      {{-- for operation student list  --}}
 
+<!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Student Amount Details</h5>
+
+              </div>
+              <div class="modal-body" id="model-table">
+              {{-- @include('operation.modal') --}}
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      {{-- for operation student list --}}
     </div>
-
 @endsection
 @section('scripts')
 <script>
@@ -155,5 +181,25 @@ function markChecked()
             });
 
         });
+    </script>
+    <script>
+        function getStudent(sessionId)
+        {
+                            $.ajax({
+                                  type:"POST",
+                                  url:'{{route("student-list")}}',
+                                  data:{
+                                      '_token': '{{ csrf_token() }}',
+                                      sessionId:sessionId,
+                                  },
+                                   success: function (response) {
+                                       $("#model-table").html(response)
+                                   },
+                                   error:function(error)
+                                   {
+                                       console.log("There is some problem. Please try again later. ");
+                                   }
+                              });
+        }
     </script>
 @endsection
