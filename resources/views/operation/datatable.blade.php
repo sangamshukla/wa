@@ -4,9 +4,6 @@
             <th class="text-center">Sr No. </th>
             <th class="text-center">Teacher Name</th>
             <th class="text-center">Session Count</th>
-            <th class="text-center">Topic</th>
-            <th class="text-center">Subject</th>
-            <th class="text-center">Start Date & Time</th>
             <th class="text-center">Action</th>
         </tr>
     </thead>
@@ -41,10 +38,6 @@
                         <input type="hidden" name="session_arr" value="{{ implode("/", $session_arr) }}">
                         <input type="submit" value="{{ $i }}">
                     </td>
-
-                            <td class="text-center">{{ $session->topics->topic->name }}</td>
-                            <td class="text-center">{{ $session->batch->subject->name }}</td>
-                            <td class="text-center">{{ \Carbon\Carbon::parse($session->start_date_time)->format('d-m-y h:i') }}</td>
                             <td class="text-center"><a href="{{ route('purchase-session', ['id'=>$session->batch??'null' ]) }}"><button class="btn btn-info">View Detail</button></td></a>
 
                     @else

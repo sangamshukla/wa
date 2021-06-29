@@ -64,7 +64,6 @@ class OperationController extends Controller
         ->where('osm.session_id', $sessionId)
         ->get();
         return view('operation.modal', compact('studentList'));
-
     }
     public function studentPaidDetails()
     {

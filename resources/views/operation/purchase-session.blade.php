@@ -56,7 +56,7 @@
               </td>
               {{-- <td>  <span id="pricec"></span></td> --}}
               <td class="text-center"  colspan="1">
-                  <button data-toggle="modal" id="student-list" data-target="#exampleModalCenter" onclick="return getStudent({{ $session->id }});" class="btn btn-info">View Detail</button>
+                  <button data-toggle="modal" id="student-list" data-target="#exampleModalCenter" onclick="return getStudent({{ $session->id }});" class="btn btn-info">Student List</button>
                 </td>
             </tr>
             <input type="hidden" id="session_id" value="{{ $session->id }}">
@@ -82,7 +82,7 @@
             </tr>
                <tr>
                 <td colspan="4" class="text-center">
-                    <input type="submit" id="purchase_session" value="Submit" class="text-center btn btn-primary">
+                    <input type="submit" id="purchase_session" value="Enrolled Student" class="text-center btn btn-primary">
                 </td>
               </tr>
             {{-- </form> --}}
