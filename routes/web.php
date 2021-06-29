@@ -193,5 +193,6 @@ Route::group(['middleware' => ['auth', 'student']], function () {
         Route::get('confirm-payment/{id}', [OperationController::class, 'confirm_payment'])->name('confirm-payment');
         Route::post('sell-session', [OperationController::class, 'sell-session'])->name('sell-session');
         Route::get('operation-add-to-cart/{batchId}', [PaymentController::class, 'operationPayment'])->name('operation.cart');
+        Route::post('student-list', [OperationController::class, 'studentList'])->name('student-list');
         Route::get('student-paid-details/{id}', [OperationController::class, 'studentPaidDetails'])->name('student.paiddetails');
     });

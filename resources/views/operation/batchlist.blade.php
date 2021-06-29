@@ -14,24 +14,6 @@
 <div class="row">
   <div class="col-xl-12 col-lg-12">
     <div class="mt-5 bg_img">
-      <ul class="nav nav-pills nav-fill navtop add_class_tab">
-        <li class="nav-item">
-          <a
-            class="nav-link tab_title add_new_class"
-            href="#menu1"
-            data-toggle="tab"
-            >ADD NEW CLASS</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link tab_title add_new_class active"
-            href="#menu2"
-            data-toggle="tab"
-            >MANAGE CLASSES</a
-          >
-        </li>
-      </ul>
 
       <div class="tab-content">
         <div class="tab-pane" role="tabpanel" id="menu1">
@@ -217,29 +199,7 @@
           </div>
         </div>
         <div class="tab-pane active" role="tabpanel" id="menu2">
-          <!-- datepicker start -->
-          <div class="calander d-flex mt-5">
-
-            <div class="calander_div">
-                <p class="sellect_pera">Select entry From </p>
-              <p class="sellect_pera"> <input type="date" id="datepicker" /></p>
-              <div><p class="sellect_pera">To</p></div>
-              <p><input type="date" id="datepicker" /></p>
-            </div>
-
-
-            <div class="filter_div">
-                <p class="sellect_pera filter">Filter By</p>
-                <div class="filter_select select">
-                  <select name="slct" id="slct">
-                    <option selected disabled>Choose an option</option>
-                    <option value="1">Pure CSS</option>
-                    <option value="2">No JS</option>
-                    <option value="3">Nice!</option>
-                  </select>
-                </div>
-            </div>
-          </div>
+         
           <!-- datepicker end -->
           <div class="row">
             @forelse ($session as $session)
@@ -253,9 +213,19 @@
                           {{ $session->batch->classSettings->name }}
                         </p>
                       </div>
-                      <div class="live-info">
+                      {{-- <div class="live-info">
                         <span class="dot"></span>
-                      </div>
+                      </div> --}}
+
+                      <div class="class_section">
+                        {{-- <div class="class_type">class type</div> --}}
+                        <div>
+                            <span class="online">
+                            {{ $session->status == 1 ? 'Online' : 'Offline' }}
+                            </span>
+                            {{-- for color  --}}
+                            <span class="dot{{ $session->status == 1 ? '' : '-prime' }}"></span></div>
+                        </div>
                     </div>
                     <div class="border_bottom1"></div>
                     <div class="subject_edit subject_flex">
@@ -285,7 +255,7 @@
                       <!-- <div class="border-right"></div> -->
                       <div>
                           <p class="sub_pera">Booked Seats</p>
-                          <p class="book_sheet font-color1">20</p>
+                          {{ $session->status != 1 ? 'Location : '.$session->location : '' }}
                       </div>
                   </div>
                   </div>

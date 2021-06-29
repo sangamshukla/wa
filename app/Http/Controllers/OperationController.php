@@ -55,7 +55,17 @@ class OperationController extends Controller
         $batch = Batch::find($id);
         return view('operation.purchase-session', compact('sessions', 'students', 'batch'));
     }
+    public function studentList(Request $request)
+    {
+        $sessionId=$request->sessionId;
+        $studentList= DB::table('order_session_maps AS osm')
+        ->join('order_payments AS op', 'osm.order_id', '=', 'op.id')
+        ->join('users', 'student_id', '=', 'users.id')
+        ->where('osm.session_id', $sessionId)
+        ->get();
+        return view('operation.modal', compact('studentList'));
 
+    }
     public function studentPaidDetails()
     {
         // return view('operation.operation-paid-details');
