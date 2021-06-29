@@ -23,11 +23,11 @@
   </script>
    <div class="col-4"></div>
    
+<h5 style="color:black; margin-top: 60px; margin-left:90px;">{{ 'Class - ' . $batch->classSettings->name .' | '. 'Teacher Name - ' . $batch->assignteacher->name .' | '. 'Duration - ' . $batch->duration_per_session .' | '. 'Subject - ' . $batch->subject->name . ' | '. 'No Of Seats - ' . $batch->no_of_seats  }}</h5>
 </div>
 
-<h5 style="text-align: center;">{{ $batch->classSettings->name .' | '. $batch->assignteacher->name .' | '. $batch->duration_per_session .' | '. $batch->subject->name . ' | '. $batch->no_of_seats  }}</h5>
 <div class="row">
-    <table style="margin: 90px;" class="table table-bordered table-responsive w-100 d-block d-md-table">
+    <table style="margin: 90px;" class="table table-bordered table-responsive w-100 d-block d-md-table">     
         <thead>
           <tr>
             <th scope="col" class="text-center">Sr. No.</th>
@@ -36,8 +36,6 @@
             <th scope="col" class="text-center">Start Date & Time</th>
             <th scope="col" class="text-center">Select Session</th>
             <th scope="col" class="text-center">Action</th>
-
-            {{-- <th scope="col">Total Amount</th> --}}
           </tr>
         </thead>
         <tbody>
@@ -87,6 +85,7 @@
             {{-- </form> --}}
             </tbody>
       </table>
+      
       {{-- for operation student list  --}}
        
 <!-- Modal -->

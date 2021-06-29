@@ -5,14 +5,12 @@
   <link rel="stylesheet" href="https://resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-
 <link
       href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
 <div style="margin-top: 110px;" class="container-fluid">
 
-    <p>Date: <input type="datetime" id="datepicker"></p>
-<table id="example" style="width:100%" class="table table-bordered table-responsive w-100 d-block d-md-table">
+    <p>Date: <input type="datetime" id="datepicker"></p><br>
+    <table id="example" style="width:100%" class="table table-bordered table-responsive w-100 d-block d-md-table">
 
     <thead>
         <tr>
@@ -81,6 +79,4 @@
       $j( "#datepicker" ).datepicker();
     } );
     </script>
-
-
 @endsection
