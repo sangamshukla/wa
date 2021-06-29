@@ -219,15 +219,12 @@
         <div class="tab-pane active" role="tabpanel" id="menu2">
           <!-- datepicker start -->
           <div class="calander d-flex mt-5">
-
             <div class="calander_div">
                 <p class="sellect_pera">Select entry From </p>
               <p class="sellect_pera"> <input type="date" id="datepicker" /></p>
               <div><p class="sellect_pera">To</p></div>
               <p><input type="date" id="datepicker" /></p>
             </div>
-
-
             <div class="filter_div">
                 <p class="sellect_pera filter">Filter By</p>
                 <div class="filter_select select">

@@ -31,7 +31,7 @@ class OperationController extends Controller
         $data=User::where('role', 'teacher')->get();
         $sessions=BatchSession::whereDate('start_date_time', Carbon::today())->get();
         // dd($sessions);
-        return view('operation.teacher-management', compact('data', 'sessions'));
+        return view('operation.teacher-management');
     }
     public function batchListGet()
     {
@@ -69,5 +69,12 @@ class OperationController extends Controller
     public function studentPaidDetails()
     {
         // return view('operation.operation-paid-details');
+    }
+    public function getSeesionList(Request $request)
+    {
+        $selectedDate=$request->selectedDate;
+        $data=User::where('role', 'teacher')->get();
+        $sessions=BatchSession::whereDate('start_date_time', Carbon::parse($selectedDate))->get();
+        return view('operation.datatable', compact('sessions', 'data'));
     }
 }
