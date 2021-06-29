@@ -2,9 +2,11 @@
 @section('content')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.3/js/standalone/selectize.js" integrity="sha512-pF+DNRwavWMukUv/LyzDyDMn8U2uvqYQdJN0Zvilr6DDo/56xPDZdDoyPDYZRSL4aOKO/FGKXTpzDyQJ8je8Qw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <div style="margin-top:100px;" class="container-fluid ">
- <div class="row">
-   <div class="col-4"></div>
 
+  <h5 style="margin-top: 100px; color:#36b9cc; margin-left:100px;">{{'Class Name - ' . $batch->classSettings->name .'|' . 'Teacher Name - ' . $batch->assignteacher->name. '|' . 'Duration - ' . $batch->duration_per_session. '|'. 'Subject - ' . $batch->subject->name }}</h5>
+ <div style="margin-top:40px;" class="row">
+   <div class="col-4"></div>
+  
    <div class="col-4">
     <label for="select-student">Select a Student</label>
      <select id="select-student" class="demo-default" placeholder="Select a student...">
@@ -22,45 +24,10 @@
   </script>
    <div class="col-4"></div>
 </div>
-<div class="table">
-    <div class="row bg-light" style="margin: 20px 0px 0px 50px">
-        <div class="col-3 text-center border">
-            <h5>Batch Name</h5>
-        </div>
-        <div class="col-3 text-center border">
-            <h5>Teacher Name</h5>
-        </div>
-        <div class="col-1 text-center border">
-            <h5>Duration</h5>
-        </div>
-        <div class="col-3 text-center border">
-            <h5>Subject</h5>
-        </div>
-        <div class="col-1 text-center border">
-            <h5>Seat</h5>
-        </div>
-    </div>
+  {{-- <h5 style="margin-top: 50px; color:black; margin-left:100px;">{{'Class Name - ' . $batch->classSettings->name .'|' . 'Teacher Name - ' . $batch->assignteacher->name. '|' . 'Duration - ' . $batch->duration_per_session. '|'. 'Subject - ' . $batch->subject->name }}</h5> --}}
 
-    <div class="row" style="margin: 0px 0px 0px 50px">
-        <div class="col-3 text-center border">
-            <h5>{{ $batch->classSettings->name}}</h5>
-        </div>
-        <div class="col-3 text-center border">
-            <h5>{{ $batch->assignteacher->name }}</h5>
-        </div>
-        <div class="col-1 text-center border">
-            <h5>{{ $batch->duration_per_session }}</h5>
-        </div>
-        <div class="col-3 text-center border">
-            <h5>{{ $batch->subject->name }}</h5>
-        </div>
-        <div class="col-1 text-center border">
-            <h5>{{ $batch->no_of_seats }}</h5>
-        </div>
-    </div>
-</div>
 <div class="row">
-    <table style="margin: 90px;" class="table table-bordered table-responsive w-100 d-block d-md-table">
+    <table style="margin: 40px; " class="table table-bordered table-responsive w-100 d-block d-md-table">     
         <thead>
           <tr>
             <th scope="col" class="text-center">Sr. No.</th>
@@ -69,8 +36,6 @@
             <th scope="col" class="text-center">Start Date & Time</th>
             <th scope="col" class="text-center">Select Session</th>
             <th scope="col" class="text-center">Action</th>
-
-            {{-- <th scope="col">Total Amount</th> --}}
           </tr>
         </thead>
         <tbody>
@@ -123,6 +88,7 @@
             {{-- </form> --}}
             </tbody>
       </table>
+      
       {{-- for operation student list  --}}
 
 <!-- Modal -->
