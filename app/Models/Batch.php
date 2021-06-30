@@ -50,4 +50,9 @@ class Batch extends Model
     {
         return $this->hasOne(CreatedSessions::class, 'session_id');
     }
+
+    public function items()
+    {
+        return $this->hasMany(OrderItems::class, 'batch_id');
+    }
 }

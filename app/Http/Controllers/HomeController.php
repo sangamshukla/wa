@@ -140,6 +140,8 @@ class HomeController extends Controller
                 $query->whereDate('start_date_time', '>=', Carbon::today());
             })->latest()->paginate(8);
 
+            // $dueAmount = OrderPayment::whereStudentId(auth()->id())->get();
+
             return view('dashboard.student', compact(
                 'students',
                 'batches',

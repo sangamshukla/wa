@@ -141,6 +141,17 @@
                                                     </td>
 
                                                 </tr>
+
+                                                <tr>
+                                                    <td>Due Amount</td>
+                                                    <td>
+                                                        @php
+                                                        $items = $batch->items->pluck('order_payment_id');
+                                                        $payments = App\Models\OrderPayment::whereIn('id', $items)->where('student_id', auth()->id())->first();
+                                                        @endphp
+                                                        &euro; {{ $payments->order_amount - $payments->paid_amount }}
+                                                    </td>
+                                                </tr>
                                                 <tr>
                                                     <td colspan="2"><a href="{{route('home-work', ['id'=>$session->id])}}">View Homework</a></td>
                                                 </tr>

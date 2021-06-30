@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
-class HomeController extends Controller
+class HomeControllerbackup extends Controller
 {
     /**
      * Create a new controller instance.

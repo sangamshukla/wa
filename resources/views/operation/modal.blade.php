@@ -17,7 +17,7 @@
           <td>{{ $i }}</td>
           <td>{{ $student->name }}</td>
           <td>{{ $student->order_amount }}</td>
-          <td>{{ $student->paid_amount }}</td>
+          <td>{{ $student->order_amount - $student->paid_amount }}</td>
         </tr>
         @php
             $i=$i+1;
