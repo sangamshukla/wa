@@ -74,6 +74,14 @@ class OperationController extends Controller
         $selectedDate=$request->selectedDate;
         $data=User::where('role', 'teacher')->get();
         $sessions=BatchSession::whereDate('start_date_time', Carbon::parse($selectedDate))->get();
+        $data = $data->filter(function ($value, $key) use ($sessions) {
+            $returnValue = false;
+            foreach ($sessions as $session) {
+                return $session->batch->teacher->name == $value->name;
+            }
+            return $returnValue;
+        });
+        // $session
         return view('operation.datatable', compact('sessions', 'data'));
     }
 }

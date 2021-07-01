@@ -12,6 +12,7 @@
         @php
             $j=1;
         @endphp
+
         @foreach ($data as $data)
             <tr>
                 <td class="text-center">{{ $j }}</td>
@@ -24,6 +25,7 @@
                 {{-- <td>{{ implode(',',$sessions->pluck("start_date_time")->toArray()) }}</td> --}}
                 @if (isset($sessions))
                      @forelse ($sessions as $session)
+                        
                         @if ($session->batch->teacher->name==$data->name)
                             @php
                                 $i=$i+1;

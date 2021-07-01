@@ -61,6 +61,7 @@ class User extends Authenticatable
     {
         return $this->hasOne(Student::class, 'user_id');
     }
+    
     public function batches()
     {
         return $this->hasMany(Batch::class, 'created_by');
