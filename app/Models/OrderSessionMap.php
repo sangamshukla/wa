@@ -21,4 +21,9 @@ class OrderSessionMap extends Model
     {
         return $this->belongsTo(Batch::class, 'batch_id');
     }
+
+    public function order()
+    {
+        return $this->belongsTo(OrderPayment::class, 'order_id');
+    }
 }

@@ -21,4 +21,9 @@ class OrderPayment extends Model
     {
         return $this->hasMany(OrderSessionMap::class, 'order_id');
     }
+
+    public function student()
+    {
+        return $this->belongsTo(User::class, 'student_id');
+    }
 }

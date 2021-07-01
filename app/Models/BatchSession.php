@@ -17,7 +17,6 @@ class BatchSession extends Model
 
     public function topics()
     {
-        // dd(topics);
         return  $this->belongsTo(BatchTopic::class, 'id');
     }
 
@@ -29,5 +28,10 @@ class BatchSession extends Model
     public function batch()
     {
         return $this->belongsTo(Batch::class, 'batch_id');
+    }
+
+    public function enrolled()
+    {
+        return $this->hasMany(OrderSessionMap::class, 'session_id');
     }
 }

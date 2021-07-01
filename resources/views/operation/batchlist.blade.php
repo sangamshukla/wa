@@ -263,9 +263,53 @@
                       <div>
                          <a class="view_details" href="{{ route('purchase-session', ['id'=>$session->batch->id ]) }}">View Details</a>
                       </div>
+                      <div>
+                        <a class="view_details" href="#" data-toggle="modal" data-target="#modal{{ $session->id }}">Enrolled Students</a>
+                     </div>
                     </div>
                 </div>
             </div>
+            {{-- view students modal --}}
+
+            <!-- Modal -->
+            <div class="modal fade" id="modal{{ $session->id }}" tabindex="-1" role="dialog" aria-labelledby="modal{{ $session->id }}" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">{{ $session->batch->classSettings->name }}</h5>
+                  
+                  </div>
+                  <div class="modal-body">
+                    <table class="table table-bordered table-responsive">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Email</th>
+                          <th>Purchased On</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        @foreach ($session->enrolled()->pluck('order_id') as $ord )
+                          @php
+                            $singleOrder = App\Models\OrderPayment::find($ord);
+                          @endphp
+                          <tr>
+                              <td>{{ $singleOrder->student->name }}</td>
+                              <td style="overflow: scroll;">{{ $singleOrder->student->email }}</td>
+                              <td>{{ $singleOrder->created_at->format("Y-m-d h:i:s a") }}</td>
+                          </tr>
+                        @endforeach
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {{-- /view students modal --}}
             @empty
 
             @endforelse

@@ -136,10 +136,16 @@ class PaymentController extends Controller
             ]
         ];
         session()->put('cart', $cart);
+        $s = 0;
+        foreach (session()->get('cart') as $key => $cart) {
+            $s++;
+        }
+        $batchAmount = Batch::whereIn('id', array_keys(session()->get('cart') ?? []))
+        ->sum('batch_price_per_session');
+        // status
         $order = OrderPayment::create([
             'student_id' => request('student_id'),
-            'order_amount' =>  Batch::whereIn('id', array_keys(session()->get('cart') ?? []))
-                ->sum('batch_price_per_session'),
+            'order_amount' =>  $s*$batchAmount,
             'paid_amount'=>$request->paid_amount
         ]);
 
