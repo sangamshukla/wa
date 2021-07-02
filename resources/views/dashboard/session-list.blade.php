@@ -435,7 +435,9 @@
                 <div class="profile">
                     <div class="profile_icon"><img src="{{asset('wa/dashboard/sessionlist/img/user.png')}}"></div>
                     <p class="name mb-1">{{ auth()->user()->name }}</p>
-                    <p class="class_section"><span>Year:</span><span></span></p>
+                    <p class="class_section"><span>Year:</span><span></span></p>                
+                   
+                                                    
                     <a href="#" class="profile"><span>View Profile</span></a>
                 </div>
             </div>
@@ -517,7 +519,7 @@
                                         {{ $session->name }} - {{ $t->topic->name }}
                                     </td>
                                  @endforeach --}}
-                                 <td>{{$session->topics->topic->name}}</td>
+                                 {{-- <td>{{$session->topics->topic->name}}</td> --}}
 
                             </tr>
                                 <!--  <td>-->

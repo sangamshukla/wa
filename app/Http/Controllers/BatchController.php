@@ -132,8 +132,8 @@ class BatchController extends Controller
             Event::create([
                 'batch_id' => $batch->id,
                 'title' => $d . '' . $batch->classSettings->name . ' ' . $session_name . ' ' . $topicname->name . '',
-                'start' => Carbon::parse($d)->format('Y-m-d'),
-                'end' => Carbon::parse($d)->format('Y-m-d'),
+                'start' => Carbon::parse($d)->format('Y-m-d h:i:s'),
+                'end' => Carbon::parse($d)->format('Y-m-d h:i:s'),
             ]);
             $index++;
             $name++;

@@ -26,7 +26,9 @@ class FullCalenderController extends Controller
                     ->get(['id', 'title', 'start', 'end']);
                        
             $data->transform(function ($d) {
-                $d->allDay = true;
+                $d->allDay = false;
+                $d->end = Carbon::parse($d->start)->addMinutes(30)->format('Y-m-d H:i:s');
+                $d->start = Carbon::parse($d->start)->addMinutes(0)->format('Y-m-d H:i:s');
                 if ($d->start == Carbon::today()->format('Y-m-d')) {
                     $d->backgroundColor = '#53BC9B';
                 } elseif ((int) str_replace('-', '', $d->start) > (int) str_replace('-', '', date('Y-m-d'))) {

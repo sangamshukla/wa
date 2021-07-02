@@ -196,4 +196,5 @@ Route::group(['middleware' => ['auth', 'student']], function () {
         Route::post('student-list', [OperationController::class, 'studentList'])->name('student-list');
         Route::get('student-paid-details/{id}', [OperationController::class, 'studentPaidDetails'])->name('student.paiddetails');
         Route::post('get-session-list', [OperationController::class, 'getSeesionList'])->name('get-session-list');
+        Route::get('enrolled-student/{id}', [OperationController::class, 'enrolledStudent'])->name('enrolled-student');
     });

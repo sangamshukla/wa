@@ -84,4 +84,10 @@ class OperationController extends Controller
         // $session
         return view('operation.datatable', compact('sessions', 'data'));
     }
+    //enrolled
+    public function enrolledStudent($id, Request $request)
+    {
+        $session = BatchSession::find($id);
+        return view('operation.enrolled-student', compact('session'));
+    }
 }

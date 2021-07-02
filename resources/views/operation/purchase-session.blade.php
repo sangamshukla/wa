@@ -3,7 +3,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.3/js/standalone/selectize.js" integrity="sha512-pF+DNRwavWMukUv/LyzDyDMn8U2uvqYQdJN0Zvilr6DDo/56xPDZdDoyPDYZRSL4aOKO/FGKXTpzDyQJ8je8Qw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <div style="margin-top:100px;" class="container-fluid ">
 
-  <h4 style="margin-top: 100px; color:#36b9cc; margin-left:100px; text:bold;">{{'Class Name - ' . $batch->classSettings->name .'|' . 'Teacher Name - ' . $batch->assignteacher->name. '|' . 'Duration - ' . $batch->duration_per_session. '|'. 'Subject - ' . $batch->subject->name }}</h5>
+  <strong><h4 style="margin-top: 100px; color:#36b9cc; margin-left:100px; text:bold; font-style: italic;">{{'Class Name - ' . $batch->classSettings->name .'|' . 'Teacher Name - ' . $batch->assignteacher->name. '|' . 'Duration - ' . $batch->duration_per_session. '|'. 'Subject - ' . $batch->subject->name }}</h5></strong>
  <div style="margin-top:40px;" class="row">
    <div class="col-4"></div>
   
@@ -82,7 +82,7 @@
             </tr>
                <tr>
                 <td colspan="4" class="text-center">
-                    <input type="submit" id="purchase_session" value="Enrolled Student" class="text-center btn btn-primary">
+                    <input type="submit" id="purchase_session" value="Enrolled" class="text-center btn btn-primary">
                 </td>
               </tr>
             {{-- </form> --}}

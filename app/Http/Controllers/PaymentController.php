@@ -78,10 +78,15 @@ class PaymentController extends Controller
 
     public function pay(Request $request)
     {
+        $s = 0;
+        foreach (session()->get('cart') as $key => $cart) {
+            $s++;
+        }
+        $batchAmount = Batch::whereIn('id', array_keys(session()->get('cart') ?? []))
+        ->sum('batch_price_per_session');
         $order = OrderPayment::create([
             'student_id' => auth()->user()->id,
-            'order_amount' =>  Batch::whereIn('id', array_keys(session()->get('cart') ?? []))
-                ->sum('batch_price_per_session')
+            'order_amount' =>  $s*$batchAmount
         ]);
 
         foreach (session()->get('cart') as $key => $cart) {
@@ -143,6 +148,10 @@ class PaymentController extends Controller
         $batchAmount = Batch::whereIn('id', array_keys(session()->get('cart') ?? []))
         ->sum('batch_price_per_session');
         // status
+        // check for duplicate
+        if ($this->checkForDuplicate(request('student_id'))) {
+            return redirect(route('teacher.management'))->with('status', 'Student Has Been Enroll Successfully!');
+        }
         $order = OrderPayment::create([
             'student_id' => request('student_id'),
             'order_amount' =>  $s*$batchAmount,
@@ -171,5 +180,18 @@ class PaymentController extends Controller
         session()->put('cart', []);
         // redirect to success page
         return redirect(route('teacher.management'))->with('status', 'Student Has Been Enroll Successfully!');
+    }
+
+    public function checkForDuplicate($studentId)
+    {
+        foreach (session()->get('cart') as $key => $cart) {
+            $orderItems = OrderItems::where('batch_id', $cart['product_id'])->get();
+            foreach ($orderItems as $item) {
+                if ($item->orderPayment->student_id == $studentId) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

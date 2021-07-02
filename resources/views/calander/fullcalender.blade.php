@@ -1,7 +1,7 @@
 @extends('layouts.student')
 @section('style')
 <link href="/wa/dashboard/css/student-admin.css" rel="stylesheet">
-<link href="/wa/dashboard/css/session.css" rel="stylesheet">
+{{-- <link href="/wa/dashboard/css/session.css" rel="stylesheet"> --}}
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.css" />
 
@@ -40,6 +40,7 @@ var calendar = $('#calendar').fullCalendar({
                         // right: 'month,agendaWeek,agendaDay'
                         right: 'agendaDay,agendaWeek,month'
                     },
+                    eventLimit: true,
                     // end here
                     events: SITEURL + "/fullcalender",
                     displayEventTime: false,

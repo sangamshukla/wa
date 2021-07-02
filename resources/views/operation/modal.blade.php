@@ -5,6 +5,7 @@
         <th>Student Name</th>
         <th>Amount</th>
         <th>Due Amount</th>
+        <th>Status</th>
       </tr>
     </thead>
     <tbody>
@@ -17,8 +18,8 @@
           {{-- <td>{{ $i }}</td> --}}
           <td>{{ $student->name }}</td>
           <td>{{ $student->order_amount }}</td>
-          <td>{{ $student->order_amount - $student->paid_amount }}
-            @if($student->order_amount - $student->paid_amount == 0) <i class="fa fa-check" style="color:green; float:right;"></i> @endif
+          <td>{{ $student->order_amount - $student->paid_amount }}</td>
+           <td> @if($student->order_amount - $student->paid_amount == 0) <i class="fa fa-check" style="color:green; float:right;"></i> @else <i class="fa fa-times" style="color:red; float:right;"></i> @endif
           </td>
         </tr>
         @php

@@ -264,7 +264,9 @@
                          <a class="view_details" href="{{ route('purchase-session', ['id'=>$session->batch->id ]) }}">View Details</a>
                       </div>
                       <div>
-                        <a class="view_details" href="#" data-toggle="modal" data-target="#modal{{ $session->id }}">Enrolled Students</a>
+                        {{-- <a class="view_details" href="#" data-toggle="modal" data-target="#modal{{ $session->id }}">Enrolled Students</a> --}}
+
+                        <a class="view_details" href="{{ route('enrolled-student', ['id'=>$session->id ]) }}">Enrolled Students</a>
                      </div>
                     </div>
                 </div>
