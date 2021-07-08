@@ -96,7 +96,7 @@
                     </form> 
 
                       {{-- row 2 Assign Teacher --}}
-                    @if(auth()->user()->role == 'admin')
+                    @if(auth()->user()->role == 'admin'|| auth()->user()->role == 'operation' )
                     <div class="col">
                       <div class="form-group" id="select_form">
                         <label for="inputState">Assign Teacher</label>
@@ -111,7 +111,7 @@
                   @endif
 
                       {{-- Teacher Available Status --}}
-                      @if(auth()->user()->role == 'admin')
+                      @if(auth()->user()->role == 'admin' || auth()->user()->role == 'operation')
                       <div class="col">
                         <div class="form-group">
                           <label for="simpleinput">Teacher Available Status</label>

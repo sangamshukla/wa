@@ -172,6 +172,8 @@ Route::group(['middleware' => ['auth', 'teacher']], function () {
     Route::get('create-classes', [BatchController::class, 'create'])->name('class.create');
     Route::post('create-classes', [BatchController::class, 'store'])->name('class.store');
     Route::get('manage-classes', [BatchController::class, 'index'])->name('manage-class');
+    Route::get('manage-classes', [BatchController::class, 'manageClass'])->name('manage-classnew');
+
     Route::get('edit-classes/{id}', [BatchController::class, 'edit'])->name('edit-class');
     Route::post('edit-classes/{id}', [BatchController::class, 'update'])->name('update-class');
     Route::get('show-classes/{id}', [BatchController::class, 'show'])->name('show-class');
@@ -179,6 +181,7 @@ Route::group(['middleware' => ['auth', 'teacher']], function () {
     Route::get('student', [BatchController::class, 'student'])->name('student');
     Route::get('available-courses', [BatchController::class, 'availableCourses'])->name('available-courses');
 });
+
 Route::group(['middleware' => ['auth', 'student']], function () {
     Route::get('buy-now', [BatchController::class, 'buyNow'])->name('buy.now');
     Route::post('buy-now', [BatchController::class, 'buyNow'])->name('buy.now');
@@ -197,4 +200,14 @@ Route::group(['middleware' => ['auth', 'student']], function () {
         Route::get('student-paid-details/{id}', [OperationController::class, 'studentPaidDetails'])->name('student.paiddetails');
         Route::post('get-session-list', [OperationController::class, 'getSeesionList'])->name('get-session-list');
         Route::get('enrolled-student/{id}', [OperationController::class, 'enrolledStudent'])->name('enrolled-student');
+
+        Route::get('create-classes', [BatchController::class, 'create'])->name('class.create');
+        Route::post('create-classes', [BatchController::class, 'store'])->name('class.store');
+        Route::get('manage-classes', [BatchController::class, 'index'])->name('manage-class');
+        Route::get('manage-classes', [BatchController::class, 'manageClass'])->name('manage-classnew');
+
+        Route::get('edit-classes/{id}', [BatchController::class, 'edit'])->name('edit-class');
+        Route::post('edit-classes/{id}', [BatchController::class, 'update'])->name('update-class');
+        Route::get('show-classes/{id}', [BatchController::class, 'show'])->name('show-class');
+        Route::get('destroy-classes/{id}', [BatchController::class, 'destroy'])->name('destroy-class');
     });

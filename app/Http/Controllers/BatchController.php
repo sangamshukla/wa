@@ -27,7 +27,14 @@ class BatchController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
+    public function manageClass()
+    {
+        $totals = Batch::count();
+        $totalprice = Batch::count();
+        $totnoofseats = Batch::count();
+        $batches = Batch::latest()->get();
+        return view('class.manage-class', compact('batches', 'totals', 'totalprice', 'totnoofseats'));
+    }
 
     public function index()
     {
@@ -86,6 +93,19 @@ class BatchController extends Controller
                 'topic_id' => 'required',
             ]);
         }
+        if (auth()->user()->role == 'operation') {
+            $request->validate([
+                'class_settings_id' => 'required',
+                'batch_price_per_session' => 'required',
+                'batch_start_date' => 'required',
+                'name' => 'required',
+                'teacher_available_status' => 'required',
+                'duration_per_sessions_id' => 'required',
+                'class_master_id' => 'required',
+                'subject_id' => 'required',
+                'topic_id' => 'required',
+            ]);
+        }
 
         if ($request->class_settings != '') {
             $classSettings = ClassSettings::updateOrCreate(['name' => $request->class_settings]);
@@ -93,23 +113,45 @@ class BatchController extends Controller
         } else {
             $class = $request->class_settings_id;
         }
-        $batch = Batch::Create([
-            'name' => auth()->user()->role == 'teacher' ? auth()->user()->id : $request->name,
-            'batch_price_per_session' => $request->batch_price_per_session,
-            'batch_start_date' => $request->batch_start_date,
-            'batch_end_date' => $request->batch_end_date,
-            'subject_id' => $request->subject_id,
-            'class_master_id' => $request->class_master_id,
-            'class_settings_id' => $class,
-            'duration_per_session' => $request->duration_per_sessions_id,
-            'no_of_seats' => $request->no_of_seats,
-            'teacher_available_status' => $request->teacher_available_status,
-            // 'book_now'=>$request->book_now,
-            'status' => $request->status,
-            'location' => $request->location,
-            'sell_each_session' => $request->sell_each_session,
-            'created_by' => auth()->user()->id
-        ]);
+
+        if (auth()->user()->role == 'teacher') {
+            $batch = Batch::Create([
+                'name' =>auth()->user()->id,
+                'batch_price_per_session' => $request->batch_price_per_session,
+                'batch_start_date' => $request->batch_start_date,
+                'batch_end_date' => $request->batch_end_date,
+                'subject_id' => $request->subject_id,
+                'class_master_id' => $request->class_master_id,
+                'class_settings_id' => $class,
+                'duration_per_session' => $request->duration_per_sessions_id,
+                'no_of_seats' => $request->no_of_seats,
+                'teacher_available_status' => $request->teacher_available_status,
+                // 'book_now'=>$request->book_now,
+                'status' => $request->status,
+                'location' => $request->location,
+                'sell_each_session' => $request->sell_each_session,
+                'created_by' => auth()->user()->id
+            ]);
+        } else {
+            $batch = Batch::Create([
+                'name' => $request->name,
+                'batch_price_per_session' => $request->batch_price_per_session,
+                'batch_start_date' => $request->batch_start_date,
+                'batch_end_date' => $request->batch_end_date,
+                'subject_id' => $request->subject_id,
+                'class_master_id' => $request->class_master_id,
+                'class_settings_id' => $class,
+                'duration_per_session' => $request->duration_per_sessions_id,
+                'no_of_seats' => $request->no_of_seats,
+                'teacher_available_status' => $request->teacher_available_status,
+                // 'book_now'=>$request->book_now,
+                'status' => $request->status,
+                'location' => $request->location,
+                'sell_each_session' => $request->sell_each_session,
+                'created_by' => auth()->user()->id
+            ]);
+        }
+        
 
         $index = 0;
         $name = 1;
@@ -139,7 +181,7 @@ class BatchController extends Controller
             $name++;
         }
         MakeZoomMeeting::dispatch($batch->id);
-        return redirect(route('manage-class'))->with('status', 'Class Added Successfully');
+        return redirect(route('manage-classnew'))->with('status', 'Class Added Successfully');
     }
 
     /**
@@ -229,7 +271,7 @@ class BatchController extends Controller
             $index++;
             $name++;
         }
-        return redirect(route('manage-class'))->with('status', 'Class Updated Successfully');
+        return redirect(route('manage-classnew'))->with('status', 'Class Updated Successfully');
     }
 
     /**
@@ -242,7 +284,7 @@ class BatchController extends Controller
     {
         $class = Batch::find($id);
         $class->delete();
-        return redirect(route('manage-class'))->with('status', 'Class Deleted Successfully');
+        return redirect(route('manage-classnew'))->with('status', 'Class Deleted Successfully');
     }
     public function student(Request $request)
     {

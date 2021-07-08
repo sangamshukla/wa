@@ -10,5 +10,5 @@
             </div>
 
             <div class="add_class"><a href="{{route('teacher.management')}}">Manage Classes</a></div>
-             
+            <div class="add_class"><a href="{{route('class.store')}}">Add Classes</a></div>          
 @endsection
