@@ -24,6 +24,8 @@ use App\Http\Controllers\HomeWorkController;
 use App\Http\Controllers\HomeWorkStudentController;
 use App\Http\Controllers\ManagementController;
 use App\Http\Controllers\OperationController;
+use App\Http\Controllers\StripeController;
+use Stripe\Stripe;
 
 /*
 |--------------------------------------------------------------------------
@@ -92,13 +94,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('edit-teacher/{id}', [TeacherController::class, 'update'])->name('edit-teacher');
     Route::get('show-teacher/{id}', [TeacherController::class, 'show'])->name('show-teacher');
     Route::get('destroy-teacher/{id}', [TeacherController::class, 'destroy'])->name('destroy-teacher');
-
-
-
-
     // Route::get('/packages-details', [BatchController::class, 'packagesDetails'])->name('packages.details');
-
-
     Route::get('add-product', [TeacherController::class, 'store'])->name('add-product');
     Route::post('add-product', [TeacherController::class, 'store'])->name('add-product');
 });
@@ -168,16 +164,7 @@ Route::post('/assign-homework', [HomeWorkController::class, 'assignHomeWork'])->
 
 Route::group(['middleware' => ['auth', 'teacher']], function () {
     Route::get('new-teacher', [TeacherDashboardController::class, 'newindex']);
-    // batch/class controller
-    Route::get('create-classes', [BatchController::class, 'create'])->name('class.create');
-    Route::post('create-classes', [BatchController::class, 'store'])->name('class.store');
-    Route::get('manage-classes', [BatchController::class, 'index'])->name('manage-class');
-    Route::get('manage-classes', [BatchController::class, 'manageClass'])->name('manage-classnew');
-
-    Route::get('edit-classes/{id}', [BatchController::class, 'edit'])->name('edit-class');
-    Route::post('edit-classes/{id}', [BatchController::class, 'update'])->name('update-class');
-    Route::get('show-classes/{id}', [BatchController::class, 'show'])->name('show-class');
-    Route::get('destroy-classes/{id}', [BatchController::class, 'destroy'])->name('destroy-class');
+   
     Route::get('student', [BatchController::class, 'student'])->name('student');
     Route::get('available-courses', [BatchController::class, 'availableCourses'])->name('available-courses');
 });
@@ -200,10 +187,25 @@ Route::group(['middleware' => ['auth', 'student']], function () {
         Route::get('student-paid-details/{id}', [OperationController::class, 'studentPaidDetails'])->name('student.paiddetails');
         Route::post('get-session-list', [OperationController::class, 'getSeesionList'])->name('get-session-list');
         Route::get('enrolled-student/{id}', [OperationController::class, 'enrolledStudent'])->name('enrolled-student');
+    });
+    Route::get('/stripe-payment', [StripeController::class, 'handleGet']);
+    Route::post('/stripe-payment', [StripeController::class, 'handlePost'])->name('stripe.payment');
+    Route::get('/payment-success', function () {
+        session()->put('cart', []);
+        return view('payment.success');
+    });
+    Route::get('/payment-failed', function () {
+        session()->put('cart', []);
+        return view('payment.success');
+    });
 
+    Route::group(['midddleware'=>['auth','teacheroperationadmin']], function () {
         Route::get('create-classes', [BatchController::class, 'create'])->name('class.create');
         Route::post('create-classes', [BatchController::class, 'store'])->name('class.store');
         Route::get('manage-classes', [BatchController::class, 'index'])->name('manage-class');
+
+        Route::get('create-add-classes', [BatchController::class, 'createAddClasses'])->name('create-add-class');
+        // Route::post('create-add-classes', [BatchController::class, 'createAddClassesStore'])->name('class.store');
         Route::get('manage-classes', [BatchController::class, 'manageClass'])->name('manage-classnew');
 
         Route::get('edit-classes/{id}', [BatchController::class, 'edit'])->name('edit-class');

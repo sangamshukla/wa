@@ -14,7 +14,7 @@ class="d-sm-flex align-items-center justify-content-between mb-4"
       <li class="nav-item">
         <a
           class="nav-link tab_title add_new_class"
-          href="{{route('class.store')}}"
+          href="#menu1"
           data-toggle="tab"
           >ADD NEW CLASS</a
         >
@@ -28,193 +28,201 @@ class="d-sm-flex align-items-center justify-content-between mb-4"
         >
       </li>
     </ul>
-  
+        {{-- add class --}}
     <div class="tab-content">
-      <div class="tab-pane" role="tabpanel" id="menu1">
+
+      <div class="tab-pane active" role="tabpanel" id="menu1">
         <div class="card shadow mt-3">
-          <div
-            class="card-body card_left_border border_left_color1"
-          >
-            <div class="subject_edit subject_flex">
-              <div class="subject_practis">
-                <p class="subject">Math Practice</p>
-                <p class="time_pera">
-                  <span>23 Jan,</span
-                  ><span>04:00pm - 05:00pm</span>
-                </p>
+          <div class="card-body add_class_block">
+            <div class="row">
+              <div class="col-md-12 class_type">Class Type</div>
+              <div class="col-md-4 col-sm-4 col-xs-12 form-group">
+                  <div class="form-check-inline">
+                    <label class="radio_container">One
+                      <input type="radio" checked="checked" name="radio">
+                      <span class="checkmark"></span>
+                    </label>&nbsp; &nbsp; &nbsp; &nbsp;
+                   <label class="radio_container">One
+                    <input type="radio" checked="checked" name="radio">
+                    <span class="checkmark"></span>
+                  </label>
+                 </div>
+                 <div class="form-group">
+                  <label class="checkbox_container">Do you want to sell your each Session.
+                    <input type="checkbox" name="sell_each_session" value="1" checked="checked">
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+               </div>
+           </div>
+           <div class="row">
+             <div class="col-lg-12 col-md-12">
+               <div>
+                 <form class="form_block">
+                  <div class="form-group">
+                    <label class="col-md-12 control-label" for="class">Select Class</label>  
+                    <div class="col-md-12">
+                      <select class="form-control middel_width" id="class" required="true" name="class">
+                        <option value="AF">Afghanistan</option>
+                        <option value="AX">Åland Islands</option>
+                        <option value="AL">Albania</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-12 control-label" for="name">Class Price Per Session</label>  
+                    <div class="col-md-12">
+                    <input id="name" name="name" type="text" placeholder="Name" class="form-control input-md middel_width" required="">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-12 control-label" for="name">Class Start Date  and Time</label>  
+                    <div class="col-md-12">
+                    <input id="datepicker" name="name" type="text" placeholder="Name" class="form-control input-md large_width hasDatepicker" required="">
+                    </div>
+                  </div>
+                 </form>
+               </div>
+               <div>
+                <form class="form_block">
+                  <div class="form-group">
+                    <label class="col-md-12 control-label" for="class">Duration Per Session</label>  
+                    <div class="col-md-12">
+                      <select class="form-control small_width" id="class" required="true" name="class">
+                        <option value="AF">Afghanistan</option>
+                        <option value="AX">Åland Islands</option>
+                        <option value="AL">Albania</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-12 control-label" for="class">No Of Seats</label>  
+                    <div class="col-md-12">
+                      <select class="form-control small_width" id="class" required="true" name="class">
+                        <option value="AF">Afghanistan</option>
+                        <option value="AX">Åland Islands</option>
+                        <option value="AL">Albania</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-12 control-label" for="class">Select Year</label>  
+                    <div class="col-md-12">
+                      <select class="form-control small_width" id="class" required="true" name="class">
+                        <option value="AF">Afghanistan</option>
+                        <option value="AX">Åland Islands</option>
+                        <option value="AL">Albania</option>
+                      </select>
+                    </div>
+                  </div>
+                 <div class="form-group">
+                  <label class="col-md-12 control-label" for="name">Select Subject</label>  
+                  <div class="col-md-12">
+                  <input id="name" name="name" type="text" placeholder="Name" class="form-control input-md small_width" required="">
+                  </div>
+                </div>
+                </form>
               </div>
-              <div class="starttime_block">
-                <p class="sub_subject">Starts in</p>
-                <p class="green_text">00:08:55</p>
-              </div>
-              <div class="class_block">
-                <p class="sub_subject">Class</p>
-                <p class="blue_text">10th</p>
-              </div>
-              <div class="class_block">
-                <p class="sub_subject">Subject</p>
-                <p class="blue_text">Maths</p>
-              </div>
-              <div class="class_block">
-                <p class="sub_subject">Time</p>
-                <p class="blue_text">30 Min</p>
-              </div>
-              <div class="class_mb">
-                <p class="sub_subject">Students</p>
-                <p class="blue_text">30</p>
-              </div>
-              <div class="delite_icon">
-                <img
-                  src="{{asset('wa/admindashboard/img/delete.svg')}}"
-                  width="20"
-                  height="20"
-                />
-              </div>
-              <div class="edit_icon">
-                <img src="{{asset('wa/admindashboard/img/edit.svg')}}" width="20" height="20" />
-              </div>
-            </div>
+             </div>
+           </div>
           </div>
         </div>
-        <div class="card shadow mt-3">
-        
-          <div
-            class="card-body card_left_border border_left_color2"
-          >
-            <div class="subject_edit">
-              <div class="subject_practis">
-                <p class="subject">Math Practice</p>
-                <p class="time_pera">
-                  <span>23 Jan,</span
-                  ><span>04:00pm - 05:00pm</span>
-                </p>
-              </div>
-              <div class="starttime_block">
-                <p class="sub_subject">Starts in</p>
-                <p class="green_text">00:08:55</p>
-              </div>
-              <div class="class_block">
-                <p class="sub_subject">Class</p>
-                <p class="blue_text">10th</p>
-              </div>
-              <div class="class_block">
-                <p class="sub_subject">Subject</p>
-                <p class="blue_text">Maths</p>
-              </div>
-              <div class="class_block">
-                <p class="sub_subject">Time</p>
-                <p class="blue_text">30 Min</p>
-              </div>
-              <div class="class_mb">
-                <p class="sub_subject">Students</p>
-                <p class="blue_text">30</p>
-              </div>
-              <div class="delite_icon">
-                <img
-                  src="{{asset('wa/admindashboard/img/delete.svg')}}"
-                  width="20"
-                  height="20"
-                />
-              </div>
-              <div class="edit_icon">
-                <img src="{{asset('wa/admindashboard/img/edit.svg')}}" width="20" height="20" />
-              </div>
-            </div>
+        <div class="row">
+          <div class="col-md-12 col-lg-12">
+           <button class="add_class_plus">Add Class +</button>
           </div>
         </div>
-        <div class="card shadow mt-3">
-          <div
-            class="card-body card_left_border border_left_color3"
-          >
-            <div class="subject_edit">
-              <div class="subject_practis">
-                <p class="subject">Math Practice</p>
-                <p class="time_pera">
-                  <span>23 Jan,</span
-                  ><span>04:00pm - 05:00pm</span>
-                </p>
-              </div>
-              <div class="starttime_block">
-                <p class="sub_subject">Starts in</p>
-                <p class="green_text">00:08:55</p>
-              </div>
-              <div class="class_block">
-                <p class="sub_subject">Class</p>
-                <p class="blue_text">10th</p>
-              </div>
-              <div class="class_block">
-                <p class="sub_subject">Subject</p>
-                <p class="blue_text">Maths</p>
-              </div>
-              <div class="class_block">
-                <p class="sub_subject">Time</p>
-                <p class="blue_text">30 Min</p>
-              </div>
-              <div class="class_mb">
-                <p class="sub_subject">Students</p>
-                <p class="blue_text">30</p>
-              </div>
-              <div class="delite_icon">
-                <img
-                  src="{{asset('wa/admindashboard/img/delete.svg')}}"
-                  width="20"
-                  height="20"
-                />
-              </div>
-              <div class="edit_icon">
-                <img src="{{asset('wa/admindashboard/img/edit.svg')}}" width="20" height="20" />
+        <div>
+          <div class="cross_img"><img src="{{asset('wa/admindashboard/img/cross-img.svg')}}"></div>
+        <div class="card-body add_class_block add_sectionbox">
+          <form class="form_block">
+            <div class="form-group">
+              <label class="col-md-12 control-label" for="class">Select Class</label>  
+              <div class="col-md-12">
+                <select class="form-control small_width" id="class" required="true" name="class">
+                  <option value="AF">Afghanistan</option>
+                  <option value="AX">Åland Islands</option>
+                  <option value="AL">Albania</option>
+                </select>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="card shadow mt-3">
-          <div
-            class="card-body card_left_border border_left_color4"
-          >
-            <div class="subject_edit">
-              <div class="subject_practis">
-                <p class="subject">Math Practice</p>
-                <p class="time_pera">
-                  <span>23 Jan,</span
-                  ><span>04:00pm - 05:00pm</span>
-                </p>
-              </div>
-              <div class="starttime_block">
-                <p class="sub_subject">Starts in</p>
-                <p class="green_text">00:08:55</p>
-              </div>
-              <div class="class_block">
-                <p class="sub_subject">Class</p>
-                <p class="blue_text">10th</p>
-              </div>
-              <div class="class_block">
-                <p class="sub_subject">Subject</p>
-                <p class="blue_text">Maths</p>
-              </div>
-              <div class="class_block">
-                <p class="sub_subject">Time</p>
-                <p class="blue_text">30 Min</p>
-              </div>
-              <div class="class_mb">
-                <p class="sub_subject">Students</p>
-                <p class="blue_text">30</p>
-              </div>
-              <div class="delite_icon">
-                <img
-                  src="{{asset('wa/admindashboard/img/delete.svg')}}"
-                  width="20"
-                  height="20"
-                />
-              </div>
-              <div class="edit_icon">
-                <img src="{{asset('wa/admindashboard/img/edit.svg')}}" width="20" height="20" />
+            <div class="form-group">
+              <label class="col-md-12 control-label" for="class">Select Class</label>  
+              <div class="col-md-12">
+                <select class="form-control small_width" id="class" required="true" name="class">
+                  <option value="AF">Afghanistan</option>
+                  <option value="AX">Åland Islands</option>
+                  <option value="AL">Albania</option>
+                </select>
               </div>
             </div>
+            <div class="form-group">
+              <label class="col-md-12 control-label" for="class">Select Class</label>  
+              <div class="col-md-12">
+                <select class="form-control small_width" id="class" required="true" name="class">
+                  <option value="AF">Afghanistan</option>
+                  <option value="AX">Åland Islands</option>
+                  <option value="AL">Albania</option>
+                </select>
+              </div>
+            </div>
+           <div class="form-group">
+            <label class="col-md-12 control-label" for="name">Name</label>  
+            <div class="col-md-12">
+            <input id="name" name="name" type="text" placeholder="Name" class="form-control input-md small_width" required="">
+            </div>
           </div>
+          </form>
         </div>
-      </div>
-    
+        </div>
+        <div>
+          <div class="cross_img"><img src="{{asset('wa/admindashboard/img/cross-img.svg')}}"></div>
+        <div class="card-body add_class_block add_sectionbox">
+          <form class="form_block">
+            <div class="form-group">
+              <label class="col-md-12 control-label" for="class">Select Class</label>  
+              <div class="col-md-12">
+                <select class="form-control small_width" id="class" required="true" name="class">
+                  <option value="AF">Afghanistan</option>
+                  <option value="AX">Åland Islands</option>
+                  <option value="AL">Albania</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-12 control-label" for="class">Select Class</label>  
+              <div class="col-md-12">
+                <select class="form-control small_width" id="class" required="true" name="class">
+                  <option value="AF">Afghanistan</option>
+                  <option value="AX">Åland Islands</option>
+                  <option value="AL">Albania</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-12 control-label" for="class">Select Class</label>  
+              <div class="col-md-12">
+                <select class="form-control small_width" id="class" required="true" name="class">
+                  <option value="AF">Afghanistan</option>
+                  <option value="AX">Åland Islands</option>
+                  <option value="AL">Albania</option>
+                </select>
+              </div>
+            </div>
+           <div class="form-group">
+            <label class="col-md-12 control-label" for="name">Name</label>  
+            <div class="col-md-12">
+            <input id="name" name="name" type="text" placeholder="Name" class="form-control input-md small_width" required="">
+            </div>
+          </div>
+          </form>
+        </div>
+        </div>
+        <!-- <p><input type="text" id="datepicker"></p></p> -->
+      </div> 
+      {{-- end Add Class --}}
       <div class="tab-pane active" role="tabpanel" id="menu2">
+      
         <!-- datepicker start -->
         
         <div class="calander d-flex mt-5">

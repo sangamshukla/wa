@@ -108,8 +108,33 @@ class PaymentController extends Controller
             'order_id' => $order->id,
             'payment_status' => 'yes'
         ]);
-        session()->put('cart', []);
-        return view('payment.success');
+        // use stripe
+        $amount = $s*$batchAmount;
+        \Stripe\Stripe::setApiKey('sk_test_51JAvqVSBWoxgIfNeH50XuVJ06GJPhUNyB9jQJLgUQOtYmjTyVK7cLVhbLGOvgdMgsyIwX4jbUDcjokHQYaPcTaBv0018VNQaS7');
+        header('Content-Type: application/json');
+        $YOUR_DOMAIN = 'http://wa.test';
+        $checkout_session = \Stripe\Checkout\Session::create([
+        'payment_method_types' => ['card'],
+        'line_items' => [[
+            'price_data' => [
+            'currency' => 'eur',
+            'unit_amount' => $amount*100,
+            'product_data' => [
+                'name' => 'Wallington Session',
+                'images' => ["http://pariharz.com/testing/public/wa/assets/img/logo.png"],
+            ],
+            ],
+            'quantity' => 1,
+        ]],
+        'mode' => 'payment',
+        'success_url' => $YOUR_DOMAIN . '/payment-success',
+        'cancel_url' => $YOUR_DOMAIN . '/payment-failed',
+        ]);
+
+        header("HTTP/1.1 303 See Other");
+        header("Location: " . $checkout_session->url);
+        // session()->put('cart', []);
+        // return view('payment.success');
     }
 
     /**

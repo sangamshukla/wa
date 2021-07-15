@@ -1,6 +1,8 @@
 <nav
             class="navbar navbar-expand navbar-light topbar mb-4 static-top shadow"
           >
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf  </form>
             <!-- Sidebar Toggle (Topbar) -->
             <button
               id="sidebarToggleTop"
@@ -92,6 +94,7 @@
                   </div>
                   <div class="mr-2 d-none d-lg-inline text-gray-600 small">
                     Welcome {{auth()->user()->name}}
+                            {{-- {{auth()->user()->role}} --}}
                   </div>
                 </a>
                 <!-- Dropdown - User Information -->
@@ -112,9 +115,10 @@
                     Activity Log
                   </a>
                   <div class="dropdown-divider"></div>
-                  <a
+                   <a
                     class="dropdown-item"
-                    href="#"
+                    href="{{ route('logout') }}"
+                    onclick="event.preventDefault();document.getElementById('logout-form').submit();" 
                     data-toggle="modal"
                     data-target="#logoutModal"
                   >
@@ -122,7 +126,9 @@
                       class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"
                     ></i>
                     Logout
-                  </a>
+                  </a> 
+                
+        
                 </div>
               </li>
             </ul>

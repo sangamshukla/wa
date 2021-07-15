@@ -32,8 +32,12 @@ class BatchController extends Controller
         $totals = Batch::count();
         $totalprice = Batch::count();
         $totnoofseats = Batch::count();
-        $batches = Batch::latest()->get();
+        $batches = Batch::latest()->take(8)->get();
         return view('class.manage-class', compact('batches', 'totals', 'totalprice', 'totnoofseats'));
+    }
+    public function createAddClasses()
+    {
+        return view('class.create-add-class');
     }
 
     public function index()

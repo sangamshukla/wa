@@ -8,6 +8,9 @@
         <li>
             <a href="{{ url('/add-teacher') }}">Add Teacher</a>
         </li>
+        <li>
+            <a href="{{ url('/manage-teacher') }}">Manage Teacher</a>
+        </li>
     </ul>
 </li>
 
