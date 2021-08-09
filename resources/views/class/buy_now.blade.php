@@ -30,7 +30,7 @@
                   <div  class="card_cart_div">
                     <a href="{{ route('cart.remove', $relatedBatch->id) }}" class="close"></a>
                       <div style="cursor:pointer;" onClick="(function(){
-                        window.location.href = '/testing/public/student-details/{{ $relatedBatch->id }}';
+                        window.location.href = 'http://wallingtonacademy-env.eba-59ypexia.us-east-2.elasticbeanstalk.com/student-details/{{ $relatedBatch->id }}';
                         })();return false;" class="single-district card{{ $i }}">
                         {{-- @php $i =1 @endphp --}}
                           <div class="card_img mb-3">
@@ -110,7 +110,7 @@
                     <div>£ {{ $totalPrice ?? 0 }}</div>
                     <!--<div>£ {{ $relatedBatches->sum('batch_price_per_session') }}</div>-->
                   </div>
-                  <div class="cource_detail_section"> 
+                  <div class="cource_detail_section">
                     <div>Tax </div>
                     <div>£  0</div>
                   </div>
@@ -200,9 +200,9 @@
                                   <div class="row">
                                     <div class="col-sm-12">
                                       <div class="modal_logo text-center">
-                                          <a href="/testing/public"><img alt="logo-img" title="logo-img" src="{{asset('wa/assets/img/logo.png')}}" width="120"></a>
-                                          
-                                          <!--<img alt="logo-img" title="logo-img" src="/testing/public/wa/assets/img/logo.png" width="120">-->
+                                          <a href="http://wallingtonacademy-env.eba-59ypexia.us-east-2.elasticbeanstalk.com"><img alt="logo-img" title="logo-img" src="{{asset('wa/assets/img/logo.png')}}" width="120"></a>
+
+                                          <!--<img alt="logo-img" title="logo-img" src="http://wallingtonacademy-env.eba-59ypexia.us-east-2.elasticbeanstalk.com/wa/assets/img/logo.png" width="120">-->
                                       </div>
                                         <div class="modal_cta_sections mt-5">
                                           <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -353,7 +353,7 @@
           {
            $('#email_password').show();
           }
-          $.post( "/testing/public/login-api",
+          $.post( "/login-api",
             { email: email, password: password, _token : "{{ csrf_token() }}" }).done(function( data ) {
             if(data == 'success')
             {

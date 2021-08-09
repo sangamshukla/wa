@@ -18,11 +18,11 @@ $("#generate-session").on("click", function () {
     $("#end_date_time").val(firstDate);
     var row = `
     <div style="margin-top:80px;">
-        <span class="cross_img" style="float:right;" ><img onclick="$(this).closest(\'div\').remove();" src="/testing/public/wa/admindashboard/img/cross-img.svg"></span>
+        <span class="cross_img" style="float:right;" ><img onclick="$(this).closest(\'div\').remove();" src="/wa/admindashboard/img/cross-img.svg"></span>
             <div class="card-body add_class_block add_sectionbox">
                 <form class="form_block">
                     <div class="form-group">
-                        <label class="col-md-12 control-label" for="class">Select Date</label>  
+                        <label class="col-md-12 control-label" for="class">Select Date</label>
                         <div class="col-md-12">
                             <input type="text" onchange="getAvailability(event, '${value_session}')" name="session_start_date[]" class="showdatepicker form-control" value="${firstDate}" id="first_date_time" placeholder="Select Start Date & Time">
                             <span id="${value_session}"></span>
@@ -30,20 +30,20 @@ $("#generate-session").on("click", function () {
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-12 control-label" for="class">Session name</label>  
+                        <label class="col-md-12 control-label" for="class">Session name</label>
                         <div class="col-md-12">
                             <input class="form-control" name="session_name[]" value="${value_session}" placeholder="Session Name">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-12 control-label" for="class">Select Class</label>  
+                        <label class="col-md-12 control-label" for="class">Select Class</label>
                         <div class="col-md-12">
                             <select style="min-width:300px;" name="topic_id[]"  class="form-control js-example-basic-multiple" id="topic_id" placeholder="Select  Topic" >
                             </select>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-12 control-label" for="name">Comment</label>  
+                        <label class="col-md-12 control-label" for="name">Comment</label>
                         <div class="col-md-12">
                             <input type="text" name="comment[]" class="form-control" placeholder="comment">
                         </div>
@@ -64,7 +64,7 @@ $("#generate-session").on("click", function () {
         minDate: "-1970/01/01", //yesterday is minimum date(for today use 0 or -1970/01/01)
     });
     var subject_id_value = $("#subject_id").val();
-    $.get("/testing/public/api/topics/" + subject_id_value, function (data, status) {
+    $.get("/api/topics/" + subject_id_value, function (data, status) {
         $("#topic_id").empty();
         $.each(data, function (index, subcategory) {
             $("#topic_id").append(
@@ -135,7 +135,7 @@ function getAvailability(e, id) {
     var teacher_id = $("#class_name").val();
     var duration = $("#duration_per_sessions_id").val();
     $.get(
-        "/testing/public/api/teacher/" +
+        "/api/teacher/" +
             teacher_id +
             "/" +
             batch_start_date_time +
@@ -165,31 +165,31 @@ function addRow() {
     var value_session = "Session-" + value_session;
     var row = `
     <div>
-        <span class="cross_img" style="float:right;" ><img onclick="$(this).closest(\'div\').remove();" src="/testing/public/wa/admindashboard/img/cross-img.svg"></span>
+        <span class="cross_img" style="float:right;" ><img onclick="$(this).closest(\'div\').remove();" src="/wa/admindashboard/img/cross-img.svg"></span>
         <div class="card-body add_class_block add_sectionbox">
             <form class="form_block">
                 <div class="form-group">
-                    <label class="col-md-12 control-label" for="class">Select Date</label>  
+                    <label class="col-md-12 control-label" for="class">Select Date</label>
                     <div class="col-md-12">
                     <input type="text" onchange="getAvailability(event, '${value_session}')" name="session_start_date[]" class="showdatepicker form-control" id="first_date_time_${index_val}" placeholder="Select Start Date & Time">
                     <span id="${value_session}"></span>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-12 control-label" for="class">Session name</label>  
+                    <label class="col-md-12 control-label" for="class">Session name</label>
                     <div class="col-md-12">
                         <input class="form-control" name="session_name[]" value="${value_session}" placeholder="Session Name">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-12 control-label" for="class">Select Class</label>  
+                    <label class="col-md-12 control-label" for="class">Select Class</label>
                     <div class="col-md-12">
                         <select style="min-width:300px;" name="topic_id[]" class="form-control js-example-basic-multiple topic_id" id="topic_id_${index_val}" placeholder="Select  Topic" >
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-12 control-label" for="name">Comment</label>  
+                    <label class="col-md-12 control-label" for="name">Comment</label>
                     <div class="col-md-12">
                         <input type="text" name="comment[]" class="form-control" placeholder="comment">
                     </div>
@@ -255,7 +255,7 @@ function addRow() {
         }
     }
     var subject_id_value = $("#subject_id").val();
-    $.get("/testing/public/api/topics/" + subject_id_value, function (data, status) {
+    $.get("/api/topics/" + subject_id_value, function (data, status) {
         $(`#topic_id_${index_val}`).empty();
         $.each(data, function (index, subcategory) {
             $(`#topic_id_${index_val}`).append(
@@ -273,7 +273,7 @@ function addRow() {
 //  <button type="button" class="btn del btn-danger btn-xs">x</button>
 $("#select_year").on("change", function () {
     var year_id_value = $("#select_year").val();
-    $.get("/testing/public/api/subjects/" + year_id_value, function (data, status) {
+    $.get("/api/subjects/" + year_id_value, function (data, status) {
         $("#subject_id").empty();
         $("#subject_id").append('<option value="">Choose Subject</option>');
         $.each(data, function (index, subcategory) {
@@ -294,7 +294,7 @@ $("#class_name").on("change", function () {
     var teacher_id = $("#class_name").val();
     var duration = $("#duration_per_sessions_id").val();
     $.get(
-        "/testing/public/api/teacher/" +
+        "/api/teacher/" +
             teacher_id +
             "/" +
             batch_start_date_time +
@@ -352,7 +352,7 @@ $("#class_date_time").on("change", function () {
     }
 
     $.get(
-        "/testing/public/api/teacher/" +
+        "/api/teacher/" +
             teacher_id +
             "/" +
             batch_start_date_time +
@@ -393,7 +393,7 @@ function validateDateTime() {
 
 $("#subject_id").change(function () {
     var subject_id_value = $("#subject_id").val();
-    $.get("/testing/public/api/topics/" + subject_id_value, function (data, status) {
+    $.get("/api/topics/" + subject_id_value, function (data, status) {
         $("#topic_id").empty();
         $.each(data, function (index, subcategory) {
             $("#topic_id").append(
@@ -534,7 +534,7 @@ $(document).ready(function () {
 
         // form validation ends here
         if (valid) {
-            $.post("/testing/public/create-classes", {
+            $.post("/create-classes", {
                 name: $("#class_name").val(),
                 location: $("#location").val(),
                 class_settings_id: $("#class_settings_id").val(),
@@ -570,7 +570,7 @@ $(document).ready(function () {
                     })
                     .get(),
             }).done(function (msg) {
-                window.location = "/testing/public/manage-classes";
+                window.location = "/manage-classes";
             });
         }
 

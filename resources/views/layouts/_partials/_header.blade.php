@@ -4,7 +4,7 @@
         <!-- LOGO -->
         <a href="{{ url('/')}}" class="topnav-logo">
             <span class="topnav-logo-lg">
-                <img src="/testing/public/logo.png" alt="" height="64" class="ml-2">
+                <img src="/logo.png" alt="" height="64" class="ml-2">
             </span>
             <span class="topnav-logo-sm">
             </span>
@@ -100,7 +100,7 @@
 
                 </div>
             </li>
-{{-- 
+{{--
             <li class="dropdown notification-list d-none d-sm-inline-block">
                 <a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <i class="dripicons-view-apps noti-icon"></i>
@@ -148,13 +148,13 @@
                                     <span>G Suite</span>
                                 </a>
                             </div>
-        
+
                         </div>
                     </div>
 
                 </div>
             </li> --}}
-{{-- 
+{{--
             <li class="notification-list">
                 <a class="nav-link right-bar-toggle" href="javascript: void(0);">
                     <i class="dripicons-gear noti-icon"></i>
@@ -164,8 +164,8 @@
             <li class="dropdown notification-list">
                 <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown" id="topbar-userdrop" href="#" role="button" aria-haspopup="true"
                     aria-expanded="false">
-                    <span class="account-user-avatar"> 
-                        <img src="/testing/public/assets/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
+                    <span class="account-user-avatar">
+                        <img src="/assets/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
                     </span>
                     <span>
                         <span class="account-user-name">{{ auth()->user()->name }}</span>
@@ -179,13 +179,13 @@
                     </div>
 
                     <!-- item-->
-                    <a href="/testing/public/profile" class="dropdown-item notify-item">
+                    <a href="/profile" class="dropdown-item notify-item">
                         <i class="mdi mdi-account-circle mr-1"></i>
                         <span>Profile</span>
                     </a>
-                    
+
                     <!-- item-->
-                    <a href="/testing/public/profile" class="dropdown-item notify-item">
+                    <a href="/profile" class="dropdown-item notify-item">
                         <i class="mdi mdi-account-circle mr-1"></i>
                         <span>Change Profile</span>
                     </a>

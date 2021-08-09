@@ -8,18 +8,18 @@
    <div class="col-4">
         <label for="select-class">Select Class</label>
      <select id="select-class" class="demo-default" placeholder="Select a student..." onchange="return getStudentAsPerClass();">
-         <option value="all">Select All</option> 
+         <option value="all">Select All</option>
         @foreach ($classes as $class)
             <option value="{{ $class->id }}">{{ $class->name }}</option>
         @endforeach
       </select>
    </div>
-  
+
    <div class="col-4" id="classlistid">
             <label for="select-student">Select a Student</label>
     <select id="select-student" class="demo-default" placeholder="Select a student...">
-        
-        
+
+
     </select>
    </div>
    <script class="show">
@@ -32,13 +32,13 @@
 </div>
 
 <script>
-  
+
     $("#select-student").selectize({
       create: true,
       sortField: "text",
     });
 </script>
-    <table style="margin: 40px;" class="table table-bordered w-100  d-md-table">     
+    <table style="margin: 40px;" class="table table-bordered w-100  d-md-table">
         <thead>
           <tr>
             <th scope="col" class="text-center">Sr. No.</th>
@@ -165,7 +165,7 @@ function markChecked()
                     checked += ','+this.value;
                     });
                     var studentId = $('#select-student').val();
-                    window.location.href = "/testing/public/operation-add-to-cart/{{ $batch->id }}/?session_id="+checked+"&student_id="+studentId+"&paid_amount="+paid_amount
+                    window.location.href = "/operation-add-to-cart/{{ $batch->id }}/?session_id="+checked+"&student_id="+studentId+"&paid_amount="+paid_amount
                 }
             });
 
@@ -204,17 +204,17 @@ function markChecked()
                                   },
                                    success: function (response) {
                                        console.log(response)
-                                       $.each(response, function(key, item) 
+                                       $.each(response, function(key, item)
                                                 {
                                                     $('#select-student').each(function() {
                                                         if (this.selectize) {
                                                             this.selectize.addOption({value:item.id, text: item.name});
-                                                            
-                                                            
+
+
                                                         }
-                                                    }); 
+                                                    });
                                                 })
-                                                
+
                                    },
                                    error:function(error)
                                    {

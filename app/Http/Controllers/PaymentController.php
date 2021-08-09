@@ -85,7 +85,7 @@ class PaymentController extends Controller
         $batchAmount = Batch::whereIn('id', array_keys(session()->get('cart') ?? []))
         ->sum('batch_price_per_session');
            $amount = $s*$batchAmount;
-       
+
 
         $order = OrderPayment::create([
             'student_id' => auth()->user()->id,
@@ -115,10 +115,10 @@ class PaymentController extends Controller
             'order_id' => $order->id,
             'payment_status' => 'yes'
         ]);
-     
+
          \Stripe\Stripe::setApiKey('sk_test_51JAvqVSBWoxgIfNeH50XuVJ06GJPhUNyB9jQJLgUQOtYmjTyVK7cLVhbLGOvgdMgsyIwX4jbUDcjokHQYaPcTaBv0018VNQaS7');
         header('Content-Type: application/json');
-        $YOUR_DOMAIN = 'http://pariharz.com/testing/public';
+        $YOUR_DOMAIN = 'http://wallingtonacademy-env.eba-59ypexia.us-east-2.elasticbeanstalk.com';
         $checkout_session = \Stripe\Checkout\Session::create([
         'payment_method_types' => ['card'],
         'line_items' => [[
@@ -127,7 +127,7 @@ class PaymentController extends Controller
             'unit_amount' => $amount*100,
             'product_data' => [
                 'name' => 'Wallington Session',
-                'images' => ["http://pariharz.com/testing/public/wa/assets/img/logo.png"],
+                'images' => ["http://wallingtonacademy-env.eba-59ypexia.us-east-2.elasticbeanstalk.com/wa/assets/img/logo.png"],
             ],
             ],
             'quantity' => 1,
@@ -173,7 +173,7 @@ class PaymentController extends Controller
         session()->put('cart', $cart);
          $s = 0;
         foreach (session()->get('cart') as $key => $cart) {
-            
+
              foreach ($cart['session_id'] as $singleSession) {
                  $s = $s+1;
              }
@@ -215,7 +215,7 @@ class PaymentController extends Controller
         // redirect to success page
         return redirect(route('teacher.management'))->with('status', 'Student Has Been Enroll Successfully!');
     }
-    
+
     public function checkForDuplicate($studentId)
     {
         foreach (session()->get('cart') as $key => $cart) {

@@ -26,7 +26,7 @@
                     @php $i=1 @endphp
                     @foreach($batches as $batch)
                      <div style="cursor:pointer;" onClick="(function(){
-                        window.location.href = '/testing/public/student-details/{{ $batch->id }}';
+                        window.location.href = '/student-details/{{ $batch->id }}';
                     })();return false;" class="col-md-3 filter_box filter {{ $batch->classmaster->name == 'Year 1' ? 'class9' : ($batch->classmaster->name == 'Year 2' ? 'class10' : 'class11') }}">
                             <div  class="single-district card{{ $i }}">
                             <div class="card_img mb-3">
@@ -49,7 +49,7 @@
                             </div>
                             <div class="card_block_info pl-3 pr-3">
                                 <div class="card_info">
-                                    
+
                      <p> {{ \Illuminate\Support\Str::limit($batch->classSettings->name ,'18') }}</p>
                                     <!--<p>{{ $batch->classSettings->name }}</p>-->
                                     <p>{{ $batch->subject->name }}</p>
@@ -91,7 +91,7 @@
                     </div>
                     @php $i++ @endphp
                     @endforeach
-                    <td colspan="3"></td>                               
+                    <td colspan="3"></td>
                 </table>
                 <div class="row">
                     <div class="col-md-12">
@@ -116,6 +116,6 @@
 </script>
 
   <script src="{{ asset('wa/coustom.js') }}"></script>
-  
+
 
 @endsection

@@ -8,14 +8,14 @@
     <form
         class="d-none d-sm-inline-block form-inline mr-auto ml-lg-5 ml-md-3 my-2 my-md-0 mw-100 navbar-search">
         <div class="d-flex">
-            
+
             <div class="input-group">
                 <select class="form-control border-0">
                     <optgroup>
                       <option value="volvo">all</option>
                       <option value="saab">all1</option>
                     </optgroup>
-                   
+
                   </select>
                 <input type="text" class="serch_block bg-white form-control bg-light border-0 small" placeholder="Search for..."
                     aria-label="Search" aria-describedby="basic-addon2">
@@ -61,7 +61,7 @@
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Welcome {{ auth()->user()->name }}</span>
                 <!--<img class="img-profile rounded-circle"-->
-                <!--    src="/testing/public/wa/dashboard/img/undraw_profile.svg">-->
+                <!--    src="/wa/dashboard/img/undraw_profile.svg">-->
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

@@ -2,9 +2,9 @@
 
     <div class="leftbar-user">
         <a href="javascript: void(0);">
-            
-            <img src="/testing/public/assets/images/users/avatar-1.jpg" alt="user-image" height="67"  class="rounded-circle shadow-sm">
-            
+
+            <img src="/assets/images/users/avatar-1.jpg" alt="user-image" height="67"  class="rounded-circle shadow-sm">
+
             <span class="leftbar-user-name">{{ auth()->user()->name }} </span>
             <h3 style="color:#A6C439"> {{ \Carbon\Carbon::now()->format('H:i:s')}}</h3>
         </a>
@@ -24,7 +24,7 @@
         @include('layouts._partials.menu.'.auth()->user()->role)
          <li class="side-nav-item">
             <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="side-nav-link">
-                <i class="uil uil-arrow-from-right"></i> 
+                <i class="uil uil-arrow-from-right"></i>
                 <span> Logout</span>
             </a>
         </li>

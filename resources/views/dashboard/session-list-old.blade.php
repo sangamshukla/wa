@@ -3,7 +3,7 @@
 // function countdownTimer(dates,countdown) {
 //     const difference = +new Date(dates) - +new Date();
 //     let remaining = "Join Now";
-  
+
 //     if (difference > 0) {
 //       const parts = {
 //         days: Math.floor(difference / (1000 * 60 * 60 * 24)),
@@ -17,7 +17,7 @@
 //     }
 //     document.getElementById(countdown).innerHTML = remaining;
 //   }
-</script>        
+</script>
        <!-- Begin Page Content -->
                 <div class="container-fluid">
 
@@ -92,7 +92,7 @@
                                                             </a>
                                                             <script>
                                                                 window.onload = (event) => {
-                                                                   
+
                                                                     // alert("here");
                                                                   function timer(){
                                                                     setInterval(function() {
@@ -113,7 +113,7 @@
                                                                         }
                                                                         document.getElementById("{{ $batch->id }}").innerHTML = remaining;
                                                                     }, 1000);
-                                                                    
+
                                                                   }
                                                                   timer();
                                                                 };
@@ -238,7 +238,7 @@
                                                                 @if($batch->subject->name == 'Chemistry')
                                                                     <img style="width:100%;" src="{{ asset('frontend/assets/card-cover.png') }}" alt="">
                                                                 @endif
-                                                                
+
                                                                 </div>
                                                           <div>
                                                               <p class="subject_card">Subject</p>
@@ -327,7 +327,7 @@
                                                                     @if($batch->subject->name == 'Chemistry')
                                                                         <img style="width:100%;" src="{{ asset('frontend/assets/card-cover.png') }}" alt="">
                                                                     @endif
-                                                                
+
                                                                 </div>
                                                             <div>
                                                                 <p class="subject_card">Subject</p>
@@ -337,11 +337,11 @@
                                                             <div>
                                                                 <p class="subject_card">Join Now</p>
                                                                 <a href="{{ $batch->zoom->meeting_join_url ?? ''  }}">
-                        
+
                                                                     <p class="card_subject_title2" id="{{ $batch->id }}">Join Now</p>
                                                                     {{-- <script>
                                                                         window.onload = (event) => {
-                                                                           
+
                                                                             // alert("here");
                                                                           function timer(){
                                                                             setInterval(function() {
@@ -361,7 +361,7 @@
                                                                                 }
                                                                                 document.getElementById("{{ $batch->id }}").innerHTML = remaining;
                                                                             }, 1000);
-                                                                            
+
                                                                           }
                                                                           timer();
                                                                         };
@@ -377,7 +377,7 @@
                                                         {{-- <p class="date_text">Feb 04, 2021- Feb 21,20201</p> --}}
                                                         <p class="date_text" style="margin-top: -9px;
                                                         margin-left: 81px;">{{ $batch->batch_start_date->format('d M, Y H:i A') }}</p>
-                                                        
+
                                                         </h5>
                                                       </div>
                                                       <div id="collapse{{$batch->id}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
@@ -545,7 +545,7 @@
                         <div class="col-xl-4 col-lg-4 mb-4 ">
                             <div class="profile_details card py-4 px-4 text-center thirdbox">
                                <div class="profile">
-                                <div class="profile_icon"><img src='/testing/public/wa/dashboard/sessionlist/img/user.png'></div>
+                                <div class="profile_icon"><img src='/wa/dashboard/sessionlist/img/user.png'></div>
                                 <p class="name mb-1">{{ auth()->user()->name }}</p>
                                 <p class="class_section"><span>Year:</span><span>{{ $batch->name }}</span></p>
                                 <a href="#" class="profile"><span>view Profile</span></a>
@@ -576,7 +576,7 @@
                                            <div class="card p-1 chat_card chat_card_background{{ mt_rand(1,4) }}">
                                             <div class="card-body p-2 d-flex">
                                                 <div class="profile_icon_card pr-3"></div>
-                        
+
                                                 {{-- subject wise img --}}
                                                 <div class="card_img" style="width:38%">
                                                     {{-- <img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"> --}}
@@ -592,21 +592,21 @@
                                                     @if($batch->subject->name == 'Chemistry')
                                                         <img style="width:100%;" src="{{ asset('frontend/assets/card-cover.png') }}" alt="">
                                                     @endif
-                                                
+
                                                 </div>
-                                                 
+
                                                 {{-- end here --}}
                                                 <div class="chat_block">
                                                     <p><strong>Subject</strong></p>
                                                     <p>{{$batch->subject->name}}</p>
                                                 </div>
-                                                
+
                                             </div>
                                             <div class="chat_block">
                                                 <p><strong>Class</strong></p>
                                                 <p>{{$batch->classSettings->name}}</p>
                                             </div>
-                                        
+
                                            <p> Date & Time: {{ $batch->batch_start_date->format('d M, Y H:i A') }}</p>
                                             <tr>
                                                 <td>Topics</td>
@@ -616,7 +616,7 @@
                                             <div class="text-right"><a class="send_msg" href="">Send Message</a></div>
                                            </div>
                                            @endforeach
-                                           
+
 
                                            {{-- <div class="card p-1 chat_card chat_card_background2">
                                             <div class="card-body p-2 d-flex">
@@ -656,7 +656,7 @@
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold buy_card_section">You  would like to buy</h6>
                                 </div>
-                                    
+
                                 <div class="card-body d-flex p-2">
                                 @foreach ($twos as $batch )
                                     <div class="card">
