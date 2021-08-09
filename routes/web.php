@@ -4,6 +4,7 @@ use App\Http\Controllers\ApiController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BatchController;
 use App\Http\Controllers\FooterContentController;
+use App\Http\Controllers\FullCalenderController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PackagesDetailsController;
 use App\Http\Controllers\PaymentController;
@@ -12,10 +13,20 @@ use App\Http\Controllers\TeacherByBatchController;
 use App\Http\Controllers\LiveSessionController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\TeacherDashboardController;
+use App\Http\Controllers\TeacherCalanderController;
+use App\Http\Controllers\TeacherProfileController;
 use App\Http\Controllers\ZoomController;
 use App\Models\Batch;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeWorkController;
+use App\Http\Controllers\HomeWorkStudentController;
+use App\Http\Controllers\ManagementController;
+use App\Http\Controllers\OperationController;
+use App\Models\User;
+use Symfony\Component\Console\Input\Input;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,9 +40,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $batches = Batch::latest()->take(8)->get();
+    $batches = Batch::whereHas('batchSession', function ($query) {
+        $query->whereDate('start_date_time', '>=', Carbon::today());
+    })->latest()->take(8)->get();
     return view('welcome', compact('batches'));
 });
+// Route::get('/', function () {
+//     $batches = Batch::latest()->take(8)->get();
+
+//     return view('welcome', compact('batches'));
+// });
 
 Auth::routes();
 
@@ -61,14 +79,17 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin-dashboard', [HomeController::class, 'adminDashboard']);
     Route::get('/admin-show', [HomeController::class, 'adminshow']);
 
-    Route::get('/teacher-dashboard', [HomeController::class, 'teacherDashboard']);
-    Route::get('/operation-dashboard', [HomeController::class, 'operationDashboard']);
+    Route::get('/teacher-new-dashboard', [HomeController::class, 'teacherDashboard']);
+    // Route::get('/operation-dashboard', [HomeController::class, 'operationDashboard']);
 
-    Route::get('/student-dashboard', [HomeController::class, 'studentDashboard']);
+    Route::get('/student-dashboard', [HomeController::class, 'studentDashboard'])->name('student-dashboard');
+    // Route::get('/student-dashboard', [HomeController::class, 'newStudentDashboard'])->name('student-dashboard');
     Route::get('/session-list', [HomeController::class, 'sessionList']);
-    // Route::post('/session-list', [HomeController::class , 'sessionListSave']);
-
-
+    Route::get('zoom/{id}', [HomeController::class, 'zoom']);
+    
+     // for sendmail on homepage
+    // Route::get('/contect-mail', [HomeController::class, 'contactMail'])->name('contect-mail');
+   // Route::post('/contact-mail', [HomeController::class, 'contactMailSave'])->name('contact-mail');
 
     // Teacher Controller
     Route::get('add-teacher', [TeacherController::class, 'create'])->name('add-teacher');
@@ -81,24 +102,15 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 
-    // batch/class controller
-    Route::get('create-classes', [BatchController::class, 'create'])->name('class.create');
-    Route::post('create-classes', [BatchController::class, 'store'])->name('class.store');
-    Route::get('manage-classes', [BatchController::class, 'index'])->name('manage-class');
-    Route::get('edit-classes/{id}', [BatchController::class, 'edit'])->name('edit-class');
-    Route::post('edit-classes/{id}', [BatchController::class, 'update'])->name('update-class');
-    Route::get('show-classes/{id}', [BatchController::class, 'show'])->name('show-class');
-    Route::get('destroy-classes/{id}', [BatchController::class, 'destroy'])->name('destroy-class');
-    Route::get('student', [BatchController::class, 'student'])->name('student');
-    Route::get('available-courses', [BatchController::class, 'availableCourses'])->name('available-courses');
+
     // Route::get('/packages-details', [BatchController::class, 'packagesDetails'])->name('packages.details');
 
 
     Route::get('add-product', [TeacherController::class, 'store'])->name('add-product');
     Route::post('add-product', [TeacherController::class, 'store'])->name('add-product');
 });
-Route::get('buy-now', [BatchController::class, 'buyNow'])->name('buy.now');
-Route::post('buy-now', [BatchController::class, 'buyNow'])->name('buy.now');
+
+// Route::get('add-to-cart/{batchId}', [PaymentController::class, 'payment'])->name('cart.add');
 
 Route::get('add-to-cart/{batchId}', [PaymentController::class, 'payment'])->name('cart.add');
 Route::get('remove-from-cart/{removeFromCart}', [PaymentController::class, 'removeFromCart'])->name('cart.remove');
@@ -115,7 +127,25 @@ Route::post('/signup', [RegisterController::class, 'create']);
 // packages details
 Route::get('/packages-details', [PackagesDetailsController::class, 'packagesDetails'])->name('packages.details');
 //teacher dashboard
-Route::get('/teacher-new-dashboard', [TeacherDashboardController::class, 'index'])->name('teacher-new-dashboard');
+Route::get('/teacher-dashboard', [TeacherDashboardController::class, 'index'])->name('teacher-dashboard')->middleware('auth');
+Route::get('/teacher-profile', [TeacherProfileController::class, 'index'])->name('teacher-profile')->middleware('auth');
+Route::get('teacher-experience-edit', [TeacherProfileController::class, 'edit'])->middleware('auth');
+Route::post('teacher-image', [TeacherProfileController::class, 'storeImage'])->name('teacher-image')->middleware('auth');
+Route::post('teacher-info', [TeacherProfileController::class, 'storeInformation'])->name('teacher-info')->middleware('auth');
+Route::post('teacher-idproof', [TeacherProfileController::class, 'storeIdproof'])->name('teacher-idproof')->middleware('auth');
+Route::post('teacher-experience', [TeacherProfileController::class, 'storeExperience'])->name('teacher-experience')->middleware('auth');
+Route::post('get-subject', [TeacherProfileController::class, 'getSubject'])->name('get-subject')->middleware('auth');
+Route::post('teacher-expertise', [TeacherProfileController::class, 'storeExpertise'])->name('teacher-expertise')->middleware('auth');
+Route::post('teacher-expertise-data', [TeacherProfileController::class, 'storeExpertiseData'])->name('teacher-expertise-data')->middleware('auth');
+
+/*Student Homework Module*/
+Route::get('home-work/{id}', [HomeWorkStudentController::class, 'index'])->name('home-work')->middleware('auth');
+Route::get('submit-home-work/{id}', [HomeWorkStudentController::class, 'submitHomework'])->name('submit-home-work')->middleware('auth');
+Route::post('upload-homework', [HomeWorkStudentController::class, 'uploadHomework'])->name('upload-homework')->middleware('auth');
+Route::post('upload-homework-text', [HomeWorkStudentController::class, 'uploadText'])->name('upload-homework-text')->middleware('auth');
+/*End home work module*/
+
+
 // for zoom
 // Route::get('/', [ZoomController::class, 'zoom'])->name('zoom');
 Route::get('/teacher-new-dashboard', [TeacherDashboardController::class, 'index'])->name('teacher-new-dashboard')->middleware('auth');
@@ -128,3 +158,88 @@ Route::get('/live-session', [LiveSessionController::class, 'livesession'])->name
 // Teacher Calander routes.
 Route::get('teacher-calander/{id}', [TeacherCalanderController::class, 'index'])->name('teacher-calander');
 Route::post('teacher-calander/{id}', [TeacherCalanderController::class, 'sessions']);
+Route::get('fullcalender', [FullCalenderController::class, 'index'])->name('fullcalender');
+Route::post('fullcalenderAjax', [FullCalenderController::class, 'ajax']);
+
+
+Route::get('start-session/{id}', [HomeWorkController::class, 'startSession']);
+Route::post('start-session/{id}', [HomeWorkController::class, 'saveStartSession']);
+Route::get('view-homework-details/{id}', [HomeWorkController::class, 'viewhomeworkdetails']);
+
+Route::post("/assign-points", [HomeWorkController::class, 'assignPoints']);
+Route::post('/upload-pdf/{id}', [HomeWorkController::class, 'uploadPDF']);
+Route::get('/marks-sheet', [HomeWorkController::class, 'marksSheet'])->name('marks-sheet');
+//test route
+Route::get('buy-now', [BatchController::class, 'buyNow'])->name('buy.now');
+
+Route::post('/assign-homework', [HomeWorkController::class, 'assignHomeWork'])->name('assign-homework');
+
+
+Route::group(['middleware' => ['auth','teacher']], function () {
+    Route::get('new-teacher', [TeacherDashboardController::class, 'newindex']);
+    
+ 
+    Route::get('student', [BatchController::class, 'student'])->name('student');
+    Route::get('available-courses', [BatchController::class, 'availableCourses'])->name('available-courses');
+});
+Route::group(['middleware' => ['auth', 'student']], function () {
+    
+    Route::post('buy-now', [BatchController::class, 'buyNow'])->name('buy.now');
+});
+    Route::group(['middleware' => ['auth', 'operation']], function () {
+        Route::get('get-operation', [OperationController::class, 'index']);
+        Route::get('operation-dashboard', [OperationController::class, 'oprationDashboard']);
+        // Route::get('batch-list', [OperationController::class, 'batchListGet'])->name('batch-list');
+        Route::post('batch-list', [OperationController::class, 'batchList'])->name('batch-list');
+        Route::get('teacher-management', [OperationController::class, 'teacherManagement'])->name('teacher.management');
+        Route::get('purchase-session/{id}', [OperationController::class, 'purchaseSession'])->name('purchase-session');
+        Route::get('confirm-payment/{id}', [OperationController::class, 'confirm_payment'])->name('confirm-payment');
+        Route::post('sell-session', [OperationController::class, 'sell-session'])->name('sell-session');
+        Route::get('operation-add-to-cart/{batchId}', [PaymentController::class, 'operationPayment'])->name('operation.cart');
+        Route::post('student-list', [OperationController::class, 'studentList'])->name('student-list');
+        Route::get('student-paid-details/{id}', [OperationController::class, 'studentPaidDetails'])->name('student.paiddetails');
+        Route::post('get-session-list', [OperationController::class, 'getSeesionList'])->name('get-session-list');
+        Route::post('get-student-list', [OperationController::class, 'getStudentList'])->name('get-student-list');
+        Route::get('enrolled-student/{id}', [OperationController::class, 'enrolledStudent'])->name('enrolled-student');
+        
+       
+    });
+    // 
+      Route::group(['midddleware'=>['auth','teacheroperationadmin']], function () {
+          
+        // new add class
+        Route::get('create-classes', [BatchController::class, 'create'])->name('class.create');
+        Route::post('create-classes', [BatchController::class, 'store'])->name('class.store');
+        Route::get('manage-classes', [BatchController::class, 'manageClass'])->name('manage-classnew');
+
+        Route::get('edit-classes/{id}', [BatchController::class, 'edit'])->name('edit-class');
+        Route::post('edit-classes/{id}', [BatchController::class, 'update'])->name('update-class');
+        Route::get('show-classes/{id}', [BatchController::class, 'show'])->name('show-class');
+        Route::get('destroy-classes/{id}', [BatchController::class, 'destroy'])->name('destroy-class');
+    });
+    
+    Route::get('/payment-success', function () {
+        session()->put('cart', []);
+        return view('payment.success');
+    });
+    Route::get('/payment-failed', function () {
+        session()->put('cart', []);
+        return view('payment.success');
+    });
+  Route::get('/search', function (Request $request) {
+        $users= User::search($request->search)->where('role', 'teacher')->get();
+        return response()->json($users);
+    })->name('search');
+    
+//Route::get('have-purchased', [PaymentController::class, 'checkPurchased'])->name('have-purchased');
+Route::post('pay-due-amount', [HomeWorkController::class, 'payDueAmount'])->name('pay-due-amount');
+//Route::get('id-submission-status', [TeacherProfileController::class, 'id_submission_status'])->name('id-submission-status');
+Route::get('is-homework-assigned', [HomeWorkController::class, 'check']);
+
+// for sendmail on homepage
+Route::post('/contact-mail', [HomeController::class, 'contactMailSave'])->name('contact-mail');
+
+
+Route::get('is-seat-full', [BatchController::class, 'check_if_seat_is_full']);
+Route::post('upload-edit-homework', [HomeWorkController::class, 'upload_edit_homework'])->name('upload-edit-homework');
+Route::get('delete-homework/{homework_id}/{student_id}', [HomeWorkController::class, 'delete_homework'])->name('delete-homework');

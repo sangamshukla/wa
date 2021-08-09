@@ -40,9 +40,10 @@
                         @foreach($batch->batchSession as $session)
                             <tr>
                                 <td>{{ $session->name }}</td>  
-                                <td>@foreach($session->topics as $t)
-                                    {{ $t->topic->name }}                                       
-                                    @endforeach</td> 
+                                <td>{{ $session->topics->topic->name }}</td>
+                            {{-- <td>@foreach($session->topics as $t)
+                                {{ $t->topic->name }}                                       
+                                @endforeach</td>  --}}
                                 <td>{{ $session->start_date_time }}</td> 
                                 {{-- <td>{{ $session->first_date_time }}</td>   --}}
                                 <td>{{ $session->comment }}</td>  

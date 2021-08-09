@@ -17,4 +17,9 @@ class OrderItems extends Model
     {
         return  $this->belongsTo(Batch::class, 'item_id');
     }
+
+    public function orderPayment()
+    {
+        return $this->belongsTo(OrderPayment::class, 'order_payment_id');
+    }
 }

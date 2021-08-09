@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+// use Laravel\Scout\Searchable;
 
 class User extends Authenticatable
 {
@@ -60,5 +61,9 @@ class User extends Authenticatable
     public function student()
     {
         return $this->hasOne(Student::class, 'user_id');
+    }
+    public function orders()
+    {
+        return $this->hasMany(OrderPayment::class, 'student_id');
     }
 }

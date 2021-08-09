@@ -49,13 +49,19 @@ class ClassMaster extends Seeder
         $classmaster2 = ModelsClassMaster::create([
             'name' => 'Year 2'
         ]);
+        $classmaster3 = ModelsClassMaster::create([
+            'name' => 'Year 3'
+        ]);
+        $classmaster4 = ModelsClassMaster::create([
+            'name' => 'Year 4'
+        ]);
         $subject3 = Subject::create([
             'name' => 'English',
-            'class_master_id' => $classmaster2->id
+            'class_master_id' => $classmaster3->id
         ]);
         $subject4 = Subject::create([
             'name' => 'Physics',
-            'class_master_id' => $classmaster2->id
+            'class_master_id' => $classmaster4->id
         ]);
         Topic::create([
             'name' => 'Narration',

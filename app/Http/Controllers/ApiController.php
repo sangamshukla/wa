@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Batch;
 use App\Models\Subject;
 use App\Models\Topic;
+use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Http\Request;
@@ -46,5 +48,27 @@ class ApiController extends Controller
             return response()->json('success');
         }
         return response()->json('failed');
+    }
+
+    public function getAvailableTeacher($teacherId, $datetime, $duration=30)
+    {
+        $dateFromDateTime = explode(" ", $datetime)[0];
+        $statu = "YES";
+        $batches = Batch::where('name', $teacherId)->get();
+        foreach ($batches as $batch) {
+            foreach ($batch->batchSession as $b) {
+                $time = explode(" ", $datetime)[1];
+                $hour = explode(":", $time)[0];
+                if (Carbon::parse($b->start_date_time)->format('Y-m-d') == $dateFromDateTime) {
+                    if (Carbon::parse($b->start_date_time)->format('H') == $hour) {
+                        $statu = "NO";
+                    }
+                    if (Carbon::parse($b->start_date_time)->addMinutes($duration)->format('H') == $hour) {
+                        $statu = "NO";
+                    }
+                }
+            }
+        }
+        return response()->json($statu);
     }
 }

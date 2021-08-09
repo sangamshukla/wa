@@ -107,7 +107,8 @@
                 <div>
                   <div class="cource_detail_section">
                     <div>Course cost</div>
-                    <div>£ {{ $relatedBatches->sum('batch_price_per_session') }}</div>
+                    <div>£ {{ $totalPrice ?? 0 }}</div>
+                    <!--<div>£ {{ $relatedBatches->sum('batch_price_per_session') }}</div>-->
                   </div>
                   <div class="cource_detail_section"> 
                     <div>Tax </div>
@@ -121,7 +122,8 @@
                 <hr class="border_bottom" />
                 <div class="total_amount_block">
                   <div class="total">Total</div>
-                  <div>£ {{$relatedBatches->sum('batch_price_per_session')}}</div>
+                  <div>£ {{ $totalPrice ?? 0 }}</div>
+                  <!--<div>£ {{$relatedBatches->sum('batch_price_per_session')}}</div>-->
                 </div>
                 <div class="form-group term_pera mt-3">
                   <label class="container-checkbox">
@@ -198,7 +200,9 @@
                                   <div class="row">
                                     <div class="col-sm-12">
                                       <div class="modal_logo text-center">
-                                          <img alt="logo-img" title="logo-img" src="{{asset('wa/assets/img/logo.png')}}" width="120">
+                                          <a href="/testing/public"><img alt="logo-img" title="logo-img" src="{{asset('wa/assets/img/logo.png')}}" width="120"></a>
+                                          
+                                          <!--<img alt="logo-img" title="logo-img" src="/testing/public/wa/assets/img/logo.png" width="120">-->
                                       </div>
                                         <div class="modal_cta_sections mt-5">
                                           <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -349,7 +353,7 @@
           {
            $('#email_password').show();
           }
-          $.post( "/login-api",
+          $.post( "/testing/public/login-api",
             { email: email, password: password, _token : "{{ csrf_token() }}" }).done(function( data ) {
             if(data == 'success')
             {

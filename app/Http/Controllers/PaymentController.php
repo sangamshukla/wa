@@ -6,15 +6,30 @@ use App\Models\Batch;
 use App\Models\Order;
 use App\Models\OrderItems;
 use App\Models\OrderPayment;
+use App\Models\OrderSessionMap;
+use App\Models\OrderSessions;
 use App\Models\Transaction;
+use Carbon\Exceptions\InvalidFormatException;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class PaymentController extends Controller
 {
     public function payment($batchId)
     {
         // $totcart = Batch::count();
         $product = Batch::find($batchId);
+        $sessions = $product->batchSession->where('start_date_time', '>=', \Carbon\Carbon::today())->pluck('id');
+        $sessionId = '';
+        foreach ($sessions as $s) {
+            $sessionId .= ','.$s;
+        }
+        if (request('session_id')) {
+            $sessionId = ltrim(request('session_id'), ',');
+        } else {
+            $sessionId = ltrim($sessionId, ',');
+        }
+
         $cart = session()->get('cart');
         // if cart is empty then this the first product
 
@@ -22,7 +37,8 @@ class PaymentController extends Controller
             $cart = [
                 $batchId => [
                     "product_id" => $product->id, "quantity" => 1,
-                    'price' => $product->batch_price_per_session
+                    'price' => $product->batch_price_per_session,
+                    'session_id'=>explode(',', $sessionId)
                 ]
             ];
             session()->put('cart', $cart);
@@ -39,7 +55,8 @@ class PaymentController extends Controller
         $cart[$batchId] = [
             "product_id" => $product->id,
             "quantity" => 1,
-            'price' => $product->batch_price_per_session
+            'price' => $product->batch_price_per_session,
+            'session_id'=>explode(',', $sessionId)
         ];
         session()->put('cart', $cart);
 
@@ -61,25 +78,173 @@ class PaymentController extends Controller
 
     public function pay(Request $request)
     {
+         $s = 0;
+        // foreach (session()->get('cart') as $key => $cart) {
+        //     $s++;
+        // }
+        $batchAmount = Batch::whereIn('id', array_keys(session()->get('cart') ?? []))
+        ->sum('batch_price_per_session');
+           $amount = $s*$batchAmount;
+       
+
         $order = OrderPayment::create([
             'student_id' => auth()->user()->id,
             'order_amount' =>  Batch::whereIn('id', array_keys(session()->get('cart') ?? []))
-                ->sum('batch_price_per_session')
+                ->sum('batch_price_per_session'),
+            'paid_amount'=>Batch::whereIn('id', array_keys(session()->get('cart') ?? []))
+                ->sum('batch_price_per_session'),
         ]);
-        $b = Batch::whereIn('id', array_keys(session()->get('cart') ?? []))->get();
 
-        foreach ($b as $k) {
+        foreach (session()->get('cart') as $key => $cart) {
             OrderItems::create([
                 'order_payment_id' => $order->id,
                 'no_of_items' => 1,
-                'batch_id' => $k->id
+                'batch_id' => $cart['product_id'],
             ]);
-            Transaction::create([
-                'order_id' => $order->id,
-                'payment_status' => 'yes'
-            ]);
+
+            foreach ($cart['session_id'] as $singleSession) {
+                $s++;
+                OrderSessionMap::create([
+                    'batch_id' => $cart['product_id'],
+                    'session_id'=> $singleSession,
+                    'order_id' => $order->id
+                ]);
+            }
         }
+        Transaction::create([
+            'order_id' => $order->id,
+            'payment_status' => 'yes'
+        ]);
+     
+         \Stripe\Stripe::setApiKey('sk_test_51JAvqVSBWoxgIfNeH50XuVJ06GJPhUNyB9jQJLgUQOtYmjTyVK7cLVhbLGOvgdMgsyIwX4jbUDcjokHQYaPcTaBv0018VNQaS7');
+        header('Content-Type: application/json');
+        $YOUR_DOMAIN = 'http://pariharz.com/testing/public';
+        $checkout_session = \Stripe\Checkout\Session::create([
+        'payment_method_types' => ['card'],
+        'line_items' => [[
+            'price_data' => [
+            'currency' => 'eur',
+            'unit_amount' => $amount*100,
+            'product_data' => [
+                'name' => 'Wallington Session',
+                'images' => ["http://pariharz.com/testing/public/wa/assets/img/logo.png"],
+            ],
+            ],
+            'quantity' => 1,
+        ]],
+        'mode' => 'payment',
+        'success_url' => $YOUR_DOMAIN . '/payment-success',
+        'cancel_url' => $YOUR_DOMAIN . '/payment-failed',
+        ]);
+        header("HTTP/1.1 303 See Other");
+        header("Location: " . $checkout_session->url);
+        // session()->put('cart', []);
+        // return view('payment.success');
+    }
+
+    /**
+     * Payment By Operation
+     * @param mixed $batchId
+     * @return void
+     * @throws InvalidFormatException
+     * @throws BindingResolutionException
+     */
+    public function operationPayment(Request $request, $batchId)
+    {
+        // dd($request->paid_amount);
+        $product = Batch::find($batchId);
+        $sessions = $product->batchSession->where('start_date_time', '>=', \Carbon\Carbon::today())->pluck('id');
+        $sessionId = '';
+        foreach ($sessions as $s) {
+            $sessionId .= ','.$s;
+        }
+        if (request('session_id')) {
+            $sessionId = ltrim(request('session_id'), ',');
+        } else {
+            $sessionId = ltrim($sessionId, ',');
+        }
+        $cart = [
+            $batchId => [
+                "product_id" => $product->id, "quantity" => 1,
+                'price' => $product->batch_price_per_session,
+                'session_id'=>explode(',', $sessionId)
+            ]
+        ];
+        session()->put('cart', $cart);
+         $s = 0;
+        foreach (session()->get('cart') as $key => $cart) {
+            
+             foreach ($cart['session_id'] as $singleSession) {
+                 $s = $s+1;
+             }
+        }
+        //dd($s);
+        $batchAmount = Batch::whereIn('id', array_keys(session()->get('cart') ?? []))
+        ->sum('batch_price_per_session');
+        // check for duplicate
+        if ($this->checkForDuplicate(request('student_id'))) {
+            return redirect(route('teacher.management'))->with('status', 'Student Has Been Enroll Successfully!');
+        }
+        // status
+        $order = OrderPayment::create([
+            'student_id' => request('student_id'),
+            'order_amount' =>  $s*$batchAmount,
+            'paid_amount'=>$request->paid_amount
+        ]);
+
+        foreach (session()->get('cart') as $key => $cart) {
+            OrderItems::create([
+                'order_payment_id' => $order->id,
+                'no_of_items' => 1,
+                'batch_id' => $cart['product_id'],
+            ]);
+
+            foreach ($cart['session_id'] as $singleSession) {
+                OrderSessionMap::create([
+                    'batch_id' => $cart['product_id'],
+                    'session_id'=> $singleSession,
+                    'order_id' => $order->id
+                ]);
+            }
+        }
+        Transaction::create([
+            'order_id' => $order->id,
+            'payment_status' => 'yes'
+        ]);
         session()->put('cart', []);
-        return view('payment.success');
+        // redirect to success page
+        return redirect(route('teacher.management'))->with('status', 'Student Has Been Enroll Successfully!');
+    }
+    
+    public function checkForDuplicate($studentId)
+    {
+        foreach (session()->get('cart') as $key => $cart) {
+            $orderItems = OrderItems::where('batch_id', $cart['product_id'])->get();
+            foreach ($orderItems as $item) {
+                if ($item->orderPayment->student_id == $studentId) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    public function havePurchased($studentId, $sessionId)
+    {
+        $order=DB::table('order_payments')->join('order_session_maps', 'order_payments.id', '=', 'order_session_maps.order_id')
+        ->where('student_id', $studentId)
+        ->where('session_id', $sessionId)
+        ->exists();
+        return $order;
+    }
+     public function checkPurchased()
+    {
+        if($this->havePurchased(32, 175))
+        {
+            dd("have purchased");
+        }
+        else
+        {
+            dd('have not purchased');
+        }
     }
 }

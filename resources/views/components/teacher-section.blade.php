@@ -1,5 +1,5 @@
           <div class="row">
-            <div class="col-lg-4">
+            <div class="col-lg-4" style="margin-top:12px; !important">
               <div class="card mt-5">
                 <div class="card-body">
                   <div class="cover1">
@@ -19,7 +19,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-8">
+            <div class="col-lg-8" style="margin-top:12px; !important">
               <div class="card teacher_detail mt-5">
                 <!-- Card Header - Dropdown -->
                 <div class="card-body mt-3">

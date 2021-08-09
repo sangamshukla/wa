@@ -56,5 +56,11 @@ class AdminSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
+        DB::table('students')->insert([
+            'user_id'=>4,
+            'class_master_id'=>"1",
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
     }
 }

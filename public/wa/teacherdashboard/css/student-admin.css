@@ -582,6 +582,12 @@ pre code {
   margin-right: auto;
   margin-left: auto;
 }
+/* pop up */
+.modal-body {
+  position: relative;
+  flex: 1 1 auto;
+  padding: 1rem;
+}
 
 @media (min-width: 576px) {
   .container,

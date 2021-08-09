@@ -154,27 +154,30 @@
                     @php $i=1 @endphp
                     @foreach($batches as $batch)
                      <div style="cursor:pointer;" onClick="(function(){
-                        window.location.href = '/student-details/{{ $batch->id }}';
+                        window.location.href = '/testing/public/student-details/{{ $batch->id }}';
                     })();return false;" class="col-md-3 filter_box filter {{ $batch->classmaster->name == 'Year 1' ? 'class9' : ($batch->classmaster->name == 'Year 2' ? 'class10' : 'class11') }}">
                             <div class="single-district card{{ $i }}">
                             <div class="card_img mb-3">
                                 @if($batch->subject->name == 'English')
-                                  <img style="width:100%;" src="{{ asset('frontend/assets/English/English.jpg') }}" alt="">
+                                  <img style="width:100%; border-radius:10px;" src="{{ asset('frontend/assets/English/English.jpg') }}" alt="">
                                 @endif
                                 @if($batch->subject->name == 'Maths')
-                                    <img  style="width:100%;" src="{{ asset('frontend/assets/Maths/Math.jpg') }}" alt="">
+                                    <img  style="width:100%;border-radius:10px;" src="{{ asset('frontend/assets/Maths/Math.jpg') }}" alt="">
                                 @endif
                                 @if($batch->subject->name == 'Physics')
-                                    <img  style="width:100%;" src="{{ asset('frontend/assets/Physics/Physics.jpg') }}" alt="">
+                                    <img  style="width:100%;border-radius:10px;" src="{{ asset('frontend/assets/Physics/Physics.jpg') }}" alt="">
                                 @endif
                                 @if($batch->subject->name == 'Chemistry')
-                                    <img style="width:100%;" src="{{ asset('frontend/assets/card-cover.png') }}" alt="">
+                                    <img style="width:100%;border-radius:10px;" src="{{ asset('frontend/assets/card-cover.png') }}" alt="">
                                 @endif
-                                {{-- <img src="{{ asset('wa/assets/img/card-cover.png') }}"> --}}
+                                @if($batch->subject->name == 'Essay')
+                                <img  style="width:100%;border-radius:10px;" src="{{ asset('frontend/assets/Essay/Essay.jpg') }}" alt="">
+                            @endif
+                               
                             </div>
                             <div class="card_block_info pl-3 pr-3">
                                 <div class="card_info">
-                                    <p>{{ $batch->classSettings->name }}</p>
+                                    <p>{{ \Illuminate\Support\Str::limit($batch->classSettings->name ,'18') }}</p>
                                     <p>{{ $batch->subject->name }}</p>
                                 </div>
                                 <div class="card_details">
@@ -203,7 +206,7 @@
                                     View details
                                 </a>
                                 {{-- @php $i = 1 @endphp --}}
-                                <a href="{{ url('/student-details', $batch->id)}}" class="price_card price_bg{{ $i }}">
+                                <a href="{{ url('/testing/public/student-details', $batch->id)}}" class="price_card price_bg{{ $i }}">
                                     &pound; {{ $batch->batch_price_per_session }} 
                                 </a>
                                 {{-- @php i++ @endphp --}}
@@ -229,7 +232,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col">
-                <div class="why_heading mt-5 mb-5">Why 11+</div>
+                <div class="why_heading mt-5 mb-5">Why Wallington Academy</div>
                 <div class="vedio_section">
                     <div class="pera_vedio">
                         <p class="strong">Lorem ipsum dolor sit amet, consectetur adipiscing </p>

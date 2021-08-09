@@ -23,37 +23,50 @@
       rel="stylesheet"
     />
     <link
-      href="http://fonts.googleapis.com/css?family=Roboto"
+      href="https://fonts.googleapis.com/css?family=Roboto"
       rel="stylesheet"
       type="text/css"
     />
     <!-- Custom styles for this template-->
     <link href="{{asset('wa/teacherdashboard/css/student-admin.css')}}" rel="stylesheet" />
-    <link href="{{asset('wa/teacherdashboard/css/session.css')}}" rel="stylesheet" />
+    <link href="{{asset('wa/teacherdashboard/css/topSidebar.css')}}" rel="stylesheet" />
   </head>
-
-
-      @yield('content')
-
- <!-- Footer -->
-        <footer class="sticky-footer">
-          <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-              <span>©Copyright 2021-2022 WA Academy. All Rights Reserved </span>
+<body id="page-top">
+        <!-- Page Wrapper -->
+            <div id="wrapper">
+                @include('teacher.sidebar')
+                <!-- Content Wrapper -->
+                <div id="content-wrapper" class="d-flex flex-column">
+                    <!-- Main Content -->
+                    <div id="content">
+                        @include('teacher.topnav')
+                        <div class="container-fluid">
+                            @yield('content')
+                        </div>
+                    </div>
+                    <!-- Footer -->
+                    <footer class="sticky-footer">
+                        <div class="container my-auto">
+                            <div class="copyright text-center my-auto">
+                                <span>©Copyright 2021-2022 WA Academy. All Rights Reserved </span>
+                            </div>
+                        </div>
+                    </footer>
+                    <!-- End of Footer -->
+                </div>
             </div>
-          </div>
-        </footer>
-        <!-- End of Footer -->
-      </div>
-      <!-- End of Content Wrapper -->
-    </div>
-    <!-- End of Page Wrapper -->
-    <!-- Bootstrap core JavaScript-->
-    <script src="{{asset('wa/teacherdashboard/vendor/jquery/jquery.min.js')}}"></script>
-    <script src="{{asset('wa/teacherdashboard/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-    <!-- Core plugin JavaScript-->
-    <script src="{{asset('wa/teacherdashboard/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
-    <!-- Custom scripts for all pages-->
-    <script src="{{asset('wa/teacherdashboard/js/student.js')}}"></script>
+        <!-- End of Page Wrapper -->
 
+    <!-- End of Content Wrapper -->
+
+<!-- End of Page Wrapper -->
+<!-- Bootstrap core JavaScript-->
+<script src="{{asset('wa/teacherdashboard/vendor/jquery/jquery.min.js')}}"></script>
+<script src="{{asset('wa/teacherdashboard/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<!-- Core plugin JavaScript-->
+<script src="{{asset('wa/teacherdashboard/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+<!-- Custom scripts for all pages-->
+<script src="{{asset('wa/teacherdashboard/js/student.js')}}"></script>
+
+</body>
 </html>

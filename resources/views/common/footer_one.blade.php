@@ -7,25 +7,44 @@
                     <div class="form_section">
                         <div class="form_div"> 
                             <div class="form_image">
+                              
+                                <div class="color" id="success_msg" style="color: green;"></div>
+
                                 <p class="connect_heading">Let’s Connect</p>
-                            <form action="">
+
+                                <div class="color" id="error_msg" style="color: red;"></div>
+                            <form action="{{route ('contact-mail')}}" method="POST" id="contact">
+                                @csrf
+                               
+                                <!-- @include('_form.success') -->
+
                                 <div class="field">
-                                    <input type="text" name="fullname" id="fullname" placeholder="Jane Appleseed">
+                                    <input type="text" name="fullname" id="fullname" placeholder="Full Name">
                                     <label for="fullname">Full Name</label>
                                 </div>
 
                                 <div class="field">
-                                    <input type="email" name="email" id="email"
-                                        placeholder="jane.appleseed@example.com">
+                                    <input type="text" name="schoolName" id="schoolName"
+                                        placeholder="School Name">
                                     <label for="email">School Name</label>
                                 </div>
                                 <div class="field">
-                                    <input type="email" name="email" id="email"
-                                        placeholder="jane.appleseed@example.com">
+                                    <input type="number" name="mobileNumber" id="mobileNumber"
+                                        placeholder="Mobile Number">
                                     <label for="email">Mobile Number</label>
                                 </div>
+                                <!-- msg -->
+                            
+                                 <div class="field">    
+                                <textarea id="msg" name="msg" placeholder="Write Msg"  >
+                                    </textarea>
+                                    <label for="msg">Msg</label>
+                                </div> 
+
+
                                 <div class="text-center"><br><br>
-                                <button type="button" class="btn submit">Submit</button>
+                                    
+                                <button type="submit" id="saveForm" class="btn submit">Submit</button>
                              </div>
                             </form>
                             </div>
@@ -54,3 +73,35 @@
             </div>
         </div>
     </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    
+    <script>
+        $(document).ready(function(){
+            $("#saveForm").click(function(e){
+                e.preventDefault();
+
+              $.post("{{route('contact-mail')}}",
+              {
+                fullname: $("#fullname").val(),
+                schoolName: $("#schoolName").val(),
+                mobileNumber: $("#mobileNumber").val(),
+                msg: $("#msg").val(),
+                _token: "{{csrf_token()}}"
+              }).done(function(msg){ 
+                $("#success_msg").show();
+               })
+              .fail(function(xhr, status, error) {
+                  $('#error_msg').html('');
+                  $('#error_msg').append('<ul>');
+                  $.each(xhr.responseJSON.errors,function(field_name,error){
+                    $('#error_msg').append('<li class="text-strong text-danger">' +error+ '</li>');
+                });
+                $('#error_msg').append('</ul>');
+              });
+            });
+          });
+          
+
+    </script>
+    

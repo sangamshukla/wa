@@ -14,4 +14,8 @@ class Student extends Model
     {
         return $this->belongsTo(ClassMaster::class, 'class_master_id');
     }
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id');
+    }
 }

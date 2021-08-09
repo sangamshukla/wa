@@ -42,8 +42,13 @@
                                 <td>{{ $teacher->user->name }}</td>
                                 <td>{{ $teacher->user->email }}</td>
                                 <td>{{ $teacher->user->contact_number }}</td>
-                                {{-- <td></td> --}}
-                                <td>{{ $teacher->classmaster->name }}</td>
+                                <td>
+                                    @if(isset($teacher->classmaster->name))
+                                    {{ $teacher->classmaster->name }}
+                                    @else
+                                    No year Found
+                                    @endif
+                                </td>
                                 <td>{{ $teacher->user_type }}</td>
                                 
 
