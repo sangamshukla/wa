@@ -24,14 +24,11 @@ use App\Http\Controllers\HomeWorkController;
 use App\Http\Controllers\HomeWorkStudentController;
 use App\Http\Controllers\ManagementController;
 use App\Http\Controllers\OperationController;
-<<<<<<< HEAD
 use App\Models\User;
 use Symfony\Component\Console\Input\Input;
 use Illuminate\Http\Request;
-=======
 use App\Http\Controllers\StripeController;
 use Stripe\Stripe;
->>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
 
 /*
 |--------------------------------------------------------------------------
@@ -91,13 +88,10 @@ Route::group(['middleware' => 'auth'], function () {
     // Route::get('/student-dashboard', [HomeController::class, 'newStudentDashboard'])->name('student-dashboard');
     Route::get('/session-list', [HomeController::class, 'sessionList']);
     Route::get('zoom/{id}', [HomeController::class, 'zoom']);
-<<<<<<< HEAD
-    
+
      // for sendmail on homepage
     // Route::get('/contect-mail', [HomeController::class, 'contactMail'])->name('contect-mail');
    // Route::post('/contact-mail', [HomeController::class, 'contactMailSave'])->name('contact-mail');
-=======
->>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
 
     // Teacher Controller
     Route::get('add-teacher', [TeacherController::class, 'create'])->name('add-teacher');
@@ -107,13 +101,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('edit-teacher/{id}', [TeacherController::class, 'update'])->name('edit-teacher');
     Route::get('show-teacher/{id}', [TeacherController::class, 'show'])->name('show-teacher');
     Route::get('destroy-teacher/{id}', [TeacherController::class, 'destroy'])->name('destroy-teacher');
-<<<<<<< HEAD
-
-
-
-
-=======
->>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
     // Route::get('/packages-details', [BatchController::class, 'packagesDetails'])->name('packages.details');
     Route::get('add-product', [TeacherController::class, 'store'])->name('add-product');
     Route::post('add-product', [TeacherController::class, 'store'])->name('add-product');
@@ -177,7 +164,6 @@ Route::get('view-homework-details/{id}', [HomeWorkController::class, 'viewhomewo
 
 Route::post("/assign-points", [HomeWorkController::class, 'assignPoints']);
 Route::post('/upload-pdf/{id}', [HomeWorkController::class, 'uploadPDF']);
-<<<<<<< HEAD
 Route::get('/marks-sheet', [HomeWorkController::class, 'marksSheet'])->name('marks-sheet');
 //test route
 Route::get('buy-now', [BatchController::class, 'buyNow'])->name('buy.now');
@@ -187,14 +173,13 @@ Route::post('/assign-homework', [HomeWorkController::class, 'assignHomeWork'])->
 
 Route::group(['middleware' => ['auth','teacher']], function () {
     Route::get('new-teacher', [TeacherDashboardController::class, 'newindex']);
-    
- 
+
+
     Route::get('student', [BatchController::class, 'student'])->name('student');
     Route::get('available-courses', [BatchController::class, 'availableCourses'])->name('available-courses');
 });
 Route::group(['middleware' => ['auth', 'student']], function () {
-    
-=======
+
 //test route
 
 
@@ -202,14 +187,13 @@ Route::post('/assign-homework', [HomeWorkController::class, 'assignHomeWork'])->
 
 Route::group(['middleware' => ['auth', 'teacher']], function () {
     Route::get('new-teacher', [TeacherDashboardController::class, 'newindex']);
-   
+
     Route::get('student', [BatchController::class, 'student'])->name('student');
     Route::get('available-courses', [BatchController::class, 'availableCourses'])->name('available-courses');
 });
 
 Route::group(['middleware' => ['auth', 'student']], function () {
     Route::get('buy-now', [BatchController::class, 'buyNow'])->name('buy.now');
->>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
     Route::post('buy-now', [BatchController::class, 'buyNow'])->name('buy.now');
 });
     Route::group(['middleware' => ['auth', 'operation']], function () {
@@ -225,15 +209,14 @@ Route::group(['middleware' => ['auth', 'student']], function () {
         Route::post('student-list', [OperationController::class, 'studentList'])->name('student-list');
         Route::get('student-paid-details/{id}', [OperationController::class, 'studentPaidDetails'])->name('student.paiddetails');
         Route::post('get-session-list', [OperationController::class, 'getSeesionList'])->name('get-session-list');
-<<<<<<< HEAD
         Route::post('get-student-list', [OperationController::class, 'getStudentList'])->name('get-student-list');
         Route::get('enrolled-student/{id}', [OperationController::class, 'enrolledStudent'])->name('enrolled-student');
-        
-       
+
+
     });
-    // 
+    //
       Route::group(['midddleware'=>['auth','teacheroperationadmin']], function () {
-          
+
         // new add class
         Route::get('create-classes', [BatchController::class, 'create'])->name('class.create');
         Route::post('create-classes', [BatchController::class, 'store'])->name('class.store');
@@ -244,13 +227,11 @@ Route::group(['middleware' => ['auth', 'student']], function () {
         Route::get('show-classes/{id}', [BatchController::class, 'show'])->name('show-class');
         Route::get('destroy-classes/{id}', [BatchController::class, 'destroy'])->name('destroy-class');
     });
-    
-=======
+
         Route::get('enrolled-student/{id}', [OperationController::class, 'enrolledStudent'])->name('enrolled-student');
     });
     Route::get('/stripe-payment', [StripeController::class, 'handleGet']);
     Route::post('/stripe-payment', [StripeController::class, 'handlePost'])->name('stripe.payment');
->>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
     Route::get('/payment-success', function () {
         session()->put('cart', []);
         return view('payment.success');
@@ -259,12 +240,11 @@ Route::group(['middleware' => ['auth', 'student']], function () {
         session()->put('cart', []);
         return view('payment.success');
     });
-<<<<<<< HEAD
   Route::get('/search', function (Request $request) {
         $users= User::search($request->search)->where('role', 'teacher')->get();
         return response()->json($users);
     })->name('search');
-    
+
 //Route::get('have-purchased', [PaymentController::class, 'checkPurchased'])->name('have-purchased');
 Route::post('pay-due-amount', [HomeWorkController::class, 'payDueAmount'])->name('pay-due-amount');
 //Route::get('id-submission-status', [TeacherProfileController::class, 'id_submission_status'])->name('id-submission-status');
@@ -277,7 +257,6 @@ Route::post('/contact-mail', [HomeController::class, 'contactMailSave'])->name('
 Route::get('is-seat-full', [BatchController::class, 'check_if_seat_is_full']);
 Route::post('upload-edit-homework', [HomeWorkController::class, 'upload_edit_homework'])->name('upload-edit-homework');
 Route::get('delete-homework/{homework_id}/{student_id}', [HomeWorkController::class, 'delete_homework'])->name('delete-homework');
-=======
 
     Route::group(['midddleware'=>['auth','teacheroperationadmin']], function () {
         Route::get('create-classes', [BatchController::class, 'create'])->name('class.create');
@@ -293,4 +272,3 @@ Route::get('delete-homework/{homework_id}/{student_id}', [HomeWorkController::cl
         Route::get('show-classes/{id}', [BatchController::class, 'show'])->name('show-class');
         Route::get('destroy-classes/{id}', [BatchController::class, 'destroy'])->name('destroy-class');
     });
->>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
