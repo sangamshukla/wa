@@ -65,6 +65,7 @@ class User extends Authenticatable
     public function orders()
     {
         return $this->hasMany(OrderPayment::class, 'student_id');
+    }
 
     public function batches()
     {

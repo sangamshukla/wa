@@ -34,15 +34,7 @@ class BatchSession extends Model
         return  $this->belongsTo(BatchTopic::class, 'id');
     }
 
-    public function singleTopic()
-    {
-        return $this->hasOne(BatchTopic::class, 'batch_session_id');
-    }
 
-    public function batch()
-    {
-        return $this->belongsTo(Batch::class, 'batch_id');
-    }
 
     public function enrolled()
     {
