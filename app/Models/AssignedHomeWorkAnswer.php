@@ -13,5 +13,5 @@ class AssignedHomeWorkAnswer extends Model
     {
         return $this->belongsTo(AssignedHomeWork::class, 'assigned_home_work_id');
     }
-    
+
 }

@@ -7,11 +7,16 @@ use App\Models\AssignedHomeWorkAnswer;
 use App\Models\AssignedHomeWorkAnswerMap;
 use App\Models\AssignedHomeWorkStudent;
 use App\Models\BatchSession;
+<<<<<<< HEAD
 use App\Models\Batch;
 use Carbon\Carbon;
 use App\Models\Order;
 use App\Models\OrderItems;
 use App\Models\OrderPayment;
+=======
+use App\Models\Order;
+use App\Models\OrderItems;
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
 use App\Models\ResourceMaster;
 use App\Models\TeacherProfile;
 use App\Models\User;
@@ -22,7 +27,11 @@ class HomeWorkController extends Controller
     public function startSession($id)
     {
         $session = BatchSession::where('id', $id)->first();
+<<<<<<< HEAD
       
+=======
+
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
         $allSessions = BatchSession::where('batch_id', $session->batch_id)->get();
         // dd($allSessions);
         $listOfSessions = collect([]);
@@ -35,6 +44,7 @@ class HomeWorkController extends Controller
             $singleSession->students =  User::whereIn('id', $studenList->unique())->get();
             $assignedHW = AssignedHomeWork::where('session_id', $singleSession->id)->first();
             $singleSession->hw = $assignedHW;
+<<<<<<< HEAD
             $singleSession->submission_count = AssignedHomeWorkAnswer::
             where('assigned_home_work_id', $assignedHW->id ?? null)->where('is_submitted', '1')->count();
             $singleSession->students->transform(function ($student) use ($assignedHW) {
@@ -53,15 +63,38 @@ class HomeWorkController extends Controller
                     $student->homeworkId = AssignedHomeWorkAnswer::
                     where('assigned_home_work_id', $assignedHW->id ?? null)
                     ->where('student_id', $student->id)->where('is_submitted', '1')->first()->id;
+=======
+            $singleSession->submission_count = AssignedHomeWorkAnswer::where('assigned_home_work_id', $assignedHW->id ?? null)->where('is_submitted', '1')->count();
+            $singleSession->students->transform(function ($student) use ($assignedHW) {
+                $student->is_homework_assigned = AssignedHomeWorkAnswer::where('assigned_home_work_id', $assignedHW->id ?? null)
+                    ->where('student_id', $student->id)->where('is_submitted', '1')->exists();
+                $submitted = AssignedHomeWorkAnswer::where('assigned_home_work_id', $assignedHW->id ?? null)
+                    ->where('student_id', $student->id)->where('is_submitted', '1')->exists();
+                $student->is_submitted = $submitted;
+                $student->homeworks = AssignedHomeWorkStudent::where('assigned_home_work_id', $assignedHW->id ?? null)
+                    ->where('student_id', $student->id)->first();
+                $student->homeworkId = false;
+                if ($submitted) {
+                    $student->homeworkId = AssignedHomeWorkAnswer::where('assigned_home_work_id', $assignedHW->id ?? null)
+                        ->where('student_id', $student->id)->where('is_submitted', '1')->first()->id;
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                 }
 
                 return $student;
             });
+<<<<<<< HEAD
             
             
             return $singleSession;
         });
         
+=======
+
+
+            return $singleSession;
+        });
+
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
         // dd($allSessions);
         $studentsList = collect([]);
         $batches = OrderItems::with('orderPayment')->where('batch_id', $session->batch_id)->get();
@@ -69,13 +102,18 @@ class HomeWorkController extends Controller
         $batches->transform(function ($batch) use ($studentsList) {
             $studentsList->push($batch->orderPayment->student_id);
         });
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
         $students = User::whereIn('id', $studentsList->unique())->get();
 
         $pdfFilesAll = ResourceMaster::where('sub_topic_id', $session->singleTopic->topic_id)
             ->where('is_active', 1)->get();
         $images = TeacherProfile::where('user_id', $id)->select('teacher_profile_photo')->get();
         // dd($pdfFilesAll);
+<<<<<<< HEAD
         $homework_id=AssignedHomeWork::where('session_id', $id)->get();
         foreach($homework_id as $homework_id)
         {
@@ -83,14 +121,24 @@ class HomeWorkController extends Controller
         }
         $assigned_homeworks=$this->getHomeWork($homework_id);
         return view('homework.start-session', compact('allSessions', 'assigned_homeworks' ,'session', 'students', 'pdfFilesAll', 'images'));
+=======
+        return view('homework.start-session', compact('allSessions', 'session', 'students', 'pdfFilesAll', 'images'));
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
     }
     public function saveStartSession(Request $request)
     {
         $session = AssignedHomeWork::Create([
+<<<<<<< HEAD
         'comment' => $request->comment,
         'points' => $request->points,
         'subtopic_name' => $request->subtopic_name,
         'pdf_path' => $request->pdf_path,
+=======
+            'comment' => $request->comment,
+            'points' => $request->points,
+            'subtopic_name' => $request->subtopic_name,
+            'pdf_path' => $request->pdf_path,
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
         ]);
         if ($request->hasFile('pdf_path')) {
             $request->file('pdf_path')->store('uploadimg');
@@ -105,9 +153,15 @@ class HomeWorkController extends Controller
         ]);
         if ($request->hasFile('pdf')) {
             $filename = $request->pdf->getClientOriginalName();
+<<<<<<< HEAD
             $path = $request->file('pdf')->store('public/pdfs', ['disk'=>'public_uploads']);
            
             return response()->json(['filename'=>$filename, 'fileId'=>$path]);
+=======
+            $path = $request->file('pdf')->store('public/pdfs', ['disk' => 'public_uploads']);
+
+            return response()->json(['filename' => $filename, 'fileId' => $path]);
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
         } else {
             return 'please choose file';
         }
@@ -119,7 +173,11 @@ class HomeWorkController extends Controller
         $session = BatchSession::find($content->session_id);
 
         $checkHomeWorkIsAlreadyAssigned = AssignedHomeWork::where('session_id', $content->session_id)->exists();
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
         // if ($checkHomeWorkIsAlreadyAssigned) {
         //     return response()->json(['data'=> 'Homework is already assigned for this session'], 400);
         // }
@@ -146,11 +204,20 @@ class HomeWorkController extends Controller
         }
 
         $assignedHomework =  AssignedHomeWork::updateOrCreate([
+<<<<<<< HEAD
             'session_id' => $content->session_id], [
             'comment' => $content->comment,
             'points' => $content->points,
             'due_date' => $content->due_date ?? '',
             'type_of_homework'=>$content->type_of_homework,
+=======
+            'session_id' => $content->session_id
+        ], [
+            'comment' => $content->comment,
+            'points' => $content->points,
+            'due_date' => $content->due_date ?? '',
+            'type_of_homework' => $content->type_of_homework,
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
             'assigned_content' => $homeworkContent, // resource_master id
         ]);
 
@@ -158,7 +225,11 @@ class HomeWorkController extends Controller
             AssignedHomeWorkStudent::create([
                 'assigned_home_work_id' => $assignedHomework->id,
                 'student_id' => $student->id,
+<<<<<<< HEAD
                 'type_of_homework'=>$content->type_of_homework,
+=======
+                'type_of_homework' => $content->type_of_homework,
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                 'assigned_content' => $homeworkContent,
             ]);
         }
@@ -167,7 +238,11 @@ class HomeWorkController extends Controller
 
     public function viewhomeworkdetails($id)
     {
+<<<<<<< HEAD
        $submittedHomework = AssignedHomeWorkAnswer::find($id);
+=======
+        $submittedHomework = AssignedHomeWorkAnswer::find($id);
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
         $student = AssignedHomeWorkStudent::where('student_id', $submittedHomework->student_id)
             ->where('assigned_home_work_id', $submittedHomework->assigned_home_work_id)->first();
         $homeworkContent = AssignedHomeWorkAnswerMap::where(
@@ -188,6 +263,14 @@ class HomeWorkController extends Controller
         }
 
         $assignedHomework = AssignedHomeWork::find($submittedHomework->assigned_home_work_id);
+<<<<<<< HEAD
+=======
+        // dd($homeworkContent);
+        // dd($student);
+        // dd($submittedHomework);
+        // dd($multiple);
+        // dd($assignedHomework);
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
         return view('homework._homework_details', compact('submittedHomework', 'homeworkContent', 'assignedHomework', 'student', 'multiple'));
     }
 
@@ -199,6 +282,7 @@ class HomeWorkController extends Controller
         ]);
         return response()->json("Success");
     }
+<<<<<<< HEAD
     
     public function makeMarkSheet($studentId)
     {
@@ -404,4 +488,6 @@ class HomeWorkController extends Controller
         }
       }
     }
+=======
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
 }

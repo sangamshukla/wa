@@ -10,6 +10,7 @@
 <div style="margin-top: 110px;" class="container-fluid">
 
     <p>Date: <input type="datetime" id="datepicker" onchange="return getSession();"></p>
+<<<<<<< HEAD
     
     @if(session()->has('status'))
         <p></p>
@@ -21,6 +22,12 @@
     <div id="datatable">
 
     </div>
+=======
+    <div id="datatable">
+
+    </div>
+
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
 </div>
 <script>
     var $j = jQuery.noConflict();

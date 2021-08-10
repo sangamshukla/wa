@@ -17,8 +17,13 @@ class CreateEventsTable extends Migration
             $table->id();
             $table->integer('batch_id');
             $table->string('title');
+<<<<<<< HEAD
             $table->date('start');
             $table->date('end');
+=======
+            $table->datetime('start');
+            $table->datetime('end');
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
             $table->timestamps();
         });
     }

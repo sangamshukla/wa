@@ -78,6 +78,7 @@ class PaymentController extends Controller
 
     public function pay(Request $request)
     {
+<<<<<<< HEAD
          $s = 0;
         // foreach (session()->get('cart') as $key => $cart) {
         //     $s++;
@@ -93,6 +94,17 @@ class PaymentController extends Controller
                 ->sum('batch_price_per_session'),
             'paid_amount'=>Batch::whereIn('id', array_keys(session()->get('cart') ?? []))
                 ->sum('batch_price_per_session'),
+=======
+        $s = 0;
+        foreach (session()->get('cart') as $key => $cart) {
+            $s++;
+        }
+        $batchAmount = Batch::whereIn('id', array_keys(session()->get('cart') ?? []))
+        ->sum('batch_price_per_session');
+        $order = OrderPayment::create([
+            'student_id' => auth()->user()->id,
+            'order_amount' =>  $s*$batchAmount
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
         ]);
 
         foreach (session()->get('cart') as $key => $cart) {
@@ -103,7 +115,10 @@ class PaymentController extends Controller
             ]);
 
             foreach ($cart['session_id'] as $singleSession) {
+<<<<<<< HEAD
                 $s++;
+=======
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                 OrderSessionMap::create([
                     'batch_id' => $cart['product_id'],
                     'session_id'=> $singleSession,
@@ -115,10 +130,18 @@ class PaymentController extends Controller
             'order_id' => $order->id,
             'payment_status' => 'yes'
         ]);
+<<<<<<< HEAD
 
          \Stripe\Stripe::setApiKey('sk_test_51JAvqVSBWoxgIfNeH50XuVJ06GJPhUNyB9jQJLgUQOtYmjTyVK7cLVhbLGOvgdMgsyIwX4jbUDcjokHQYaPcTaBv0018VNQaS7');
         header('Content-Type: application/json');
         $YOUR_DOMAIN = 'http://wallingtonacademy-env.eba-59ypexia.us-east-2.elasticbeanstalk.com';
+=======
+        // use stripe
+        $amount = $s*$batchAmount;
+        \Stripe\Stripe::setApiKey('sk_test_51JAvqVSBWoxgIfNeH50XuVJ06GJPhUNyB9jQJLgUQOtYmjTyVK7cLVhbLGOvgdMgsyIwX4jbUDcjokHQYaPcTaBv0018VNQaS7');
+        header('Content-Type: application/json');
+        $YOUR_DOMAIN = 'http://wa.test';
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
         $checkout_session = \Stripe\Checkout\Session::create([
         'payment_method_types' => ['card'],
         'line_items' => [[
@@ -127,7 +150,11 @@ class PaymentController extends Controller
             'unit_amount' => $amount*100,
             'product_data' => [
                 'name' => 'Wallington Session',
+<<<<<<< HEAD
                 'images' => ["http://wallingtonacademy-env.eba-59ypexia.us-east-2.elasticbeanstalk.com/wa/assets/img/logo.png"],
+=======
+                'images' => ["http://pariharz.com/testing/public/wa/assets/img/logo.png"],
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
             ],
             ],
             'quantity' => 1,
@@ -136,6 +163,10 @@ class PaymentController extends Controller
         'success_url' => $YOUR_DOMAIN . '/payment-success',
         'cancel_url' => $YOUR_DOMAIN . '/payment-failed',
         ]);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
         header("HTTP/1.1 303 See Other");
         header("Location: " . $checkout_session->url);
         // session()->put('cart', []);
@@ -171,6 +202,7 @@ class PaymentController extends Controller
             ]
         ];
         session()->put('cart', $cart);
+<<<<<<< HEAD
          $s = 0;
         foreach (session()->get('cart') as $key => $cart) {
 
@@ -181,11 +213,23 @@ class PaymentController extends Controller
         //dd($s);
         $batchAmount = Batch::whereIn('id', array_keys(session()->get('cart') ?? []))
         ->sum('batch_price_per_session');
+=======
+        $s = 0;
+        foreach (session()->get('cart') as $key => $cart) {
+            $s++;
+        }
+        $batchAmount = Batch::whereIn('id', array_keys(session()->get('cart') ?? []))
+        ->sum('batch_price_per_session');
+        // status
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
         // check for duplicate
         if ($this->checkForDuplicate(request('student_id'))) {
             return redirect(route('teacher.management'))->with('status', 'Student Has Been Enroll Successfully!');
         }
+<<<<<<< HEAD
         // status
+=======
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
         $order = OrderPayment::create([
             'student_id' => request('student_id'),
             'order_amount' =>  $s*$batchAmount,
@@ -227,6 +271,7 @@ class PaymentController extends Controller
             }
         }
         return false;
+<<<<<<< HEAD
     }
     public function havePurchased($studentId, $sessionId)
     {
@@ -246,5 +291,7 @@ class PaymentController extends Controller
         {
             dd('have not purchased');
         }
+=======
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
     }
 }

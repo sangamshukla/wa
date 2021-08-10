@@ -17,6 +17,7 @@
   <hr class="sidebar-divider my-0" />
 
   <!-- Nav Item - Dashboard -->
+<<<<<<< HEAD
 
   <hr class="sidebar-divider" />
   <li class="nav-item">
@@ -45,12 +46,19 @@
     <a class="nav-link collapsed" href="{{ route('manage-classnew')}}">
       <div class="nav_images">
         <img src="{{asset('wa/admindashboard/img/teacher/one to one.svg')}}" />
+=======
+  <li class="nav-item active">
+    <a class="nav-link" href="{{ route('manage-classnew')}}">
+      <div class="nav_images">
+        <img src="{{asset('wa/admindashboard/img/teacher/live-icon.svg')}}" />
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
       </div>
       <br />
       <span>Manage Classes</span>
     </a>
   </li>
 
+<<<<<<< HEAD
   <hr class="sidebar-divider" />
   <li class="nav-item">
     <a class="nav-link collapsed" href="{{ route('marks-sheet')}}">
@@ -62,6 +70,8 @@
     </a>
   </li>
 
+=======
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
   <!-- Divider -->
   <hr class="sidebar-divider" />
   <li class="nav-item">

@@ -28,6 +28,22 @@ class BatchController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function manageClass()
+<<<<<<< HEAD
+=======
+    {
+        $totals = Batch::count();
+        $totalprice = Batch::count();
+        $totnoofseats = Batch::count();
+        $batches = Batch::latest()->take(8)->get();
+        return view('class.manage-class', compact('batches', 'totals', 'totalprice', 'totnoofseats'));
+    }
+    public function createAddClasses()
+    {
+        return view('class.create-add-class');
+    }
+
+    public function index()
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
     {
         $totals = Batch::count();
         $totalprice = Batch::count();
@@ -66,6 +82,17 @@ class BatchController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+<<<<<<< HEAD
+=======
+    public function create()
+    {
+        $assignteachers = User::all();
+        $classes = ClassMaster::all();
+        $subjects = Subject::all();
+        $classsettings = ClassSettings::all();
+        return view('class.create', compact('classes', 'subjects', 'assignteachers', 'classsettings'));
+    }
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
 
     // end add class
     /**
@@ -98,7 +125,10 @@ class BatchController extends Controller
     }
     public function store(Request $request)
     {
+<<<<<<< HEAD
         
+=======
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
         if (auth()->user()->role == 'admin') {
             $validated=$request->validate([
                 'class_settings_id' => 'required',
@@ -125,7 +155,11 @@ class BatchController extends Controller
             ]);
         }
         if (auth()->user()->role == 'operation') {
+<<<<<<< HEAD
             $validated=$request->validate([
+=======
+            $request->validate([
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                 'class_settings_id' => 'required',
                 'batch_price_per_session' => 'required',
                 'batch_start_date' => 'required',
@@ -144,8 +178,12 @@ class BatchController extends Controller
         } else {
             $class = $request->class_settings_id;
         }
+<<<<<<< HEAD
         if($validated)
         {
+=======
+
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
         if (auth()->user()->role == 'teacher') {
             $batch = Batch::Create([
                 'name' =>auth()->user()->id,
@@ -209,15 +247,29 @@ class BatchController extends Controller
                 'start' => Carbon::parse($d)->format('Y-m-d h:i:s'),
                 'end' => Carbon::parse($d)->format('Y-m-d h:i:s'),
             ]);
+
+            // make event
+            $topicname = Topic::find($request->topic_id['Session-' . $name]);
+            Event::create([
+                'batch_id' => $batch->id,
+                'title' => $d . '' . $batch->classSettings->name . ' ' . $session_name . ' ' . $topicname->name . '',
+                'start' => Carbon::parse($d)->format('Y-m-d h:i:s'),
+                'end' => Carbon::parse($d)->format('Y-m-d h:i:s'),
+            ]);
             $index++;
             $name++;
         }
+<<<<<<< HEAD
             
         MakeZoomMeeting::dispatch($batch->id);
         session()->flash('status', 'Class Added Successfully');
         // return redirect(route('manage-classes'))->with('status', 'Class Added Successfully');
         return response()->json(['data'=>'Class Added Successfully']);
     }
+=======
+        MakeZoomMeeting::dispatch($batch->id);
+        return redirect(route('manage-classnew'))->with('status', 'Class Added Successfully');
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
     }
 
     /**
@@ -245,8 +297,12 @@ class BatchController extends Controller
         $classes = ClassMaster::all();
         $subjects = Subject::all();
         $classsettings = ClassSettings::all();
+<<<<<<< HEAD
         $batches = Batch::latest()->take(8)->get();
         return view('class.edit', compact('class', 'batches', 'classes', 'subjects', 'assignteachers', 'classsettings'));
+=======
+        return view('class.edit', compact('class', 'classes', 'subjects', 'assignteachers', 'classsettings'));
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
     }
 
     /**
@@ -332,10 +388,17 @@ class BatchController extends Controller
 
     public function studentDetails(Request $request, $id)
     {
+<<<<<<< HEAD
         if(isset($id))
         {
                    $batch = Batch::find($id);
         // dd($batch);
+=======
+        // dd($id);
+        $batch = Batch::find($id);
+//    dd($batch);
+        // get all batches of the same class
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
         $allBatches = Batch::where('class_master_id', $batch->class_master_id)
             ->where('id', '!=', $id)
             // session end date
@@ -423,6 +486,7 @@ class BatchController extends Controller
         session()->put('cart', $cart);
         $relatedBatches = Batch::whereIn('id', array_keys(session()->get('cart')))->get();
         return view('class.buy_now', compact('relatedBatches', 'totalPrice'));
+<<<<<<< HEAD
     }
       public function is_seat_full($batch_id)
     {
@@ -439,5 +503,7 @@ class BatchController extends Controller
     public function check_if_seat_is_full()
     {
       return $this->is_seat_full(10);
+=======
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
     }
 }

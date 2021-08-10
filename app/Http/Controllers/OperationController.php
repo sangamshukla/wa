@@ -6,9 +6,12 @@ use App\Models\Batch;
 use App\Models\BatchSession;
 use App\Models\Teacher;
 use App\Models\User;
+<<<<<<< HEAD
 use App\Models\ClassMaster;
 use App\Models\Student;
 use App\Models\OrderSessionMap;
+=======
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -54,11 +57,17 @@ class OperationController extends Controller
     public function purchaseSession($id)
     {
         $students=User::where('role', 'student')->get();
+<<<<<<< HEAD
         $classes=ClassMaster::all();
         $sessions=BatchSession::where('batch_id', $id)->get();
         $batch = Batch::find($id);
        
         return view('operation.purchase-session', compact('sessions', 'students', 'batch', 'classes'));
+=======
+        $sessions=BatchSession::where('batch_id', $id)->get();
+        $batch = Batch::find($id);
+        return view('operation.purchase-session', compact('sessions', 'students', 'batch'));
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
     }
     public function studentList(Request $request)
     {
@@ -77,6 +86,7 @@ class OperationController extends Controller
     public function getSeesionList(Request $request)
     {
         $selectedDate=$request->selectedDate;
+<<<<<<< HEAD
         $sessions=BatchSession::whereDate('start_date_time', Carbon::parse($selectedDate))->get();
         // $data = $data->filter(function ($value, $key) use ($sessions) {
         //     $returnValue = false;
@@ -112,13 +122,32 @@ class OperationController extends Controller
         // return view('operation.studentlist', compact('students'));
         return response($students);
     }
+=======
+        $data=User::where('role', 'teacher')->get();
+        $sessions=BatchSession::whereDate('start_date_time', Carbon::parse($selectedDate))->get();
+        $data = $data->filter(function ($value, $key) use ($sessions) {
+            $returnValue = false;
+            foreach ($sessions as $session) {
+                return $session->batch->teacher->name == $value->name;
+            }
+            return $returnValue;
+        });
+        // $session
+        return view('operation.datatable', compact('sessions', 'data'));
+    }
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
     //enrolled
     public function enrolledStudent($id, Request $request)
     {
         $session = BatchSession::find($id);
+<<<<<<< HEAD
         $batch_id=$session->batch->id;
         $enrolled_students=OrderSessionMap::where('batch_id', $batch_id)->get();
         return view('operation.enrolled-student', compact('session', 'enrolled_students'));
     }
     
+=======
+        return view('operation.enrolled-student', compact('session'));
+    }
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
 }

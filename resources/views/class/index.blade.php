@@ -60,7 +60,10 @@
                                 {{-- <td></td> --}}
 
                                 <td>
+<<<<<<< HEAD
                                     
+=======
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                                   <a href="{{ url('edit-classes', $batch->id) }}" class="action-icon"> <i style="color:#A6C439"class="mdi mdi-pencil"></i></a>
                                   <a href="{{ url('destroy-classes', $batch->id) }}" onclick = "return confirm('Are You Sure For Delete ?')" class="action-icon"> <i style="color:red" class="mdi mdi-delete"></i></a>
                                   <a target="_blanck" href="{{ url('show-classes', $batch->id) }}" class="action-icon"> <i style="color:#2b58ace8" width="500" height="200"class="mdi mdi-eye"></i></a>

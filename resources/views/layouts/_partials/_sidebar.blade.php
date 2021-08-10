@@ -3,7 +3,11 @@
     <div class="leftbar-user">
         <a href="javascript: void(0);">
 
+<<<<<<< HEAD
             <img src="/assets/images/users/avatar-1.jpg" alt="user-image" height="67"  class="rounded-circle shadow-sm">
+=======
+            <img src="{{asset('assets/images/users/avatar-1.jpg')}}" alt="user-image" height="67"  class="rounded-circle shadow-sm">
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
 
             <span class="leftbar-user-name">{{ auth()->user()->name }} </span>
             <h3 style="color:#A6C439"> {{ \Carbon\Carbon::now()->format('H:i:s')}}</h3>

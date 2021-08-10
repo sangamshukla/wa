@@ -8,8 +8,13 @@
     <form
         class="d-none d-sm-inline-block form-inline mr-auto ml-lg-5 ml-md-3 my-2 my-md-0 mw-100 navbar-search">
         <div class="d-flex">
+<<<<<<< HEAD
 
             <div class="input-group">
+=======
+            
+            <div class="input-group" style="width:100%">
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                 <select class="form-control border-0">
                     <optgroup>
                       <option value="volvo">all</option>
@@ -61,7 +66,11 @@
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Welcome {{ auth()->user()->name }}</span>
                 <!--<img class="img-profile rounded-circle"-->
+<<<<<<< HEAD
                 <!--    src="/wa/dashboard/img/undraw_profile.svg">-->
+=======
+                <!--    src="/testing/public/wa/dashboard/img/undraw_profile.svg">-->
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

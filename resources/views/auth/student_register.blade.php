@@ -34,6 +34,7 @@
                         name="name"
                         class="form-control"
                         required
+                        value="{{ old('name') }}"
                         autocomplete="off"
                       />
                       <label

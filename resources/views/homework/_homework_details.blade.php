@@ -3,7 +3,11 @@
 @section('content')
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<<<<<<< HEAD
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
+=======
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
 	<link rel="stylesheet" href="{{asset('wa/dashboard/css/styleforpdf.css')}}">
 	<link rel="stylesheet" href="{{asset('wa/dashboard/css/pdfannotate.css')}}">
 <div class="container-fluid">
@@ -16,7 +20,11 @@
       <div class="col-xl-12 col-lg-12">
         <div class=" mt-5">
           <a class="direction_nav" href="#">
+<<<<<<< HEAD
             <sapn class="arrow-right"><i class="fa fa-angle-left" aria-hidden="true"></i></sapn><span>{{$submittedHomework->homework->session->batch->classSettings->name}}</span>
+=======
+            <sapn class="arrow-right"><i class="fa fa-angle-left" aria-hidden="true"></i></sapn><span>Math Practice</span>
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
           </a>
           <section>
             <div class="">
@@ -24,8 +32,13 @@
                 <div class="col-lg-12">
                   <div class="card mt-5 yellow_border">
                     <div class="session_homework">
+<<<<<<< HEAD
                       <p>{{$submittedHomework->homework->session->name}}</p>
                       <span>{{$submittedHomework->homework->session->batch->teacher->name}}</span>
+=======
+                      <p>Session 1 (Homework)</p>
+                      <span>Andrew Semon</span>
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                     </div>
                     <div class="card-body">
                       <div class="row">
@@ -37,11 +50,19 @@
                                 --swiper-pagination-color: #fff;
                               " class="swiper-container mySwiper2 swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events">
                               <div class="swiper-wrapper wide" id="swiper-wrapper-3a6d7925d786a9ae" aria-live="polite" style="transform: translate3d(0px, 0px, 0px);">
+<<<<<<< HEAD
                                 <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 4" style="width: 844px; margin-right: 30px;">
                                   {{-- <img src="{{asset('wa/teacherdashboard/img/math-aa.png')}}" class=""> --}}
                                     <embed src="{{ url("uploads/".$assignedHomework->assigned_content) }}#toolbar=0"  width="600" height="400" />
                                     {{-- alt : <a href="pdf_file_name.pdf">PDF TITLE</a> --}}
                                  </object>
+=======
+                                <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 4" >
+                                  {{-- <img src="{{asset('wa/teacherdashboard/img/math-aa.png')}}" class=""> --}}
+                                  {{-- <object data="{{ url('uploads/'.$assignedHomework->assigned_content) }}#toolbar=0" type="application/pdf" width="500" height="600"></object> --}}
+                                    <embed src="{{ url("uploads/".$assignedHomework->assigned_content) }}#toolbar=0" width="500" height="400" />
+                                    {{-- alt : <a href="pdf_file_name.pdf">PDF TITLE</a> --}}
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                                 </div>
                                 {{-- <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 4" style="width: 844px; margin-right: 30px;">
                                   <img src="{{asset('wa/teacherdashboard/img/math-aa.png')}}" class="">
@@ -57,6 +78,7 @@
                           </div>
                           <div thumbsslider="" class="swiper-container mySwiper swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events swiper-container-free-mode swiper-container-thumbs">
                             <div class="swiper-wrapper" id="swiper-wrapper-92d9f35765923b45" aria-live="polite" style="transform: translate3d(0px, 0px, 0px);">
+<<<<<<< HEAD
                               
                               @if($multiple)
                               
@@ -65,12 +87,26 @@
                                 <img src="{{ url("storage/homeworks".$assignedHomework->id."/".$hwcontent->image_path) }}#toolbar=0" class="">
                                 </div>
                               
+=======
+
+                              @if($multiple)
+
+                              @foreach($homeworkContent as $hwcontent)
+                              <div class="swiper-slide swiper-slide-visible swiper-slide-next" role="group" aria-label="{{ $loop->iteration }} / {{ $loop->count }}" style="width: 204.5px; margin-right: 10px;">
+                                <img src="{{ url("storage/homeworks/".$hwcontent->image_path) }}#toolbar=0" class="">
+                                </div>
+
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                               @endforeach
                               @else
                               <div class="swiper-slide swiper-slide-visible swiper-slide-active swiper-slide-thumb-active" role="group" aria-label="1 / 4" style="width: 204.5px; margin-right: 10px;">
                                 <img src="{{asset('wa/teacherdashboard/img/math-aa.png')}}" class="">
                               </div>
+<<<<<<< HEAD
                               
+=======
+
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                               @endif
                               {{-- <div class="swiper-slide swiper-slide-visible swiper-slide-next" role="group" aria-label="2 / 4" style="width: 204.5px; margin-right: 10px;">
                                 <img src="{{asset('wa/teacherdashboard/img/math-aa.png')}}" class="">
@@ -88,8 +124,22 @@
                           <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
                         </div>
                         <div class="col-lg-6">
+<<<<<<< HEAD
                           <div class="border-section second-border-section">
                               <div class="toolbar">
+=======
+                          {{-- <div class="pagination_div"> --}}
+                            {{-- <p class="img_name">{{ $student->image_path }}</p> --}}
+                            {{-- <div class="pagination_block"> --}}
+                              {{-- <a href="#" class="previous round">‹</a>
+                              <p><span>1<span><span>/</span><span>1</span></span></span></p>
+                              <a href="#" class="next round">›</a> --}}
+
+                            {{-- </div> --}}
+                          {{-- </div> --}}
+                          <div class="border-section second-border-section">
+                                <div class="toolbar">
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                                     <div class="tool">
                                         <label for="">Brush size</label>
                                         <input type="number" class="form-control text-right" value="1" id="brush-size" max="50">
@@ -147,6 +197,7 @@
                                         <button class="btn btn-light btn-sm" onclick="savePDF()"><i class="fa fa-save"></i> Save</button>
                                     </div>
                                 </div>
+<<<<<<< HEAD
                             <div> 
                              <div id="pdf-container">
                             {{--@if($multiple)
@@ -159,6 +210,19 @@
                                 {{-- alt : <a href="pdf_file_name.pdf">PDF TITLE</a> --}}
                                 {{-- <img src="{{asset('wa/teacherdashboard/img/math-aa.png')}}" class="img-subject"> --}}
                             </div>
+=======
+
+                                <div id="pdf-container">
+                                    @if($multiple)
+                                        {{-- <embed src="{{ url("storage/homeworks/".$homeworkContent->first()->image_path) }}#toolbar=0" type="application/pdf" width="600" height="400" /> --}}
+                                            {{-- <object data="{{ url("storage/homeworks3/".$homeworkContent->image_path) }} " type="application/pdf" width="100%" height="400" ></object> --}}
+                                    @else
+                                        {{-- <embed src="{{ url("storage/homeworks3/".$homeworkContent->image_path) }}#toolbar=0" type="application/pdf"  width="600" height="400" /> --}}
+                                            {{-- <object data="{{ url("storage/homeworks3/".$homeworkContent->image_path) }}" type="application/pdf" width="100%" height="400"></object> --}}
+                                    @endif
+                                </div>
+
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                           </div>
                         </div>
                       </div>
@@ -198,7 +262,31 @@
     </div>
     <!-- Content Row -->
   </div>
+<<<<<<< HEAD
   
+=======
+
+
+
+
+
+<div class="modal fade" id="dataModal" tabindex="-1" role="dialog" aria-labelledby="dataModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="dataModalLabel">PDF annotation data</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<pre class="prettyprint lang-json linenums">
+				</pre>
+			</div>
+		</div>
+	</div>
+</div>
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
   @endsection
   {{-- js for homework details --}}
   @section('scripts')
@@ -245,7 +333,11 @@
         freeMode: true,
         watchSlidesVisibility: true,
         watchSlidesProgress: true,
+<<<<<<< HEAD
      
+=======
+
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
       });
       var swiper2 = new Swiper(".mySwiper2", {
         spaceBetween: 10,
@@ -257,11 +349,16 @@
           swiper: swiper,
         },
         breakpoints: {
+<<<<<<< HEAD
      
+=======
+
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
      320: { /* when window >= 767px - webflow tablet */
        slidesPerView: 1,
        spaceBetween: 30,
        slidesOffsetBefore: 0,
+<<<<<<< HEAD
       
      },
      
@@ -272,6 +369,19 @@
     {{-- end homework details --}}
     
        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+=======
+
+     },
+
+   },
+      });
+
+    </script>
+
+
+    {{-- end homework details --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
@@ -284,7 +394,11 @@
 <script src="{{asset('wa/dashboard/js/pdfannotate.js')}}"></script>
 <script src="{{asset('wa/dashboard/js/script.js')}}"></script>
     <script>
+<<<<<<< HEAD
         var pdf = new PDFAnnotate("pdf-container", "{{ url('storage/homeworks'.$assignedHomework->id."/".$homeworkContent->image_path) }}", {
+=======
+        var pdf = new PDFAnnotate("pdf-container", "{{ url("storage/homeworks3/".$homeworkContent->image_path)}}", {
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
   onPageUpdated(page, oldData, newData) {
     console.log(page, oldData, newData);
   },
@@ -310,4 +424,7 @@
 
 </script>
     @endsection
+<<<<<<< HEAD
   
+=======
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9

@@ -4,12 +4,13 @@ $(document).ready(function () {
     $("#showLoader").hide();
     // $(".js-example-basic-multiple").select2();
     $(".js-example-basic-single").select2();
+    $(".js-example-basic-multiple").select2();
 });
 $("#generate-session").on("click", function () {
     $("#generate-session").hide();
     $("#append-row").show();
     $(".generate-session").show();
-    var value_session = $("#row-list").find($("select")).length + 1;
+    var value_session = $("#append-row").find($("select")).length + 1;
     var index_val = value_session;
     var value_session = "Session-" + value_session;
 
@@ -289,7 +290,6 @@ $("#select_year").on("change", function () {
 });
 $("#class_name").on("change", function () {
     var batch_start_date_time = $("#class_date_time").val();
-
     batch_start_date_time = batch_start_date_time.replaceAll("/", "-");
     var teacher_id = $("#class_name").val();
     var duration = $("#duration_per_sessions_id").val();

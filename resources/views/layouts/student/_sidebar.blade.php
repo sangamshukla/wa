@@ -46,7 +46,11 @@
 
     <!-- Nav Item - Tables -->
     <li class="nav-item">
+<<<<<<< HEAD
         <a class="nav-link" href="{{ url('fullcalender')}}">
+=======
+        <a class="nav-link" href="tables.html">
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
             <div class="nav_images"><img src="/wa/dashboard/img/calender.svg"> </div>
             <br>
             <span>Calender</span></a>

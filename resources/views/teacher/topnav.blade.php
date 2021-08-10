@@ -10,7 +10,11 @@
               <i class="fa fa-bars"></i>
             </button>
             <!-- Topbar Search -->
+<<<<<<< HEAD
             <div class="dashboard_title"><a href="{{route('teacher-dashboard')}}" style="text-decoration:none; color:black;">My Dashboard</a></div>
+=======
+            <div class="dashboard_title">My Dashboard</div>
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
             <form class="d-none d-sm-inline-block form-inline navbar-search">
               <div class="d-flex">
                 <div class="input-group">
@@ -86,6 +90,7 @@
                   aria-expanded="false"
                 >
                   <div class="text-center">
+<<<<<<< HEAD
 
                       @if (count($images ?? [])>0)
                       @foreach ($images ?? '' as $image)
@@ -109,6 +114,17 @@
                        /> --}}
                   </div>
                   <div class="mr-2 d-none d-lg-inline text-gray-600 small">
+=======
+                      @forelse ($images ?? []  as $image)
+                        <img class="img-profile rounded-circle" src="{{asset('storage/images/'.$image->teacher_profile_photo)}}"/>
+                      @empty
+                          <img class="img-profile rounded-circle" src="{{asset('wa/teacherdashboard/img/undraw_profile.svg')}}"/>
+                      @endforelse
+
+                  </div>
+                  <div class="mr-2 d-none d-lg-inline text-gray-600 small">
+
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                     {{auth()->user()->name}}
                   </div>
                 </a>
@@ -131,7 +147,11 @@
                   </a>
                   <div class="dropdown-divider"></div>
                   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+<<<<<<< HEAD
                   @csrf
+=======
+                    @csrf
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                   </form>
                   <a
                     class="dropdown-item"
@@ -146,6 +166,13 @@
                   </a>
                 </div>
               </li>
+<<<<<<< HEAD
             </ul>
           </nav>
+=======
+
+            </ul>
+          </nav>
+
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
           <!-- End of Topbar -->

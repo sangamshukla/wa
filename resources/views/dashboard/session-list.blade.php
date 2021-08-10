@@ -38,6 +38,7 @@
                                     @endif
                                         </div>
                                     @foreach($today as $batch)
+<<<<<<< HEAD
                                     <div class="card-header" id="headingOne">
                                         <h5 class="mb-0">
                                             <div class="d-flex justify-content-around">
@@ -68,6 +69,36 @@
                                                     <p class="subject_card">Join Now</p>
                                                     {{-- <div id="app"></div> --}}
 
+=======
+
+                                    <div class="card-header" id="headingOne">
+                                        <h5 class="mb-0">
+                                            <div class="d-flex justify-content-around">
+                                                <div class="card_img" style="width:38%;">
+                                                    {{-- <img src="{{ asset('wa/dashboard/sessionlist/img/image 31.png') }}"> --}}
+                                                    @if($batch->subject->name == 'English')
+                                                    <img style="width:100%;" src="{{ asset('frontend/assets/English/English.jpg') }}" alt="">
+                                                    @endif
+                                                    @if($batch->subject->name == 'Maths')
+                                                    <img style="width:100%;" src="{{ asset('frontend/assets/Maths/Math.jpg') }}" alt="">
+                                                    @endif
+                                                    @if($batch->subject->name == 'Physics')
+                                                    <img style="width:100%;" src="{{ asset('frontend/assets/Physics/Physics.jpg') }}" alt="">
+                                                    @endif
+                                                    @if($batch->subject->name == 'Chemistry')
+                                                    <img style="width:100%;" src="{{ asset('frontend/assets/card-cover.png') }}" alt="">
+                                                    @endif
+                                                </div>
+                                                <div>
+                                                    <p class="subject_card">Subject</p>
+                                                    <p class="card_subject_title1">{{$batch->subject->name}}</p>
+                                                </div>
+                                                <div class="border-left first_left_border"></div>
+                                                <div>
+                                                    <p class="subject_card">Join Now</p>
+                                                    {{-- <div id="app"></div> --}}
+
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                                                     <p class="card_subject_title2">
                                                         <a style="text-decoration:none; font-size:15px; color: #0EA47E;" href="{{ url('zoom', $batch->id)  }}">Join now</a></p>
                                                         <script>
@@ -115,7 +146,11 @@
                                                 @foreach ($batch->batchSession as $session)
                                                 @if (\Carbon\Carbon::parse($session->start_date_time)->format('d')==\Carbon\Carbon::now()->format('d'))
 
+<<<<<<< HEAD
                                                 {{ $session->start_date_time->format('d M, Y h:i A') }}
+=======
+                                                {{ $session->start_date_time->format('d M, Y H:i A') }}
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                                                 @endif
                                                 @endforeach
                                             </p>
@@ -139,6 +174,7 @@
 
                                                     <td>Topics</td>
                                                     <td>
+<<<<<<< HEAD
                                                         @if(isset($session->topics_name->topic->name))
                                                         
                                                         {{$session->topics_name->topic->name}}
@@ -149,15 +185,29 @@
 
                                                 </tr>
                                                {{-- <tr>
+=======
+                                                        {{$session->topics->topic->name}}
+                                                    </td>
+
+                                                </tr>
+
+                                                <tr>
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                                                     <td>Due Amount</td>
                                                     <td>
                                                         @php
                                                         $items = $batch->items->pluck('order_payment_id');
                                                         $payments = App\Models\OrderPayment::whereIn('id', $items)->where('student_id', auth()->id())->first();
                                                         @endphp
+<<<<<<< HEAD
                                                         &pound; {{ $payments->order_amount - $payments->paid_amount }}
                                                     </td>
                                                 </tr>--}}
+=======
+                                                        &euro; {{ $payments->order_amount - $payments->paid_amount }}
+                                                    </td>
+                                                </tr>
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                                                 <tr>
                                                     <td colspan="2"><a href="{{route('home-work', ['id'=>$session->id])}}">View Homework</a></td>
                                                 </tr>
@@ -176,7 +226,11 @@
                                     <div class="card-header" id="headingTwo">
                                         @if(count($tomorrow)== 0)
                                         <h6 style = "text-align:center; color:green;">No sessions for tomorrow <h6>
+<<<<<<< HEAD
                                     @endif
+=======
+                                      @endif
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                                         @foreach($tomorrow as $batch)
                                         <div class="card-header" id="headingOne">
                                             <h5 class="mb-0">
@@ -194,9 +248,13 @@
                                                         @if($batch->subject->name == 'Chemistry')
                                                         <img style="width:100%;" src="{{ asset('frontend/assets/card-cover.png') }}" alt="">
                                                         @endif
+<<<<<<< HEAD
                                                           @if($batch->subject->name == 'Essay')
                                                     <img style="width:100%;" src="{{ asset('frontend/assets/Essay/Essay.jpg') }}" alt="">
                                                     @endif
+=======
+
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                                                     </div>
                                                     <div>
                                                         <p class="subject_card">Subject</p>
@@ -241,6 +299,7 @@
                                                             {{ $session->name }} - {{ $t->topic->name }}
                                                         </td>
                                                         @endforeach --}}
+<<<<<<< HEAD
                                                         <td>{{$session->topics_name->topic->name}}</td>
                                                     </tr>
                                                     {{--<tr>
@@ -253,6 +312,13 @@
                                                         &euro; {{ $payments->order_amount - $payments->paid_amount }}
                                                     </td>
                                                 </tr>--}}
+=======
+                                                        <td>{{$session->topics->topic->name}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2"><a href="{{route('home-work', ['id'=>$session->id])}}">View Homework</a></td>
+                                                    </tr>
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
 
                                                     @endif
                                                     @endforeach
@@ -287,6 +353,7 @@
                                                         @if($batch->subject->name == 'Chemistry')
                                                         <img style="width:100%;" src="{{ asset('frontend/assets/card-cover.png') }}" alt="">
                                                         @endif
+<<<<<<< HEAD
                                                             @if($batch->subject->name == 'Essay')
                                                     <img style="width:100%;" src="{{ asset('frontend/assets/Essay/Essay.jpg') }}" alt="">
                                                     @endif
@@ -303,15 +370,37 @@
                                                             <p class="card_subject_title2">
                                                         <a style="text-decoration:none; font-size:15px; color: #0EA47E;" href="{{ url('zoom', $batch->id)  }}">Join now</a></p>
                                                     </div>
+=======
+
+                                                    </div>
+                                                    <div>
+                                                        <p class="subject_card">Subject</p>
+                                                        <p style="font-size:15px;" class="card_subject_title1">{{$batch->subject->name}}</p>
+                                                    </div>
+                                                    <div class="border-left first_left_border"></div>
+                                                    <div>
+                                                        <p class="subject_card">Join Now</p>
+                                                            {{-- <a style="text-decoration:none; font-size:15px; color: #0EA47E;" class="card_subject_title1" href="{{ url('zoom', $batch->id)  }}">Join now</a> --}}
+                                                            <p class="card_subject_title2">
+                                                        <a style="text-decoration:none; font-size:15px; color: #0EA47E;" href="{{ url('zoom', $batch->id)  }}">Join now</a></p>
+                                                    </div>
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                                                     <div class="border-left second_left_border"></div>
 
                                                     <button class="btn btn-link card_cta" data-toggle="collapse" data-target="#collapse{{$session->id}}" aria-expanded="true" aria-controls="collapseThree">
                                                         <img src="{{ asset('wa/dashboard/sessionlist/img/chevron.svg') }}" alt="arrow" title="arrow">
                                                     </button>
+<<<<<<< HEAD
                                                 </div>
                                                 <div class="mt-3 ml-4">
                                                     <p class="date_text">{{ $session->start_date_time->format('d M, h:i A') }}</p>
                                                 </div>
+=======
+                                                </div>
+                                                <div class="mt-3 ml-4">
+                                                    <p class="date_text">{{ $session->start_date_time->format('d M, Y H:i A') }}</p>
+                                                </div>
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                                             </h5>
                                         </div>
 
@@ -334,6 +423,7 @@
                                                             {{ $session->name }} - {{ $t->topic->name }}
                                                         </td>
                                                         @endforeach --}}
+<<<<<<< HEAD
                                                         <td>{{$session->name}}-
                                                         @if(isset($session->topics_name->topic->name))
                                                         {{$session->topics_name->topic->name}}
@@ -342,10 +432,14 @@
                                                             Error in Topic
                                                         @endif
                                                         </td>
+=======
+                                                        <td>{{$session->name}}-{{$session->topics->topic->name}}</td>
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                                                     </tr>
                                                     <tr>
                                                         <td colspan="2"><a href="{{route('home-work', ['id'=>$session->id])}}">View Homework</a></td>
                                                     </tr>
+<<<<<<< HEAD
                                                    {{-- <tr>
                                                     <td>Due Amount</td>
                                                     <td>
@@ -356,6 +450,8 @@
                                                         &euro; {{ $payments->order_amount - $payments->paid_amount }}
                                                     </td>
                                                 </tr>--}}
+=======
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                                                 </table>
                                             </div>
                                         </div>
@@ -383,7 +479,11 @@
                         @foreach($twos as $batch)
                         <p class="mr-2 list_announce">
                             <span>{{ $batch->classSettings->name }}</span>
+<<<<<<< HEAD
                             <span><a style="text-decoration:none;color:#fff;" href="{{ route('student-details',['id' => $batch->id])}}">go</span></a>
+=======
+                            <span><a style="text-decoration:none;color:#fff;" href="{{ url('/packages-details')}}">go</span></a>
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                         </p>
                         @endforeach
                     </div>
@@ -401,9 +501,13 @@
                             <div class="card text-center mb-2 subject1">
                                 <div class="card-body p-0 cource_done_card">
                                     <p class="mb-0 mt-2">Purchased Classes</p>
+<<<<<<< HEAD
                                     <p><strong>
                                         {{$purchased_sessions}}
                                     </strong></p>
+=======
+                                    <p><strong>0</strong></p>
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                                 </div>
                             </div>
                         </div>
@@ -419,9 +523,13 @@
                             <div class="card text-center mb-2 subject3">
                                 <div class="card-body p-0 cource_done_card">
                                     <p class="mb-0 mt-2">Assigned Homework</p>
+<<<<<<< HEAD
                                     <p><strong>
                                         {{$assigned_homework}}
                                     </strong></p>
+=======
+                                    <p><strong>0</strong></p>
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                                 </div>
                             </div>
                         </div>
@@ -472,6 +580,7 @@
         <div class="col-xl-4 col-lg-4 mb-4 ">
             <div class="profile_details card py-4 px-4 text-center thirdbox">
                 <div class="profile">
+<<<<<<< HEAD
                     <div class="profile_icon"><img src="{{asset('wa/dashboard/img/undraw_profile.svg')}}"></div>
                     <p class="name m-2">{{ Str::ucfirst(auth()->user()->name) }}</p>
                     <p class="class_section"><span>{{ $batch->classmaster->name }}</span></p>
@@ -481,6 +590,14 @@
                     <div class="profile">
                         <p>Due Amount : &pound;{{$due_amount}}</p>
                     </div>
+=======
+                    <div class="profile_icon"><img src="{{asset('wa/dashboard/sessionlist/img/user.png')}}"></div>
+                    <p class="name mb-1">{{ auth()->user()->name }}</p>
+                    <p class="class_section"><span>Year:</span><span></span></p>                
+                   
+                                                    
+                    <a href="#" class="profile"><span>View Profile</span></a>
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                 </div>
             </div>
             <!-- Announcements -->
@@ -512,9 +629,12 @@
                                         @if($batch->subject->name == 'Chemistry')
                                         <img src="{{ asset('frontend/assets/card-cover.png') }}" alt="">
                                         @endif
+<<<<<<< HEAD
                                           @if($batch->subject->name == 'Essay')
                                                     <img style="width:100%;" src="{{ asset('frontend/assets/Essay/Essay.jpg') }}" alt="">
                                                     @endif
+=======
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
 
                                     </div>
                                     </div>
@@ -564,7 +684,11 @@
                                         {{ $session->name }} - {{ $t->topic->name }}
                                     </td>
                                  @endforeach --}}
+<<<<<<< HEAD
                                  <td>{{$session->topics_name->topic->name}}</td>
+=======
+                                 {{-- <td>{{$session->topics->topic->name}}</td> --}}
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
 
                             </tr>
                                 <!--  <td>-->
@@ -597,6 +721,7 @@
                         <div class="chat_block">
                             <p><strong>Subject</strong></p>
                             <p>Lorem ipsum dolor sit amet, consectetu...hhfhfhfhfhhfhfhhfhfhhnnnnnnnnnnnnn</p>
+<<<<<<< HEAD
                         </div>
                     </div>
                     <div class="text-right"><a class="send_msg" href="">Send Message</a></div>
@@ -620,6 +745,31 @@
                         </div>
                     </div>
                     <div class="text-right"><a class="send_msg" href="">Send Message</a></div>
+=======
+                        </div>
+                    </div>
+                    <div class="text-right"><a class="send_msg" href="">Send Message</a></div>
+                </div>
+                <div class="card p-1 chat_card chat_card_background3">
+                    <div class="card-body p-2 d-flex">
+                        <div class="profile_icon_card pr-3"><img src="{{ asset('wa/dashboard/sessionlist/img/user.png') }}"></div>
+                        <div class="chat_block">
+                            <p><strong>Subject</strong></p>
+                            <p>Lorem ipsum dolor sit amet, consectetu...hhfhfhfhfhhfhfhhfhfhhnnnnnnnnnnnnn</p>
+                        </div>
+                    </div>
+                    <div class="text-right"><a class="send_msg" href="">Send Message</a></div>
+                </div>
+                <div class="card p-1 chat_card chat_card_background4">
+                    <div class="card-body p-2 d-flex">
+                        <div class="profile_icon_card pr-3"><img src="{{ asset('wa/dashboard/sessionlist/img/user.png') }}"></div>
+                        <div class="chat_block">
+                            <p><strong>Subject</strong></p>
+                            <p>Lorem ipsum dolor sit amet, consectetu...hhfhfhfhfhhfhfhhfhfhhnnnnnnnnnnnnn</p>
+                        </div>
+                    </div>
+                    <div class="text-right"><a class="send_msg" href="">Send Message</a></div>
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                 </div> --}}
 
                 {{-- forretest --}}
@@ -643,7 +793,11 @@
                 <p><span>£ </span><span>{{ $batch->batch_price_per_session}}</span></p>
 
                 <p><span>Start date</span> <span>:{{ $batch->batch_start_date->format('d M, Y H:i A') }}</span></p>
+<<<<<<< HEAD
                 <p><a href="{{ route('student-details',['id' => $batch->id])}}">View </a></p>
+=======
+                <p><a href="">View </a></p>
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
             </div>
         </div>
         @endforeach

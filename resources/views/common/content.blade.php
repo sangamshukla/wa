@@ -34,6 +34,7 @@
                     <div class="img-container">
                         <svg class="person-study" width="709" height="497" viewbox="0 0 709 497" fill="none"
                             xmlns="http://www.w3.org/2000/svg"
+                
                             xmlns:xlink="http://www.w3.org/1999/xlink">
                             <rect x="72" y="22" width="564" height="451.2" fill="url(#pattern0)"/>
                             <path class="bluelarge"
@@ -153,6 +154,9 @@
                 <div class="row mt-4">
                     @php $i=1 @endphp
                     @foreach($batches as $batch)
+                    @php
+                        // dd($batch);
+                    @endphp
                      <div style="cursor:pointer;" onClick="(function(){
                         window.location.href = '/student-details/{{ $batch->id }}';
                     })();return false;" class="col-md-3 filter_box filter {{ $batch->classmaster->name == 'Year 1' ? 'class9' : ($batch->classmaster->name == 'Year 2' ? 'class10' : 'class11') }}">
@@ -177,7 +181,11 @@
                             </div>
                             <div class="card_block_info pl-3 pr-3">
                                 <div class="card_info">
+<<<<<<< HEAD
                                     <p>{{ \Illuminate\Support\Str::limit($batch->classSettings->name ,'18') }}</p>
+=======
+                                    {{-- <p>{{ $batch->classSettings->name }}</p> --}}
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                                     <p>{{ $batch->subject->name }}</p>
                                 </div>
                                 <div class="card_details">

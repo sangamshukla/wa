@@ -1,7 +1,11 @@
 @extends('layouts.student')
 @section('style')
 <link href="/wa/dashboard/css/student-admin.css" rel="stylesheet">
+<<<<<<< HEAD
 <!--<link href="/wa/dashboard/css/session.css" rel="stylesheet">-->
+=======
+{{-- <link href="/wa/dashboard/css/session.css" rel="stylesheet"> --}}
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.css" />
 
@@ -10,34 +14,62 @@
 white-space: pre-wrap;
 overflow: hidden;
 color: white;
+<<<<<<< HEAD
 }
 </style>
 @endsection
 @section('content')
+=======
+/* background-color:white; */
+}
+</style>
+@endsection
+@section('content')    
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
  {{-- <div class="container"> --}}
  <div>
     <div id='calendar'></div>
 </div>
+<<<<<<< HEAD
 
 <script>
 $(document).ready(function () {
 
 var SITEURL = "{{ url('/') }}";
 
+=======
+    
+<script>
+$(document).ready(function () {
+   
+var SITEURL = "{{ url('/') }}";
+  
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
 $.ajaxSetup({
     headers: {
     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
 });
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
 var calendar = $('#calendar').fullCalendar({
                     editable: false,
                     // for month week
                     header: {
                         left: 'prev,next today',
                         center: 'title',
+<<<<<<< HEAD
                         right: 'month,agendaWeek,agendaDay'
                     },
+=======
+                        // right: 'month,agendaWeek,agendaDay'
+                        right: 'agendaDay,agendaWeek,month'
+                    },
+                    eventLimit: true,
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                     // end here
                     events: SITEURL + "/fullcalender",
                     displayEventTime: false,
@@ -68,7 +100,11 @@ var calendar = $('#calendar').fullCalendar({
                                 type: "POST",
                                 success: function (data) {
                                     displayMessage("Event Created Successfully");
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                                     calendar.fullCalendar('renderEvent',
                                         {
                                             id: data.id,
@@ -77,7 +113,11 @@ var calendar = $('#calendar').fullCalendar({
                                             end: end,
                                             allDay: allDay
                                         },true);
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                                     calendar.fullCalendar('unselect');
                                 }
                             });
@@ -86,7 +126,11 @@ var calendar = $('#calendar').fullCalendar({
                     eventDrop: function (event, delta) {
                         var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD");
                         var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD");
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                         $.ajax({
                             url: SITEURL + '/fullcalenderAjax',
                             data: {
@@ -119,6 +163,7 @@ var calendar = $('#calendar').fullCalendar({
                             });
                         }
                     }
+<<<<<<< HEAD
 
                 });
 
@@ -131,6 +176,20 @@ function displayMessage(message) {
 </script>
  </body>
 </html>
+=======
+ 
+                });
+ 
+});
+ 
+function displayMessage(message) {
+    toastr.success(message, 'Event');
+} 
+  
+</script>
+ </body>
+</html> 
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
 @endsection
 @section('scripts')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
@@ -138,4 +197,8 @@ function displayMessage(message) {
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+<<<<<<< HEAD
 @endsection
+=======
+@endsection
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9

@@ -13,11 +13,11 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     const ADMIN = 'admin';
-    
+
     const TEACHER = 'teacher';
 
     const OPERATION = 'operation';
-    
+
     const STUDENT = 'student';
 
     /**
@@ -65,5 +65,9 @@ class User extends Authenticatable
     public function orders()
     {
         return $this->hasMany(OrderPayment::class, 'student_id');
+
+    public function batches()
+    {
+        return $this->hasMany(Batch::class, 'created_by');
     }
 }

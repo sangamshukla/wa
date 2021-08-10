@@ -1,11 +1,7 @@
 @extends('layouts.main')
-
 @section('css')
     <link rel="stylesheet" href="{{ asset('wa/welcome.css') }}">
-
 @endsection
-
-
 @section('content')
   <!-- card-tab section  -->
   <section class="card_package">
@@ -37,10 +33,17 @@
                                     <img  style="width:100%; border-radius:10px;" src="{{ asset('frontend/assets/Maths/Math.jpg') }}" alt="">
                                 @endif
                                 @if($batch->subject->name == 'Physics')
+<<<<<<< HEAD
                                     <img  style="width:100%; border-radius:10px;" src="{{ asset('frontend/assets/Physics/Physics.jpg') }}" alt="">
                                 @endif
                                 @if($batch->subject->name == 'Chemistry')
                                     <img style="width:100%;border-radius:10px;" src="{{ asset('frontend/assets/card-cover.png') }}" alt="">
+=======
+                                    <img  style="width:100% border-radius:10px;;" src="{{ asset('frontend/assets/Physics/Physics.jpg') }}" alt="">
+                                @endif
+                                @if($batch->subject->name == 'Chemistry')
+                                    <img style="width:100%; border-radius:10px;" src="{{ asset('frontend/assets/card-cover.png') }}" alt="">
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                                 @endif
                                   @if($batch->subject->name == 'Essay')
                                 <img  style="width:100%;border-radius:10px;" src="{{ asset('frontend/assets/Essay/Essay.jpg') }}" alt="">
@@ -76,7 +79,7 @@
                                     </div>
                                 </div>
                             <div class="view_detail_block pb-3">
-                                <a href="{{ url('/student-details', $batch->id)}}" class="view_detail">
+                                <a href="{{ url     ('/student-details', $batch->id)}}" class="view_detail">
                                     View details
                                 </a>
                                 {{-- @php $i = 1 @endphp --}}
@@ -95,7 +98,10 @@
                 </table>
                 <div class="row">
                     <div class="col-md-12">
+<<<<<<< HEAD
                         <!--#1d6771;-->
+=======
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                         <div style="margin-top: 2rem; float:right;  border-color: coral;">{{ $batches->links() }}</div>
                     </div>
                 </div>
@@ -112,7 +118,11 @@
 @section('js')
 
 <script>
+<<<<<<< HEAD
     document.FIX_HEADER_TOP = 150;
+=======
+    document.FIX_HEADER_TOP = 35;
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
 </script>
 
   <script src="{{ asset('wa/coustom.js') }}"></script>

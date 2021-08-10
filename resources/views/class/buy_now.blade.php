@@ -30,7 +30,11 @@
                   <div  class="card_cart_div">
                     <a href="{{ route('cart.remove', $relatedBatch->id) }}" class="close"></a>
                       <div style="cursor:pointer;" onClick="(function(){
+<<<<<<< HEAD
                         window.location.href = 'http://wallingtonacademy-env.eba-59ypexia.us-east-2.elasticbeanstalk.com/student-details/{{ $relatedBatch->id }}';
+=======
+                        window.location.href = '/student-details/{{ $relatedBatch->id }}';
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                         })();return false;" class="single-district card{{ $i }}">
                         {{-- @php $i =1 @endphp --}}
                           <div class="card_img mb-3">
@@ -108,7 +112,10 @@
                   <div class="cource_detail_section">
                     <div>Course cost</div>
                     <div>£ {{ $totalPrice ?? 0 }}</div>
+<<<<<<< HEAD
                     <!--<div>£ {{ $relatedBatches->sum('batch_price_per_session') }}</div>-->
+=======
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                   </div>
                   <div class="cource_detail_section">
                     <div>Tax </div>
@@ -122,8 +129,12 @@
                 <hr class="border_bottom" />
                 <div class="total_amount_block">
                   <div class="total">Total</div>
+<<<<<<< HEAD
                   <div>£ {{ $totalPrice ?? 0 }}</div>
                   <!--<div>£ {{$relatedBatches->sum('batch_price_per_session')}}</div>-->
+=======
+                  <div>£ {{ $totalPrice ?? 0}}</div>
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                 </div>
                 <div class="form-group term_pera mt-3">
                   <label class="container-checkbox">
@@ -200,9 +211,15 @@
                                   <div class="row">
                                     <div class="col-sm-12">
                                       <div class="modal_logo text-center">
+<<<<<<< HEAD
                                           <a href="http://wallingtonacademy-env.eba-59ypexia.us-east-2.elasticbeanstalk.com"><img alt="logo-img" title="logo-img" src="{{asset('wa/assets/img/logo.png')}}" width="120"></a>
 
                                           <!--<img alt="logo-img" title="logo-img" src="http://wallingtonacademy-env.eba-59ypexia.us-east-2.elasticbeanstalk.com/wa/assets/img/logo.png" width="120">-->
+=======
+                                          {{-- <img alt="logo-img" title="logo-img" src="{{asset('wa/assets/img/logo.png')}}" width="120"> --}}
+                                          <a href="/"><img alt="logo-img" title="logo-img" src="{{asset('wa/assets/img/logo.png')}}" width="120"></a>
+
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                                       </div>
                                         <div class="modal_cta_sections mt-5">
                                           <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">

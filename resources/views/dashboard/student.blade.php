@@ -10,6 +10,7 @@
 @endphp
 @if ($status=="yes")
     @include('dashboard.session-list')
+    {{-- @include('dashboard.newsession-list') --}}
 
 @else
     @include('dashboard.content')
@@ -21,6 +22,7 @@
 @section('style')
 <link href="{{asset('wa/dashboard/css/student-admin.css')}}" rel="stylesheet">
 <link href="{{asset('wa/dashboard/css/session.css')}}" rel="stylesheet">
+<<<<<<< HEAD
 @endsection
 @section('js')
 {{-- <script src="{{ asset('wa/dashboard/sessionlist/vendor/jquery/jquery.min.js')}}"></script> --}}
@@ -35,4 +37,6 @@
   <!-- Page level custom scripts -->
   {{-- <script src="{{ asset('wa/dashboard/sessionlist/js/demo/chart-area-demo.js')}}"></script> --}}
   {{-- <script src="{{ asset('wa/dashboard/sessionlist/js/demo/chart-pie-demo.js')}}"></script> --}}
+=======
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
 @endsection

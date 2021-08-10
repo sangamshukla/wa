@@ -29,7 +29,11 @@
     <div>
       <p class="session_no">Archive</p>
     </div>
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
   </div>
   <ul class="nav nav-tabs" role="tablist">
     <li class="nav-item">
@@ -43,7 +47,11 @@
 
   <!-- Tab panes -->
   <div class="tab-content">
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
     <div id="homework" class="tab-pane active">
       <br>
       <section class="">
@@ -52,8 +60,13 @@
             <div class="col-md-12">
               <div id="accordion">
                 {{-- for loop for all sessions in current batch --}}
+<<<<<<< HEAD
                 @foreach ($allSessions as $session )   
               
+=======
+                @foreach ($allSessions as $session )
+
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                 <div class="card mb-3">
                   <div class="card-header">
                     <a class="card-link text-dark" data-toggle="collapse" href="#collapse{{ $session->id }}"><span class="float-right"></span>
@@ -73,7 +86,11 @@
                       {{-- session -> students --}}
                       @foreach($session->students as $student)
                       <div class="accordian_card_inner_block row border">
+<<<<<<< HEAD
                        
+=======
+
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                         <div class="inner_nameblock col-3 text-center">{{ $student->name}} </div>
                         <div class="inner_check_block col-1 text-center"><img src="{{ $student->is_homework_assigned ?  asset('wa/teacherdashboard/img/active-check.svg') :  asset('wa/teacherdashboard/img/inactive-check.svg') }}"></div>
                         <div class="inner_reminder_block col-4 text-center">
@@ -96,12 +113,23 @@
                                 <div class="inner_reminder_block col-4 text-center">
                                 @if($student->homeworks)
                                 <a style="color: #33bd9a;" href="{{ asset("uploads/".$student->homeworks->assigned_content) }}">View Homework Details</a>
+<<<<<<< HEAD
                                 
                                 @else
                                 
                                 
                                 <span>Homework Not Assigned</span>
                               
+=======
+                                {{-- <object data="{{ asset("uploads/".$student->homeworks->assigned_content) }}" type="application/pdf" width="100%" height="600px">
+                                        </object> --}}
+
+                                @else
+
+
+                                <span>Homework Not Assigned</span>
+
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                                 @endif
                       </div>
                       </div>
@@ -128,7 +156,11 @@
       </p>
     </div>
   </div>
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
 </div>
 </div>
 {{--  --}}

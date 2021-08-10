@@ -9,7 +9,7 @@ class BatchSession extends Model
 {
     use HasFactory;
     protected $table = 'batch_session';
-    protected $guarded=[];
+    protected $guarded = [];
 
     protected $casts  = [
         'start_date_time' => 'datetime'
@@ -31,9 +31,19 @@ class BatchSession extends Model
     }
     public function topics()
     {
+        return  $this->belongsTo(BatchTopic::class, 'id');
+    }
+
+    public function singleTopic()
+    {
         return $this->hasOne(BatchTopic::class, 'batch_session_id');
     }
-    
+
+    public function batch()
+    {
+        return $this->belongsTo(Batch::class, 'batch_id');
+    }
+
     public function enrolled()
     {
         return $this->hasMany(OrderSessionMap::class, 'session_id');

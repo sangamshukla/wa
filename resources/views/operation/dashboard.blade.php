@@ -10,6 +10,10 @@
             </div>
 
             <div class="add_class"><a href="{{route('teacher.management')}}">Manage Classes</a></div>
+<<<<<<< HEAD
              <div class="add_class"><a href="{{route('class.store')}}">Add Classes</a></div> 
              
+=======
+            <div class="add_class"><a href="{{route('class.store')}}">Add Classes</a></div>          
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
 @endsection

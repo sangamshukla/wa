@@ -13,7 +13,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
+<<<<<<< HEAD
 class HomeControllerBackup extends Controller
+=======
+class HomeControllerbackup extends Controller
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
 {
     /**
      * Create a new controller instance.
@@ -95,7 +99,12 @@ class HomeControllerBackup extends Controller
         } elseif (auth()->user()->role === 'student') {
             $student = Student::where('user_id', auth()->user()->id)->first();
             // dd($student);
+<<<<<<< HEAD
             $students = Batch::where('class_master_id', $student->class_master_id)->latest()->take(8)->get();
+=======
+            $students = Batch::where('class_master_id', $student->class_master_id)
+                    ->whereDate('batch_end_date', '>=', Carbon::today())->latest()->take(8)->get();
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
             // buy now || orders table
             // if(Orders::where('user_id', auth()->user()->id)->exists()){
             // return redirect('/session-list');

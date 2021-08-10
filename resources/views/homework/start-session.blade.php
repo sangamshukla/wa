@@ -13,7 +13,11 @@
       <div class="col-xl-12 col-lg-12">
         <div class="container-fluid mt-5">
          
+<<<<<<< HEAD
           <a class="direction_nav" href="{{route('teacher-dashboard')}}" style="text-decoration:none;">
+=======
+          <a class="direction_nav" href="#">
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
             <span class="arrow-right"
               ><i class="fa fa-angle-left" aria-hidden="true"></i></span
             ><span>{{ $session->batch->classSettings->name }}</span>
@@ -51,6 +55,7 @@
                       >Assign Homework</a
                     >
                   </li>
+<<<<<<< HEAD
                    {{-- View Edit Home work --}}
                   <li class="nav-item">
                     <a
@@ -65,6 +70,8 @@
                       >View/Edit Homework</a
                     >
                   </li>
+=======
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                   {{-- Archieve Option --}}
                   <li class="nav-item">
                     <a
@@ -103,7 +110,10 @@
                 <div class="d-flex justify-content-between mt-4"></div>
                 @include('homework._start_session')
                 @include('homework._assign_homework')
+<<<<<<< HEAD
                 @include('homework._view_edit_homework')
+=======
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                 @include('homework._archieve')
                 @include('homework._feedback')
                 {{-- @include('homework._homework_details') --}}

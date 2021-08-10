@@ -20,4 +20,8 @@ class ResourceMaster extends Model
     {
         return $this->belongsTo(Topic::class, 'sub_topic_id');
     }
+    public function subTopic()
+    {
+        return $this->belongsTo(SubTopic::class);
+    }
 }

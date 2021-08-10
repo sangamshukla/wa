@@ -24,13 +24,21 @@ class HomeWorkStudentController extends Controller
         // dd($user_id);
         // $homeworks = AssignedHomeWork::where('session_id', $id)->get();
         $homeworks = DB::table('assigned_home_works AS ahw')
+<<<<<<< HEAD
             ->join('assigned_homework_students AS ahws', 'ahw.id', '=', 'ahws.assigned_home_work_id')
+=======
+            ->join('assigned_home_work_students AS ahws', 'ahw.id', '=', 'ahws.assigned_home_work_id')
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
             ->join('batch_session AS bs', 'ahw.session_id', '=', 'bs.id')
             ->where('ahw.session_id', $id)
             ->where('ahws.student_id', $user_id)
             ->get();
 
+<<<<<<< HEAD
         // dd($homeworks);
+=======
+
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
         return view('dashboard.homework', compact('sessionDetails', 'homeworks'));
     }
     public function sessionDetail()
@@ -67,6 +75,7 @@ class HomeWorkStudentController extends Controller
 
         $student_id = auth()->user()->id;
         $homeworks = AssignedHomeWorkStudent::where('assigned_home_work_id', $id)->where('student_id', $student_id)->get();
+<<<<<<< HEAD
         $have_submitted=$this->have_submitted($student_id, $id);
        if($have_submitted)
         {
@@ -78,6 +87,9 @@ class HomeWorkStudentController extends Controller
           $homework_content=NULL;
         }
         return view('dashboard.homework-answer', compact('homeworks','have_submitted', 'homework_content'));
+=======
+        return view('dashboard.homework-answer', compact('homeworks'));
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
         // $homeworks = AssignedHomeWork::where('id', $id)->get();
     }
     public function uploadHomework(Request $request)
@@ -121,6 +133,7 @@ class HomeWorkStudentController extends Controller
             ]);
         }
     }
+<<<<<<< HEAD
     public function have_submitted($student_id, $homework_id)
     {
         $exist=AssignedHomeWorkAnswer::where('assigned_home_work_id', $homework_id)->where('student_id', $student_id)->exists();
@@ -143,4 +156,6 @@ class HomeWorkStudentController extends Controller
         }
         return $pdfpath;
     }
+=======
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
 }

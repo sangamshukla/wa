@@ -4,7 +4,11 @@
         <!-- LOGO -->
         <a href="{{ url('/')}}" class="topnav-logo">
             <span class="topnav-logo-lg">
+<<<<<<< HEAD
                 <img src="/logo.png" alt="" height="64" class="ml-2">
+=======
+                <img src="{{asset('logo.png')}}" alt="" height="64" class="ml-2">
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
             </span>
             <span class="topnav-logo-sm">
             </span>
@@ -54,7 +58,7 @@
                         <!-- item-->
                         <a href="javascript:void(0);" class="dropdown-item notify-item">
                             <div class="notify-icon">
-                                <img src="assets/images/users/avatar-2.jpg" class="img-fluid rounded-circle" alt="" /> </div>
+                                <img src="{{asset('assets/images/users/avatar-2.jpg')}}" class="img-fluid rounded-circle" alt="" /> </div>
                             <p class="notify-details">Cristina Pride</p>
                             <p class="text-muted mb-0 user-msg">
                                 <small>Hi, How are you? What about our next meeting</small>
@@ -74,7 +78,7 @@
                         <!-- item-->
                         <a href="javascript:void(0);" class="dropdown-item notify-item">
                             <div class="notify-icon">
-                                <img src="assets/images/users/avatar-4.jpg" class="img-fluid rounded-circle" alt="" /> </div>
+                                <img src="{{asset('assets/images/users/avatar-1.jpg')}}" class="img-fluid rounded-circle" alt="" /> </div>
                             <p class="notify-details">Karen Robinson</p>
                             <p class="text-muted mb-0 user-msg">
                                 <small>Wow ! this admin looks good and awesome design</small>
@@ -100,6 +104,7 @@
 
                 </div>
             </li>
+<<<<<<< HEAD
 {{--
             <li class="dropdown notification-list d-none d-sm-inline-block">
                 <a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
@@ -160,12 +165,19 @@
                     <i class="dripicons-gear noti-icon"></i>
                 </a>
             </li> --}}
+=======
+
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
 
             <li class="dropdown notification-list">
                 <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown" id="topbar-userdrop" href="#" role="button" aria-haspopup="true"
                     aria-expanded="false">
                     <span class="account-user-avatar">
+<<<<<<< HEAD
                         <img src="/assets/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
+=======
+                        <img src="{{asset('assets/images/users/avatar-3.jpg')}}" alt="user-image" class="rounded-circle">
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                     </span>
                     <span>
                         <span class="account-user-name">{{ auth()->user()->name }}</span>

@@ -56,10 +56,18 @@
         <td>{{ $batch->batch_start_date->format('d M, Y H:i A') }}</td>
       </tr>
       <tr>
+<<<<<<< HEAD
         @php $session = $batch->batchSession()->first(); @endphp
         <th>Topic</th>
         <td>{{ $session->topics->topic->name }}</td>
       </tr>
+=======
+        @foreach($batch->batchSession as $session)
+        <th>Topic</th>
+        <td>{{$session->topics->topic->name}}</td>
+      </tr>
+      @endforeach
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
     </tbody>
   </table>
 </div>

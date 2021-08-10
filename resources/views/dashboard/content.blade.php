@@ -11,7 +11,15 @@
         <div>
 
             {{-- <button class="btn session_buycta ">Buy now</button> --}}
+<<<<<<< HEAD
             <button class="btn session_buycta btn btn_block text-capitalize my-2 my-sm-0"><a href="{{route('packages.details')}}"  style="text-decoration: none" class="btn session_buycta btn-info text-capitalize my-2 my-sm-0">Buy now</a></button>
+=======
+            <button class="btn session_buycta btn btn_block text-capitalize my-2 my-sm-0">
+                <a href="{{route('packages.details')}}" style="text-decoration: none" class="btn session_buycta btn-info text-capitalize my-2 my-sm-0">
+                    Buy now
+                </a>
+            </button>
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
         </div>
     </div>
     <div class="col-xl-4 col-lg-5">
@@ -22,6 +30,7 @@
             <p class="class_section"><span>class:</span><span>{{ auth()->user()->student->classmaster->name }}</span></p>
             <a href="#" class="profile"><span>view Profile</span></a>
            </div>
+<<<<<<< HEAD
            <!--<div class="border_bottom_dotted"></div>-->
            <!--<div class="row">-->
                <!--<div class="col-md-6 col-xs-16">-->
@@ -33,6 +42,9 @@
                <!-- <p class="wallet_balance"><span>Wallet balance:</span><strong>&nbsp;£ 1500</strong></p>-->
                <!-- </div>-->
            <!--</div>-->
+=======
+
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
         </div>
          <!-- Announcements -->
         <div class="card shadow mb-4">
@@ -77,7 +89,7 @@
                 @php $i = 1; @endphp
                 @foreach($students as $student)
                 <div style="cursor:pointer;" onClick="(function(){
-                    window.location.href = '/student-details/{{ $student->id }}';
+                    window.location.href = '/testing/public/student-details/{{ $student->id }}';
                      })();return false;" class="col-lg-3 mb-4">
                     <div class="card subject{{ $i }}">
                         <div class="subject_img_block">

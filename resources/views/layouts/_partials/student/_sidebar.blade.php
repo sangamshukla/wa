@@ -2,9 +2,13 @@
   <ul class=" student_dashboard navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/testing/public">
         <div class="sidebar-brand-icon">
+<<<<<<< HEAD
           <img src="/wa/dashboard/img/logo.png" title="logo" alt="logo">
+=======
+          <img src="{{asset('wa/dashboard/img/logo.png')}}" title="logo" alt="logo">
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
         </div>
     </a>
     <!-- Divider -->
@@ -22,7 +26,7 @@
     <hr class="sidebar-divider">
     <li class="nav-item">
         <a class="nav-link collapsed" href="#">
-            <div class="nav_images"><img src="/wa/dashboard/img/wall-clock 1.svg"> </div>
+            <div class="nav_images"><img src="{{asset('wa/dashboard/img/wall-clock 1.svg')}}"> </div>
             <br>
             <span>Session</span>
         </a>
@@ -45,12 +49,17 @@
     </li>
 
     <!-- Nav Item - Tables -->
+<<<<<<< HEAD
     <li class="nav-item">
+=======
+
+     <li class="nav-item">
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
         <a class="nav-link" href="{{ url('fullcalender')}}">
             <div class="nav_images"><img src="/wa/dashboard/img/calender.svg"> </div>
             <br>
             <span>Calender</span></a>
-    </li>
+    </li> 
   <!-- Nav Item - Alerts -->
   <li class="nav-item dropdown no-arrow mx-1 pl-5">
     <a class="dropdown-toggle" href="#" id="alertsDropdown" role="button"

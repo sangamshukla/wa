@@ -1,8 +1,12 @@
       <!-- Sidebar -->
+<<<<<<< HEAD
       <ul
         class="student_dashboard navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
         id="accordionSidebar"
       >
+=======
+      <ul class="student_dashboard navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
         <!-- Sidebar - Brand -->
         <a
           class="sidebar-brand d-flex align-items-center justify-content-center"
@@ -145,5 +149,8 @@
           <button class="rounded-circle border-0" id="sidebarToggle"></button>
         </div>
       </ul>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
       <!-- End of Sidebar -->

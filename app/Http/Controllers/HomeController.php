@@ -5,10 +5,16 @@ namespace App\Http\Controllers;
 use App\Mail\HomePageContactUsForm;
 use App\Models\Batch;
 use App\Models\BatchSession;
+<<<<<<< HEAD
 use App\Models\ContactMail;
 use App\Models\OrderItems;
 use App\Models\OrderPayment;
 use App\Models\AssignedHomeWork;
+=======
+use App\Models\OrderItems;
+use App\Models\OrderPayment;
+use App\Models\OrderSessionMap;
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
 use App\Models\Student;
 use App\Models\Transaction;
 use App\Models\User;
@@ -77,18 +83,18 @@ class HomeController extends Controller
         }
     }
 
-    public function operationDashboard()
-    {
-        if (auth()->user()->role === 'admin') {
-            return redirect('/admin-dashboard');
-        } elseif (auth()->user()->role === 'teacher') {
-            return redirect('/teacher-dashboard');
-        } elseif (auth()->user()->role === 'operation') {
-            return view('dashboard.operation');
-        } elseif (auth()->user()->role === 'student') {
-            return redirect('/student-dashboard');
-        }
-    }
+    // public function operationDashboard()
+    // {
+    //     if (auth()->user()->role === 'admin') {
+    //         return redirect('/admin-dashboard');
+    //     } elseif (auth()->user()->role === 'teacher') {
+    //         return redirect('/teacher-dashboard');
+    //     } elseif (auth()->user()->role === 'operation') {
+    //         return view('dashboard.operation');
+    //     } elseif (auth()->user()->role === 'student') {
+    //         return redirect('/student-dashboard');
+    //     }
+    // }
 
     public function studentDashboard(Request $request)
     {
@@ -99,7 +105,11 @@ class HomeController extends Controller
         } elseif (auth()->user()->role === 'operation') {
             return redirect('/operation-dashboard');
         } elseif (auth()->user()->role === 'student') {
+<<<<<<< HEAD
             $student = User::where('id', auth()->user()->id)->first();
+=======
+            $student = User::where('role', 'student')->where('id', auth()->user()->id)->first();
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
             // dd($student);
             $students = Batch::where('class_master_id', $student->class_master_id)->latest()->take(8)->get();
             // buy now || orders table
@@ -127,6 +137,7 @@ class HomeController extends Controller
             $today = Batch::whereIn('id', $batchSessionsToday)->get();
             $tomorrow = Batch::whereIn('id', $couseBatches)->whereDate('batch_start_date', Carbon::tomorrow())->get();
             $twos = Batch::whereIn('id', $couseBatches)->latest()->take(2)->get();
+<<<<<<< HEAD
             $three = Batch::whereIn('id', $couseBatches)->oldest()->take(3)->get();
             // $twos = Batch::whereIn('id', $couseBatches)->paginate(3);
             $purchased_sessions=count(DB::table('order_session_maps')
@@ -137,6 +148,27 @@ class HomeController extends Controller
             ->join('assigned_homework_students','assigned_homework_students.assigned_home_work_id','=','assigned_home_works.id')
             ->where('assigned_homework_students.student_id',auth()->user()->id)
             ->get());
+=======
+            $three = Batch::whereIn('id', $couseBatches)->latest()->take(3)->get();
+            // $twos = Batch::whereIn('id', $couseBatches)->paginate(3);
+
+
+            $totals = Batch::whereHas('batchSession', function ($query) {
+                $query->whereDate('start_date_time', '>=', Carbon::today());
+            })->count();
+            $totalprice = Batch::whereHas('batchSession', function ($query) {
+                $query->whereDate('start_date_time', '>=', Carbon::today());
+            })->count();
+            $totnoofseats = Batch::whereHas('batchSession', function ($query) {
+                $query->whereDate('start_date_time', '>=', Carbon::today());
+            })->count();
+
+            $batches = Batch::whereHas('batchSession', function ($query) {
+                $query->whereDate('start_date_time', '>=', Carbon::today());
+            })->latest()->paginate(8);
+
+            // $dueAmount = OrderPayment::whereStudentId(auth()->id())->get();
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
 
             return view('dashboard.student', compact(
                 'students',
@@ -147,9 +179,13 @@ class HomeController extends Controller
                 'status',
                 'twos',
                 'three',
+<<<<<<< HEAD
                 'due_amount',
                 'purchased_sessions',
                 'assigned_homework'
+=======
+                'batches'
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
             ));
         }
     }
@@ -165,6 +201,7 @@ class HomeController extends Controller
         $tomorrow = Batch::whereIn('id', $couseBatches)->whereDate('batch_start_date', Carbon::tomorrow())->get();
         $twos = Batch::whereIn('id', $couseBatches)->latest()->take(2)->get();
 
+<<<<<<< HEAD
         $three = Batch::whereIn('id', $couseBatches)->oldest()->take(3)->get();
         return view('dashboard.session-list', compact('batches', 'today', 'tomorrow'));
     }
@@ -202,4 +239,26 @@ class HomeController extends Controller
         return response()->json(['Data'=> 'Send Mail Successfully']);
     }
 
+=======
+        $three = Batch::whereIn('id', $couseBatches)->latest()->take(3)->get();
+        return view('dashboard.session-list', compact('batches', 'today', 'tomorrow'));
+    }
+    public function zoom(Request $request, $id)
+    {
+        $batch = Batch::find($id);
+        // dd($batch);
+        return view('dashboard.zoom', compact('batch'));
+    }
+    public function newStudentDashboard(Request $request)
+    {
+        $id = auth()->user()->id;
+        $status = DB::table('transactions')
+            ->join('order_payments', 'transactions.order_id', '=', 'order_payments.id')
+            ->select('transactions.*', 'order_payments.*')
+            ->where('order_payments.student_id', $id)
+            ->get();
+        $sessions = OrderPayment::where('student_id', $id)->get();
+        return view('dashboard.student', compact('status', 'sessions'));
+    }
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
 }

@@ -35,7 +35,11 @@
                             @endif
                     </div>
                     <div class="left_block">
+<<<<<<< HEAD
                          <a href="http://wallingtonacademy-env.eba-59ypexia.us-east-2.elasticbeanstalk.com/teacher-calander/<?php echo $batch->assignteacher->id; ?>">
+=======
+                         <a href="http://pariharz.com/teacher-calander/<?php echo $batch->assignteacher->id; ?>">
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                         <p class="name_section">{{ Str::ucfirst($batch->assignteacher->name) }} &nbsp;&nbsp;&nbsp;&nbsp;
                         {{ $batch->status != 1 ? 'Location : '.$batch->location : '' }}
                         </p></a>
@@ -113,12 +117,20 @@
                             <div class="session_card">
                                 <div class="session_no">{{ $session->name }}</div>
                                 <div class="session_no">
+<<<<<<< HEAD
                                     @if(isset($session->topics_name->topic->name))
                                         {{$session->topics_name->topic->name}}
                                     @else
                                         Erorr Findnig Topic
                                     @endif
                                     </div>
+=======
+                                    {{-- @foreach($session->topics as $t)
+                                    {{ $t->topic->name }}
+                                    @endforeach  --}}
+                                    {{$session->topics->topic->name}}
+                                </div>
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                                 {{-- <div class="session_date">{{ $batch->batch_start_date->format('d M, Y H:i A') }}</div> --}}
 
                                 <div class="session_date"><?php echo $Session = date('Y-m-d', strtotime( $session->start_date_time )); ?></div>
@@ -278,6 +290,7 @@
 
     <script src="{{ asset('wa/viewdetails.js') }}"></script>
     @if($batch->sell_each_session)
+<<<<<<< HEAD
     <script>
         $(document).ready(function(){
             $('#showErrorMessage').hide();
@@ -318,6 +331,55 @@
             $('#showErrorMessage').hide();
             $("#addToCart").click(function(){
 
+=======
+    <script>
+        $(document).ready(function(){
+            $('#showErrorMessage').hide();
+
+
+            $("#addToCart").click(function(){
+                var checked = $("input[name='session_id[]']:checked").length;
+                if(checked <= 0){
+                    $('#showErrorMessage').show();
+                }else{
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
+                    $('#showErrorMessage').hide();
+                    var checked = '';
+                    $('input[name="session_id[]"]:checked').each(function() {
+                    checked += ','+this.value;
+                    });
+                    window.location.href = "/add-to-cart/{{ $batch->id }}/?session_id="+checked
+<<<<<<< HEAD
+            });
+
+        });
+        // pricec
+    </script>
+=======
+                }
+            });
+
+        });
+        function markChecked()
+        {
+            var checked = $("input[name='session_id[]']:checked").length;
+            if(checked <= 0){
+                $('#showErrorMessage').show();
+            }else{
+                $('#showErrorMessage').hide();
+            }
+            var p = {{ $batch->batch_price_per_session }}
+            var price = p * checked;
+            $('#pricec').html(price);
+        }
+        // price
+    </script>
+    @else
+    <script>
+        $(document).ready(function(){
+            $('#showErrorMessage').hide();
+            $("#addToCart").click(function(){
+
                     $('#showErrorMessage').hide();
                     var checked = '';
                     $('input[name="session_id[]"]:checked').each(function() {
@@ -329,6 +391,7 @@
         });
         // pricec
     </script>
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
 
     @endif
 

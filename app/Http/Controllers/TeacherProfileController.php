@@ -18,7 +18,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use PharIo\Manifest\Author;
+<<<<<<< HEAD
 use Illuminate\Support\Facades\Artisan;
+=======
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
 
 class TeacherProfileController extends Controller
 {
@@ -36,11 +39,18 @@ class TeacherProfileController extends Controller
         $classes = ClassMaster::select('id', 'name')->get();
         $languages = LanguageMaser::all();
         $expertiseData = TeacherExpertise::where('user_id', $id)->get();
+<<<<<<< HEAD
         $check= $this->is_id_submitted(2);
         // dd($expertiseData);
         // dd($images);
         // return redirect('teacher-profile', compact('teacher_experiences'));
         return view('teacher.profile', compact('users', 'images', "teacher_experiences", "classes", "languages", 'expertiseData', 'check'));
+=======
+        // dd($expertiseData);
+        // dd($images);
+        // return redirect('teacher-profile', compact('teacher_experiences'));
+        return view('teacher.profile', compact('users', 'images', "teacher_experiences", "classes", "languages", 'expertiseData'));
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
     }
 
     /**"
@@ -130,7 +140,10 @@ class TeacherProfileController extends Controller
             $filename = $request->id_photo->getClientOriginalName();
             $user_id = auth()->user()->id;
             $request->id_photo->storeAs('id', $filename, 'public');
+<<<<<<< HEAD
             Artisan::call('storage:link');
+=======
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
             TeacherProfile::updateOrCreate(
                 [
                     'user_id' => $user_id,
@@ -167,7 +180,11 @@ class TeacherProfileController extends Controller
      */
     public function edit($id)
     {
+<<<<<<< HEAD
         dd($id);
+=======
+        // dd($id);
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
     }
 
     /**
@@ -212,8 +229,11 @@ class TeacherProfileController extends Controller
             );
             return redirect('teacher-profile');
         }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
         //parameters are (path, filename, disk)
         else {
             return 'please choose file';
@@ -331,6 +351,7 @@ class TeacherProfileController extends Controller
             ],
         );
     }
+<<<<<<< HEAD
     public function is_id_submitted($teacherId)
     {
         $status=TeacherProfile::firstWhere('user_id', $teacherId)->get();
@@ -359,4 +380,6 @@ class TeacherProfileController extends Controller
         return $this->is_id_submitted(2);
     }
     
+=======
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
 }

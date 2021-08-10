@@ -12,6 +12,10 @@
                 <div class="img pr-2"><a href="{{route('student-dashboard')}}"><img src="{{asset('wa/dashboard/img/chevron (2).svg')}}" /></a></div>
                 <h1 class="h3 mb-0 text-gray-800 session_heading_subject">
                     {{$session->batch->classSettings->name}}
+<<<<<<< HEAD
+=======
+                    {{-- {{$session}} --}}
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                 </h1>
             </div>
             <!-- image block -->
@@ -39,7 +43,11 @@
                     <div class="row pt-3">
                       <div class="col-xl-6 col-sm-6">
                         <p class="Session_pera">Teacher Name</p>
+<<<<<<< HEAD
                         <p class="teacher_name">{{$session->batch->assignteacher->name}}</p>
+=======
+                        <p class="teacher_name">{{$session->batch->teacher->name}}</p>
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                       </div>
                       <div class="col-xl-6 col-sm-6">
                         <p class="Session_pera">Class</p>

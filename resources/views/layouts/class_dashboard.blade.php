@@ -13,21 +13,31 @@
     <title>Teacher dashboard</title>
 
     <!-- Custom fonts for this template-->
+<<<<<<< HEAD
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+=======
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
     <link
       {{-- href="{{asset('wa/admindashboard/css/vendor/fontawesome-free/css/all.min.css')}}" --}}
       href="{{asset('wa/admindashboard/vendor/fontawesome-free/css/all.min.css')}}"
       rel="stylesheet"
       type="text/css"
     />
+<<<<<<< HEAD
     
+=======
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
     <link
       href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
       rel="stylesheet"
     />
     <link
+<<<<<<< HEAD
       href="https://fonts.googleapis.com/css?family=Roboto"
+=======
+      href="http://fonts.googleapis.com/css?family=Roboto"
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
       rel="stylesheet"
       type="text/css"
     />
@@ -37,6 +47,7 @@
       href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
     />
     <link rel="stylesheet" href="{{asset('wa/admindashboard/css/style.css')}}" />
+<<<<<<< HEAD
     <!--  -->
  <!--date time picker -->
 <link rel="stylesheet" href="{{asset('assets/css/datepicker/jquery.datetimepicker.min.css')}}" />
@@ -44,6 +55,11 @@
     <link href="{{ asset('wa/admindashboard/css/student-admin.css')}}" rel="stylesheet" />
     <link href="{{ asset('wa/admindashboard/css/session.css')}}" rel="stylesheet" />
      <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+=======
+    <!-- Custom styles for this template-->
+    <link href="{{ asset('wa/admindashboard/css/student-admin.css')}}" rel="stylesheet" />
+    <link href="{{ asset('wa/admindashboard/css/session.css')}}" rel="stylesheet" />
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
     <style>
       .sidebar .sidebar-brand {
       height: 0;
@@ -59,6 +75,7 @@
     .prime {
       background-color: #71f042 !important;
     }
+<<<<<<< HEAD
     /* .table thead th {
       vertical-align: bottom;
       border-bottom: 2px solid #28a745;
@@ -87,6 +104,8 @@
     vertical-align: middle;
     width: 100% !important;
 }
+=======
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
     </style>
   </head>
 
@@ -131,6 +150,7 @@
     <!-- Custom scripts for all pages-->
     <script src="{{asset('wa/admindashboard/js/student.js')}}"></script>
 
+<<<<<<< HEAD
     <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     
@@ -141,6 +161,10 @@
     <!-- select for add class -->
  
     @yield('scripts')
+=======
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
     <script>
       $(function () {
         $("#datepicker").datepicker({

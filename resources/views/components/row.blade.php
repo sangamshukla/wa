@@ -38,18 +38,4 @@
                               <p class="sub_subject">Time</p>
                               <div class="session_time"><?php echo $Session = date('H:i A', strtotime( $session->start_date_time )); ?></div>
                             </div>
-                            {{-- <div class="class_mb">
-                              <p class="sub_subject">Students</p>
-                              <p class="blue_text">30</p>
-                            </div> --}}
-                            {{-- <div class="delite_icon">
-                              <img
-                                src="{{asset('wa/teacherdashboard/img/delete.svg')}}"
-                                width="20"
-                                height="20"
-                              />
-                            </div> --}}
-                            {{-- <div class="edit_icon">
-                              <img src="{{asset('wa/teacherdashboard/img/edit.svg')}}" width="20" height="20" />
-                            </div> --}}
                           </div>

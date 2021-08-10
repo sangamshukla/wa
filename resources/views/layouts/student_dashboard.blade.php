@@ -23,7 +23,11 @@
       rel="stylesheet"
     />
     <link
+<<<<<<< HEAD
       href="https://fonts.googleapis.com/css?family=Roboto"
+=======
+      href="http://fonts.googleapis.com/css?family=Roboto"
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
       rel="stylesheet"
       type="text/css"
     />
@@ -37,6 +41,7 @@
     <div id="wrapper">
      @include('students.sidebar')
 
+<<<<<<< HEAD
       <!-- Content Wrapper -->
       <div id="content-wrapper" class="d-flex flex-column">
         <!-- Main Content -->
@@ -44,6 +49,17 @@
             @include('students.topnav')
             @yield('student-content')
     
+=======
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            <!-- Main Content -->
+            <div id="content">
+                @include('students.topnav')
+                @yield('student-content')
+            </div>
+        </div>
+    </div>
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
         <!-- Footer -->
         <footer class="sticky-footer">
           <div class="container-fluid text-center">
@@ -52,10 +68,17 @@
             </div>
           </div>
         </footer>
+<<<<<<< HEAD
         <!-- End of Footer -->
       </div>
       <!-- End of Content Wrapper -->
     </div>
+=======
+
+        <!-- End of Footer -->
+      <!-- End of Content Wrapper -->
+
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
     <!-- End of Page Wrapper -->
     <!-- Bootstrap core JavaScript-->
     <script src="{{asset('wa/dashboard/vendor/jquery/jquery.min.js')}}"></script>

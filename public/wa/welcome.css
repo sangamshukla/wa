@@ -871,12 +871,21 @@ a.price_card {
 .why_heading:before {
     content: "";
     position: absolute;
+<<<<<<< HEAD
     width: 325px;
     height: 37px;
     margin: auto;
     z-index: -100;
     left: 38%;
     top: 26%;
+=======
+    width: 162px;
+    height: 24px;
+    margin: auto;
+    z-index: -100;
+    left: 50.8%;
+    top: 37%;
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
     background: #33d2a1;
 }
 .vedio_section {

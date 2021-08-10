@@ -25,16 +25,53 @@ class TeacherDashboardController extends Controller
             ->join('users', 'batches.name', '=', 'users.id')
             ->whereDate('batch_session.start_date_time', '>=', Carbon::today())
             ->where('batches.name', '=', $id)
+<<<<<<< HEAD
             ->select('batch_session.*')
             ->get()
             ->toArray();
         // dd($session_data);
+=======
+            ->select('batch_session.*', 'batches.*')
+            ->get()
+            ->toArray();
+        // dd($session_data[4]);
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
         $status = "active";
         $id = auth()->user()->id;
         $users = User::where('id', $id)->get();
         $images = TeacherProfile::where('user_id', $id)->select('teacher_profile_photo')->get();
         $days_in_month = cal_days_in_month(CAL_GREGORIAN, date('m'), date('Y'));
         $session_yes = 1;
+<<<<<<< HEAD
         return view('teacher.dashboard', compact('startweek', 'endweek', 'days_in_month', 'session_yes', 'session_data', 'images', 'users', 'batches'));
+=======
+        if (auth()->user()->role == "teacher") {
+            return view('teacher.dashboard', compact('startweek', 'endweek', 'days_in_month', 'session_yes', 'session_data', 'images', 'users', 'batches'));
+        } else {
+            return redirect('student-dashboard');
+        }
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
     }
+    public function newindex()
+    {
+        $batches = Batch::whereCreatedBy(auth()->user()->id)->orWhere('name', auth()->id())->latest()->get();
+        // $batches = Batch::whereCreatedBy(auth()->user()->id)->orWhere('name', auth()->id())->get();
+        $id = auth()->user()->id;
+        $session_data = DB::table('batch_session')
+            ->join('batches', 'batch_session.batch_id', '=', 'batches.id')
+            ->join('users', 'batches.name', '=', 'users.id')
+            ->whereDate('batch_session.start_date_time', '>=', Carbon::today())
+            ->where('batches.name', '=', $id)
+            ->select('batch_session.*', 'batches.*')
+            ->get()
+            ->toArray();
+        // dd($session_data[4]);
+        $status = "active";
+        $id = auth()->user()->id;
+        $users = User::where('id', $id)->get();
+        $images = TeacherProfile::where('user_id', $id)->select('teacher_profile_photo')->get();
+
+        return view('teacher.dashboardnew', compact('session_data'));
+    }
+
 }

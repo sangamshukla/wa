@@ -371,7 +371,12 @@
         data: {
             '_token': '{{ csrf_token() }}',
             currentDate:currentDate,
+<<<<<<< HEAD
             teacherId:teacherId},
+=======
+            teacherId:teacherId
+            },
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
         success: function (response) {
             // alert(response);
             $('#Teacherswithsession').html(response);
@@ -392,7 +397,10 @@ error: function (response) {
 </script>
 <script>
     $('#datepicker').change(function(){
+<<<<<<< HEAD
 
+=======
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
         var monthSelected=$(".ui-datepicker-month option:selected" ).text();
         var todayDate=$("#datepicker").val();
         var res = todayDate.split("/");

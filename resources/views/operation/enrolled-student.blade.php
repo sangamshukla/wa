@@ -1,11 +1,15 @@
 @extends('layouts.operation_dashboard')
 @section('content')
+<<<<<<< HEAD
 
 <div id="alert" style="margin-top: 100px;">
 
 </div>
     <h5>Total Students for this Session</h5>
     <table class="table table-bordered table-responsive" style="margin-top:0px;">
+=======
+    <table class="table table-bordered table-responsive" style="margin-top:222px;">
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
       <thead>
         <tr>
           <th>Name</th>
@@ -20,12 +24,16 @@
         @foreach ($session->enrolled()->pluck('order_id') as $ord )
           @php
             $singleOrder = App\Models\OrderPayment::find($ord);
+<<<<<<< HEAD
             
+=======
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
           @endphp
           <tr>
               <td>{{ $singleOrder->student->name }}</td>
               <td style="overflow: scroll;">{{ $singleOrder->student->email }}</td>
               <td>{{ $singleOrder->created_at->format("Y-m-d h:i:s a") }}</td>
+<<<<<<< HEAD
               <td>
                   {{ $singleOrder->order_amount }}
 
@@ -57,10 +65,16 @@
                         <i class="fa fa-times" style="color:red; float:right;"></i>
                     @endif
              </td>
+=======
+              <td>{{ $singleOrder->order_amount }}</td>
+              <td>{{ $singleOrder->order_amount - $singleOrder->paid_amount }}</td>
+              <td>@if($singleOrder->order_amount - $singleOrder->paid_amount == 0) <i class="fa fa-check" style="color:green; float:right;"></i> @else <i class="fa fa-times" style="color:red; float:right;"></i> @endif</td>
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
           </tr>
         @endforeach
       </tbody>
     </table>
+<<<<<<< HEAD
     <hr class="border-2">
     <div class="mt-4">
     <h5>Total Enrolled Students for this batch</h5>
@@ -150,3 +164,6 @@
         }
     </script>
 @endsection
+=======
+@endsection
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9

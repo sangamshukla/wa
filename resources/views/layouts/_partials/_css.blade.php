@@ -6,14 +6,21 @@
  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <!-- Datatables css -->
-<link href="/assets/css/vendor/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
-<link href="/assets/css/vendor/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
+<link href="{{asset('assets/css/vendor/dataTables.bootstrap4.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{asset('assets/css/vendor/responsive.bootstrap4.css')}}" rel="stylesheet" type="text/css" />
 
 <!-- Summernote css for editor -->
+<<<<<<< HEAD
 <link href="/assets/css/vendor/summernote-bs4.css" rel="stylesheet" type="text/css" />
 
  <!--date time picker -->
 <link rel="stylesheet" href="/assets/css/datepicker/jquery.datetimepicker.min.css" />
+=======
+<link href="{{asset('assets/css/vendor/summernote-bs4.css')}}" rel="stylesheet" type="text/css" />
+
+ <!--date time picker -->
+<link rel="stylesheet" href="{{asset('assets/css/datepicker/jquery.datetimepicker.min.css')}}" />
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
 
  <style>
     .border-lable-flt {

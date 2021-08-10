@@ -406,11 +406,19 @@ span.badge.badge-danger.badge-counter {
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
+<<<<<<< HEAD
     line-height: 130%;
     color: #999999;
     text-align: center;
     margin-top: -25px;
     margin-left: 30px;
+=======
+    /* line-height: 130%; */
+    color: #999999;
+    text-align: center;
+    margin-top: -25px;
+    margin-left: 80px;
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
 }
 .card_cta .fa {
     font-size: 30px;

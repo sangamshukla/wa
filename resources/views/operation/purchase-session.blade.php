@@ -1,5 +1,6 @@
 @extends('layouts.operation_dashboard');
 @section('content')
+<<<<<<< HEAD
 
 <div style="margin-top:100px; overflow:visible; min-height:700px;" class="container-fluid">
 
@@ -24,12 +25,33 @@
    </div>
    <script class="show">
     $("#select-class").selectize({
+=======
+<script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.3/js/standalone/selectize.js" integrity="sha512-pF+DNRwavWMukUv/LyzDyDMn8U2uvqYQdJN0Zvilr6DDo/56xPDZdDoyPDYZRSL4aOKO/FGKXTpzDyQJ8je8Qw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<div style="margin-top:100px;" class="container-fluid ">
+
+  <strong><h4 style="margin-top: 100px; color:#36b9cc; margin-left:100px; text:bold; font-style: italic;">{{'Class Name - ' . $batch->classSettings->name .'|' . 'Teacher Name - ' . $batch->assignteacher->name. '|' . 'Duration - ' . $batch->duration_per_session. '|'. 'Subject - ' . $batch->subject->name }}</h5></strong>
+ <div style="margin-top:40px;" class="row">
+   <div class="col-4"></div>
+  
+   <div class="col-4">
+    <label for="select-student">Select a Student</label>
+     <select id="select-student" class="demo-default" placeholder="Select a student...">
+        {{-- <option value="null">Select Student</option> --}}
+        @foreach ($students as $student)
+            <option value="{{ $student->id }}">{{ $student->name }}</option>
+        @endforeach
+      </select>
+   </div>
+   <script class="show">
+    $("#select-student").selectize({
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
       create: true,
       sortField: "text",
     });
   </script>
    <div class="col-4"></div>
 </div>
+<<<<<<< HEAD
 
 <script>
 
@@ -39,6 +61,12 @@
     });
 </script>
     <table style="margin: 40px;" class="table table-bordered w-100  d-md-table">
+=======
+  {{-- <h5 style="margin-top: 50px; color:black; margin-left:100px;">{{'Class Name - ' . $batch->classSettings->name .'|' . 'Teacher Name - ' . $batch->assignteacher->name. '|' . 'Duration - ' . $batch->duration_per_session. '|'. 'Subject - ' . $batch->subject->name }}</h5> --}}
+
+<div class="row">
+    <table style="margin: 40px; " class="table table-bordered table-responsive w-100 d-block d-md-table">     
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
         <thead>
           <tr>
             <th scope="col" class="text-center">Sr. No.</th>
@@ -49,13 +77,18 @@
             <th scope="col" class="text-center">Action</th>
           </tr>
         </thead>
+<<<<<<< HEAD
         <tbody style="overflow:visible;">
+=======
+        <tbody>
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
           {{-- <form action="{{ route('sell-session') }}" method="post"> --}}
             @php
                 $i=1;
             @endphp
             @foreach ($sessions as $session)
             <tr>
+<<<<<<< HEAD
               <td scope="row" colspan="1" class="text-center">{{ $i }}</td>
               <td class="text-center" colspan="2">{{ $session->name }}</td>
               <td class="text-center">
@@ -77,6 +110,16 @@
                     <input type="checkbox" onchange="markChecked()" name="session[]" id="sessions" value="{{ $session->id }}" disabled>
                     <p>Session Time is Over</p>
                   @endif
+=======
+              <th scope="row" colspan="1" class="text-center">{{ $i }}</th>
+              <td class="text-center" colspan="2">{{ $session->name }}</td>
+              <td class="text-center">
+                  {{ $session->batch->no_of_seats }}/3
+              </td>
+              <td class="text-center" colspan="1">{{ $session->start_date_time}}</td>
+              <td class="text-center">
+                  <input type="checkbox" onchange="markChecked()" name="session[]" id="sessions" value="{{ $session->id }}">
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
               </td>
               {{-- <td>  <span id="pricec"></span></td> --}}
               <td class="text-center"  colspan="1">
@@ -106,12 +149,20 @@
             </tr>
                <tr>
                 <td colspan="4" class="text-center">
+<<<<<<< HEAD
                     <input type="submit" id="purchase_session" value="Enroll" class="text-center btn btn-primary">
+=======
+                    <input type="submit" id="purchase_session" value="Enrolled" class="text-center btn btn-primary">
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                 </td>
               </tr>
             {{-- </form> --}}
             </tbody>
       </table>
+<<<<<<< HEAD
+=======
+      
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
       {{-- for operation student list  --}}
 
 <!-- Modal -->
@@ -191,6 +242,7 @@ function markChecked()
                               });
         }
     </script>
+<<<<<<< HEAD
     <script>
         function getStudentAsPerClass()
         {
@@ -223,4 +275,6 @@ function markChecked()
                               });
         }
     </script>
+=======
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
 @endsection

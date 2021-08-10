@@ -80,7 +80,11 @@
         <div class="container-fluid" style="margin-top: 80px">
           <!-- Page Heading -->
           <div class="d-flex justify-content-start p-3 mb-2">
+<<<<<<< HEAD
             <div class="img pr-2"><a href="{{route('student-dashboard')}}"><img src="{{asset('wa/dashboard/img/chevron (2).svg')}}" /></a></div>
+=======
+            <div class="img pr-2"><img src="{{asset('wa/dashboard/img/chevron (2).svg')}}" /></div>
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
             <h1 class="h3 mb-0 text-gray-800 session_heading_subject">
                 {{$homework->homeWork->session->batch->classSettings->name}}
             </h1>
@@ -165,7 +169,11 @@
                                                 $pdfpath=asset('uploads')."/".$homework->assigned_content;
                                                 break;
                                                 case "CHOOSE_PDF":
+<<<<<<< HEAD
                                                 $pdfpath=asset('uploads')."/".$homework->homework_Name->pdf_path;
+=======
+                                                $pdfpath=asset('uploads/public/pdfs')."/".$homework->homework_Name->pdf_path;
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                                                 break;
                                                 case "ADD_QUESTION":
                                                 $pdfpath="www.tango.com";
@@ -186,7 +194,94 @@
                                         </div>
                                       </div>
                                     </div>
+<<<<<<< HEAD
                                    
+=======
+                                    <div class="d-flex justify-content-between pdf_block mt-5">
+                                      <div>
+                                        <span class="pdf_list_no">1.</span>
+                                        <span>Lorem ipsum dolor sit
+                                          amet-</span>
+                                      </div>
+                                      <div></div>
+                                        <div>
+                                          <span class="border-left"></span>
+                                          <span class="pdf_block" data-toggle="modal" data-target="#pdfModal"><img src="{{asset('wa/dashboard/img/pdf.svg')}}"></span>
+                                          <span class="border-left"></span>
+                                          <span class="pdf_block" data-toggle="modal" data-target="#pdfModal"><img src="{{asset('wa/dashboard/img/download.png')}}"></span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between pdf_block mt-2">
+                                      <div>
+                                        <span class="pdf_list_no">1.</span>
+                                        <span>Lorem ipsum dolor sit
+                                          amet-</span>
+                                      </div>
+                                      <div></div>
+                                        <div>
+                                          <span class="border-left"></span>
+                                          <span class="pdf_block" data-toggle="modal" data-target="#pdfModal"><img src="{{asset('wa/dashboard/img/pdf.svg')}}"></span>
+                                          <span class="border-left"></span>
+                                          <span class="pdf_block" data-toggle="modal" data-target="#pdfModal"><img src="{{asset('wa/dashboard/img/download.png')}}"></span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between pdf_block mt-2">
+                                      <div>
+                                        <span class="pdf_list_no">1.</span>
+                                        <span>Lorem ipsum dolor sit
+                                          amet-</span>
+                                      </div>
+                                      <div></div>
+                                        <div>
+                                          <span class="border-left"></span>
+                                          <span class="pdf_block" data-toggle="modal" data-target="#pdfModal"><img src="{{asset('wa/dashboard/img/pdf.svg')}}"></span>
+                                          <span class="border-left"></span>
+                                          <span class="pdf_block" data-toggle="modal" data-target="#pdfModal"><img src="{{asset('wa/dashboard/img/download.png')}}"></span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between pdf_block mt-2">
+                                      <div>
+                                        <span class="pdf_list_no">1.</span>
+                                        <span>Lorem ipsum dolor sit
+                                          amet-</span>
+                                      </div>
+                                      <div></div>
+                                        <div>
+                                          <span class="border-left"></span>
+                                          <span class="pdf_block" data-toggle="modal" data-target="#pdfModal"><img src="{{asset('wa/dashboard/img/pdf.svg')}}"></span>
+                                          <span class="border-left"></span>
+                                          <span class="pdf_block" data-toggle="modal" data-target="#pdfModal"><img src="{{asset('wa/dashboard/img/download.png')}}"></span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between pdf_block mt-2">
+                                      <div>
+                                        <span class="pdf_list_no">1.</span>
+                                        <span>Lorem ipsum dolor sit
+                                          amet-</span>
+                                      </div>
+                                      <div></div>
+                                        <div>
+                                          <span class="border-left"></span>
+                                          <span class="pdf_block" data-toggle="modal" data-target="#pdfModal"><img src="{{asset('wa/dashboard/img/pdf.svg')}}"></span>
+                                          <span class="border-left"></span>
+                                          <span class="pdf_block" data-toggle="modal" data-target="#pdfModal"><img src="{{asset('wa/dashboard/img/download.png')}}"></span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between pdf_block mt-2">
+                                      <div>
+                                        <span class="pdf_list_no">1.</span>
+                                        <span>Lorem ipsum dolor sit
+                                          amet-</span>
+                                      </div>
+                                      <div></div>
+                                        <div>
+                                          <span class="border-left"></span>
+                                          <span class="pdf_block" data-toggle="modal" data-target="#pdfModal"><img src="{{asset('wa/dashboard/img/pdf.svg')}}"></span>
+                                          <span class="border-left"></span>
+                                          <span class="pdf_block" data-toggle="modal" data-target="#pdfModal"><img src="{{asset('wa/dashboard/img/download.png')}}"></span>
+                                        </div>
+                                    </div>
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                                     <hr>
                                 </div>
                                 <div id="tabhome2" class="container tab-pane ">
@@ -197,6 +292,7 @@
                                         </object>
                                       </div>
                                     </div>
+<<<<<<< HEAD
                                       @if ($have_submitted=='true')
                                         <div class="col-5">
                                             <div class="card">
@@ -234,6 +330,31 @@
                                       </div>
                                     @endif
 
+=======
+                                    <div class="col-5">
+                                      <div class="card">
+                                        <p class="tile_card_comment">Teachers Message</p>
+                                        <div class="file_upload">
+                                            <form id="homeworksubmit">
+                                                @csrf
+                                               {{$map_id=$homework->id}}
+                                                <label class="file">
+                                                    <input type="file" id="file_upload_input"  style="opacity: 1 !important" name="homeworkfiles[]" multiple="multiple" required>
+                                                 </label>
+                                                 <input type="hidden" name="homework_id" value="{{$homework->homeWork->id}}">
+                                                 <input type="hidden" name="map_id" value="{{$map_id}}">
+                                                 <input type="hidden" name="map_id" value="1">
+                                                 {{-- <span class="file-custom"></span> --}}
+                                              <button id="input-submit">Submit</button>
+                                              <img src="{{asset('wa/assets/img/loader3.gif')}}" alt="" width="40", height="40" id="process-loader" hidden>
+                                            </form>
+                                                <div class="alert alert-primary" role="alert" hidden>
+                                                    Your homework has been submitted
+                                                </div>
+                                        </div>
+                                      </div>
+                                    </div>
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                                   </div>
                                 </div>
 
@@ -261,7 +382,11 @@
                                             <script>
                                               CKEDITOR.replace( 'student_answer' );
                                       </script>
+<<<<<<< HEAD
                                             <button id="submitcontent" class="nav-item nav-link homework_tab">Submit </button>
+=======
+                                            <button id="submitcontent">Submit </button>
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                                             <img src="{{asset('wa/assets/img/loader3.gif')}}" alt="" width="40", height="40" id="process-loader1" hidden>
                                         </form>
                                         <div class="alert alert-success my-2 alert-dismissible fade show" role="alert" hidden>
@@ -480,10 +605,23 @@
                 //     //   $('#changed').append('<li>'+filename+'</li>');
                 //    });
             $('#homeworksubmit').submit(function(e){
+<<<<<<< HEAD
                  e.preventDefault();
                 var homework_id="{{$homework->homeWork->id}}";
                 var formData = new FormData($(this)[0]);
                 $('#homework_uploader').show();
+=======
+                // $("#input-submit").attr('disabled', true);
+                $('#process-loader').removeAttr('hidden');
+                // e.preventDefault();
+                // var element=document.getElementById("file_upload_div");
+                var homework_id="{{$homework->homeWork->id}}";
+                // var files=[];
+                // for (var i = 0; i < element.files.length; i++) {
+                //   files.push(element.files[i].name);
+                //     }
+                var formData = new FormData($(this)[0]);
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                     $.ajax({
                         type:"POST",
                         url:"{{route('upload-homework')}}",
@@ -496,7 +634,11 @@
                         enctype: 'multipart/form-data',
                         processData: false,
                         success:function(response){
+<<<<<<< HEAD
                              $('#homework_uploader').hide();
+=======
+                          $('#process-loader').attr('hidden', true);
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                             $('.alert').removeAttr('hidden');
                             $('#input-submit').text('submitting...');
                             $('#input-submit').text('Submitted');

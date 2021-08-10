@@ -30,11 +30,18 @@
                     <div class="col-2 cart-icon">
                     <a href="{{ url('buy-now')}}">
                         {{-- <span style="color: rgb(236, 234, 234);">{{ count(session()->get('cart') ?? []) }}</span> --}}
+<<<<<<< HEAD
 
                         <span style="color: red">{{ count(session()->get('cart') ?? []) }}</span>
                         <img class="mobile-hidden" src="{{asset('wa/assets/img/cartmobile.png')}}" width="22" height="22">
                         <img class="desktop-hidden" src="{{asset('wa/assets/img/wacartdesktop.png')}}" width="22" height="22">
                      
+=======
+                        <span style="color: red">{{ count(session()->get('cart') ?? []) }}</span>
+                        <img class="mobile-hidden" src="{{asset('wa/assets/img/cartmobile.png')}}" width="22" height="22">
+                        <img class="desktop-hidden" src="{{asset('wa/assets/img/wacartdesktop.png')}}" width="22" height="22">
+
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                     </a>
                     </div>
                     {{-- @yield('carticon') --}}
@@ -50,7 +57,11 @@
 
                     @auth
                     {{-- !! for html exit  --}}
+<<<<<<< HEAD
                     <button class="btn btn_block text-capitalize my-2 my-sm-0" type="button" id="login"><a href="{{ url('/home') }}">Welcome {{ auth()->user()->name}}</a></button>                    
+=======
+                    <button class="btn btn_block text-capitalize my-2 my-sm-0" type="button" id="login"><a href="{{ url('/home') }}">Welcome {{ auth()->user()->name}}</a></button>
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                     @endauth
                     </div>
                 </div>

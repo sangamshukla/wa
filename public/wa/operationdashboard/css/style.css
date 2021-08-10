@@ -38,7 +38,11 @@ body {
   color: #fff;
 }
 .dropdown-menu a {
+<<<<<<< HEAD
   color: #000;
+=======
+  color: #fff;
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
 }
 .navbar .nav-item .nav-link {
   text-decoration: none;

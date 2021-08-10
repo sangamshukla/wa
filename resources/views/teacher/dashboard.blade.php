@@ -46,6 +46,7 @@
                       >
                     </li>
                   </ul>
+<<<<<<< HEAD
                   <div class="add_class"><a href="{{route('class.create')}}" style="background: #FFFFFF;
                                                                                     box-shadow: 0px 0px 10px rgb(0 0 0 / 12%);
                                                                                     border-radius: 4px;
@@ -62,12 +63,19 @@
                                                                                     +Add Class
                                                                                     </a>
                                                                                     </div>
+=======
+                  <div class="add_class"><a href="{{route('class.create')}}">+Add Class</a></div>
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                   <div class="tab-content">
                     <div class="tab-pane active" role="tabpanel" id="menu1">
                          {{--dynamic data  --}}
                          @foreach ($batches as $batch)
                          @foreach ($batch->batchSession as $session)
+<<<<<<< HEAD
                          @if ($session->start_date_time->format('d-m')==\Carbon\Carbon::today()->format('d-m'))
+=======
+                         @if ($session->start_date_time->format('d')===\Carbon\Carbon::today()->format('d'))
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                          <div class="card shadow mt-3">
                              <div
                              class="card-body card_left_border border_left_color1"
@@ -75,20 +83,38 @@
                           <div class="subject_edit">
                             <div class="subject_practis">
                               <p class="sub_subject">Class Name</p>
+<<<<<<< HEAD
                               <p class="subject">{{ \Illuminate\Support\Str::limit($batch->classSettings->name ,'30') }}</p>
                               <p class="sub_subject">{{$session->name}}--{{$session->singleTopic->topic->name}}</p>
+=======
+                              <p class="subject">{{ $batch->classSettings->name }}</p>
+                              <p class="sub_subject">{{$session->name}}-{{$session->topics->topic->name}}</p>
+                                {{-- @foreach($session->topics as $t)
+                                  {{ $session->name.'-'.$t->topic->name.',' }}
+                                @endforeach --}}
+                                {{-- {{$session->name}}-{{$session->topics->topic->name}} --}}
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                               <p class="time_pera">
                               </p>
                             </div>
                             <div class="starttime_block">
                               <p class="sub_subject">Start</p>
                               <p class="green_text">
+<<<<<<< HEAD
                                 <a href="{{ url('start-session', $session->id) }}"  class="green_text">Sessions Details</a>
                               </p>
                             </div>
                             <div class="class_block">
                              <p class="sub_subject">Teacher</p>
                             <p class="blue_text">{{ $batch->assignteacher->name }}</p>
+=======
+                                <a target="_blank" href="{{ url('start-session', $session->id) }}"  class="green_text">Start Sessions</a>
+                              </p>
+                            </div>
+                            <div class="class_block">
+                              <p class="sub_subject">Teacher</p>
+                              <p class="blue_text">{{ $batch->assignteacher->name }}</p>
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                             </div>
                             <div class="class_block">
                               <p class="sub_subject">Time</p>
@@ -112,7 +138,11 @@
                          @php
                             //  dd($batches);
                          @endphp
+<<<<<<< HEAD
                          @if ($session->start_date_time->format('d-m')==\Carbon\Carbon::tomorrow()->format('d-m'))
+=======
+                         @if ($session->start_date_time->format('d')==\Carbon\Carbon::tomorrow()->format('d'))
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                       <div class="card shadow mt-3">
                         <div
                           class="card-body card_left_border border_left_color1"
@@ -120,15 +150,28 @@
                             <div class="subject_edit">
                             <div class="subject_practis">
                               <p class="sub_subject">Class Name</p>
+<<<<<<< HEAD
                               <p class="subject">{{ \Illuminate\Support\Str::limit($batch->classSettings->name ,'30') }}</p>
                               <p class="sub_subject">{{$session->name}}</p>
+=======
+                              <p class="subject">{{ $batch->classSettings->name }}</p>
+                              <p class="sub_subject">{{$session->name}}-{{$session->topics->topic->name}}</p>
+                                {{-- @foreach($session->topics as $t)
+                                  {{ $session->name.'-'.$t->topic->name.',' }}
+                                @endforeach --}}
+                                {{-- {{$session->name}}-{{$session->topics->topic->name}} --}}
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                               <p class="time_pera">
                               </p>
                             </div>
                             <div class="starttime_block">
                               <p class="sub_subject">Start</p>
                               <p class="green_text">
+<<<<<<< HEAD
                                 <a href="{{ url('start-session', $session->id) }}" class="green_text">Sessions Details</a>
+=======
+                                <a target="_blank" href="{{ url('start-session', $session->id) }}" class="green_text">Start Sessions</a>
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                               </p>
                             </div>
                             <div class="class_block">
@@ -158,15 +201,28 @@
                             <div class="subject_edit">
                             <div class="subject_practis">
                               <p class="sub_subject">Class Name</p>
+<<<<<<< HEAD
                               <p class="subject">{{ \Illuminate\Support\Str::limit($batch->classSettings->name ,'30') }}</p>
                               <p class="sub_subject">{{$session->name}}</p>
+=======
+                              <p class="subject">{{ $batch->classSettings->name }}</p>
+                              <p class="sub_subject">{{$session->name}}-{{$session->topics->topic->name}}</p>
+                                {{-- @foreach($session->topics as $t)
+                                  {{ $session->name.'-'.$t->topic->name.',' }}
+                                @endforeach --}}
+                                {{-- {{$session->name}}-{{$session->topics->topic->name}} --}}
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                               <p class="time_pera">
                               </p>
                             </div>
                             <div class="starttime_block">
                               <p class="sub_subject">Start</p>
                               <p class="green_text">
+<<<<<<< HEAD
                                 <a href="{{ url('start-session', $session->id) }}" class="green_text">Sessions Details</a>
+=======
+                                <a target="_blank" href="{{ url('start-session', $session->id) }}" class="green_text">Start Sessions</a>
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                               </p>
                             </div>
                             <div class="class_block">
@@ -197,15 +253,24 @@
                             <div class="subject_edit">
                             <div class="subject_practis">
                               <p class="sub_subject">Class Name</p>
+<<<<<<< HEAD
                               <p class="subject">{{ \Illuminate\Support\Str::limit($batch->classSettings->name ,'30') }}</p>
                               <p class="sub_subject">{{$session->name}}</p>
+=======
+                              <p class="subject">{{ $batch->classSettings->name }}</p>
+                              <p class="sub_subject">{{$session->name}}-{{$session->topics->topic->name}}</p>
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                               <p class="time_pera">
                               </p>
                             </div>
                             <div class="starttime_block">
                               <p class="sub_subject">Start</p>
                               <p class="green_text">
+<<<<<<< HEAD
                                 <a href="{{ url('start-session', $session->id) }}"  class="green_text">Sessions Details</a>
+=======
+                                <a target="_blank" href="{{ url('start-session', $session->id) }}"  class="green_text">Start Sessions</a>
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                               </p>
                             </div>
                             <div class="class_block">
@@ -261,6 +326,7 @@
 
                                 for ($i=0; $i <7 ; $i++) {
                                     array_push($dates, $today);
+<<<<<<< HEAD
                                     if($today==\Carbon\Carbon::now()->daysInMonth)
                                     {
                                         $today=1;
@@ -269,6 +335,9 @@
                                     {
                                         $today=$today+1;
                                     }
+=======
+                                    $today=$today+1;
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
 
                                     echo '<p id="currentDate">'. $dates[$i].'</p>';
                                 }?>
@@ -318,13 +387,21 @@
                                                     {
                                                         ?>
                                                         <span class="active_time tooltip">
+<<<<<<< HEAD
                                                             <span class="time-block tooltiptext">{{ $sessions['name'] }}</span>
+=======
+                                                            <span class="time-block tooltiptext">{{ $session->name }}</span>
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                                                         </span>
                                                         <?php
                                                     }
                                                         elseif ($session_time>$time && $time_plus_30>$session_time) {?>
                                                         <span class="active_time tooltip">
+<<<<<<< HEAD
                                                             <span class="time-block tooltiptext">{{ $sessions['name'] }}</span>
+=======
+                                                            <span class="time-block tooltiptext">Here is your class information</span>
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                                                         </span>
                                                         <?php
                                                         }

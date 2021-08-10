@@ -1,7 +1,10 @@
 input.serch_block.bg-white.form-control.bg-light.border-0.small {
     width: 300px;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
 select.form-control.border-0:focus {
     outline: none;
 }
@@ -154,6 +157,7 @@ a.nav-link.tab_title {
     font-weight: normal;
     font-size: 14px;
     line-height: 20px;
+<<<<<<< HEAD
 }
 
 .nav-link.tab_cta.active {
@@ -497,6 +501,363 @@ tbody tr {
     color: #fff;
 }
 
+=======
+}
+
+.nav-link.tab_cta.active {
+    border: none;
+    background: none;
+    color: #1d6771;
+    border-bottom: 2px solid #1d6771;
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.nav-link.tab_cta:hover {
+    border: none;
+    color: #1d6771;
+}
+
+.nav.nav-tabs {
+    border-bottom: 0px solid #dddfeb;
+}
+
+.subject_card {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 130%;
+    color: #999999;
+}
+
+.border-left.second_left_border {
+    height: 50px;
+}
+
+.subject_edit {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card_left_border {
+    border-radius: 8px 0px 0px 8px;
+    border-left: 6px solid #1d7dea;
+    padding: 14px;
+    padding-bottom: 0px;
+}
+
+.subject {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    align-items: center;
+    color: #666666;
+}
+
+.sub_subject {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 130%;
+    color: #999999;
+}
+
+.green_text {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 130%;
+    color: #0ea47e;
+}
+
+.blue_text {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 130%;
+    color: #517add;
+}
+
+.starttime_block {
+    border-right: 1px solid #e6e6e6;
+    padding: 0px 17px;
+    height: 50px;
+    vertical-align: middle;
+}
+
+.class_block {
+    border-right: 1px solid #e6e6e6;
+    padding: 0px 17px;
+    height: 50px;
+    vertical-align: middle;
+}
+
+.time_pera {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 22px;
+    align-items: center;
+    color: #999999;
+}
+
+.subject_edit p {
+    margin-bottom: 10px;
+}
+
+.border_left_color1 {
+    border-left: 6px solid #1d7dea;
+}
+
+.border_left_color2 {
+    border-left: 6px solid #b248cd;
+}
+
+.border_left_color3 {
+    border-left: 6px solid #a6c437;
+}
+
+.border_left_color4 {
+    border-left: 6px solid #f3b740;
+}
+
+.add_class {
+    text-align: right;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 130%;
+    text-transform: capitalize;
+    color: #1d6771;
+    margin: 20px 0px;
+}
+
+/* session css start */
+
+.session_heading h6 {
+    font-family: Roboto;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 130%;
+    color: #333333;
+    padding: 25px;
+}
+
+/* table css start */
+
+#sailorTableArea {
+    max-height: 300px;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+#sailorTable {
+    white-space: normal;
+}
+
+#sailorTable tbody {
+    display: block;
+    height: 500px;
+}
+
+.dt_calander tbody {
+    display: block;
+    height: 500px;
+    overflow: auto;
+}
+
+thead,
+tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: unset;
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+    background-color: #f4f4f4;
+}
+
+.card_header .table-bordered td,
+.table-bordered th {
+    border: 0px solid #dee2e6;
+}
+
+.card_heading {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 25px;
+    align-items: center;
+    color: #333333;
+}
+
+.session_no {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 25px;
+    color: #666666;
+}
+
+.session_date {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 25px;
+    color: #666666;
+}
+
+/* td.session_no {
+  width: 25%;
+} */
+
+.table-bordered thead td,
+.table-bordered thead th {
+    background-color: #ecf0f4;
+}
+
+#sailorTableArea {
+    max-height: 500px;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+.card_header tbody {
+    display: block;
+    /* overflow: auto; */
+}
+
+.right_section {
+    margin-top: 10px;
+}
+
+/* table css end */
+
+.session.tooltip {
+    position: relative;
+    display: inline-block;
+    opacity: 1;
+    padding-right: 30px;
+}
+
+.session.tooltip span.session.tooltiptext {
+    visibility: hidden;
+    width: 100px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 3px 0;
+    position: absolute;
+    z-index: 9;
+    top: 26px;
+    right: -48%;
+    font-size: 12px;
+}
+
+.session.tooltip:hover span.session.tooltiptext {
+    visibility: visible;
+}
+
+.active_time.tooltip {
+    position: relative;
+    display: inline-block;
+    opacity: 1;
+}
+
+.active_time.tooltip span.time-block.tooltiptext {
+    visibility: hidden;
+    width: 100px;
+    background-color: #f1ab00;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 3px 0;
+    position: absolute;
+    z-index: 9;
+    top: 26px;
+    right: -48%;
+    font-size: 12px;
+}
+.active_time1
+{
+    background: linear-gradient(0deg, #33bd9a, #33bd9a), #33bd9a;
+    box-shadow: 0px 0px 10px rgb(0 0 0 / 12%);
+    width: 10px;
+    height: 10px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+  }
+}
+
+.active_time.tooltip:hover span.time-block.tooltiptext {
+    visibility: visible;
+}
+
+/* session css end */
+
+/* calander css start */
+
+.dt_calander {
+    display: block;
+    border: 2px solid #c5c5c5;
+    background: #ffffff;
+    box-shadow: 0px 0px 4px rgb(0 0 0 / 25%);
+    border-radius: 8px;
+    height: 300px;
+}
+
+.day_block p {
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 16px;
+    letter-spacing: 0.75px;
+    color: #049dc5;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.day_block.date_p p {
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 10px;
+    line-height: 16px;
+    letter-spacing: 0.75px;
+    color: #999999;
+}
+
+.day_block.date_p p.active {
+    border: 1px solid #1d7dea;
+    background-color: #1d7dea;
+    border-radius: 50%;
+    padding: 3px 5px;
+    color: #fff;
+}
+
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
 .active_time {
     display: inline-block;
     text-align: center;

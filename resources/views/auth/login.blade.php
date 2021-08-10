@@ -23,7 +23,6 @@
                 </div>
             </div>
         </div>
-
         <div class="form-group mb-0 text-center">
             <button class="btn btn-primary" type="submit"> Log In </button>
         </div>

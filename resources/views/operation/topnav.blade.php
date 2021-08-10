@@ -10,9 +10,13 @@
               <i class="fa fa-bars"></i>
             </button>
             <!-- Topbar Search -->
+<<<<<<< HEAD
             <a href="{{url('operation-dashboard')}}">
             <div style="float:left;" class="dashboard_title">My Dashboard</div>
             </a>
+=======
+            <div style="float:left;" class="dashboard_title">My Dashboard</div>
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
             {{-- <form class="d-none d-sm-inline-block form-inline navbar-search"> --}}
               {{-- <div class="d-flex"> --}}
                 {{-- <div class="input-group">

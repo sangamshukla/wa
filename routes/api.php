@@ -28,6 +28,7 @@ Route::get('/subjects/{id}', [ApiController::class, 'getSubjects']);
 Route::get('/topics/{id}', [ApiController::class, 'getTopics']);
 Route::get('/teacher/{teacherId}/{datetime}/{duration?}', [ApiController::class, 'getAvailableTeacher']);
 
+<<<<<<< HEAD
 Route::get('/get-session-on-batch/{batchId}', function ($batchId) {
     $sessions = BatchSession::where('batch_id', $batchId)->get();
     return view('ajax.session', compact('sessions'));
@@ -45,6 +46,8 @@ Route::get('/get-students-on-batch/{sessionId}', function ($sessionId) {
 
 Route::get('/get-ajax-report/{studentId}', [HomeWorkController::class, 'makeMarkSheet']);
 
+=======
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
 Route::post('/webhook', function () {
     \Stripe\Stripe::setApiKey('sk_test_51JAvqVSBWoxgIfNeH50XuVJ06GJPhUNyB9jQJLgUQOtYmjTyVK7cLVhbLGOvgdMgsyIwX4jbUDcjokHQYaPcTaBv0018VNQaS7');
 

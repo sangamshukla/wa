@@ -202,6 +202,7 @@
          
           <!-- datepicker end -->
           <div class="row">
+<<<<<<< HEAD
               @php
                 $i=1;
               @endphp
@@ -211,6 +212,14 @@
                 <div class="card shadow border_block card_bg{{$i}} mt-3">
                   <div class="card-body">
                     <div class="subject_edit subject_flex" style="min-height: 70px !important">
+=======
+            @forelse ($session as $session)
+            @forelse ($session as $session)
+            <div class="col-md-3">
+                <div class="card shadow border_block card_bg1 mt-3">
+                  <div class="card-body">
+                    <div class="subject_edit subject_flex">
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                       <div class="test_title_div">
                         <p class="test_title">
                           {{ $session->batch->classSettings->name }}
@@ -257,6 +266,7 @@
                       </div>
                       <!-- <div class="border-right"></div> -->
                       <div>
+<<<<<<< HEAD
                           <p class="sub_pera">Location</p>
                           {{$session->batch->location}}
                           
@@ -264,17 +274,34 @@
                   </div>
                   </div>
                   <div class="subject_edit subject_flex view_block view_block_bg{{$i}}">
+=======
+                          <p class="sub_pera">Booked Seats</p>
+                          {{ $session->status != 1 ? 'Location : '.$session->location : '' }}
+                      </div>
+                  </div>
+                  </div>
+                  <div class="subject_edit subject_flex view_block view_block_bg1">
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                       <div>
                          <a class="view_details" href="{{ route('purchase-session', ['id'=>$session->batch->id ]) }}">View Details</a>
                       </div>
                       <div>
+<<<<<<< HEAD
                          {{-- <a class="view_details" href="#" data-toggle="modal" data-target="#modal{{ $session->id }}">Enrolled Students</a> --}}
+=======
+                        {{-- <a class="view_details" href="#" data-toggle="modal" data-target="#modal{{ $session->id }}">Enrolled Students</a> --}}
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
 
                         <a class="view_details" href="{{ route('enrolled-student', ['id'=>$session->id ]) }}">Enrolled Students</a>
                      </div>
                     </div>
                 </div>
             </div>
+<<<<<<< HEAD
+=======
+            {{-- view students modal --}}
+
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
             <!-- Modal -->
             <div class="modal fade" id="modal{{ $session->id }}" tabindex="-1" role="dialog" aria-labelledby="modal{{ $session->id }}" aria-hidden="true">
               <div class="modal-dialog" role="document">
@@ -298,9 +325,15 @@
                             $singleOrder = App\Models\OrderPayment::find($ord);
                           @endphp
                           <tr>
+<<<<<<< HEAD
                               <td>{{ $singleOrder->student->name ?? '' }}</td>
                               <td style="overflow: scroll;">{{ $singleOrder->student->email ?? '' }}</td>
                               <td>{{ $singleOrder ? $singleOrder->created_at->format("Y-m-d h:i:s a") : ""  }}</td>
+=======
+                              <td>{{ $singleOrder->student->name }}</td>
+                              <td style="overflow: scroll;">{{ $singleOrder->student->email }}</td>
+                              <td>{{ $singleOrder->created_at->format("Y-m-d h:i:s a") }}</td>
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
                           </tr>
                         @endforeach
                       </tbody>
@@ -320,9 +353,12 @@
 
             @empty
               {{ "No session for the day" }}
+<<<<<<< HEAD
               @php
                 $i++;
               @endphp
+=======
+>>>>>>> 62b9ca228a5128571e8a656e2897ee654d780fd9
             @endforelse
           </div>
         </div>
